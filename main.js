@@ -69,9 +69,9 @@ function backButton() {
     }
     
     if (screenStack.length != 0) {
-        document.getElementById(screenStack[screenStack.length - 1]).style.display = 'initial';
+        document.getElementById(screenStack[screenStack.length - 1]).style.display = '';
     } else {
-        document.getElementById('mainmenu').style.display = 'initial';
+        document.getElementById('mainmenu').style.display = '';
     }   
 }
 
@@ -84,7 +84,7 @@ function pushScreen(screen) {
     }
     screenStack.push(screen);
     console.log(screenStack);
-    document.getElementById(screenStack[screenStack.length - 1]).style.display = 'initial';
+    document.getElementById(screenStack[screenStack.length - 1]).style.display = '';
 }
 
 function scrollWheel() {
