@@ -45,7 +45,7 @@ function setRealSize() {
     document.body.style.fontSize = fontsize / 72 * ppc;
 
     let time = new Date();
-    document.getElementById('time').innerHTML = time.getHours() + ':' + time.getMinutes();
+    document.getElementById('time').innerHTML = time.getHours().toString().padStart(2, '0') + ':' + time.getMinutes().toString().padStart(2, '0');
 }
 
 
