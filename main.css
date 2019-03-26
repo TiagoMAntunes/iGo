@@ -18,17 +18,6 @@
     border-radius: 4%;
 }
 
-.container {
-    text-align: center;
-    margin: auto;
-}
-
-.comment {
-    text-align: center;
-    margin: auto;
-    max-width: 70%;
-}
-
 #mainmenu {
     width: 100%;
     height: 95%;
@@ -99,28 +88,56 @@
 
 .navbar {
     border-top: 2px solid black;
-    overflow: hidden;
+    overflow: none;
     position: fixed;
     bottom: 0;
     width: 100%;
+    height: 20%;
+    margin:0;
 }
 
 .navbar input {
     float: left;
     display: block;
     text-align: center;
-    padding-left: 9%;
-    padding-top: 3%;
-    padding-bottom: 3%;
-  }
+    width: 10%;
+    padding: 5% 5%;
+}
 
 .arrow {
-    margin-top: 180%;
+    width: 50%;   
+}
+
+.arrowContainer {
+    width: 15%;
+    transform: translate(0,50%);
+    margin: auto;
+}
+
+.container {
+    text-align: center;
+    margin: auto;
+    width: 70%;
+}
+
+.comment {
+    text-align: center;
+}
+
+#multimediaContent {
+    height: 75%;
+    display: flex;
+    overflow: hidden;
+}
+
+#multimedia {
+    height:95%;
+    width: 100%;
 }
 
 .imageShown {
     padding-top: 6%;
-    width: 70%;
+    width: 100%;
 }
 /* The switch - the box around the slider */
 .switch {
