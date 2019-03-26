@@ -13,10 +13,22 @@
     <div id=watchBorder>
         <div id=mainScreen>
             <div id="mainmenu">
-                <div id=option1><span>Multimédia</span></div>
-                <div id=option2><span>Mapa</span></div>
-                <div id=option3><span>Saúde</span></div>
-                <div id=option4><span>Definições</span></div>
+                <div id=option1 onclick="pushScreen('multimedia');"><span>Multimédia</span></div>
+                <div id=option2 onclick="pushScreen('mapaScreen');"><span>Mapa</span></div>
+                <div id=option3 onclick="pushScreen('saude');"><span>Saúde</span></div>
+                <div id=option4 onclick="pushScreen('definicoes');"><span>Definições</span></div>
+            </div>
+            <div id='multimedia' style='display: none'>
+                <h1>Multimedia</h1>
+            </div>
+            <div id='mapaScreen' style='display: none'>
+                <h1>Mapa</h1>
+            </div>
+            <div id='saude' style='display: none'>
+                <h1>Saude</h1>
+            </div>
+            <div id='definicoes' style='display: none'>
+                <h1>Settings</h1>
             </div>
         </div>
     </div>

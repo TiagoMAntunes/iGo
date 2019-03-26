@@ -1,3 +1,5 @@
+var screenStack = [];
+
 function startup() {
     if (localStorage.getItem("isSet") == undefined) {
         localStorage.setItem("horizontalPx", 1920);
@@ -40,7 +42,6 @@ function setRealSize() {
     scrollWheel.style.top = 50 - top * 0.1 + '%';
     
     let fontsize = parseInt(window.getComputedStyle(document.body).fontSize);
-    console.log(fontsize);
     document.body.style.fontSize = fontsize / 72 * ppc;
 }
 
@@ -61,7 +62,29 @@ function updateSize() {
 }
 
 function backButton() {
-    console.log('Backbutton!');
+    console.log('backbutton');
+    let screen = screenStack.pop()
+    if (screen != undefined) {
+        document.getElementById(screen).style.display= 'none';
+    }
+    
+    if (screenStack.length != 0) {
+        document.getElementById(screenStack[screenStack.length - 1]).style.display = 'initial';
+    } else {
+        document.getElementById('mainmenu').style.display = 'initial';
+    }   
+}
+
+function pushScreen(screen) {
+    console.log('Screen to load ' + screen);
+    if (screenStack.length != 0)
+        document.getElementById(screenStack[screenStack.length - 1]).style.display = 'none';
+    else {
+        document.getElementById('mainmenu').style.display = 'none';
+    }
+    screenStack.push(screen);
+    console.log(screenStack);
+    document.getElementById(screenStack[screenStack.length - 1]).style.display = 'initial';
 }
 
 function scrollWheel() {
