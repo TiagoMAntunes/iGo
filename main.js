@@ -1,4 +1,5 @@
 var screenStack = [];
+var json = [];
 
 function startup() {
     if (localStorage.getItem("isSet") == undefined) {

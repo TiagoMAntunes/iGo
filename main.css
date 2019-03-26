@@ -23,6 +23,12 @@
     margin: auto;
 }
 
+.comment {
+    text-align: center;
+    margin: auto;
+    max-width: 70%;
+}
+
 #mainmenu {
     width: 100%;
     height: 100%;
@@ -65,4 +71,37 @@
 
 .show {
     display: initial;
+}
+
+.center{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.navbar {
+    border-top: 2px solid black;
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.navbar input {
+    float: left;
+    display: block;
+    text-align: center;
+    padding-left: 9%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+  }
+
+.arrow {
+    margin-top: 180%;
+}
+
+.imageShown {
+    padding-top: 10%;
+    width: 70%;
 }
