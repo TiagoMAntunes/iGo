@@ -9,14 +9,33 @@
 </head>
 
 <body onload="startup()">
-    <a href="settings.html"><button style="float: left">Settings</button></a>
+    <a href="settings.html">
+        <button style="float: left">Settings</button>
+    </a>
     <div id=watchBorder>
         <div id=mainScreen>
+            <div id="top-bar">
+                <div id='bluetooth-symbol'>
+                    <img src="icons/bluetooth-icon.svg" alt='Bluetooth icon'>
+                </div>
+                <div id='time'>Time</div>
+                <div id='battery'>
+                    <img src='icons/battery-icon.svg' alt='Battery icon'>
+                </div>
+            </div>
             <div id="mainmenu">
-                <div id=option1 onclick="pushScreen('multimedia');"><span>Multimédia</span></div>
-                <div id=option2 onclick="pushScreen('mapaScreen');"><span>Mapa</span></div>
-                <div id=option3 onclick="pushScreen('saude');"><span>Saúde</span></div>
-                <div id=option4 onclick="pushScreen('definicoes');"><span>Definições</span></div>
+                <div id=option1 onclick="pushScreen('multimedia');">
+                    <span>Multimédia</span>
+                </div>
+                <div id=option2 onclick="pushScreen('mapaScreen');">
+                    <span>Mapa</span>
+                </div>
+                <div id=option3 onclick="pushScreen('saude');">
+                    <span>Saúde</span>
+                </div>
+                <div id=option4 onclick="pushScreen('definicoes');">
+                    <span>Definições</span>
+                </div>
             </div>
             <div id='multimedia' style='display: none'>
                 <div id='imageScreen'>
@@ -48,6 +67,35 @@
             </div>
             <div id='definicoes' style='display: none'>
                 <h1>Settings</h1>
+                <table id='tableSettings'>
+                    <tr>
+                        <td>Bluetooth</td>
+                        <td>
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider round"></span>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>GPS</td>
+                        <td>
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider round"></span>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Saúde</td>
+                        <td>
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider round"></span>
+                            </label>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>

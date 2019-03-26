@@ -44,6 +44,15 @@ function setRealSize() {
     
     let fontsize = parseInt(window.getComputedStyle(document.body).fontSize);
     document.body.style.fontSize = fontsize / 72 * ppc;
+
+    let time = new Date();
+    document.getElementById('time').innerHTML = time.getHours().toString().padStart(2, '0') + ':' + time.getMinutes().toString().padStart(2, '0');
+
+    Array.from(document.getElementsByClassName('switch')).map( (el) => {
+        el.style.width = 60/72 * ppc;
+        el.style.height = 34/72 * ppc;
+    });
+    document.getElementById('tableSettings').style.fontSize = document.body.style.fontSize;
 }
 
 
