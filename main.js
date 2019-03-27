@@ -127,12 +127,16 @@ function setupMultimediaScreen() {
     updatePicture();
 }
 
+function true_modulo(val, n) {
+    return ((val % n) + n) % n;
+}
+
 function nextPicture() {
-    picture_index = (picture_index + 1) % multimedia_storage.length;
+    picture_index = true_modulo(picture_index + 1, multimedia_storage.length);
     updatePicture();
 }
 
 function previousPicture() {
-    picture_index = (picture_index - 1) % multimedia_storage.length
+    picture_index = true_modulo(picture_index - 1, multimedia_storage.length);
     updatePicture()
 }
