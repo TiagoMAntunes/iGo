@@ -240,7 +240,11 @@ input:checked + .slider:before {
 }
 
 .btn-edit {
-    border: 1px solid gray;
-    background: none;
-    border-radius: 5px;
+    color: white;
+    border: none;
+    font-size: 120%;
+    margin-right: 20%;
+    background: #008CBA;
+    padding: 0% 2%;
+    border-radius: 2px;
 }
