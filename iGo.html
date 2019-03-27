@@ -55,13 +55,13 @@
                 <div class="navbar">
                     <input id='likeButton' type="image" src="icons/like.svg" onclick="likeAction(this)" />
                     <input type="image" src="icons/comment.png" />
-                    <input type="image" onclick="pushScreen('photopublish')" src="icons/photo.png" />
-                    <input type="image" src="icons/bell.png" />
+                    <input type="image" onclick="pushScreen('photopublish')" src="icons/photo.png"/>
+                    <input type="image" onclick="pushScreen('notificationScreen')" src="icons/bell.png"/>
                     <input type="image" src="icons/profile.png" onclick="pushScreen('profile')" />
                 </div>
             </div>
             <div id='photopublish' style='display: none'>
-                <div id='tableScreen' style='overflow: scroll'>
+                <div id='tableScreen'>
                     <table class="tablePhotos">
                         <tr>
                             <td>
@@ -144,14 +144,53 @@
             <div id='profile' style='display: none'>
                 <div id="profile-top">
                     <div>
-                        <h4>Vasco Manquinho</h4>
+                        <h2 id='profileName'>Gato das botas</h2>
+                        <p id='profileDescr'>Espadachim nos tempos livres</p>
                         <button class='btn-edit'>Editar perfil</button>
                     </div>
                     <img src='icons/profile.svg' alt='Profile picture' />
                 </div>
-                <div id='picture list'>
-                    To be done
+                <div id='picturelist'>
+                    <div>
+                        <table>
+                            <tr>
+                                <td>
+                                    <img class="imageChoice" src="images/shrek-1.jpg">
+                                </td>
+                                <td>
+                                    <img class="imageChoice" src="images/shrek-2.jpg">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img class="imageChoice" src="images/shrek-3.jpg">
+                                </td>
+                                <td>
+                                    <img class="imageChoice" src="images/shrek-4.jpg">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
+            </div>
+            <div id='notificationScreen' style='display: none'>
+                <table>
+                    <tr>
+                        <td>not1</td>
+                    </tr>
+                    <tr>
+                        <td>not2</td>
+                    </tr>
+                    <tr>
+                        <td>not3</td>
+                    </tr>
+                    <tr>
+                        <td>not4</td>
+                    </tr>
+                    <tr>
+                        <td>not5</td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>
