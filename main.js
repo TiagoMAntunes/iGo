@@ -20,6 +20,27 @@ var multimedia_storage = [{
     "liked": false
 }]
 
+var profiles = [{
+    "photo": "icons/prof1.jpg",
+    "name": "Shrek"
+}, {
+    "photo": "icons/simb1.jpg",
+    "name": "Bart"
+}, {
+    "photo": "icons/simb2.jpeg",
+    "name": "Homer"
+}, {
+    "photo": "icons/toy1.jpg",
+    "name": "Woody"
+}, {
+    "photo": "icons/toy2.png",
+    "name": "Buzz",
+    "description": "Para o infinito e mais alem"
+}, {
+    "photo": "icons/prof5.png",
+    "name": "Dragon"
+}]
+
 var screenStack = [];
 var picture_index = 0;
 
@@ -75,6 +96,7 @@ function setRealSize() {
         el.style.height = 34 / 72 * ppc;
     });
     document.getElementById('tableSettings').style.fontSize = document.body.style.fontSize;
+    createNotifications();
 }
 
 
@@ -127,6 +149,15 @@ function updatePicture() {
     document.getElementById("imageShown").src = multimedia_storage[picture_index]['photo'];
     document.getElementById("comment").innerHTML = multimedia_storage[picture_index]['description'];
     document.getElementById("likeButton").src = (multimedia_storage[picture_index]['liked'] == true　? 'icons/liked.svg' : 'icons/like.svg')
+}
+
+
+function createNotifications() {
+    let profiletable = document.getElementById("notifications");
+    profiletable.innerHTML += "<tr><td id='rowone'><img class='notifpic' src=" + profiles[0].photo + ">" + profiles[0].name + " gostou da sua foto</td></tr>";
+    for(i = 1; i< profiles.length; i++){   
+        profiletable.innerHTML += "<tr><td class='row'><img class='notifpic' src=" + profiles[i].photo + ">" + profiles[i].name + " gostou da sua foto</td></tr>";
+    }
 }
 
 function setupMultimediaScreen() {

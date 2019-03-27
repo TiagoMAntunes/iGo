@@ -1,4 +1,6 @@
-
+* {
+    font-family: Arial;
+}
 
 #mainScreen {
     border: 1px solid black;
@@ -148,10 +150,6 @@ html {
   overflow-y: scroll;
 }
 
-td {
-  height: 100%;
-}
-
 #comment {
     text-align: center;
 }
@@ -171,6 +169,21 @@ td {
     padding-top: 6%;
     width: 100%;
 }
+
+#notifications {
+    width: 100%;
+}
+
+#rowone {
+    border-top: none;
+    padding: 3%;
+}
+
+.row {
+   border-top: 1px solid black; 
+   padding: 3%;
+}
+
 /* The switch - the box around the slider */
 .switch {
     position: relative;
@@ -260,13 +273,15 @@ input:checked + .slider:before {
     margin-right: 8%;
 }
 
-#picturelist {
-    margin-top: 8%;
-}
-
 #profileName {
     line-height: 10%;
 }
+
+.notifpic {
+    float: right;
+    width: 10%;
+}
+
 
 .btn-edit {
     color: white;
@@ -274,6 +289,6 @@ input:checked + .slider:before {
     font-size: 120%;
     margin-right: 5%;
     background: #008CBA;
-    padding: 0% 2%;
+    padding: 0% 4%;
     border-radius: 2px;
 }
