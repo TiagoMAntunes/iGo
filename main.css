@@ -120,11 +120,26 @@
     width: 70%;
 }
 
+
+
 .imageChoice {
     width: 100%;
-    height: 100%;
     padding: 0%;
     margin: 0%;
+}
+
+html {
+    overflow: -moz-scrollbar-none;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+#photoPublish {
+    height: 95%;
+    width: 100%;
+    overflow-y: scroll;
 }
 
 td {
@@ -138,7 +153,7 @@ td {
 #multimediaContent {
     height: 75%;
     display: flex;
-    overflow: hidden;
+    overflow-y: hidden;
 }
 
 #multimedia {
@@ -244,3 +259,4 @@ input:checked + .slider:before {
     background: none;
     border-radius: 5px;
 }
+
