@@ -1,18 +1,23 @@
 var multimedia_storage = [{
     "photo": "images/shrek-1.jpg",
-    "description": "Sejam bem vindos ao meu pântano #meme"
+    "description": "Sejam bem vindos ao meu pântano #meme",
+    "liked": false
 }, {
     "photo": "images/shrek-2.jpg",
-    "description": "Os novos bebés e a grande bebé #pantanoLife #marriedAndProud"
+    "description": "Os novos bebés e a grande bebé #pantanoLife #marriedAndProud",
+    "liked": false
 }, {
     "photo": "images/shrek-3.jpg",
-    "description": "Odeio ser a estrela no tapete vermelho #starLife"
+    "description": "Odeio ser a estrela no tapete vermelho #starLife",
+    "liked": false
 }, {
     "photo": "images/shrek-4.jpg",
-    "description": "Fiz uma amizade na minha mais recente viagem #meetingStrangers"
+    "description": "Fiz uma amizade na minha mais recente viagem #meetingStrangers",
+    "liked": false
 }, {
     "photo": "images/shrek-5.jpg",
-    "description": "Vamos-nos casar!! Venham visitar-nos! #love #married #couple"
+    "description": "Vamos-nos casar!! Venham visitar-nos! #love #married #couple",
+    "liked": false
 }]
 
 var screenStack = [];
@@ -121,6 +126,7 @@ function scrollWheel() {
 function updatePicture() {
     document.getElementById("imageShown").src = multimedia_storage[picture_index]['photo'];
     document.getElementById("comment").innerHTML = multimedia_storage[picture_index]['description'];
+    document.getElementById("likeButton").src = (multimedia_storage[picture_index]['liked'] == true　? 'icons/liked.svg' : 'icons/like.svg')
 }
 
 function setupMultimediaScreen() {
@@ -139,4 +145,15 @@ function nextPicture() {
 function previousPicture() {
     picture_index = true_modulo(picture_index - 1, multimedia_storage.length);
     updatePicture()
+}
+
+function likeAction(buttonElement) {
+    switch(multimedia_storage[picture_index]['liked']) {
+        case true:
+            buttonElement.src = 'icons/like.svg'
+            break;
+        case false:
+            buttonElement.src = 'icons/liked.svg'
+    }
+    multimedia_storage[picture_index]['liked'] = !multimedia_storage[picture_index].liked;
 }
