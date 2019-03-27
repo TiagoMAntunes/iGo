@@ -109,7 +109,7 @@
     float: left;
     display: block;
     text-align: center;
-    padding-left: 9%;
+    padding-left: 6%;
     padding-top: 3%;
     padding-bottom: 3%;
   }
@@ -122,6 +122,18 @@
     padding-top: 6%;
     width: 70%;
 }
+
+.imageChoice {
+    width: 100%;
+    height: 100%;
+    padding: 0%;
+    margin: 0%;
+}
+
+td {
+  height: 100%;
+}
+
 /* The switch - the box around the slider */
 .switch {
     position: relative;
