@@ -43,7 +43,7 @@ var profiles = [{
 
 var screenStack = [];
 var picture_index = 0;
-
+var count = 0;
 function startup() {
     if (localStorage.getItem("isSet") == undefined) {
         localStorage.setItem("horizontalPx", 1920);
@@ -141,14 +141,40 @@ function pushScreen(screen) {
     document.getElementById(screenStack[screenStack.length - 1]).style.display = '';
 }
 
-function scrollWheel() {
-    console.log('ScrollWheel!');
+var dragInfo = undefined
+
+function scrollWheelMovement(event) {
+    if (dragInfo == undefined)
+        return;
+    if (document.getElementById('tableScreen').style.top == '')
+        document.getElementById('tableScreen').style.top = '0px';
+    let direction = (event.clientY - dragInfo.clientY)
+    
+    let i = 0;
+    if (direction > 0) {
+        i = 10;
+    } else if (direction < 0) {
+        i = -10;
+    }
+
+    let val = parseInt(document.getElementById('tableScreen').style.top) + i;
+    console.log(val)
+    if (!(val > 0 || val < -($(document.getElementById('tableBodyPictures')).height() - $(document.getElementById('photopublish')).height())))
+        document.getElementById('tableScreen').style.top = val;
+}
+
+function scrollWheelStart(event) {
+    dragInfo = event;
+}
+
+function scrollWheelFinish(event) {
+    dragInfo = undefined;
 }
 
 function updatePicture() {
     document.getElementById("imageShown").src = multimedia_storage[picture_index]['photo'];
     document.getElementById("comment").innerHTML = multimedia_storage[picture_index]['description'];
-    document.getElementById("likeButton").src = (multimedia_storage[picture_index]['liked'] == true　? 'icons/liked.svg' : 'icons/like.svg')
+    document.getElementById("likeButton").src = (multimedia_storage[picture_index]['liked'] == true ? 'icons/liked.svg' : 'icons/like.svg')
 }
 
 
@@ -179,7 +205,7 @@ function previousPicture() {
 }
 
 function likeAction(buttonElement) {
-    switch(multimedia_storage[picture_index]['liked']) {
+    switch (multimedia_storage[picture_index]['liked']) {
         case true:
             buttonElement.src = 'icons/like.svg'
             break;
@@ -187,4 +213,13 @@ function likeAction(buttonElement) {
             buttonElement.src = 'icons/liked.svg'
     }
     multimedia_storage[picture_index]['liked'] = !multimedia_storage[picture_index].liked;
+}
+function Bluetooth() {
+    count++;
+    if(count%2 == 0){
+        document.getElementById('bluetoothImg').style.visibility= 'hidden';
+    }
+    else{
+         document.getElementById('bluetoothImg').style.visibility='visible';
+    }
 }

@@ -11,6 +11,9 @@
     background-color: white;
     border-radius: 1.5%;
 }
+#bluetoothImg{
+    visibility: hidden;
+}
 
 
 #watchBorder {
@@ -124,6 +127,11 @@
     width: 70%;
 }
 
+#tableScreen {
+    position: relative;
+    height: 100%;
+}
+
 .imageChoice {
     width: 100%;
     padding: 0%;
@@ -196,7 +204,11 @@ html {
     width: 0;
     height: 0;
   }
-  
+  #opacity-slider{
+    position: relative;
+    width:50%;
+    bottom:20%;
+  }
   /* The slider */
   .slider {
     position: absolute;
@@ -291,4 +303,46 @@ input:checked + .slider:before {
     background: #008CBA;
     padding: 0% 4%;
     border-radius: 2px;
+    border: 1px solid gray;
+    background: none;
+    border-radius: 5px;
+}
+
+#tableSettings{
+    width: 100%;
+    height: 50%;
+}
+#tdSettingsL{
+    padding-top: 5%;
+    width: 80%;
+    height: 33%;
+}
+
+#tdSettingsR{
+    right:0%;
+    width: 20%;
+    height: 33%;
+}
+#definicoes td{
+    border-bottom: solid 1px #ccc;
+}
+#settingsImgL{
+    width: 18%;
+    height: 90%;
+}
+#settingsImgR{
+    position: relative;
+    width: 18%;
+    height:90%; 
+    right:0%;  
+}
+.navbarSettings {
+    text-align: center;
+    overflow: none;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 20%;
+    margin:0;
+    display: inline-block; 
 }
