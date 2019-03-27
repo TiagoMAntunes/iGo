@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>iGo</title>
+    <script src="jquery-3.3.1.min.js"></script>
     <link rel="stylesheet" type="text/css" media="screen" href="main.css">
     <script src="main.js"></script>
 </head>
@@ -62,8 +63,9 @@
             </div>
             <div id='photopublish' style='display: none'>
                 <div id='tableScreen'>
-                    <table class="tablePhotos">
-                        <tr>
+                    <table id="tablePhotos" style='height: 100px'>
+                        <tbody id='tableBodyPictures'>
+                        <tr id='teste'>
                             <td>
                                 <img class="imageChoice" src="images/shrek-1.jpg">
                             </td>
@@ -95,6 +97,7 @@
                                 <img class="imageChoice" src="images/shrek-3.jpg">
                             </td>
                         </tr>
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -152,7 +155,7 @@
         </div>
     </div>
     <div id="backButton" onclick="backButton()"></div>
-    <div id="scrollWheel" onclick="scrollWheel()"></div>
+    <div id="scrollWheel" draggable="true" ondragstart="scrollWheelStart(event)" ondragend="scrollWheelFinish(event)" ondrag="scrollWheelMovement(event)"></div>
     </div>
     <script type="text/javascript">
         document.getElementById('opacity-slider').addEventListener('input', function (e) {
