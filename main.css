@@ -303,9 +303,6 @@ input:checked + .slider:before {
     background: #008CBA;
     padding: 0% 4%;
     border-radius: 2px;
-    border: 1px solid gray;
-    background: none;
-    border-radius: 5px;
 }
 
 #tableSettings{
