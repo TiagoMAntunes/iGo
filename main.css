@@ -185,17 +185,51 @@
     box-shadow: 0 0 1px #2196F3;
   }
   
-  input:checked + .slider:before {
+input:checked + .slider:before {
     -webkit-transform: translateX(87.5%);
     -ms-transform: translateX(87.5%);
     transform: translateX(87.5%);
-  }
+}
   
   /* Rounded sliders */
-  .slider.round {
+.slider.round {
     border-radius: 34px;
-  }
+}
   
-  .slider.round:before {
+.slider.round:before {
     border-radius: 50%;
-  }
+}
+
+#profile {
+    height: 95%;
+    width: 100%;
+}
+
+#profile-top {
+    display: inline-block;
+    height: 30%;
+    width: 100%;
+    vertical-align: middle;
+    padding-top: 5%;
+}
+
+#profile-top div {
+    text-align: center;
+    width: 59%;
+    float: left;
+    margin: 0 5%;
+}
+
+#profile-top img {
+    width: 20%;
+    border: 1px solid black;
+    border-radius: 100%;
+    float: right;
+    margin: 0 5%;
+}
+
+.btn-edit {
+    border: 1px solid gray;
+    background: none;
+    border-radius: 5px;
+}
