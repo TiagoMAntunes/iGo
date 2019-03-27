@@ -103,5 +103,10 @@
     <div id="backButton" onclick="backButton()"></div>
     <div id="scrollWheel" onclick="scrollWheel()"></div>
     </div>
+    <script type="text/javascript"> 
+    	document.getElementById('opacity-slider').addEventListener('input', function (e) {
+  			document.getElementById('mainScreen').style.opacity = this.value;	
+		});
+    </script>
 </body>
 </html>
