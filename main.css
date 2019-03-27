@@ -1,3 +1,5 @@
+
+
 #mainScreen {
     border: 1px solid black;
     position: fixed;
@@ -120,8 +122,6 @@
     width: 70%;
 }
 
-
-
 .imageChoice {
     width: 100%;
     padding: 0%;
@@ -136,10 +136,16 @@ html {
     display: none;
 }
 
-#photoPublish {
+#photopublish {
     height: 95%;
     width: 100%;
     overflow-y: scroll;
+}
+
+#profile {
+  height: 95%;
+  width: 100%;
+  overflow-y: scroll;
 }
 
 td {
@@ -236,14 +242,13 @@ input:checked + .slider:before {
     height: 30%;
     width: 100%;
     vertical-align: middle;
-    padding-top: 5%;
 }
 
 #profile-top div {
-    text-align: center;
     width: 59%;
     float: left;
-    margin: 0 5%;
+    margin-left: 8%;
+    margin-top: 2%;
 }
 
 #profile-top img {
@@ -251,23 +256,24 @@ input:checked + .slider:before {
     border: 1px solid black;
     border-radius: 100%;
     float: right;
-    margin: 0 5%;
+    margin-top: 5%;
+    margin-right: 8%;
+}
+
+#picturelist {
+    margin-top: 8%;
+}
+
+#profileName {
+    line-height: 10%;
 }
 
 .btn-edit {
-<<<<<<< HEAD
     color: white;
     border: none;
     font-size: 120%;
-    margin-right: 20%;
+    margin-right: 5%;
     background: #008CBA;
     padding: 0% 2%;
     border-radius: 2px;
 }
-=======
-    border: 1px solid gray;
-    background: none;
-    border-radius: 5px;
-}
-
->>>>>>> c27a51af1db733863012fdc777e66c18b98b30ea
