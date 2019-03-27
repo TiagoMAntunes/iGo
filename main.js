@@ -22,7 +22,7 @@ var multimedia_storage = [{
 
 var screenStack = [];
 var picture_index = 0;
-
+var count = 0;
 function startup() {
     if (localStorage.getItem("isSet") == undefined) {
         localStorage.setItem("horizontalPx", 1920);
@@ -182,4 +182,13 @@ function likeAction(buttonElement) {
             buttonElement.src = 'icons/liked.svg'
     }
     multimedia_storage[picture_index]['liked'] = !multimedia_storage[picture_index].liked;
+}
+function Bluetooth() {
+    count++;
+    if(count%2 == 0){
+        document.getElementById('bluetoothImg').style.visibility= 'hidden';
+    }
+    else{
+         document.getElementById('bluetoothImg').style.visibility='visible';
+    }
 }

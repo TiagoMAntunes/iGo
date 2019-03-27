@@ -16,7 +16,7 @@
         <div id=mainScreen>
             <div id="top-bar">
                 <div id='bluetooth-symbol'>
-                    <img src="icons/bluetooth-icon.svg" alt='Bluetooth icon'>
+                    <img id='bluetoothImg' src="icons/bluetooth-icon.svg" alt='Bluetooth icon'>
                 </div>
                 <div id='time'>Time</div>
                 <div id='battery'>
@@ -56,8 +56,8 @@
                 <div class="navbar">
                     <input id='likeButton' type="image" src="icons/like.svg" onclick="likeAction(this)" />
                     <input type="image" src="icons/comment.png" />
-                    <input type="image" onclick="pushScreen('photopublish')" src="icons/photo.png" />
-                    <input type="image" src="icons/bell.png" />
+                    <input type="image" onclick="pushScreen('photopublish')" src="icons/photo.png"/>
+                    <input type="image" onclick="pushScreen('notificationScreen')" src="icons/bell.png"/>
                     <input type="image" src="icons/profile.png" onclick="pushScreen('profile')" />
                 </div>
             </div>
@@ -111,8 +111,17 @@
                 <h1>Settings</h1>
                 <table id='tableSettings'>
                     <tr>
-                        <td>Bluetooth</td>
-                        <td>
+                        <td id ='tdSettingsL' class='tdSettings'><h3>Bluetooth</h3></td>
+                        <td  id ='tdSettingsR' class='tdSettings'>
+                            <label class="switch">
+                                <input onclick="Bluetooth()"type="checkbox">
+                                <span class="slider round"></span>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id ='tdSettingsL' class='tdSettings'> <h3>GPS</h3></td>
+                        <td id ='tdSettingsR' class='tdSettings'>
                             <label class="switch">
                                 <input type="checkbox">
                                 <span class="slider round"></span>
@@ -120,17 +129,8 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>GPS</td>
-                        <td>
-                            <label class="switch">
-                                <input type="checkbox">
-                                <span class="slider round"></span>
-                            </label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Saúde</td>
-                        <td>
+                        <td id ='tdSettingsL' class='tdSettings'><h3>Saúde </h3></td>
+                        <td id ='tdSettingsR' class='tdSettings'>
                             <label class="switch">
                                 <input type="checkbox">
                                 <span class="slider round"></span>
@@ -138,19 +138,62 @@
                         </td>
                     </tr>
                 </table>
-                <input type="range" id="opacity-slider" min=".4" max="1" step=".01" value="1">
+                <div class='navbarSettings'>
+                	<img id='settingsImgL' src='icons/brightnesslow.png'>
+                	<input type="range" id="opacity-slider" min=".4" max="1" step=".01" value="1">
+            		<img id='settingsImgR' src='icons/brightnessmore.png'>
+            	</div>
             </div>
             <div id='profile' style='display: none'>
                 <div id="profile-top">
                     <div>
-                        <h4>Vasco Manquinho</h4>
+                        <h2 id='profileName'>Gato das botas</h2>
+                        <p id='profileDescr'>Espadachim nos tempos livres</p>
                         <button class='btn-edit'>Editar perfil</button>
                     </div>
                     <img src='icons/profile.svg' alt='Profile picture' />
                 </div>
-                <div id='picture list'>
-                    To be done
+                <div id='picturelist'>
+                    <div>
+                        <table>
+                            <tr>
+                                <td>
+                                    <img class="imageChoice" src="images/shrek-1.jpg">
+                                </td>
+                                <td>
+                                    <img class="imageChoice" src="images/shrek-2.jpg">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img class="imageChoice" src="images/shrek-3.jpg">
+                                </td>
+                                <td>
+                                    <img class="imageChoice" src="images/shrek-4.jpg">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
+            </div>
+            <div id='notificationScreen' style='display: none'>
+                <table>
+                    <tr>
+                        <td>not1</td>
+                    </tr>
+                    <tr>
+                        <td>not2</td>
+                    </tr>
+                    <tr>
+                        <td>not3</td>
+                    </tr>
+                    <tr>
+                        <td>not4</td>
+                    </tr>
+                    <tr>
+                        <td>not5</td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>
