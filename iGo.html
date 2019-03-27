@@ -1,4 +1,3 @@
-<!DOCTYPE <!DOCTYPE html>
 <html>
 
 <head>
@@ -37,27 +36,27 @@
                     <span>Definições</span>
                 </div>
             </div>
-            <div id='multimedia' style='display: none'>
-                <div id='imageScreen'>
-                        <div style='float: left'>
-                            <input class="arrow" type="image" src="icons/arrow.png" style="transform: rotate(180deg)"/>
-                        </div>
-                        <div style='float: right'>
-                            <input class="arrow" type="image" src="icons/arrow.png"/>
-                        </div>
-                        <div class="container">
-                            <img class="imageShown" src='images/shrek-1.jpg' class="center">
-                        </div>
-                        <div class="comment">
+            <div id='multimedia' style='display: none' onload=setupMultimediaScreen()>
+                <div id='multimediaContent'>
+                    <div class='arrowcontainer' onclick="previousPicture()">
+                        <img class="arrow" type="image" src="icons/arrow.png" style="transform: translate(50%,0) rotate(180deg);" />
+                    </div>
+                    <div class="container">
+                        <img id="imageShown" src='images/shrek-1.jpg' class="center">
+                        <div id="comment">
                             <p>Sejam bem vindos ao meu pântano #meme</p>
+                        </div>
                     </div>
-                    <div class="navbar">
-                        <input type="image" src="icons/like.png"/>
-                        <input type="image" src="icons/comment.png"/>
-                        <input onclick="pushScreen('photopublish')" type="image" src="icons/photo.png"/>
-                        <input type="image" src="icons/bell.png"/>
-                        <input type="image" src="icons/profile.png"/>
+                    <div class='arrowcontainer' onclick="nextPicture()">
+                        <input class="arrow" type="image" src="icons/arrow.png" style="transform: translate(50%,0)" />
                     </div>
+                </div>
+                <div class="navbar">
+                    <input type="image" src="icons/like.png" />
+                    <input type="image" src="icons/comment.png" />
+                    <input type="image" src="icons/photo.png" />
+                    <input type="image" src="icons/bell.png" />
+                    <input type="image" src="icons/profile.png" />
                 </div>
             </div>
             <div id='photopublish' style='display: none'>
@@ -135,12 +134,17 @@
                         </td>
                     </tr>
                 </table>
+                <input type="range" id="opacity-slider" min=".4" max="1" step=".01" value="1">
             </div>
         </div>
     </div>
     <div id="backButton" onclick="backButton()"></div>
     <div id="scrollWheel" onclick="scrollWheel()"></div>
     </div>
+    <script type="text/javascript"> 
+    	document.getElementById('opacity-slider').addEventListener('input', function (e) {
+  			document.getElementById('mainScreen').style.opacity = this.value;	
+		});
+    </script>
 </body>
-
 </html>
