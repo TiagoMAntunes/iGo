@@ -190,6 +190,15 @@ html {
     width:100%;
 }
 
+#messageScreen {
+    overflow-y: scroll;
+    height: 94%;
+}
+#notificationScreen {
+    overflow-y: scroll;
+    height: 94%;
+}
+
 .row {
    border-top: 1px solid black; 
    padding: 3%;
@@ -294,11 +303,13 @@ input:checked + .slider:before {
 
 .notifpic {
     float: right;
-    width: 10%;
+    width:20%;
+    border-radius:100%; 
 }
 .messagepic {
     float: left;
-    width: 10%;
+    width:20%;
+    border-radius: 100%;
 }
 
 .btn-edit {
