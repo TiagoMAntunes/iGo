@@ -199,6 +199,14 @@ html {
     height: 94%;
 }
 
+#notificationmessage {
+    margin-top: 8%;
+}
+
+#messagename {
+    margin-top: 8%;
+}
+
 .row {
    border-top: 1px solid black; 
    padding: 3%;
@@ -303,12 +311,13 @@ input:checked + .slider:before {
 
 .notifpic {
     float: right;
-    width:20%;
+    width: 20%;
     border-radius:100%; 
 }
 .messagepic {
     float: left;
-    width:20%;
+    width: 20%;
+    margin-right: 6%;
     border-radius: 100%;
 }
 

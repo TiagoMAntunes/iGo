@@ -190,17 +190,17 @@ function updatePicture() {
 
 function createNotifications() {
     let profiletable = document.getElementById("notifications");
-    profiletable.innerHTML += "<tr><td id='rowone'><img class='notifpic' src=" + profiles[0].photo + ">" + profiles[0].name + " gostou da sua foto</td></tr>";
+    profiletable.innerHTML += "<tr><td id='rowone'><img class='notifpic' src=" + profiles[0].photo + "><p id='notificationmessage'>" + profiles[0].name + " gostou da sua foto<p></td></tr>";
     for (i = 1; i < profiles.length; i++) {
-        profiletable.innerHTML += "<tr><td class='row'><img class='notifpic' src=" + profiles[i].photo + ">" + profiles[i].name + " gostou da sua foto</td></tr>";
+        profiletable.innerHTML += "<tr><td class='row'><img class='notifpic' src=" + profiles[i].photo + "><p id='notificationmessage'>" + profiles[i].name + " gostou da sua foto<p></td></tr>";
     }
 }
 
 function createMessages() {
     let profiletable = document.getElementById("messages");
-    profiletable.innerHTML += "<tr><td id='rowone'><img class='messagepic' src=" + profiles[0].photo + ">" + profiles[0].name + "</td></tr>";
+    profiletable.innerHTML += "<tr><td id='rowone'><img class='messagepic' src=" + profiles[0].photo + "><p id='messagename'>" + profiles[0].name + "<p></td></tr>";
     for(i = 1; i< profiles.length; i++){
-        profiletable.innerHTML += "<tr><td class='row'><img class='messagepic' src=" + profiles[i].photo + ">" + profiles[i].name + "</td></tr>";
+        profiletable.innerHTML += "<tr><td class='row'><img class='messagepic' src=" + profiles[i].photo + "><p id='messagename'>" + profiles[i].name + "<p></td></tr>";
     }
 }
 
