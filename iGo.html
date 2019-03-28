@@ -56,8 +56,8 @@
                 <div class="navbar">
                     <input id='likeButton' type="image" src="icons/like.svg" onclick="likeAction(this)" />
                     <input type="image" src="icons/comment.png" />
-                    <input type="image" onclick="pushScreen('photopublish')" src="icons/photo.png"/>
-                    <input type="image" onclick="pushScreen('notificationScreen')" src="icons/bell.png"/>
+                    <input type="image" onclick="pushScreen('photopublish')" src="icons/photo.png" />
+                    <input type="image" onclick="pushScreen('notificationScreen')" src="icons/bell.png" />
                     <input type="image" src="icons/profile.png" onclick="pushScreen('profile')" />
                 </div>
             </div>
@@ -65,38 +65,38 @@
                 <div id='tableScreen'>
                     <table id="tablePhotos" style='height: 100px'>
                         <tbody id='tableBodyPictures'>
-                        <tr id='teste'>
-                            <td>
-                                <img class="imageChoice" src="images/shrek-1.jpg">
-                            </td>
-                            <td>
-                                <img class="imageChoice" src="images/shrek-2.jpg">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img class="imageChoice" src="images/shrek-3.jpg">
-                            </td>
-                            <td>
-                                <img class="imageChoice" src="images/shrek-4.jpg">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img class="imageChoice" src="images/shrek-4.jpg">
-                            </td>
-                            <td>
-                                <img class="imageChoice" src="images/shrek-1.jpg">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img class="imageChoice" src="images/shrek-2.jpg">
-                            </td>
-                            <td>
-                                <img class="imageChoice" src="images/shrek-3.jpg">
-                            </td>
-                        </tr>
+                            <tr id='teste'>
+                                <td>
+                                    <img class="imageChoice" src="images/shrek-1.jpg">
+                                </td>
+                                <td>
+                                    <img class="imageChoice" src="images/shrek-2.jpg">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img class="imageChoice" src="images/shrek-3.jpg">
+                                </td>
+                                <td>
+                                    <img class="imageChoice" src="images/shrek-4.jpg">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img class="imageChoice" src="images/shrek-4.jpg">
+                                </td>
+                                <td>
+                                    <img class="imageChoice" src="images/shrek-1.jpg">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img class="imageChoice" src="images/shrek-2.jpg">
+                                </td>
+                                <td>
+                                    <img class="imageChoice" src="images/shrek-3.jpg">
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -111,17 +111,21 @@
                 <h1>Settings</h1>
                 <table id='tableSettings'>
                     <tr>
-                        <td id ='tdSettingsL' class='tdSettings'><h3>Bluetooth</h3></td>
-                        <td  id ='tdSettingsR' class='tdSettings'>
+                        <td id='tdSettingsL' class='tdSettings'>
+                            <h3>Bluetooth</h3>
+                        </td>
+                        <td id='tdSettingsR' class='tdSettings'>
                             <label class="switch">
-                                <input onclick="Bluetooth()"type="checkbox">
+                                <input onclick="Bluetooth()" type="checkbox">
                                 <span class="slider round"></span>
                             </label>
                         </td>
                     </tr>
                     <tr>
-                        <td id ='tdSettingsL' class='tdSettings'> <h3>GPS</h3></td>
-                        <td id ='tdSettingsR' class='tdSettings'>
+                        <td id='tdSettingsL' class='tdSettings'>
+                            <h3>GPS</h3>
+                        </td>
+                        <td id='tdSettingsR' class='tdSettings'>
                             <label class="switch">
                                 <input type="checkbox">
                                 <span class="slider round"></span>
@@ -129,8 +133,10 @@
                         </td>
                     </tr>
                     <tr>
-                        <td id ='tdSettingsL' class='tdSettings'><h3>Saúde </h3></td>
-                        <td id ='tdSettingsR' class='tdSettings'>
+                        <td id='tdSettingsL' class='tdSettings'>
+                            <h3>Saúde </h3>
+                        </td>
+                        <td id='tdSettingsR' class='tdSettings'>
                             <label class="switch">
                                 <input type="checkbox">
                                 <span class="slider round"></span>
@@ -139,17 +145,17 @@
                     </tr>
                 </table>
                 <div class='navbarSettings'>
-                	<img id='settingsImgL' src='icons/brightnesslow.png'>
-                	<input type="range" id="opacity-slider" min=".4" max="1" step=".01" value="1">
-            		<img id='settingsImgR' src='icons/brightnessmore.png'>
-            	</div>
+                    <img id='settingsImgL' src='icons/brightnesslow.png'>
+                    <input type="range" id="opacity-slider" min=".4" max="1" step=".01" value="1">
+                    <img id='settingsImgR' src='icons/brightnessmore.png'>
+                </div>
             </div>
             <div id='profile' style='display: none'>
                 <div id="profile-top">
                     <div>
                         <h2 id='profileName'>Gato das botas</h2>
                         <p id='profileDescr'>Espadachim nos tempos livres</p>
-                        <button class='btn-edit'>Editar perfil</button>
+                        <button class='btn-edit' onclick="pushScreen('profileEdit')">Editar perfil</button>
                     </div>
                     <img src='icons/profile.svg' alt='Profile picture' />
                 </div>
@@ -179,10 +185,14 @@
             <div id='notificationScreen' style='display: none' onload=setupMultimediaScreen()>
                 <table id='notifications'></table>
             </div>
+            <div id='profileEdit' style='display: none'>
+                Edit profile
+            </div>
         </div>
     </div>
     <div id="backButton" onclick="backButton()"></div>
-    <div id="scrollWheel" draggable="true" ondragstart="scrollWheelStart(event)" ondragend="scrollWheelFinish(event)" ondrag="scrollWheelMovement(event)"></div>
+    <div id="scrollWheel" draggable="true" ondragstart="scrollWheelStart(event)" ondragend="scrollWheelFinish(event)"
+        ondrag="scrollWheelMovement(event)"></div>
     </div>
     <script type="text/javascript">
         document.getElementById('opacity-slider').addEventListener('input', function (e) {
