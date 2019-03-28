@@ -52,6 +52,9 @@ function startup() {
         localStorage.setItem("isSet", true);
     }
     setRealSize();
+    createNotifications();
+    setupMultimediaScreen();
+    picturesSetup();
 }
 
 function setRealSize() {
@@ -96,9 +99,15 @@ function setRealSize() {
         el.style.height = 34 / 72 * ppc;
     });
     document.getElementById('tableSettings').style.fontSize = document.body.style.fontSize;
-    createNotifications();
 }
 
+function picturesSetup() {
+    Array.from(document.getElementsByClassName("imageChoice")).map((picture) => {
+        picture.onclick = () => {
+            pushScreen('photoEditing');
+        }
+    });
+}
 
 function updateSize() {
     let diagonalSize = parseInt(document.getElementById("screenSize").value);
@@ -149,7 +158,7 @@ function scrollWheelMovement(event) {
     if (document.getElementById('tableScreen').style.top == '')
         document.getElementById('tableScreen').style.top = '0px';
     let direction = (event.clientY - dragInfo.clientY)
-    
+
     let i = 0;
     if (direction > 0) {
         i = 10;
@@ -181,12 +190,13 @@ function updatePicture() {
 function createNotifications() {
     let profiletable = document.getElementById("notifications");
     profiletable.innerHTML += "<tr><td id='rowone'><img class='notifpic' src=" + profiles[0].photo + ">" + profiles[0].name + " gostou da sua foto</td></tr>";
-    for(i = 1; i< profiles.length; i++){   
+    for (i = 1; i < profiles.length; i++) {
         profiletable.innerHTML += "<tr><td class='row'><img class='notifpic' src=" + profiles[i].photo + ">" + profiles[i].name + " gostou da sua foto</td></tr>";
     }
 }
 
 function setupMultimediaScreen() {
+    console.log('olá')
     updatePicture();
 }
 
@@ -216,10 +226,10 @@ function likeAction(buttonElement) {
 }
 function Bluetooth() {
     count++;
-    if(count%2 == 0){
-        document.getElementById('bluetoothImg').style.visibility= 'hidden';
+    if (count % 2 == 0) {
+        document.getElementById('bluetoothImg').style.visibility = 'hidden';
     }
-    else{
-         document.getElementById('bluetoothImg').style.visibility='visible';
+    else {
+        document.getElementById('bluetoothImg').style.visibility = 'visible';
     }
 }

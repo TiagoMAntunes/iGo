@@ -37,7 +37,7 @@
                     <span>Definições</span>
                 </div>
             </div>
-            <div id='multimedia' style='display: none' onload=setupMultimediaScreen()>
+            <div id='multimedia' style='display: none'>
                 <div id='multimediaContent'>
                     <div class='arrowcontainer' onclick="previousPicture()">
                         <img class="arrow" type="image" src="icons/arrow.png"
@@ -159,7 +159,7 @@
                     </div>
                     <img src='icons/profile.svg' alt='Profile picture' />
                 </div>
-                <div id='picturelist'>
+                <div id='picturelist' onload='picturesSetup()'>
                     <div>
                         <table>
                             <tr>
@@ -182,11 +182,14 @@
                     </div>
                 </div>
             </div>
-            <div id='notificationScreen' style='display: none' onload=setupMultimediaScreen()>
+            <div id='notificationScreen' style='display: none' >
                 <table id='notifications'></table>
             </div>
             <div id='profileEdit' style='display: none'>
                 Edit profile
+            </div>
+            <div id='photoEditing' style='display: none'>
+                Photo editing
             </div>
         </div>
     </div>
