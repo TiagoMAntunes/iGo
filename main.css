@@ -186,6 +186,9 @@ html {
     border-top: none;
     padding: 3%;
 }
+#messages{
+    width:100%;
+}
 
 .row {
    border-top: 1px solid black; 
@@ -293,7 +296,10 @@ input:checked + .slider:before {
     float: right;
     width: 10%;
 }
-
+.messagepic {
+    float: left;
+    width: 10%;
+}
 
 .btn-edit {
     color: white;

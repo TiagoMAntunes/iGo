@@ -55,7 +55,7 @@
                 </div>
                 <div class="navbar">
                     <input id='likeButton' type="image" src="icons/like.svg" onclick="likeAction(this)" />
-                    <input type="image" src="icons/comment.png" />
+                    <input type="image" onclick="pushScreen('messageScreen')"  src="icons/comment.png" />
                     <input type="image" onclick="pushScreen('photopublish')" src="icons/photo.png"/>
                     <input type="image" onclick="pushScreen('notificationScreen')" src="icons/bell.png"/>
                     <input type="image" src="icons/profile.png" onclick="pushScreen('profile')" />
@@ -178,6 +178,9 @@
             </div>
             <div id='notificationScreen' style='display: none' onload=setupMultimediaScreen()>
                 <table id='notifications'></table>
+            </div>
+            <div id='messageScreen' style='display: none' onload=setupMultimediaScreen()>
+                <table id='messages'></table>
             </div>
         </div>
     </div>
