@@ -49,6 +49,7 @@ var mainprofile = [{
 var screenStack = [];
 var picture_index = 0;
 var count = 0;
+var block = 0;
 function startup() {
     if (localStorage.getItem("isSet") == undefined) {
         localStorage.setItem("horizontalPx", 1920);
@@ -284,4 +285,19 @@ function Bluetooth() {
     else {
         document.getElementById('bluetoothImg').style.visibility = 'visible';
     }
+}
+function blockWatch(){
+    console.log('blackScreen');
+    block++;
+    if(block%2 == 1)
+        pushScreen('blackScreen');
+    else{
+        backButton();
+        pushScreen('lockScreen');
+        
+    }
+}
+function unlockWatch(){
+    backbutton();
+    console.log('unlock');
 }

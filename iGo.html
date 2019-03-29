@@ -219,10 +219,22 @@
                 <table id='messages'></table>
             </div>
         </div>
+        <div id="blackScreen" style='display:none'>
+        	<img src='images/blackImg.jpeg' id='blackImg'>
+        </div>
+        <div id="lockScreen" style='display: none'>
+        	<div id='time'></div>
+        	<div id='buttonsLock'>
+        		
+        	</div>
+        	<div id='fingerPrint'>
+        		<img id='fingerPrintImg' src='icons/fingerprint.svg' alt='fingerPrint' onclick='unlockWatch()'>
+        	</div>
+        </div>
     </div>
     <div id='helpButton'></div>
     <div id="backButton" onclick="backButton()"></div>
-    <div id="scrollWheel" draggable="true" ondragstart="scrollWheelStart(event)" ondragend="scrollWheelFinish(event)"
+    <div id="scrollWheel" ondblclick="blockWatch()"draggable="true" ondragstart="scrollWheelStart(event)" ondragend="scrollWheelFinish(event)"
         ondrag="scrollWheelMovement(event)"></div>
     </div>
     <script type="text/javascript">
