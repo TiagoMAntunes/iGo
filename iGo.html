@@ -57,7 +57,7 @@
                     <img onclick="pushScreen('messageScreen')"  src="icons/comment.png" />
                     <img onclick="pushScreen('photopublish')" src="icons/photo.png"/>
                     <img onclick="pushScreen('notificationScreen')" src="icons/bell.png"/>
-                    <img src="icons/profile.png" onclick="pushScreen('profile')" />
+                    <img src="icons/profile.png" onclick="pushScreen('profile');fillProfile()" />
                 </div>
             </div>
             <div id='photopublish' style='display: none'>
@@ -151,9 +151,7 @@
             </div>
             <div id='profile' style='display: none'>
                 <div id="profile-top">
-                    <div>
-                        <h2 id='profileName'>Gato das botas</h2>
-                        <p id='profileDescr'>Espadachim nos tempos livres</p>
+                    <div id="profileInf">
                         <button class='btn-edit' onclick="pushScreen('profileEdit')">Editar Perfil</button>
                     </div>
                     <img src='icons/profile.svg' alt='Profile picture'/>
@@ -190,29 +188,28 @@
                 <form id="formprofile">
                     <h2 class="name">Nome</h2>
                     <img id="mic1" class='mic' src="icons/micoff.png">
-                    <input class="forminput" type="text" name="nome">
+                    <input id="input1" class="forminput" type="text" name="nome">
                     <h2 class="name">Descrição</h2>
-                    <img id="mic2" class='mic' src="icons/micoff.png">
+                    <img id="input2" id="mic2" class='mic' src="icons/micoff.png">
                     <input class="forminput" type="text" name="descricao">
                 </form>
                 <div id='buttons'>
-                    <button id="savebt" class="buttonprofile"><b>SAVE</b></button>
+                    <button id="savebt" onclick="saveProfile()" class="buttonprofile"><b>SAVE</b></button>
                     <button onclick="backButton()" id="cancelbt" class="buttonprofile"><b>CANCEL</b></button>
                 </div>
             </div>
             <div id='photoEditing' style='display: none;'>
                 <img id='photoToEdit' />
                 <div id='editingBottom'>
-                    <table>
-                        <tr>
-                            <td><img class='filterImage'/></td>
-                            <td><img class='filterImage'/></td>
-                            <td><img class='filterImage'/></td>
+                    <table class="filters">
+                        <tr class="filters">
+                            <td><img id="img1" class='filterImage'/></td>
+                            <td><img id="img2" class='filterImage'/></td>
+                            <td><img id="img3" class='filterImage'/></td>
                         </tr>
                     </table>
-                    </div>
                     <div style='margin: 0 5%'>
-                        <button style='position: relative; top: 50%; transform: translate(0,-50%);'>Next</button>
+                        <button id="nextbt"><b>NEXT</b></button>
                     </div>
                 </div>
             </div>
