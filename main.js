@@ -41,6 +41,11 @@ var profiles = [{
     "name": "Dragon"
 }]
 
+var mainprofile = [{
+    "name": "Gato das botas",
+    "description": "Espadachim nos tempos livres"
+}]
+
 var screenStack = [];
 var picture_index = 0;
 var count = 0;
@@ -225,6 +230,25 @@ function nextPicture() {
 function previousPicture() {
     picture_index = true_modulo(picture_index - 1, multimedia_storage.length);
     updatePicture()
+}
+
+function fillProfile() {
+    let informations = document.getElementById('profileInf');
+    informations.innerHTML += "<h2 id='profileName'>" + mainprofile[0].name + "</h2><p id='profileDescr'>" + mainprofile[0].description + "</p>";
+}
+
+function saveProfile() {
+    let input1 = document.getElementById("input1").value;
+    let input2 = document.getElementById("input2").value;
+    if(input1 != null){
+        console.log(input1);
+        mainprofile[0].name = input1;
+    }
+    if(input2 != null){
+        mainprofile[0].description = input2; 
+    }
+    fillProfile();
+    backButton();
 }
 
 function likeAction(buttonElement) {
