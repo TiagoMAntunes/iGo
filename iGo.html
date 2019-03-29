@@ -18,14 +18,14 @@
                 <div id='bluetooth-symbol'>
                     <img id='bluetoothImg' src="icons/bluetooth-icon.svg" alt='Bluetooth icon'>
                 </div>
-                <div id='time'>Time</div>
+                <div id='time'></div>
                 <div id='battery'>
                     <img src='icons/battery-icon.svg' alt='Battery icon'>
                 </div>
             </div>
             <div id="mainmenu">
                 <div id=option1 onclick="pushScreen('multimedia');">
-                    <span>Multimédia</span>
+                    <span>Multimedia</span>
                 </div>
                 <div id=option2 onclick="pushScreen('mapaScreen');">
                     <span>Mapa</span>
@@ -50,15 +50,15 @@
                         </div>
                     </div>
                     <div class='arrowcontainer' onclick="nextPicture()">
-                        <input class="arrow" type="image" src="icons/arrow.png" style="transform: translate(50%,0)" />
+                        <img class="arrow" src="icons/arrow.png" style="transform: translate(50%,0)" />
                     </div>
                 </div>
                 <div class="navbar">
-                    <input id='likeButton' type="image" src="icons/like.svg" onclick="likeAction(this)" />
-                    <input type="image" onclick="pushScreen('messageScreen')"  src="icons/comment.png" />
-                    <input type="image" onclick="pushScreen('photopublish')" src="icons/photo.png"/>
-                    <input type="image" onclick="pushScreen('notificationScreen')" src="icons/bell.png"/>
-                    <input type="image" src="icons/profile.png" onclick="pushScreen('profile')" />
+                    <img id='likeButton' src="icons/like.svg" onclick="likeAction(this)" />
+                    <img onclick="pushScreen('messageScreen')"  src="icons/comment.png" />
+                    <img onclick="pushScreen('photopublish')" src="icons/photo.png"/>
+                    <img onclick="pushScreen('notificationScreen')" src="icons/bell.png"/>
+                    <img src="icons/profile.png" onclick="pushScreen('profile')" />
                 </div>
             </div>
             <div id='photopublish' style='display: none'>
@@ -155,9 +155,9 @@
                     <div>
                         <h2 id='profileName'>Gato das botas</h2>
                         <p id='profileDescr'>Espadachim nos tempos livres</p>
-                        <button class='btn-edit' onclick="pushScreen('profileEdit')">Editar perfil</button>
+                        <button class='btn-edit' onclick="pushScreen('profileEdit')">Editar Perfil</button>
                     </div>
-                    <img src='icons/profile.svg' alt='Profile picture' />
+                    <img src='icons/profile.svg' alt='Profile picture'/>
                 </div>
                 <div id='picturelist'>
                     <div>
@@ -183,15 +183,29 @@
                 </div>
             </div>
             <div id='notificationScreen' style='display: none' >
+                <h2 id="notiftext">Notificações</h2>
                 <table id='notifications'></table>
             </div>
             <div id='profileEdit' style='display: none'>
-                Edit profile
+                <h1>Edite o seu perfil:</h1>
+                <form id="formprofile">
+                    <h2 class="name">Nome</h2>
+                    <img id="mic1" class='mic' src="icons/micoff.png">
+                    <input class="forminput" type="text" name="nome">
+                    <h2 class="name">Descrição</h2>
+                    <img id="mic2" class='mic' src="icons/micoff.png">
+                    <input class="forminput" type="text" name="descricao">
+                </form>
+                <div id='buttons'>
+                    <button id="savebt" class="buttonprofile"><b>SAVE</b></button>
+                    <button onclick="backButton()" id="cancelbt" class="buttonprofile"><b>CANCEL</b></button>
+                </div>
             </div>
             <div id='photoEditing' style='display: none'>
                 Photo editing
             </div>
             <div id='messageScreen' style='display: none'>
+                <h2 id="messatext">Mensagens</h2>
                 <table id='messages'></table>
             </div>
         </div>

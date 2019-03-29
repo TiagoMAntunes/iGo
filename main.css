@@ -15,7 +15,6 @@
     visibility: hidden;
 }
 
-
 #watchBorder {
     background-color: black;
     position: fixed;
@@ -62,9 +61,9 @@
 }
 
 #top-bar {
+    margin-top: 1%;
     width: 100%;
     height: 5%;
-    border: 1px solid black;
     text-align: center;
 }
 
@@ -103,7 +102,7 @@
     margin:0;
 }
 
-.navbar input {
+.navbar img {
     float: left;
     display: block;
     text-align: center;
@@ -178,8 +177,12 @@ html {
     width: 100%;
 }
 
-#notifications {
-    width: 100%;
+#rowone:hover{
+    background-color:  #bbdefb;
+}
+
+.row:hover {
+    background-color:  #bbdefb;
 }
 
 #rowone {
@@ -190,10 +193,24 @@ html {
     width:100%;
 }
 
+#messatext {
+    padding-left: 5%;
+}
+
 #messageScreen {
     overflow-y: scroll;
     height: 94%;
 }
+
+#notifications {
+    width: 100%;
+}
+
+#notiftext {
+    padding-left: 5%;
+}
+
+
 #notificationScreen {
     overflow-y: scroll;
     height: 94%;
@@ -293,12 +310,12 @@ input:checked + .slider:before {
     width: 59%;
     float: left;
     margin-left: 8%;
-    margin-top: 2%;
+    margin-top: 5%;
 }
 
 #profile-top img {
     width: 20%;
-    border: 1px solid black;
+    border: 2px solid black;
     border-radius: 100%;
     float: right;
     margin-top: 5%;
@@ -307,6 +324,75 @@ input:checked + .slider:before {
 
 #profileName {
     line-height: 10%;
+}
+
+#profileEdit {
+    padding-left: 5%;
+}
+
+.btn-edit {
+    color: white;
+    border: none;
+    font-size: 120%;
+    margin-right: 5%;
+    background: #a6acaf     ;
+    padding: 2% 4%;
+    border-radius: 2px;
+}
+
+#picturelist {
+    margin-top: 8%;
+}
+
+.forminput {
+    width: 60%;
+    height: 7%;
+}
+
+#mic1 {
+    margin-top: -5%;
+}
+
+#mic2 {
+    margin-top: -5%;
+}
+
+.mic:active{
+    border: 2px solid red;
+}
+
+
+.mic {
+    float: right;
+    margin-right: 10%;
+    width: 10%;
+    border: 2px solid black;
+    padding: 2%;
+    border-radius: 100%;
+}
+
+#buttons {
+    margin-top: 12%;
+    margin-right: 6%;
+}
+
+.buttonprofile {  
+    float: right;
+    margin-right: 4%;
+    border-radius: 5%;
+    padding:  3% 5%;
+}
+
+#savebt{
+    background-color:  #2E8B57;
+    border: 2px solid #2E8B57;
+    color: white;
+}
+
+#cancelbt{
+    background-color: #B22222;
+    border: 2px solid #B22222;
+    color: white;
 }
 
 .notifpic {
@@ -319,16 +405,6 @@ input:checked + .slider:before {
     width: 20%;
     margin-right: 6%;
     border-radius: 100%;
-}
-
-.btn-edit {
-    color: white;
-    border: none;
-    font-size: 120%;
-    margin-right: 5%;
-    background: #008CBA;
-    padding: 0% 4%;
-    border-radius: 2px;
 }
 
 #tableSettings{
