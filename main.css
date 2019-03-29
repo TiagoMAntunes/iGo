@@ -137,8 +137,32 @@
     margin: 0%;
 }
 
-html {
-    overflow: -moz-scrollbar-none;
+.filterImage {
+    width: 100%;
+    border-radius: 10px;
+}
+
+#editingBottom {
+    display: flex;
+    max-height: 30%;
+    text-align: center;
+}
+
+.filtersList {
+    display: inline-block;
+    width: 15%;
+    padding: 0 5%;
+}
+
+#photoEditing {
+    display: inline-block;
+    text-align: center;
+    height: 95%;
+}
+
+#photoToEdit {
+    margin: 5% 0; 
+    height: 60%;
 }
 
 ::-webkit-scrollbar {
