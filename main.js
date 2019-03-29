@@ -49,6 +49,7 @@ var mainprofile = [{
 var screenStack = [];
 var picture_index = 0;
 var count = 0;
+var block = 0;
 function startup() {
     if (localStorage.getItem("isSet") == undefined) {
         localStorage.setItem("horizontalPx", 1920);
@@ -109,6 +110,7 @@ function setRealSize() {
 
     let time = new Date();
     document.getElementById('time').innerHTML = time.getHours().toString().padStart(2, '0') + ':' + time.getMinutes().toString().padStart(2, '0');
+    document.getElementById('timeLockScreen').innerHTML = time.getHours().toString().padStart(2, '0') + ':' + time.getMinutes().toString().padStart(2, '0');
 
     Array.from(document.getElementsByClassName('switch')).map((el) => {
         el.style.width = 60 / 72 * ppc;
@@ -291,4 +293,19 @@ function Bluetooth() {
     else {
         document.getElementById('bluetoothImg').style.visibility = 'visible';
     }
+}
+function blockWatch(){
+    console.log('blackScreen');
+    block++;
+    if(block%2 == 1)
+        pushScreen('blackScreen');
+    else{
+        backButton();
+        pushScreen('lockScreen');
+        
+    }
+}
+function unlockWatch(){
+    backButton();
+    console.log('unlock');
 }
