@@ -37,6 +37,31 @@
                     <span>Definições</span>
                 </div>
             </div>
+            <div id="helpmainscreen" style='display: none'>
+                <table id="iconshelp" style='margin-left: 2%;'>
+                    <tr>
+                        <td><img class="columnicon" src="icons/like1.png"></td>
+                        <td><p class="rowicon">Like</p></td>
+                    </tr>
+                    <tr>
+                        <td><img class="columnicon" src="icons/comment.png"/></td>
+                        <td><p class="rowicon">Messages</p></td>
+                    </tr>
+                    <tr>
+                        <td><img class="columnicon" src="icons/photo.png"/></td>
+                        <td><p class="rowicon">Post photo</td>
+                    </tr>
+                    <tr>
+                        <td><img class="columnicon" src="icons/bell.png"/></td>
+                        <td><p class="rowicon">Notifications</td>
+                    </tr>
+                    <tr>
+                        <td><img class="columnicon" src="icons/profile.png"/></td>
+                        <td><p class="rowicon">Profile</td>
+                    </tr>
+                </table>
+            </div>
+
             <div id='multimedia' style='display: none'>
                 <div id='multimediaContent'>
                     <div class='arrowcontainer' onclick="previousPicture()">
@@ -63,6 +88,7 @@
             </div>
             <div id='photopublish' style='display: none'>
                 <div id='tableScreen'>
+                    <h2 style='margin-left: 2%;'>Press a photo to publish:</h2>
                     <table id="tablePhotos" style='height: 100px'>
                         <tbody id='tableBodyPictures'>
                             <tr id='teste'>
@@ -108,7 +134,7 @@
                 <h1>Saude</h1>
             </div>
             <div id='definicoes' style='display: none'>
-                <h1>Settings</h1>
+                <h1 style='margin-left: 2%'>Settings</h1>
                 <table id='tableSettings'>
                     <tr>
                         <td id='tdSettingsL' class='tdSettings'>
@@ -246,7 +272,7 @@
         	</div>
         </div>
     </div>
-    <div id='helpButton'></div>
+    <div id='helpButton' onclick="pushScreen('helpmainscreen')"></div>
     <div id="backButton" onclick="backButton()"></div>
     <div id="scrollWheel" ondblclick="blockWatch()"draggable="true" ondragstart="scrollWheelStart(event)" ondragend="scrollWheelFinish(event)"
         ondrag="scrollWheelMovement(event)"></div>

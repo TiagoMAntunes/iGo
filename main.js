@@ -150,6 +150,11 @@ function updateSize() {
     window.location.href = "iGo.html"
 }
 
+function helpButton() {
+    
+    backButton();
+}
+
 function backButton() {
     console.log('backbutton');
     let screen = screenStack.pop()

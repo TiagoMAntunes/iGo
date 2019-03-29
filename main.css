@@ -368,6 +368,7 @@
     width:50%;
     bottom:20%;
   }
+
   /* The slider */
   .slider {
     position: absolute;
@@ -530,6 +531,7 @@ input:checked + .slider:before {
 }
 
 #tableSettings{
+    margin-left: 2%;
     width: 100%;
     height: 50%;
 }
@@ -553,8 +555,10 @@ input:checked + .slider:before {
 }
 #settingsImgR{
     position: relative;
-    width: 18%;
-    height:90%; 
+    width: 15%;
+    height: 70%;
+    margin-left: 2%;
+    margin-bottom: 2%; 
     right:0%;  
 }
 .navbarSettings {
@@ -593,5 +597,13 @@ input:checked + .slider:before {
     width:100%;
     text-align: center;
     height:50%;
-    postion:relative;
+    position:relative;
+}
+
+.rowicon {
+    margin-left: 20%;
+}
+
+.columnicon {
+    margin-top: 15%;
 }
