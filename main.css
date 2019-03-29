@@ -49,7 +49,12 @@
 #backButton {
     background-color:black;
     position: absolute;
-    top: 40%;
+    border-radius: 20%;
+}
+
+#helpButton {
+    background-color:black;
+    position: absolute;
     border-radius: 20%;
 }
 

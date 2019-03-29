@@ -75,7 +75,7 @@ function setRealSize() {
     let cover = document.getElementById("watchBorder");
     cover.style.width = ppc * 5.7;
     cover.style.height = ppc * 5.7;
-
+    let helpButton = document.getElementById('helpButton');
     let backButton = document.getElementById("backButton");
     let scrollWheel = document.getElementById("scrollWheel");
     backButton.style.width = ppc * 0.2;
@@ -84,15 +84,25 @@ function setRealSize() {
     scrollWheel.style.width = ppc * 0.2;
     scrollWheel.style.height = ppc * 1.2;
 
+    helpButton.style.width = ppc * 0.2;
+    helpButton.style.height = backButton.style.height;
+
     //calculate where to place the side buttons
 
+    //left side
+    let position = 50 - (parseInt(cover.style.width) / 2) / width * 100 - parseInt(helpButton.style.width) / width * 100 ;
+    helpButton.style.left = position + '%';
+
+    //right side
     let left = 50 + (parseInt(cover.style.width) / 2) / width * 100;
     backButton.style.left = left + '%';
     scrollWheel.style.left = left + '%';
 
+    //height
     let top = (parseInt(cover.style.height) / 2) / height * 100;
     backButton.style.top = 50 - top * 0.6 + '%';
     scrollWheel.style.top = 50 - top * 0.1 + '%';
+    helpButton.style.top = 50 - top * 0.6 + '%';
 
     let fontsize = parseInt(window.getComputedStyle(document.body).fontSize);
     document.body.style.fontSize = fontsize / 72 * ppc;
