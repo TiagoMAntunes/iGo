@@ -522,3 +522,10 @@ input:checked + .slider:before {
     width:25%;
     height:100%; 
 }
+
+#timeLockScreen{
+    width:100%;
+    text-align: center;
+    height:50%;
+    postion:relative;
+}
