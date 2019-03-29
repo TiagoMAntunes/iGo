@@ -40,7 +40,8 @@
             <div id='multimedia' style='display: none'>
                 <div id='multimediaContent'>
                     <div class='arrowcontainer' onclick="previousPicture()">
-                        <img class="arrow" type="image" src="icons/arrow.png" style="transform: translate(50%,0) rotate(180deg);" />
+                        <img class="arrow" type="image" src="icons/arrow.png"
+                            style="transform: translate(50%,0) rotate(180deg);" />
                     </div>
                     <div class="container">
                         <img id="imageShown" src='images/shrek-1.jpg' class="center">
@@ -54,9 +55,9 @@
                 </div>
                 <div class="navbar">
                     <img id='likeButton' src="icons/like.svg" onclick="likeAction(this)" />
-                    <img onclick="pushScreen('messageScreen')"  src="icons/comment.png" />
-                    <img onclick="pushScreen('photopublish')" src="icons/photo.png"/>
-                    <img onclick="pushScreen('notificationScreen')" src="icons/bell.png"/>
+                    <img onclick="pushScreen('messageScreen')" src="icons/comment.png" />
+                    <img onclick="pushScreen('photopublish')" src="icons/photo.png" />
+                    <img onclick="pushScreen('notificationScreen')" src="icons/bell.png" />
                     <img src="icons/profile.png" onclick="pushScreen('profile');fillProfile()" />
                 </div>
             </div>
@@ -154,7 +155,7 @@
                     <div id="profileInf">
                         <button class='btn-edit' onclick="pushScreen('profileEdit')">Editar Perfil</button>
                     </div>
-                    <img src='icons/profile.svg' alt='Profile picture'/>
+                    <img src='icons/profile.svg' alt='Profile picture' />
                 </div>
                 <div id='picturelist'>
                     <div>
@@ -179,7 +180,7 @@
                     </div>
                 </div>
             </div>
-            <div id='notificationScreen' style='display: none' >
+            <div id='notificationScreen' style='display: none'>
                 <h2 id="notiftext">Notificações</h2>
                 <table id='notifications'></table>
             </div>
@@ -203,9 +204,9 @@
                 <div id='editingBottom'>
                     <table class="filters">
                         <tr class="filters">
-                            <td><img id="img1" class='filterImage'/></td>
-                            <td><img id="img2" class='filterImage'/></td>
-                            <td><img id="img3" class='filterImage'/></td>
+                            <td><img id="img1" class='filterImage' onclick='filterClick(this)' /></td>
+                            <td><img id="img2" class='filterImage' onclick='filterClick(this)' /></td>
+                            <td><img id="img3" class='filterImage' onclick='filterClick(this)' /></td>
                         </tr>
                     </table>
                     <div style='margin: 0 5%'>
@@ -221,7 +222,8 @@
     </div>
     <div id='helpButton'></div>
     <div id="backButton" onclick="backButton()"></div>
-    <div id="scrollWheel" draggable="true" ondragstart="scrollWheelStart(event)" ondragend="scrollWheelFinish(event)" ondrag="scrollWheelMovement(event)"></div>
+    <div id="scrollWheel" draggable="true" ondragstart="scrollWheelStart(event)" ondragend="scrollWheelFinish(event)"
+        ondrag="scrollWheelMovement(event)"></div>
     </div>
     <script type="text/javascript">
         document.getElementById('opacity-slider').addEventListener('input', function (e) {

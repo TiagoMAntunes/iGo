@@ -145,7 +145,6 @@
 .filterImage {
     width: 100%;
     border-radius: 10px;
-    -webkit-filter: grayscale(100%);
 }
 
 #img1 {

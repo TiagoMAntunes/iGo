@@ -129,6 +129,10 @@ function picturesSetup() {
     });
 }
 
+function filterClick(image) {
+    document.getElementById("photoToEdit").style.filter = $(image).css("filter")
+}
+
 function updateSize() {
     let diagonalSize = parseInt(document.getElementById("screenSize").value);
     let horizontalPx = parseInt(document.getElementById("horizontalPx").value);
