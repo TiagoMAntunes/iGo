@@ -147,16 +147,12 @@
     border-radius: 10px;
 }
 
-#img1 {
-    filter: grayscale(100%);
-}
-
 #img2 {
     filter: grayscale(50%) brightness(104%) contrast(149%) hue-rotate(223deg);
 }
 
 #img3 {
-    filter: grayscale(50%) sepia(1);
+    filter: grayscale(100%);
 }
 
 #editingBottom {
@@ -206,6 +202,76 @@
     width: 100%;
     overflow-y: scroll;
 }
+
+#photodescript {
+    display: flex;
+    flex-direction: row;
+    margin-top: 8%;
+}
+
+#buttonsphoto{
+    display: flex;
+    flex-direction: column;
+    padding-left: 6%;
+}
+
+#photoToPublish {
+    width: 45%;
+    height: 35%;
+    padding-left: 6%;
+    padding-right: 4%;
+    padding-bottom: 6%;
+}
+
+#descripttext {
+    margin-left: 6%;
+}
+
+#descript {
+    margin-left: 6%;
+    width: 50%;
+}
+
+#photodescription {
+    display: flex;
+    flex-direction: row;
+}
+
+#mic3 {
+    height: 12%;
+    margin-top: 0%;
+    padding: 2%;
+    margin-left: 12%;
+    border: 2px solid black;
+    border-radius: 100%;
+}
+
+#mic3:active{
+    border: 2px solid red;
+}
+
+#cancelbtn {
+    background-color: #B22222;
+    border: 2px solid #B22222;
+    color: white;
+    border-radius: 5%;
+    width: 150%;
+    height: 10%;
+    margin-top: 24%;
+    margin-right: 2%;
+}
+
+#postbtn {
+    background-color:  #2E8B57;
+    border: 2px solid #2E8B57;
+    color: white;  
+    border-radius: 5%;
+    padding: 2% 2%;
+    height: 10%;
+    width: 150%;
+    margin-top: 24%;
+}
+
 
 #profile {
   height: 95%;

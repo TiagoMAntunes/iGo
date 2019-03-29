@@ -266,6 +266,13 @@ function saveProfile() {
     document.getElementById("formprofile").reset();
 }
 
+function cancelChange() {
+    document.getElementById("photodescription").reset();
+    document.getElementById("formprofile").reset();
+    backButton();
+}
+
+
 function likeAction(buttonElement) {
     switch (multimedia_storage[picture_index]['liked']) {
         case true:

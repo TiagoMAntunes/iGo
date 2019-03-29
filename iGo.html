@@ -196,7 +196,7 @@
                 </form>
                 <div id='buttons'>
                     <button id="savebt" onclick="saveProfile()" class="buttonprofile"><b>SAVE</b></button>
-                    <button onclick="backButton()" id="cancelbt" class="buttonprofile"><b>CANCEL</b></button>
+                    <button onclick="cancelChange()" id="cancelbt" class="buttonprofile"><b>CANCEL</b></button>
                 </div>
             </div>
             <div id='photoEditing' style='display: none;'>
@@ -204,15 +204,29 @@
                 <div id='editingBottom'>
                     <table class="filters">
                         <tr class="filters">
-                            <td><img id="img1" class='filterImage' onclick='filterClick(this)' /></td>
-                            <td><img id="img2" class='filterImage' onclick='filterClick(this)' /></td>
-                            <td><img id="img3" class='filterImage' onclick='filterClick(this)' /></td>
+                            <td><img id="img1" class='filterImage' onclick='filterClick(this)'/></td>
+                            <td><img id="img2" class='filterImage' onclick='filterClick(this)'/></td>
+                            <td><img id="img3" class='filterImage' onclick='filterClick(this)'/></td>
                         </tr>
                     </table>
                     <div style='margin: 0% 7% 0% 2%;'>
-                        <button id="nextbt"><b>NEXT</b></button>
+                        <button onclick="pushScreen('photoSubmit')" id="nextbt"><b>NEXT</b></button>
                     </div>
                 </div>
+            </div>
+            <div id='photoSubmit' style='display: none'>
+                <div id="photodescript">
+                    <img id="photoToPublish" src="images/shrek-1.jpg"/>
+                    <div id="buttonsphoto">
+                        <button onclick="cancelChange()" id="cancelbtn"><b>CANCEL</b></button>
+                        <button id="postbtn"><b>POST</b></button>
+                    </div>
+                </div>
+                <h3 id="descripttext">Description:</h3>
+                <form id="photodescription">
+                    <textarea id="descript" type="text" name="descricaopt"></textarea>
+                    <img id="mic3" src="icons/micoff.png"/>
+                </form>
             </div>
             <div id='messageScreen' style='display: none'>
                 <h2 id="messatext">Mensagens</h2>
