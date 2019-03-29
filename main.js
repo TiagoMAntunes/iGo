@@ -250,11 +250,11 @@ function fillProfile() {
 function saveProfile() {
     let input1 = document.getElementById("input1").value;
     let input2 = document.getElementById("input2").value;
-    if(input1 != null){
+    if(input1 != ''){
         console.log(input1);
         mainprofile[0].name = input1;
     }
-    if(input2 != null){
+    if(input2 != ''){
         mainprofile[0].description = input2; 
     }
     fillProfile();
