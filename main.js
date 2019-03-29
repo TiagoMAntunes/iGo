@@ -263,6 +263,7 @@ function saveProfile() {
     }
     fillProfile();
     backButton();
+    document.getElementById("formprofile").reset();
 }
 
 function likeAction(buttonElement) {
