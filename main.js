@@ -234,7 +234,7 @@ function previousPicture() {
 
 function fillProfile() {
     let informations = document.getElementById('profileInf');
-    informations.innerHTML = "<button class='btn-edit' onclick=\"pushScreen('profileEdit')\">Editar Perfil</button><h2 id='profileName'>" + mainprofile[0].name + "</h2><p id='profileDescr'>" + mainprofile[0].description + "</p>";
+    informations.innerHTML = "<h2 id='profileName'>" + mainprofile[0].name + "</h2><p id='profileDescr'>" + mainprofile[0].description + "</p><button class='btn-edit' onclick=\"pushScreen('profileEdit')\">Editar Perfil</button>";
 }
 
 function saveProfile() {
