@@ -108,7 +108,7 @@ function setRealSize() {
 }
 
 function picturesSetup() {
-    Array.from(document.getElementsByClassName("imageChoice")).map((picture) => {
+    Array.from(document.getElementsByClassName("publisheable")).map((picture) => {
         picture.onclick = () => {
             document.getElementById('photoToEdit').src = picture.src;
             Array.from(document.getElementsByClassName('filterImage')).map(image => {
