@@ -652,8 +652,8 @@ input:checked + .slider:before {
   }
   
   .popup {
-    margin: 70px auto;
-    padding: 20px;
+    margin: 20% auto;
+    padding: 10%;
     background: #fff;
     border-radius: 5px;
     width: 30%;
