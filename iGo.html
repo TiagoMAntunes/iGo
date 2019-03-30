@@ -91,7 +91,7 @@
                 <div class="navbar">
                     <img id='likeButton' src="icons/like.svg" onclick="likeAction(this)" />
                     <img onclick="pushScreen('messageScreen')" src="icons/comment.png" />
-                    <img onclick="pushScreen('photopublish')" src="icons/photo.png" />
+                    <img onclick="pushScreen('photopublish'); bluetoothIsOff()" src="icons/photo.png" />
                     <img onclick="pushScreen('notificationScreen')" src="icons/bell.png" />
                     <img src="icons/profile.png" onclick="pushScreen('profile');fillProfile()" />
                 </div>
@@ -282,6 +282,28 @@
         		<img id='fingerPrintImg' src='icons/fingerprint.svg' alt='fingerPrint' onclick='unlockWatch()'>
         	</div>
         </div>
+        <div id="popup1" class="overlay">
+            <div class="popup">
+                <div id="toppopup">
+                    <h2>Help</h2>
+                    <a class="close" href="#">&times;</a>
+                </div>
+                <div class="content">
+                    There is no available help in this menu.
+                 </div>
+            </div>
+        </div>
+        <div id="popup2" class="overlay">
+                <div class="popup">
+                    <div id="toppopup">
+                        <h2>Help</h2>
+                        <a class="close" href="#">&times;</a>
+                    </div>
+                    <div class="content">
+                        Please turn on bluetooth in order to connect your smartphone.
+                     </div>
+                </div>
+            </div>
     </div>
     <div id='helpButton' onclick="helpButton()"></div>
     <div id="backButton" onclick="backButton()"></div>

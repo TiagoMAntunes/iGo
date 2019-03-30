@@ -327,5 +327,14 @@ function helpButton(){
         case 'profileEdit':
             pushScreen('helpprofileedit');
             break;
+        default:
+            location.href="#popup1";
+    }
+}
+
+function bluetoothIsOff(){
+    if(count % 2 == 0){
+        location.href="#popup2";
+        pushScreen('definicoes');
     }
 }
