@@ -302,8 +302,10 @@ function Bluetooth() {
 function blockWatch(){
     console.log('blackScreen');
     block++;
-    if(block%2 == 1)
+    if(block%2 == 1){
         pushScreen('blackScreen');
+        document.getElementById('top-bar').style.display = 'none';
+    }
     else{
         backButton();
         pushScreen('lockScreen');
@@ -313,6 +315,7 @@ function blockWatch(){
 function unlockWatch(){
     backButton();
     console.log('unlock');
+    document.getElementById('top-bar').style.display = '';
 }
 
 function helpButton(){

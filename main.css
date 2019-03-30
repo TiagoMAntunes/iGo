@@ -340,8 +340,6 @@
     width: 150%;
     margin-top: 24%;
 }
-
-
 #profile {
   height: 95%;
   width: 100%;
@@ -650,35 +648,56 @@ input:checked + .slider:before {
     width: 100%;
     height: 100%;
     border-radius: 4%; 
+    opacity: 0.8;
 }
 #fingerPrint{
-    position: relative;
     width:100%;
-    height:30%;
-    bottom: 0%
+    position: relative;
+    height:25%;
+    text-align :center;
 }
 #fingerPrintImg{
     width:25%;
     height:100%; 
 }
-
+#buttonsLock{
+    position: relative;
+    height: 12%;
+    width: 100%;
+    text-align: center;
+}
+#tableLock{
+    position:relative;
+    width:80%;
+    height: 100%;
+}
+#weatherIcon{
+    position: relative;
+    height: 20%;
+    width:40%;
+}
+#bellIcon{
+    position: relative;
+    height: 40%;
+    width:100%;
+}
 #timeLockScreen{
+    position: relative;
     width:100%;
     text-align: center;
-    height:50%;
-    position:relative;
+    height:35%;
+    font-size:84px;
+    padding-top: 25%; 
+    padding-bottom:0%;
 }
-
 .rowicon {
     width: 100%;
     margin-left: 20%;
 }
-
 .columnicon {
     width: 75%;
     margin-top: 15%;
 }
-
 .overlay {
     position: fixed;
     top: 0;
