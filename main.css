@@ -257,6 +257,19 @@
     border-radius: 100%;
 }
 
+#mic4 {
+    height: 18%;
+    padding: 2%;
+    border-radius: 100%;
+    margin-top: 6%;
+    border: 2px solid black;
+    margin-left: 38%;
+}
+
+#spanhelp{
+    color: red;
+}
+
 #mic3:active{
     border: 2px solid red;
 }
@@ -612,9 +625,11 @@ input:checked + .slider:before {
 }
 
 .rowicon {
+    width: 100%;
     margin-left: 20%;
 }
 
 .columnicon {
+    width: 75%;
     margin-top: 15%;
 }
