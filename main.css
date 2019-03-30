@@ -33,18 +33,63 @@
 #mainmenu div {
     width:35%;
     height: 35%;
-    margin: 6.7%;
-    border: 1px solid black; 
-    display: inline-block;
     border-radius: 5%;
     text-align: center;
 }
 
 #mainmenu div span {
     padding: 0;
-    padding-top: 45%;
-    display: inline-block;
 }
+
+#cameraicon {
+    padding-top: 17%;
+    width: 60%;
+}
+
+#option1 {
+    margin-top: 8%;
+    background-color: #fca062;
+    margin-left: 8%;
+}
+
+#mapicon {
+    padding-top: 17%;
+    width: 60%;
+}
+
+#option2 {
+    float: right;
+    margin-top: -34%;
+    margin-bottom: 6%;
+    background-color: #444545;
+    margin-right:8%;
+}
+
+#healthicon {
+    padding-top: 17%;
+    width: 60%;
+}
+
+#option3 {
+    background-color: #fcb3b3;
+    margin-left: 8%;
+    margin-top: 8%;
+}
+
+#settingsicon {
+    padding-top: 17%;
+    width: 60%;
+}
+
+#option4 {
+    float: right;
+    margin-top: -34%;
+    margin-bottom: 6%;
+    margin-right: 8%;
+    background-color: #7ecc9c;
+}
+
+
 
 #backButton {
     background-color:black;

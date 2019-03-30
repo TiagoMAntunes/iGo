@@ -25,16 +25,16 @@
             </div>
             <div id="mainmenu">
                 <div id=option1 onclick="pushScreen('multimedia');">
-                    <span>Multimedia</span>
+                    <img id="cameraicon" src="icons/camera.png"/>   
                 </div>
                 <div id=option2 onclick="pushScreen('mapaScreen');">
-                    <span>Mapa</span>
+                    <img id="mapicon" src="icons/map.png"/> 
                 </div>
                 <div id=option3 onclick="pushScreen('saude');">
-                    <span>Saúde</span>
+                    <img id="healthicon" src="icons/cardiogram.png">
                 </div>
                 <div id=option4 onclick="pushScreen('definicoes');">
-                    <span>Definições</span>
+                    <img id="settingsicon" src="icons/configuration.png">
                 </div>
             </div>
             <div id="helpmultimediascreen" style='display: none'>
@@ -138,10 +138,10 @@
                 </div>
             </div>
             <div id='mapaScreen' style='display: none'>
-                <h1>Mapa</h1>
+                <h1>Map</h1>
             </div>
             <div id='saude' style='display: none'>
-                <h1>Saude</h1>
+                <h1>Health</h1>
             </div>
             <div id='definicoes' style='display: none'>
                 <h1 style='margin-left: 2%'>Settings</h1>
@@ -170,7 +170,7 @@
                     </tr>
                     <tr>
                         <td id='tdSettingsL' class='tdSettings'>
-                            <h3>Saúde </h3>
+                            <h3>Health profile</h3>
                         </td>
                         <td id='tdSettingsR' class='tdSettings'>
                             <label class="switch">
@@ -189,7 +189,7 @@
             <div id='profile' style='display: none'>
                 <div id="profile-top">
                     <div id="profileInf">
-                        <button class='btn-edit' onclick="pushScreen('profileEdit')">Editar Perfil</button>
+                        <button class='btn-edit' onclick="pushScreen('profileEdit')">Edit profile</button>
                     </div>
                     <img src='icons/profile.svg' alt='Profile picture' />
                 </div>
@@ -217,16 +217,16 @@
                 </div>
             </div>
             <div id='notificationScreen' style='display: none'>
-                <h2 id="notiftext">Notificações</h2>
+                <h2 id="notiftext">Notifications</h2>
                 <table id='notifications'></table>
             </div>
             <div id='profileEdit' style='display: none'>
-                <h1>Edite o seu perfil:</h1>
+                <h1>Edit your profile:</h1>
                 <form id="formprofile">
-                    <h2 class="name">Nome</h2>
+                    <h2 class="name">Name</h2>
                     <img id="mic1" class='mic' src="icons/micoff.png">
                     <input id="input1" class="forminput" type="text" name="nome" maxlength="17">
-                    <h2 class="name">Descrição</h2>
+                    <h2 class="name">Description</h2>
                     <img id="mic2" id="mic2" class='mic' src="icons/micoff.png">
                     <input id='input2' class="forminput" type="text" name="descricao" maxlength="24">
                 </form>
@@ -266,7 +266,7 @@
                 </form>
             </div>
             <div id='messageScreen' style='display: none'>
-                <h2 id="messatext">Mensagens</h2>
+                <h2 id="messatext">Messages</h2>
                 <table id='messages'></table>
             </div>
         </div>
