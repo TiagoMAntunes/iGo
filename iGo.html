@@ -37,7 +37,7 @@
                     <span>Definições</span>
                 </div>
             </div>
-            <div id="helpmainscreen" style='display: none'>
+            <div id="helpmultimediascreen" style='display: none'>
                 <table id="iconshelp" style='margin-left: 2%;'>
                     <tr>
                         <td><img class="columnicon" src="icons/like1.png"></td>
@@ -61,7 +61,12 @@
                     </tr>
                 </table>
             </div>
-
+            <div id="helpphotosubmit" style='display: none'>
+                Submete
+            </div>
+            <div id="helpprofileedit" style='display: none'>
+                Profile edit
+            </div>
             <div id='multimedia' style='display: none'>
                 <div id='multimediaContent'>
                     <div class='arrowcontainer' onclick="previousPicture()">
@@ -215,10 +220,10 @@
                 <form id="formprofile">
                     <h2 class="name">Nome</h2>
                     <img id="mic1" class='mic' src="icons/micoff.png">
-                    <input id="input1" class="forminput" type="text" name="nome">
+                    <input id="input1" class="forminput" type="text" name="nome" maxlength="17">
                     <h2 class="name">Descrição</h2>
                     <img id="mic2" id="mic2" class='mic' src="icons/micoff.png">
-                    <input id='input2' class="forminput" type="text" name="descricao">
+                    <input id='input2' class="forminput" type="text" name="descricao" maxlength="24">
                 </form>
                 <div id='buttons'>
                     <button id="savebt" onclick="saveProfile()" class="buttonprofile"><b>SAVE</b></button>
@@ -226,6 +231,7 @@
                 </div>
             </div>
             <div id='photoEditing' style='display: none;'>
+                <h2 id="filterchoose">Choose a filter:</h2>
                 <img id='photoToEdit' />
                 <div id='editingBottom'>
                     <table class="filters">
@@ -272,7 +278,7 @@
         	</div>
         </div>
     </div>
-    <div id='helpButton' onclick="pushScreen('helpmainscreen')"></div>
+    <div id='helpButton' onclick="helpButton()"></div>
     <div id="backButton" onclick="backButton()"></div>
     <div id="scrollWheel" ondblclick="blockWatch()"draggable="true" ondragstart="scrollWheelStart(event)" ondragend="scrollWheelFinish(event)"
         ondrag="scrollWheelMovement(event)"></div>

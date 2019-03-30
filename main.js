@@ -314,3 +314,18 @@ function unlockWatch(){
     backButton();
     console.log('unlock');
 }
+
+function helpButton(){
+    console.log(screenStack[screenStack.length - 1]);
+    switch(screenStack[screenStack.length - 1]){
+        case 'multimedia':
+            pushScreen('helpmultimediascreen');
+            break;
+        case 'photoSubmit':
+            pushScreen('helpphotosubmit');
+            break;
+        case 'profileEdit':
+            pushScreen('helpprofileedit');
+            break;
+    }
+}
