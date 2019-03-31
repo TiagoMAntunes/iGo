@@ -669,33 +669,46 @@ input:checked + .slider:before {
 #fingerPrintImg{
     width:25%;
     height:100%; 
-    padding-top: 5%;
+    padding-top: 8%;
 }
 
 #buttonsLock{
+    margin-top: -6%;
     display: flex;
     flex-direction: row;
-    height: 12%;
 }
 
 #weatherIcon{
-    height: 100%;
-    width: 15%;
-    padding-left: 28%;
+    width: 17%;
+    height: 17%;
+    padding-left: 18%;
 }
 
-#weatherTemp{
-    line-height: 10%;
-    padding-left: 4%;
-    padding-right: 4%;
+#temperatureIcon{
+    height: 17%;
+    width: 17%;
+    padding-left: 8%;
+}
+
+#bellIcon{
+    height: 17%;
+    width: 17%;
+    padding-left: 8%;   
+}
+
+#lockScreen {
+    background-color: #e0e8e4;
+    width: 100%;
+    height: 100%;
+    border-radius: 1.5%;
 }
 
 #timeLockScreen{
     text-align: center;
     height:35%;
-    font-size: 500%;
-    padding-top: 15%; 
-    padding-bottom:0%;
+    font-size: 600%;
+    padding-top: 10%;
+    padding-bottom: 5%; 
 }
 .rowicon {
     width: 100%;
@@ -755,3 +768,5 @@ input:checked + .slider:before {
     max-height: 30%;
     overflow: auto;
   }
+
+  
