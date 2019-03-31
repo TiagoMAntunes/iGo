@@ -128,13 +128,17 @@ function picturesSetup() {
             Array.from(document.getElementsByClassName('filterImage')).map(image => {
                 image.src = picture.src;
             })
+            Array.from(document.getElementsByClassName('photoToPublish')).map(image => {
+                image.src = picture.src;
+            })
             pushScreen('photoEditing');
         }
     });
 }
 
 function filterClick(image) {
-    document.getElementById("photoToEdit").style.filter = $(image).css("filter")
+    document.getElementById("photoToEdit").style.filter = $(image).css("filter");
+    document.getElementById("photofinal").style.filter = $(image).css("filter");
 }
 
 function updateSize() {

@@ -271,7 +271,15 @@
     padding-left: 6%;
 }
 
-#photoToPublish {
+.photoToPublish {
+    width: 45%;
+    height: 35%;
+    padding-left: 6%;
+    padding-right: 4%;
+    padding-bottom: 6%;
+}
+
+#photofinal {
     width: 45%;
     height: 35%;
     padding-left: 6%;
@@ -638,6 +646,7 @@ input:checked + .slider:before {
     margin:0;
     display: inline-block; 
 }
+
 #blackScreen{
     width:100%;
     height: 100%;
@@ -654,7 +663,7 @@ input:checked + .slider:before {
     width:100%;
     height:25%;
     text-align :center;
-    margin-bottom: 4%;
+    padding-bottom: 4%;
 }
 
 #fingerPrintImg{
