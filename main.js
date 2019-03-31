@@ -22,23 +22,29 @@ var multimedia_storage = [{
 
 var profiles = [{
     "photo": "icons/prof1.jpg",
-    "name": "Shrek"
+    "name": "Shrek",
+    "divName" :"shrekscreenmessage"
 }, {
     "photo": "icons/simb1.jpg",
-    "name": "Bart"
+    "name": "Bart",
+    "divName" :"bartscreenmessage"
 }, {
     "photo": "icons/simb2.jpeg",
-    "name": "Homer"
+    "name": "Homer",
+    "divName" :"homerscreenmessage"
 }, {
     "photo": "icons/toy1.jpg",
-    "name": "Woody"
+    "name": "Woody",
+    "divName" :"woodyscreenmessage"
 }, {
     "photo": "icons/toy2.png",
     "name": "Buzz",
+    "divName" :"buzzscreenmessage",
     "description": "Para o infinito e mais alem"
 }, {
     "photo": "icons/prof5.png",
-    "name": "Dragon"
+    "name": "Dragon",
+    "divName" :"dragonscreenmessage"
 }]
 
 var mainprofile = [{
@@ -46,6 +52,7 @@ var mainprofile = [{
     "description": "Espadachim nos tempos livres"
 }]
 
+var messageArray = ['Ola!!', 'Oi!!', 'Tudo bem', 'Sim e contigo?', 'Tambem'];
 var screenStack = [];
 var picture_index = 0;
 var count = 0;
@@ -60,6 +67,7 @@ function startup() {
     setRealSize();
     createNotifications();
     createMessages();
+    cretateMenuMessage();
     setupMultimediaScreen();
     picturesSetup();
     blockWatch(); blockWatch()
@@ -237,15 +245,30 @@ function createNotifications() {
         profiletable.innerHTML += "<tr><td class='row'><img class='notifpic' src=" + profiles[i].photo + "><p id='notificationmessage'>" + profiles[i].name + " gostou da sua foto<p></td></tr>";
     }
 }
-
 function createMessages() {
     let profiletable = document.getElementById("messages");
-    profiletable.innerHTML += "<tr><td id='rowone'><img class='messagepic' src=" + profiles[0].photo + "><p id='messagename'>" + profiles[0].name + "<p></td></tr>";
+    profiletable.innerHTML += "<tr onclick="+ '"' + "pushScreen('" + profiles[0].divName + "');" + '"' + "><td id='rowone'><img  class='messagepic' src=" + profiles[0].photo + "><p id='messagename'>" + profiles[0].name + "<p></td></tr>";
     for(i = 1; i< profiles.length; i++){
-        profiletable.innerHTML += "<tr><td class='row'><img class='messagepic' src=" + profiles[i].photo + "><p id='messagename'>" + profiles[i].name + "<p></td></tr>";
+        profiletable.innerHTML += "<tr onclick="+ '"' + "pushScreen('" + profiles[i].divName + "');" + '"' + "><td class='row'><img class='messagepic' src=" + profiles[i].photo + "><p id='messagename'>" + profiles[i].name + "<p></td></tr>";
     }
 }
 
+function cretateMenuMessage(){
+    let div = document.getElementById('messageScreen');
+     for(j = 0; j < profiles.length; j++){
+        div.innerHTML += "<div class='messageBox' style='display:none' id='" + profiles[j].divName + "'>";
+        let divM = document.getElementById(profiles[j].divName); 
+        for(i = 0; i < messageArray.length; i++){
+            if(i%2 ==0){
+                divM.innerHTML += "<div class='containerM'>" + messageArray[i] + "</div>";
+            }
+            else{
+                divM.innerHTML += "<div class='containerM darkerM'>" + messageArray[i] + "</div>";  
+            }
+        }
+        div.innerHTML += "</div>";
+    }
+}
 function setupMultimediaScreen() {
     console.log('olá')
     updatePicture();
