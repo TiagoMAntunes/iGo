@@ -62,6 +62,8 @@ function startup() {
     createMessages();
     setupMultimediaScreen();
     picturesSetup();
+    blockWatch(); blockWatch()
+    
 }
 
 function setRealSize() {
@@ -156,7 +158,13 @@ function helpButton() {
 }
 
 function backButton() {
-    console.log('backbutton');
+    console.log(typeof(localStorage.getItem('locked')))
+    console.log(localStorage.getItem('locked') === 'true' && (screenStack[screenStack.length - 1] === 'lockScreen'))
+    if (localStorage.getItem('locked') === 'true' && screenStack[screenStack.length - 1] === 'lockScreen') {
+        console.log('stopeed!')
+        return
+    }
+    console.log('hi')
     let screen = screenStack.pop()
     if (screen != undefined) {
         document.getElementById(screen).style.display = 'none';
@@ -302,6 +310,7 @@ function Bluetooth() {
 function blockWatch(){
     console.log('blackScreen');
     block++;
+    localStorage.setItem('locked', true);
     if(block%2 == 1){
         pushScreen('blackScreen');
         document.getElementById('top-bar').style.display = 'none';
@@ -313,6 +322,7 @@ function blockWatch(){
     }
 }
 function unlockWatch(){
+    localStorage.setItem('locked', false)
     backButton();
     console.log('unlock');
     document.getElementById('top-bar').style.display = '';
