@@ -67,7 +67,7 @@ function startup() {
     setRealSize();
     createNotifications();
     createMessages();
-    cretateMenuMessage();
+    creatateMenuMessage();
     setupMultimediaScreen();
     picturesSetup();
     blockWatch(); blockWatch()
@@ -253,8 +253,8 @@ function createMessages() {
     }
 }
 
-function cretateMenuMessage(){
-    let div = document.getElementById('messageScreen');
+function creatateMenuMessage(){
+    let div = document.getElementById('mainScreen');
      for(j = 0; j < profiles.length; j++){
         div.innerHTML += "<div class='messageBox' style='display:none' id='" + profiles[j].divName + "'>";
         let divM = document.getElementById(profiles[j].divName); 

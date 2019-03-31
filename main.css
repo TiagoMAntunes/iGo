@@ -373,15 +373,6 @@
     padding-top: 6%;
     width: 100%;
 }
-
-#rowone:hover{
-    background-color:  #bbdefb;
-}
-
-.row:hover {
-    background-color:  #bbdefb;
-}
-
 #rowone {
     border-top: none;
     padding: 3%;
@@ -772,21 +763,18 @@ input:checked + .slider:before {
 .containerM {
   border: 2px solid #dedede;
   background-color: #f1f1f1;
-  border-radius: 5px;
-  padding: 10px;
-  margin: 10px 0;
+  border-radius: 4%;
   position: relative;
   width:100%;
   height: 20%;
-  font-size: 20px;
 }
 .darkerM {
   border-color: #ccc;
   background-color: #ddd;
 }
-#messageBox{
+.messageBox{
     position: relative;
     width:100%;
-    height: 100%;
-    background-color: black;
+    height: 94%;
+    overflow-y: scroll;
 }
