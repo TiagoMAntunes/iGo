@@ -382,7 +382,6 @@
 }
 
 .messageP {
-    padding-left: 4%;
 }
 
 #message1 {
@@ -391,7 +390,6 @@
 
 #message2 {
     float: right;
-    padding-right: 10%;
 }
 
 #messatext {
@@ -815,25 +813,39 @@ input:checked + .slider:before {
   background-color: #f1f1f1;
   border-radius: 4%;
   position: relative;
-  
-  height: 20%;
 }
 
 .lighterM {
-    border: 2px solid #dedede;
+    max-width: 80%;
+    min-width:20%;
+    background: #ffeec0;
     margin-left: 2%;
-    float: left;
-    width: 80%;
+    padding-left: 3%;
+    padding-right: 3%;
+    margin-right: 30%;
+    white-space: pre-line;
+    overflow:hidden;
+    background-color: #f1f1f1;
+    border: 2px solid #dedede;
+    float:  left;
+    clear: left;
+    margin-top: 2%;
 }
 
 .darkerM {
-  margin-right: 2%;
-  margin-bottom: 2%;
-  margin-top: 2%;
-  float: right;
-  width: 80%;
-  border: 2px solid #9acae3;
-  background-color: #a9def9;
+    max-width: 80%;
+    min-width:20%;
+    margin-top: 2%;
+    margin-right: 2%;
+    padding-left: 3%;
+    padding-right: 3%;
+    margin-left: 30%;
+    white-space: pre-line;
+    overflow:hidden;
+    border: 2px solid #9acae3;
+    background-color: #a9def9;
+    float:  right;
+    clear: right;
 }
 .messageBox{
     position: relative;
@@ -841,3 +853,16 @@ input:checked + .slider:before {
     height: 94%;
     overflow-y: scroll;
 }
+
+/*margin-right: 2%;
+margin-bottom: 2%;
+margin-top: 2%;
+float: right;
+max-width: 60%;
+border: 2px solid #9acae3;
+background-color: #a9def9;
+
+border: 2px solid #dedede;
+margin-left: 2%;
+float: left;
+max-width: 60%;*/
