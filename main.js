@@ -272,7 +272,7 @@ function createNotificationsPops(){
     let profiletable = document.getElementById("watchBorder");   
     for (i = 0; i < pictureProfileArray.length; i++) {
         console.log('doing');
-        profiletable.innerHTML += "<div class = 'overlay' id='" + pictureProfileArray[i].divName + "'><div class='popup'><div id='toppopup'><a class='close' href='#>&times;</a></div><div class='content'><img src='" + pictureProfileArray[i].image + "'> </div></div></div></div>";  
+        profiletable.innerHTML += "<div class = 'overlay' id='" + pictureProfileArray[i].divName + "'><div class='popupphoto'><div id='toppopup'><a id='closepopup' href='#'>&times;</a></div><div class='content'><img id='photopopup' src='" + pictureProfileArray[i].image + "'> </div></div></div></div>";  
     }
 }
 function createMessages() {
@@ -290,7 +290,7 @@ function creatateMenuMessage(){
         let divM = document.getElementById(profiles[j].divName); 
         for(i = 0; i < profiles[j].messages.length; i++){
             if(i%2 ==0){
-                divM.innerHTML += "<div class='containerM'><p class='messageP' id='message1'>" + profiles[j].messages[i] + "</p></div>";
+                divM.innerHTML += "<div class='containerM lighterM'><p class='messageP' id='message1'>" + profiles[j].messages[i] + "</p></div>";
             }
             else{
                 divM.innerHTML += "<div class='containerM darkerM'><p class='messageP' id='message2'>" + profiles[j].messages[i] + "</p></div>";  
