@@ -58,7 +58,19 @@ var mainprofile = [{
     "description": "Espadachim nos tempos livres"
 }]
 
-var messageArray = ['Ola Gato das botas!!', 'Oi ', 'Tudo bem', 'Sim e contigo?', 'Tambem'];
+var pictureProfileArray = [{
+    "image": "images/shrek-1.jpg",
+    "divName" : "image1Pop"
+}, {
+    "image": "images/shrek-2.jpg",
+    "divName" : "image2Pop"
+}, {
+    "image": "images/shrek-3.jpg",
+    "divName" : "image3Pop"
+}, {
+    "image": "images/shrek-4.jpg",
+    "divName" : "image1Pop"
+}]
 var screenStack = [];
 var picture_index = 0;
 var count = 0;
@@ -74,6 +86,8 @@ function startup() {
     createNotifications();
     createMessages();
     creatateMenuMessage();
+    createMenuPerfil();
+    createNotificationsPops();
     setupMultimediaScreen();
     picturesSetup();
     blockWatch(); blockWatch()
@@ -246,9 +260,19 @@ function updatePicture() {
 
 function createNotifications() {
     let profiletable = document.getElementById("notifications");
-    profiletable.innerHTML += "<tr><td id='rowone'><img class='notifpic' src=" + profiles[0].photo + "><p id='notificationmessage'>" + profiles[0].name + " gostou da sua foto<p></td></tr>";
+    profiletable.innerHTML += "<tr><td onclick='goToPop("+ Math.floor(Math.random() * 4)+ ");' id='rowone'><img class='notifpic' src=" + profiles[0].photo + "><p id='notificationmessage'>" + profiles[0].name + " gostou da sua foto<p></td></tr>";
     for (i = 1; i < profiles.length; i++) {
-        profiletable.innerHTML += "<tr><td class='row'><img class='notifpic' src=" + profiles[i].photo + "><p id='notificationmessage'>" + profiles[i].name + " gostou da sua foto<p></td></tr>";
+        profiletable.innerHTML += "<tr><td onclick= 'goToPop("+ Math.floor(Math.random() * 4)+ ");' class='row'><img class='notifpic' src=" + profiles[i].photo + "><p id='notificationmessage'>" + profiles[i].name + " gostou da sua foto<p></td></tr>";
+    }
+}
+function goToPop(i){
+    location.href = '#' + pictureProfileArray[i].divName;
+}
+function createNotificationsPops(){
+    let profiletable = document.getElementById("watchBorder");   
+    for (i = 0; i < pictureProfileArray.length; i++) {
+        console.log('doing');
+        profiletable.innerHTML += "<div class = 'overlay' id='" + pictureProfileArray[i].divName + "'><div class='popup'><div id='toppopup'><a class='close' href='#>&times;</a></div><div class='content'><img src='" + pictureProfileArray[i].image + "'> </div></div></div></div>";  
     }
 }
 function createMessages() {
@@ -275,6 +299,14 @@ function creatateMenuMessage(){
         div.innerHTML += "</div>";
     }
 }
+
+function createMenuPerfil(){
+    let profiletable = document.getElementById("pictureListTable");
+    for (i = 0; i < pictureProfileArray.length; i=i+2) {
+        profiletable.innerHTML += "<tr><td><img class='imageChoice' src='" + pictureProfileArray[i].image + "'></td><td><img class='imageChoice' src='" + pictureProfileArray[i+1].image + "'</td></tr>";
+    }
+}
+
 function setupMultimediaScreen() {
     console.log('olá')
     updatePicture();
