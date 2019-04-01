@@ -24,7 +24,7 @@ var profiles = [{
     "photo": "icons/prof1.jpg",
     "name": "Shrek",
     "divName" :"shrekscreenmessage",
-    "messages" :["Ola Gato das botas", "Ola Sherk", "Tudo bem?","Sim e contigo","Tambem","Como vai o projeto de IPM?","Bem e o teu?","Tambem"]
+    "messages" :["Olá Gato das botas!", "Olá Sherk", "Tudo bem?","Sim e contigo?","Também","Como vai o projeto de IPM?","Bem e o teu?","Também!"]
 }, {
     "photo": "icons/simb1.jpg",
     "name": "Bart",
@@ -290,10 +290,10 @@ function creatateMenuMessage(){
         let divM = document.getElementById(profiles[j].divName); 
         for(i = 0; i < profiles[j].messages.length; i++){
             if(i%2 ==0){
-                divM.innerHTML += "<div class='containerM'>" + profiles[j].messages[i] + "</div>";
+                divM.innerHTML += "<div class='containerM'><p class='messageP' id='message1'>" + profiles[j].messages[i] + "</p></div>";
             }
             else{
-                divM.innerHTML += "<div class='containerM darkerM'>" + profiles[j].messages[i] + "</div>";  
+                divM.innerHTML += "<div class='containerM darkerM'><p class='messageP' id='message2'>" + profiles[j].messages[i] + "</p></div>";  
             }
         }
         div.innerHTML += "</div>";
@@ -328,7 +328,7 @@ function previousPicture() {
 
 function fillProfile() {
     let informations = document.getElementById('profileInf');
-    informations.innerHTML = "<h2 id='profileName'>" + mainprofile[0].name + "</h2><p id='profileDescr'>" + mainprofile[0].description + "</p><button class='btn-edit' onclick=\"pushScreen('profileEdit')\">Edit Profile</button>";
+    informations.innerHTML = "<h1 id='profileName'>" + mainprofile[0].name + "</h1><p id='profileDescr'>" + mainprofile[0].description + "</p><button class='btn-edit' onclick=\"pushScreen('profileEdit')\">Edit Profile</button>";
 }
 
 function saveProfile() {
@@ -413,6 +413,15 @@ function helpButton(){
 function bluetoothIsOff(){
     if(count % 2 == 0){
         location.href="#popup2";
-        pushScreen('definicoes');
+        pushScreen('bluetooth-setup');
+    } else {
+        pushScreen('photopublish')
+    }
+}
+
+function validateBluetooth() {
+    if (count % 2 !== 0) {
+        backButton()
+        pushScreen('photopublish')
     }
 }
