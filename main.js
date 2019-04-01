@@ -375,6 +375,15 @@ function helpButton(){
 function bluetoothIsOff(){
     if(count % 2 == 0){
         location.href="#popup2";
-        pushScreen('definicoes');
+        pushScreen('bluetooth-setup');
+    } else {
+        pushScreen('photopublish')
+    }
+}
+
+function validateBluetooth() {
+    if (count % 2 !== 0) {
+        backButton()
+        pushScreen('photopublish')
     }
 }

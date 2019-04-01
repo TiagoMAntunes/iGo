@@ -91,7 +91,7 @@
                 <div class="navbar">
                     <img id='likeButton' src="icons/like.svg" onclick="likeAction(this)" />
                     <img onclick="pushScreen('messageScreen')" src="icons/comment.png" />
-                    <img onclick="pushScreen('photopublish'); bluetoothIsOff()" src="icons/photo.svg" />
+                    <img onclick="bluetoothIsOff()" src="icons/photo.svg" />
                     <img onclick="pushScreen('notificationScreen')" src="icons/bell.png" />
                     <img src="icons/profile.png" onclick="pushScreen('profile');fillProfile()" />
                 </div>
@@ -247,7 +247,7 @@
                         </tr>
                     </table>
                     <div style='margin: 0% 7% 0% 2%;'>
-                        <button onclick="pushScreen('photoSubmit')" id="nextbt"><b>NEXT</b></button>
+                        <button onclick="pushScreen('photoSubmit')" class="nextbt"><b>NEXT</b></button>
                     </div>
                 </div>
             </div>
@@ -281,6 +281,20 @@
                 </div>
                 <div id='fingerPrint'>
                     <img id='fingerPrintImg' src='icons/fingerprint.svg' alt='fingerPrint' onclick='unlockWatch()'>
+                </div>
+            </div>
+            <div id='bluetooth-setup' style='display: none'>
+                <h2>
+                    Turn on bluetooth
+                </h2>
+                <div>
+                    <label class="switch">
+                        <input onclick="Bluetooth()" type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <div>
+                    <button onclick="validateBluetooth()">NEXT</button>
                 </div>
             </div>
         </div>
