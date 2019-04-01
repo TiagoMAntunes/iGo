@@ -381,6 +381,19 @@
     width:100%;
 }
 
+.messageP {
+    padding-left: 4%;
+}
+
+#message1 {
+    float: left;
+}
+
+#message2 {
+    float: right;
+    padding-right: 10%;
+}
+
 #messatext {
     padding-left: 5%;
 }
@@ -507,30 +520,38 @@ input:checked + .slider:before {
     border: 2px solid black;
     border-radius: 100%;
     float: right;
-    margin-top: 5%;
+    margin-top: 10%;
     margin-right: 8%;
 }
 
 #profileName {
-    line-height: 10%;
+    margin-bottom: -5%;
+    font-size: 190%;
+    padding-bottom: 10%;
 }
 
 #profileEdit {
     padding-left: 5%;
 }
 
+#profileDescr {
+    margin-top: -8%;
+    font-size: 140%;
+}
+
 .btn-edit {
     color: white;
     border: none;
-    font-size: 120%;
+    font-size: 130%;
     margin-right: 5%;
+    width: 90%;
     background: #a6acaf     ;
     padding: 2% 4%;
     border-radius: 2px;
 }
 
 #picturelist {
-    margin-top: 8%;
+    margin-top: 25%;
 }
 
 .forminput {
@@ -770,7 +791,7 @@ input:checked + .slider:before {
 }
 .darkerM {
   border-color: #ccc;
-  background-color: #ddd;
+  background-color: #2196F3;
 }
 .messageBox{
     position: relative;

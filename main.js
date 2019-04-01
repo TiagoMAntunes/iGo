@@ -23,28 +23,34 @@ var multimedia_storage = [{
 var profiles = [{
     "photo": "icons/prof1.jpg",
     "name": "Shrek",
-    "divName" :"shrekscreenmessage"
+    "divName" :"shrekscreenmessage",
+    "messages" :["Olá Gato das botas!", "Olá Sherk", "Tudo bem?","Sim e contigo?","Também","Como vai o projeto de IPM?","Bem e o teu?","Também!"]
 }, {
     "photo": "icons/simb1.jpg",
     "name": "Bart",
-    "divName" :"bartscreenmessage"
+    "divName" :"bartscreenmessage",
+    "messages" :["Ola Gato","Oi Bart","Tiraste apontamentos das aulas de IPM?", "Sim, amanha empresto-te", "Obrigado"]
 }, {
     "photo": "icons/simb2.jpeg",
     "name": "Homer",
-    "divName" :"homerscreenmessage"
+    "divName" :"homerscreenmessage",
+    "messages" :["Ola","Ola Homer","Queres ir beber uma jola?", "Sim!!!", "Vem ter ao MOE's amanha as 15","Ate amanha"]
 }, {
     "photo": "icons/toy1.jpg",
     "name": "Woody",
-    "divName" :"woodyscreenmessage"
+    "divName" :"woodyscreenmessage",
+    "messages" :["Ola Gato das botas","Oi Woody","Preciso da tua ajuda tenho uma cobra nas botas", "A caminho!!!"]
 }, {
     "photo": "icons/toy2.png",
     "name": "Buzz",
     "divName" :"buzzscreenmessage",
-    "description": "Para o infinito e mais alem"
+    "description": "Para o infinito e mais alem",
+    "messages" :["Ola camarada","Oi Buzz","Vamos conquistar a galaxia?", "Dobriga.","PARA O INFINTIO E MAIS ALEM!!!"]
 }, {
     "photo": "icons/prof5.png",
     "name": "Dragon",
-    "divName" :"dragonscreenmessage"
+    "divName" :"dragonscreenmessage",
+    "messages" :["Ola Gato das botas","Oi Dragon","Queres vir ver os teus sobrinho?", "Sim, posso amanha as 18!", "Combinado!!"]
 }]
 
 var mainprofile = [{
@@ -52,7 +58,7 @@ var mainprofile = [{
     "description": "Espadachim nos tempos livres"
 }]
 
-var messageArray = ['Ola!!', 'Oi!!', 'Tudo bem', 'Sim e contigo?', 'Tambem'];
+var messageArray = ['Ola Gato das botas!!', 'Oi ', 'Tudo bem', 'Sim e contigo?', 'Tambem'];
 var screenStack = [];
 var picture_index = 0;
 var count = 0;
@@ -258,12 +264,12 @@ function creatateMenuMessage(){
      for(j = 0; j < profiles.length; j++){
         div.innerHTML += "<div class='messageBox' style='display:none' id='" + profiles[j].divName + "'>";
         let divM = document.getElementById(profiles[j].divName); 
-        for(i = 0; i < messageArray.length; i++){
+        for(i = 0; i < profiles[j].messages.length; i++){
             if(i%2 ==0){
-                divM.innerHTML += "<div class='containerM'>" + messageArray[i] + "</div>";
+                divM.innerHTML += "<div class='containerM'><p class='messageP' id='message1'>" + profiles[j].messages[i] + "</p></div>";
             }
             else{
-                divM.innerHTML += "<div class='containerM darkerM'>" + messageArray[i] + "</div>";  
+                divM.innerHTML += "<div class='containerM darkerM'><p class='messageP' id='message2'>" + profiles[j].messages[i] + "</p></div>";  
             }
         }
         div.innerHTML += "</div>";
@@ -290,7 +296,7 @@ function previousPicture() {
 
 function fillProfile() {
     let informations = document.getElementById('profileInf');
-    informations.innerHTML = "<h2 id='profileName'>" + mainprofile[0].name + "</h2><p id='profileDescr'>" + mainprofile[0].description + "</p><button class='btn-edit' onclick=\"pushScreen('profileEdit')\">Edit Profile</button>";
+    informations.innerHTML = "<h1 id='profileName'>" + mainprofile[0].name + "</h1><p id='profileDescr'>" + mainprofile[0].description + "</p><button class='btn-edit' onclick=\"pushScreen('profileEdit')\">Edit Profile</button>";
 }
 
 function saveProfile() {
