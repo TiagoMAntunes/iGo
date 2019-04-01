@@ -381,6 +381,19 @@
     width:100%;
 }
 
+.messageP {
+    padding-left: 4%;
+}
+
+#message1 {
+    float: left;
+}
+
+#message2 {
+    float: right;
+    padding-right: 10%;
+}
+
 #messatext {
     padding-left: 5%;
 }
@@ -778,7 +791,7 @@ input:checked + .slider:before {
 }
 .darkerM {
   border-color: #ccc;
-  background-color: #ddd;
+  background-color: #2196F3;
 }
 .messageBox{
     position: relative;
