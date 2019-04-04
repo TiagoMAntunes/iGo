@@ -22,7 +22,7 @@
 
 #buttonblt {
     margin-left: 28%;
-    margin-top: 46%;
+    margin-top: 42%;
 }
 
 #watchBorder {
@@ -427,8 +427,6 @@
     padding-left: 5%;
 }
 
-
-
 #messageScreen {
     overflow-y: scroll;
     height: 94%;
@@ -733,7 +731,7 @@ input:checked + .slider:before {
 #weatherIcon{
     width: 17%;
     height: 17%;
-    padding-left: 18%;
+    padding-left: 13%;
 }
 
 #temperatureIcon{

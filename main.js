@@ -189,7 +189,6 @@ function updateSize() {
 }
 
 function helpButton() {
-    
     backButton();
 }
 
@@ -452,6 +451,7 @@ function addPicture() {
         "divName": "Vocês são terríveis nesta merda",
         "style": document.getElementById('photofinal').style.cssText
     })
+    document.getElementById('descript').value = '';
     createMenuPerfil();
     document.getElementById(screenStack[screenStack.length-1]).style.display= 'none'
     screenStack = []
