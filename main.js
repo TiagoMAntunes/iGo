@@ -301,10 +301,15 @@ function creatateMenuMessage(){
 }
 
 function createMenuPerfil(){
-    let profiletable = document.getElementById("pictureListTable");
+    let profiletable = document.getElementById("pictureListTable")
+    let content = ''
     for (i = 0; i < pictureProfileArray.length; i=i+2) {
-        profiletable.innerHTML += "<tr><td><img class='imageChoice' src='" + pictureProfileArray[i].image + "'></td><td><img class='imageChoice' src='" + pictureProfileArray[i+1].image + "'</td></tr>";
+        content += "<tr><td><img class='imageChoice' src='" + pictureProfileArray[i].image + "'></td>"
+        if (i + 1 < pictureProfileArray.length)
+            content += "<td><img class='imageChoice' src='" + pictureProfileArray[i+1].image + "'</td>";
+        content+='</tr>'
     }
+    profiletable.innerHTML = content;
 }
 
 function setupMultimediaScreen() {
@@ -424,4 +429,15 @@ function validateBluetooth() {
         backButton()
         pushScreen('photopublish')
     }
+}
+
+function addPicture() {
+    pictureProfileArray.push({
+        "image": document.getElementById('photofinal').src,
+        "divName": "Vocês são terríveis nesta merda"
+    })
+    createMenuPerfil();
+    document.getElementById(screenStack[screenStack.length-1]).style.display= 'none'
+    screenStack = []
+    pushScreen('multimedia');
 }
