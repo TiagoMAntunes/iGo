@@ -445,3 +445,7 @@ function addPicture() {
     screenStack = []
     pushScreen('multimedia');
 }
+
+function updateValue(value) {
+    document.getElementById('mainScreen').style.opacity = value;
+}
