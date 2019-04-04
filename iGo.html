@@ -152,7 +152,7 @@
                         </td>
                         <td id='tdSettingsR' class='tdSettings'>
                             <label class="switch">
-                                <input onclick="Bluetooth()" type="checkbox">
+                                <input onclick="Bluetooth()" type="checkbox" class="bluetooth-btn">
                                 <span class="slider round"></span>
                             </label>
                         </td>
@@ -182,7 +182,7 @@
                 </table>
                 <div class='navbarSettings'>
                     <img id='settingsImgL' src='icons/brightnesslow.png'>
-                    <input type="range" id="opacity-slider" min=".4" max="1" step=".01" value="1">
+                    <input type="range" id="opacity-slider" min=".4" max="1" step=".01" value="1" oninput="updateValue(this.value)">
                     <img id='settingsImgR' src='icons/brightnessmore.png'>
                 </div>
             </div>
@@ -311,11 +311,6 @@
     <div id="scrollWheel" ondblclick="blockWatch()"draggable="true" ondragstart="scrollWheelStart(event)" ondragend="scrollWheelFinish(event)"
         ondrag="scrollWheelMovement(event)"></div>
     </div>
-    <script type="text/javascript">
-        document.getElementById('opacity-slider').addEventListener('input', function (e) {
-            document.getElementById('mainScreen').style.opacity = this.value;
-        });
-    </script>
 </body>
 
 </html>
