@@ -731,7 +731,7 @@ input:checked + .slider:before {
 #weatherIcon{
     width: 17%;
     height: 17%;
-    padding-left: 18%;
+    padding-left: 13%;
 }
 
 #temperatureIcon{
