@@ -355,7 +355,8 @@
 }
 
 #comment {
-    text-align: center;
+    padding-top: 2%;
+    font-size: 110%;
 }
 
 #multimediaContent {
@@ -370,7 +371,7 @@
 }
 
 #imageShown {
-    padding-top: 6%;
+    padding-top: 2%;
     width: 100%;
 }
 #rowone {
