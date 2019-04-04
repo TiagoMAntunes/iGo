@@ -60,16 +60,20 @@ var mainprofile = [{
 
 var pictureProfileArray = [{
     "image": "images/shrek-1.jpg",
-    "divName" : "image1Pop"
+    "divName" : "image1Pop",
+    "style": ''
 }, {
     "image": "images/shrek-2.jpg",
-    "divName" : "image2Pop"
+    "divName" : "image2Pop",
+    "style": ''
 }, {
     "image": "images/shrek-3.jpg",
-    "divName" : "image3Pop"
+    "divName" : "image3Pop",
+    "style": ''
 }, {
     "image": "images/shrek-4.jpg",
-    "divName" : "image1Pop"
+    "divName" : "image1Pop",
+    "style": ''
 }]
 var screenStack = [];
 var picture_index = 0;
@@ -304,16 +308,16 @@ function createMenuPerfil(){
     let profiletable = document.getElementById("pictureListTable")
     let content = ''
     for (i = 0; i < pictureProfileArray.length; i=i+2) {
-        content += "<tr><td><img class='imageChoice' src='" + pictureProfileArray[i].image + "'></td>"
+        content += "<tr><td><img class='imageChoice' src='" + pictureProfileArray[i].image + "' style='" + String(pictureProfileArray[i].style) + "'></td>"
         if (i + 1 < pictureProfileArray.length)
-            content += "<td><img class='imageChoice' src='" + pictureProfileArray[i+1].image + "'</td>";
+            content += "<td><img class='imageChoice' src='" + pictureProfileArray[i+1].image + "' style='" + String(pictureProfileArray[i+1].style) + "'></td>";
         content+='</tr>'
     }
     profiletable.innerHTML = content;
+    console.log(content)
 }
 
 function setupMultimediaScreen() {
-    console.log('olá')
     updatePicture();
 }
 
@@ -340,7 +344,6 @@ function saveProfile() {
     let input1 = document.getElementById("input1").value;
     let input2 = document.getElementById("input2").value;
     if(input1 != ''){
-        console.log(input1);
         mainprofile[0].name = input1;
     }
     if(input2 != ''){
@@ -434,7 +437,8 @@ function validateBluetooth() {
 function addPicture() {
     pictureProfileArray.push({
         "image": document.getElementById('photofinal').src,
-        "divName": "Vocês são terríveis nesta merda"
+        "divName": "Vocês são terríveis nesta merda",
+        "style": document.getElementById('photofinal').style.cssText
     })
     createMenuPerfil();
     document.getElementById(screenStack[screenStack.length-1]).style.display= 'none'
