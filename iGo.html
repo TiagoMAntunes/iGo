@@ -242,7 +242,7 @@
                     <img class="photoToPublish" id="photofinal"/>
                     <div id="buttonsphoto">
                         <button onclick="cancelChange()" id="cancelbtn"><b>CANCEL</b></button>
-                        <button id="postbtn" onclick="addPicture()""><b>POST</b></button>
+                        <button id="postbtn" onclick="addPicture()"><b>POST</b></button>
                     </div>
                 </div>
                 <h3 id="descripttext">Description:</h3>
@@ -270,17 +270,16 @@
                 </div>
             </div>
             <div id='bluetooth-setup' style='display: none'>
-                <h2>
-                    Turn on bluetooth
-                </h2>
-                <div>
-                    <label class="switch">
-                        <input onclick="Bluetooth()" type="checkbox">
-                        <span class="slider round"></span>
-                    </label>
-                </div>
-                <div>
-                    <button onclick="validateBluetooth()">NEXT</button>
+                <h1 id='turnon'>Turn on bluetooth</h1>
+                <div style="display: flex; flex-direction: row">
+                    <img style="padding-left: 10%; padding-top: 5%" height="40%" width ="40%" src="icons/bluet2.png">
+                    <div>
+                        <label id='buttonblt' class="switch">
+                            <input onclick="Bluetooth()" type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                        <button id="nextbtn" onclick="validateBluetooth()"><b>NEXT</b></button>
+                    </div>
                 </div>
             </div>
         </div>

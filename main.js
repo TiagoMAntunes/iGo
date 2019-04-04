@@ -196,6 +196,10 @@ function backButton() {
         console.log('stopeed!')
         return
     }
+    if (block%2 == 1 && screenStack[screenStack.length - 1] === 'blackScreen') {
+        console.log('stopeed!')
+        return
+    }
     console.log('hi')
     let screen = screenStack.pop()
     if (screen != undefined) {
@@ -288,6 +292,7 @@ function creatateMenuMessage(){
      for(j = 0; j < profiles.length; j++){
         div.innerHTML += "<div class='messageBox' style='display:none' id='" + profiles[j].divName + "'>";
         let divM = document.getElementById(profiles[j].divName); 
+        divM.innerHTML += "<h1 id='messaperson'>" + profiles[j].name + "</h2>";
         for(i = 0; i < profiles[j].messages.length; i++){
             if(i%2 ==0){
                 divM.innerHTML += "<div class='containerM lighterM'><p class='messageP' id='message1'>" + profiles[j].messages[i] + "</p></div>";
@@ -399,6 +404,9 @@ function unlockWatch(){
 }
 
 function helpButton(){
+    if(block%2 == 1){
+        return;
+    }
     console.log(screenStack[screenStack.length - 1]);
     switch(screenStack[screenStack.length - 1]){
         case 'multimedia':
@@ -409,6 +417,9 @@ function helpButton(){
             break;
         case 'profileEdit':
             pushScreen('helpprofileedit');
+            break;
+        case 'bluetooth-setup':
+            location.href="#popup2";
             break;
         default:
             location.href="#popup1";
@@ -432,7 +443,7 @@ function validateBluetooth() {
 }
 
 function addPicture() {
-    pictureProfileArray.push({
+    pictureProfileArray.unshift({
         "image": document.getElementById('photofinal').src,
         "divName": "Vocês são terríveis nesta merda"
     })

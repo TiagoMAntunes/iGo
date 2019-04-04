@@ -15,6 +15,16 @@
     visibility: hidden;
 }
 
+#turnon {
+    text-align: center;
+    margin-top: 15%;
+}
+
+#buttonblt {
+    margin-left: 28%;
+    margin-top: 46%;
+}
+
 #watchBorder {
     background-color: black;
     position: fixed;
@@ -228,6 +238,18 @@
     transform: translate(0,-50%);
 }
 
+#nextbtn{
+    background-color:  #4d95d1;
+    border: 2px solid #4d95d1;
+    border-radius: 5%;
+    color: white;
+    margin-top: 25%;
+    padding: 15%;
+    margin-left: 21%;
+}
+
+
+
 #photoEditing {
     display: inline-block;
     text-align: center;
@@ -387,9 +409,6 @@
     width:100%;
 }
 
-.messageP {
-}
-
 #message1 {
     float: left;
 }
@@ -403,6 +422,12 @@
     margin-bottom: 2%;
     padding-left: 5%;
 }
+
+#messaperson {
+    padding-left: 5%;
+}
+
+
 
 #messageScreen {
     overflow-y: scroll;
@@ -843,13 +868,15 @@ input:checked + .slider:before {
     border: 2px solid #dedede;
     float:  left;
     clear: left;
-    margin-top: 2%;
+    margin-top: 1%;
+    margin-bottom: 1%;
 }
 
 .darkerM {
     max-width: 80%;
     min-width:20%;
-    margin-top: 2%;
+    margin-top: 1%;
+    margin-bottom: 1%;
     margin-right: 2%;
     padding-left: 3%;
     padding-right: 3%;
