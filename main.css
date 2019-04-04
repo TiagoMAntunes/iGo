@@ -22,7 +22,7 @@
 
 #buttonblt {
     margin-left: 28%;
-    margin-top: 46%;
+    margin-top: 42%;
 }
 
 #watchBorder {
@@ -426,8 +426,6 @@
 #messaperson {
     padding-left: 5%;
 }
-
-
 
 #messageScreen {
     overflow-y: scroll;
