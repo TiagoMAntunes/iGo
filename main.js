@@ -379,6 +379,7 @@ function Bluetooth() {
     else {
         document.getElementById('bluetoothImg').style.visibility = 'visible';
     }
+    triggerBluetooths(count % 2 == 0 ? false: true)
 }
 function blockWatch(){
     console.log('blackScreen');
@@ -448,4 +449,8 @@ function addPicture() {
 
 function updateValue(value) {
     document.getElementById('mainScreen').style.opacity = value;
+}
+
+function triggerBluetooths(value) {
+    $(document.getElementsByClassName('bluetooth-btn')).prop('checked', value)
 }
