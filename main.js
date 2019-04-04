@@ -195,7 +195,6 @@ function updateSize() {
 }
 
 function helpButton() {
-    
     backButton();
 }
 
@@ -203,6 +202,10 @@ function backButton() {
     console.log(typeof(localStorage.getItem('locked')))
     console.log(localStorage.getItem('locked') === 'true' && (screenStack[screenStack.length - 1] === 'lockScreen'))
     if (localStorage.getItem('locked') === 'true' && screenStack[screenStack.length - 1] === 'lockScreen') {
+        console.log('stopeed!')
+        return
+    }
+    if (block%2 == 1 && screenStack[screenStack.length - 1] === 'blackScreen') {
         console.log('stopeed!')
         return
     }
@@ -301,6 +304,7 @@ function createMenuMessage(){
     for(j = 0; j < profiles.length; j++){
         div.innerHTML += "<div class='messageBox' style='display:none' id='" + profiles[j].divName + "'>";
         let divM = document.getElementById(profiles[j].divName); 
+        divM.innerHTML += "<h1 id='messaperson'>" + profiles[j].name + "</h2>";
         for(i = 0, k = 0; i < profiles[j].messages.length || k < profiles[j].responses.length; i++, k++){
             if(profiles[j].responses[k]!= null){
                 divM.innerHTML += "<div class='containerM lighterM'><p class='messageP' id='message1'>" + profiles[j].responses[k] + "</p></div>";
@@ -309,7 +313,6 @@ function createMenuMessage(){
                 divM.innerHTML += "<div class='containerM darkerM'><p class='messageP' id='message2'>" + profiles[j].messages[i] + "</p></div>";  
             }
         }
-
         divM.innerHTML += "<div class='boxMessage'> <input type='text' id='" + profiles[j].divName + "Input'></input><button onclick=" + "sendMessage('"+ profiles[j].divName  +"')" +'>SEND</button></div>'
         div.innerHTML += "</div>";
     }
@@ -410,6 +413,7 @@ function Bluetooth() {
     else {
         document.getElementById('bluetoothImg').style.visibility = 'visible';
     }
+    triggerBluetooths(count % 2 == 0 ? false: true)
 }
 function blockWatch(){
     console.log('blackScreen');
@@ -433,6 +437,9 @@ function unlockWatch(){
 }
 
 function helpButton(){
+    if(block%2 == 1){
+        return;
+    }
     console.log(screenStack[screenStack.length - 1]);
     switch(screenStack[screenStack.length - 1]){
         case 'multimedia':
@@ -443,6 +450,9 @@ function helpButton(){
             break;
         case 'profileEdit':
             pushScreen('helpprofileedit');
+            break;
+        case 'bluetooth-setup':
+            location.href="#popup2";
             break;
         default:
             location.href="#popup1";
@@ -466,13 +476,22 @@ function validateBluetooth() {
 }
 
 function addPicture() {
-    pictureProfileArray.push({
+    pictureProfileArray.unshift({
         "image": document.getElementById('photofinal').src,
         "divName": "Vocês são terríveis nesta merda",
         "style": document.getElementById('photofinal').style.cssText
     })
+    document.getElementById('descript').value = '';
     createMenuPerfil();
     document.getElementById(screenStack[screenStack.length-1]).style.display= 'none'
     screenStack = []
     pushScreen('multimedia');
+}
+
+function updateValue(value) {
+    document.getElementById('mainScreen').style.opacity = value;
+}
+
+function triggerBluetooths(value) {
+    $(document.getElementsByClassName('bluetooth-btn')).prop('checked', value)
 }

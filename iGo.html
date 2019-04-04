@@ -41,11 +41,11 @@
                 <h1 style='margin-left: 4%;'><span id="spanhelp">Help:</span> multimedia icons</h1>
                 <table id="iconshelp" style='margin-left: 4%;'>
                     <tr>
-                        <td><img class="columnicon" src="icons/like1.png"></td>
+                        <td><img class="columnicon" src="icons/liked.svg"></td>
                         <td><p class="rowicon">Like</p></td>
                     </tr>
                     <tr>
-                        <td><img class="columnicon" src="icons/comment.png"/></td>
+                        <td><img class="columnicon" src="icons/chat.svg"/></td>
                         <td><p class="rowicon">Messages</p></td>
                     </tr>
                     <tr>
@@ -53,11 +53,11 @@
                         <td><p class="rowicon">Post photo</td>
                     </tr>
                     <tr>
-                        <td><img class="columnicon" src="icons/bell.png"/></td>
+                        <td><img class="columnicon" src="icons/bell.svg"/></td>
                         <td><p class="rowicon">Notifications</td>
                     </tr>
                     <tr>
-                        <td><img class="columnicon" src="icons/profile.png"/></td>
+                        <td><img class="columnicon" src="icons/profile.svg"/></td>
                         <td><p class="rowicon">Profile</td>
                     </tr>
                 </table>
@@ -90,10 +90,10 @@
                 </div>
                 <div class="navbar">
                     <img id='likeButton' src="icons/like.svg" onclick="likeAction(this)" />
-                    <img onclick="pushScreen('messageScreen')" src="icons/comment.png" />
+                    <img onclick="pushScreen('messageScreen')" src="icons/chat.svg" />
                     <img onclick="bluetoothIsOff()" src="icons/photo.svg" />
-                    <img onclick="pushScreen('notificationScreen')" src="icons/bell.png" />
-                    <img src="icons/profile.png" onclick="pushScreen('profile');fillProfile()" />
+                    <img onclick="pushScreen('notificationScreen')" src="icons/bell.svg" />
+                    <img src="icons/profile.svg" onclick="pushScreen('profile');fillProfile()" />
                 </div>
             </div>
             <div id='photopublish' style='display: none'>
@@ -152,7 +152,7 @@
                         </td>
                         <td id='tdSettingsR' class='tdSettings'>
                             <label class="switch">
-                                <input onclick="Bluetooth()" type="checkbox">
+                                <input onclick="Bluetooth()" type="checkbox" class="bluetooth-btn">
                                 <span class="slider round"></span>
                             </label>
                         </td>
@@ -182,7 +182,7 @@
                 </table>
                 <div class='navbarSettings'>
                     <img id='settingsImgL' src='icons/brightnesslow.png'>
-                    <input type="range" id="opacity-slider" min=".4" max="1" step=".01" value="1">
+                    <input type="range" id="opacity-slider" min=".4" max="1" step=".01" value="1" oninput="updateValue(this.value)">
                     <img id='settingsImgR' src='icons/brightnessmore.png'>
                 </div>
             </div>
@@ -261,8 +261,9 @@
             <div id="lockScreen" style='display: none'>
                 <div id='timeLockScreen'></div>
                 <div id='buttonsLock'>
-                    <img id='weatherIcon' src='icons/sunset.png'>	
+                    <img id='weatherIcon' src='icons/contrast.png'>	
                     <img id='temperatureIcon' src='icons/temperature.png'>
+                    <h3>30º</h3>
                     <img id='bellIcon' src='icons/bell1.png'>
                 </div>
                 <div id='fingerPrint'>
@@ -270,17 +271,16 @@
                 </div>
             </div>
             <div id='bluetooth-setup' style='display: none'>
-                <h2>
-                    Turn on bluetooth
-                </h2>
-                <div>
-                    <label class="switch">
-                        <input onclick="Bluetooth()" type="checkbox">
-                        <span class="slider round"></span>
-                    </label>
-                </div>
-                <div>
-                    <button onclick="validateBluetooth()">NEXT</button>
+                <h1 id='turnon'>Turn on bluetooth</h1>
+                <div style="display: flex; flex-direction: row">
+                    <img style="padding-left: 10%; padding-top: 5%" height="40%" width ="40%" src="icons/bluet2.png">
+                    <div>
+                        <label id='buttonblt' class="switch">
+                            <input onclick="Bluetooth()" type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                        <button id="nextbtn" onclick="validateBluetooth()"><b>NEXT</b></button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -312,11 +312,6 @@
     <div id="scrollWheel" ondblclick="blockWatch()"draggable="true" ondragstart="scrollWheelStart(event)" ondragend="scrollWheelFinish(event)"
         ondrag="scrollWheelMovement(event)"></div>
     </div>
-    <script type="text/javascript">
-        document.getElementById('opacity-slider').addEventListener('input', function (e) {
-            document.getElementById('mainScreen').style.opacity = this.value;
-        });
-    </script>
 </body>
 
 </html>
