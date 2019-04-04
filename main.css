@@ -377,6 +377,11 @@
     border-top: none;
     padding: 3%;
 }
+
+#rowone:active {
+    background-color: #9acae3;
+}
+
 #messages{
     width:100%;
 }
@@ -393,6 +398,8 @@
 }
 
 #messatext {
+    margin-top: 8%;
+    margin-bottom: 2%;
     padding-left: 5%;
 }
 
@@ -418,16 +425,22 @@
 }
 
 #notificationmessage {
+    font-weight: normal;
     margin-top: 8%;
 }
 
 #messagename {
+    font-weight: normal;
     margin-top: 8%;
 }
 
 .row {
    border-top: 1px solid black; 
    padding: 3%;
+}
+
+.row:active{
+    background-color: #9acae3;
 }
 
 /* The switch - the box around the slider */
@@ -521,7 +534,8 @@ input:checked + .slider:before {
     border-radius: 100%;
     float: right;
     margin-top: 10%;
-    margin-right: 8%;
+    padding: 1%;
+    margin-right: 6%;
 }
 
 #profileName {
@@ -545,7 +559,7 @@ input:checked + .slider:before {
     font-size: 130%;
     margin-right: 5%;
     width: 90%;
-    background: #a6acaf     ;
+    background: #77a8a8     ;
     padding: 2% 4%;
     border-radius: 2px;
 }
@@ -568,9 +582,8 @@ input:checked + .slider:before {
 }
 
 .mic:active{
-    border: 2px solid red;
+    border: 2px solid #B22222;
 }
-
 
 .mic {
     float: right;

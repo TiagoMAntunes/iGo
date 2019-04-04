@@ -260,9 +260,9 @@ function updatePicture() {
 
 function createNotifications() {
     let profiletable = document.getElementById("notifications");
-    profiletable.innerHTML += "<tr><td onclick='goToPop("+ Math.floor(Math.random() * 4)+ ");' id='rowone'><img class='notifpic' src=" + profiles[0].photo + "><p id='notificationmessage'>" + profiles[0].name + " gostou da sua foto<p></td></tr>";
+    profiletable.innerHTML += "<tr><td onclick='goToPop("+ Math.floor(Math.random() * 4)+ ");' id='rowone'><img class='notifpic' src=" + profiles[0].photo + "><h4 id='notificationmessage'>" + profiles[0].name + " gostou da sua foto</h4></td></tr>";
     for (i = 1; i < profiles.length; i++) {
-        profiletable.innerHTML += "<tr><td onclick= 'goToPop("+ Math.floor(Math.random() * 4)+ ");' class='row'><img class='notifpic' src=" + profiles[i].photo + "><p id='notificationmessage'>" + profiles[i].name + " gostou da sua foto<p></td></tr>";
+        profiletable.innerHTML += "<tr><td onclick= 'goToPop("+ Math.floor(Math.random() * 4)+ ");' class='row'><img class='notifpic' src=" + profiles[i].photo + "><h4 id='notificationmessage'>" + profiles[i].name + " gostou da sua foto</h4></td></tr>";
     }
 }
 function goToPop(i){
@@ -277,9 +277,9 @@ function createNotificationsPops(){
 }
 function createMessages() {
     let profiletable = document.getElementById("messages");
-    profiletable.innerHTML += "<tr onclick="+ '"' + "pushScreen('" + profiles[0].divName + "');" + '"' + "><td id='rowone'><img  class='messagepic' src=" + profiles[0].photo + "><p id='messagename'>" + profiles[0].name + "<p></td></tr>";
+    profiletable.innerHTML += "<tr onclick="+ '"' + "pushScreen('" + profiles[0].divName + "');" + '"' + "><td id='rowone'><img  class='messagepic' src=" + profiles[0].photo + "><h3 id='messagename'>" + profiles[0].name + "</h3></td></tr>";
     for(i = 1; i< profiles.length; i++){
-        profiletable.innerHTML += "<tr onclick="+ '"' + "pushScreen('" + profiles[i].divName + "');" + '"' + "><td class='row'><img class='messagepic' src=" + profiles[i].photo + "><p id='messagename'>" + profiles[i].name + "<p></td></tr>";
+        profiletable.innerHTML += "<tr onclick="+ '"' + "pushScreen('" + profiles[i].divName + "');" + '"' + "><td class='row'><img class='messagepic' src=" + profiles[i].photo + "><h3 id='messagename'>" + profiles[i].name + "</h3></td></tr>";
     }
 }
 
