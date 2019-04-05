@@ -86,6 +86,16 @@ var picture_index = 0;
 var count = 0;
 var numberPostFtg = 0;
 var block = 0;
+
+var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition
+var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList
+var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent
+var recognition = new webkitSpeechRecognition()
+    recognition.continuous = true;
+    recognition.interimResults = true;
+    recognition.lang = 'en-US';
+    recognition.maxAlternatives = 1;
+
 function startup() {
     if (localStorage.getItem("isSet") == undefined) {
         localStorage.setItem("horizontalPx", 1920);
@@ -100,8 +110,35 @@ function startup() {
     createNotificationsPops();
     setupMultimediaScreen();
     picturesSetup();
-    blockWatch(); blockWatch()
+    blockWatch(); blockWatch();
+}
+
+recognition.onstart = function() {
+    //cenas que acontecem qd a pessoa carrega no botão vermelho
+    console.log('Recording started')
+}
+
+recognition.onend = function() {
+    //acabou
+    console.log('Recording ended')
+}
+
+recognition.onresult = function(event) {
+    if (typeof(event.results) === 'undefined') { //Something is wrong…
+        recognition.stop();
+        return;
+    }
     
+    let content = ''
+    for (var i = event.resultIndex; i < event.results.length; ++i) {      
+        content += event.results[i][0].transcript
+        if (event.results[i].isFinal) { //Final results
+            console.log("final results: " + event.results[i][0].transcript);   //Of course – here is the place to do useful things with the results.
+        } else {   //i.e. interim...
+            console.log("interim results: " + event.results[i][0].transcript);  //You can use these results to give the user near real time experience.
+        } 
+    } //end for loop
+    document.getElementById('descript').value = content;
 }
 
 function setRealSize() {
