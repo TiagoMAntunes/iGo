@@ -96,7 +96,6 @@ function startup() {
     setRealSize();
     createNotifications();
     createMessages();
-    createMenuMessage();
     createMenuPerfil();
     createNotificationsPops();
     setupMultimediaScreen();
@@ -291,52 +290,38 @@ function createNotificationsPops(){
 }
 function createMessages() {
     let profiletable = document.getElementById("messages");
-    profiletable.innerHTML += "<tr onclick="+ '"' + "pushScreen('" + profiles[0].divName + "');" + '"' + "><td id='rowone'><img  class='messagepic' src=" + profiles[0].photo + "><h3 id='messagename'>" + profiles[0].name + "</h3></td></tr>";
-    for(i = 1; i< profiles.length; i++){
-        profiletable.innerHTML += "<tr onclick="+ '"' + "pushScreen('" + profiles[i].divName + "');" + '"' + "><td class='row'><img class='messagepic' src=" + profiles[i].photo + "><h3 id='messagename'>" + profiles[i].name + "</h3></td></tr>";
+    //profiletable.innerHTML += "<tr onclick="+ '"' + "pushScreen('" + profiles[0].divName + "');" + '"' + "><td id='rowone'><img  class='messagepic' src=" + profiles[0].photo + "><h3 id='messagename'>" + profiles[0].name + "</h3></td></tr>";
+    for(i = 0; i< profiles.length; i++){
+        profiletable.innerHTML += "<tr onclick="+ '"' + 'createMenuMessage(' + i + ");pushScreen('messageBox');" + '"' + "><td class='row'><img class='messagepic' src=" + profiles[i].photo + "><h3 id='messagename'>" + profiles[i].name + "</h3></td></tr>";
     }
 }
 
-function createMenuMessage(){
-    let div = document.getElementById('mainScreen');
-    content1='';
-    content2='';
-    content3='';
-    for(j = 0; j < profiles.length; j++){
-        div.innerHTML += "<div class='messageBox' style='display:none' id='" + profiles[j].divName + "'>";
-        let divM = document.getElementById(profiles[j].divName); 
-        divM.innerHTML += "<h1 id='messaperson'>" + profiles[j].name + "</h2>";
-        for(i = 0, k = 0; i < profiles[j].messages.length || k < profiles[j].responses.length; i++, k++){
-            if(profiles[j].responses[k]!= null){
-                divM.innerHTML += "<div class='containerM lighterM'><p class='messageP' id='message1'>" + profiles[j].responses[k] + "</p></div>";
-            }
-            if(profiles[j].messages[i]!= null){
-                divM.innerHTML += "<div class='containerM darkerM'><p class='messageP' id='message2'>" + profiles[j].messages[i] + "</p></div>";  
-            }
+var currentUser = 0;
+
+function createMenuMessage(index){
+    currentUser = index;
+    let messages = '';
+    messages += "<h1 id='messaperson'>" + profiles[index].name + "</h1>";
+    for(i = 0, k = 0; i < profiles[index].messages.length || k < profiles[index].responses.length; i++, k++){
+        if(profiles[index].responses[k]!= null){
+            messages += "<div class='containerM lighterM'><p class='messageP' id='message1'>" + profiles[index].responses[k] + "</p></div>";
         }
-        divM.innerHTML += "<div class='boxMessage'> <input type='text' id='" + profiles[j].divName + "Input' class='sendmessage'></input><button onclick=" + "sendMessage('"+ profiles[j].divName  +"')" +'>SEND</button></div>'
-        div.innerHTML += "</div>";
+        if(profiles[index].messages[i]!= null){
+            messages += "<div class='containerM darkerM'><p class='messageP' id='message2'>" + profiles[index].messages[i] + "</p></div>";  
+        }
     }
+    messages += "<div class='boxMessage'> <input type='text' id='" + profiles[index].divName + "Input' class='sendmessage'></input><button onclick=" + "sendMessage('"+ profiles[index].divName  +"')" +'>SEND</button></div>'
+    document.getElementById('messageBox').innerHTML = messages;
 }
 
 function resetMenuMessage(){
-    for(i = 0; i < profiles.length; i++){
-        document.getElementById(profiles[i].divName).innerHTML = '';   
-    }
-
+    document.getElementById('messageBox').innerHTML = ''
 }
 
 function sendMessage(divName) {
-    for(i = 0; i < profiles.length; i++){
-        if(profiles[i].divName == divName){
-            profiles[i].messages.push(document.getElementById(divName + 'Input').value);
-            console.log(document.getElementById(divName + 'Input').value);
-            for(j=0;j<profiles[i].messages.length;j++)
-                console.log(profiles[i].messages[j]);       
-       }
-    }
-    resetMenuMessage();
-    createMenuMessage();
+        profiles[currentUser].messages.push(document.getElementById(divName + 'Input').value);
+        resetMenuMessage();
+        createMenuMessage(currentUser);  
 }
 
 function createMenuPerfil(){
