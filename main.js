@@ -84,6 +84,7 @@ var pictureProfileArray = [{
 var screenStack = [];
 var picture_index = 0;
 var count = 0;
+var numberPostFtg = 0;
 var block = 0;
 function startup() {
     if (localStorage.getItem("isSet") == undefined) {
@@ -273,13 +274,13 @@ function updatePicture() {
 
 function createNotifications() {
     let profiletable = document.getElementById("notifications");
-    profiletable.innerHTML += "<tr><td onclick='goToPop("+ Math.floor(Math.random() * 4)+ ");' id='rowone'><img class='notifpic' src=" + profiles[0].photo + "><h4 id='notificationmessage'>" + profiles[0].name + " gostou da sua foto</h4></td></tr>";
+    profiletable.innerHTML += "<tr><td onclick='goToPop("+ Math.floor(Math.random() * 4 ) + ");' id='rowone'><img class='notifpic' src=" + profiles[0].photo + "><h4 id='notificationmessage'>" + profiles[0].name + " gostou da sua foto</h4></td></tr>";
     for (i = 1; i < profiles.length; i++) {
         profiletable.innerHTML += "<tr><td onclick= 'goToPop("+ Math.floor(Math.random() * 4)+ ");' class='row'><img class='notifpic' src=" + profiles[i].photo + "><h4 id='notificationmessage'>" + profiles[i].name + " gostou da sua foto</h4></td></tr>";
     }
 }
 function goToPop(i){
-    location.href = '#' + pictureProfileArray[i].divName;
+    location.href = '#' + pictureProfileArray[i+numberPostFtg].divName;
 }
 function createNotificationsPops(){
     let profiletable = document.getElementById("watchBorder");   
@@ -481,6 +482,7 @@ function addPicture() {
         "divName": "Vocês são terríveis nesta merda",
         "style": document.getElementById('photofinal').style.cssText
     })
+    numberPostFtg++;
     document.getElementById('descript').value = '';
     createMenuPerfil();
     document.getElementById(screenStack[screenStack.length-1]).style.display= 'none'
