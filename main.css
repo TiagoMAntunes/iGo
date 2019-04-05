@@ -886,7 +886,7 @@ input:checked + .slider:before {
     float:  right;
     clear: right;
 }
-.messageBox{
+#messageBox{
     position: relative;
     width:100%;
     height: 94%;
