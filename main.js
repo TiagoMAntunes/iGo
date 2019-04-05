@@ -314,7 +314,7 @@ function createMenuMessage(){
                 divM.innerHTML += "<div class='containerM darkerM'><p class='messageP' id='message2'>" + profiles[j].messages[i] + "</p></div>";  
             }
         }
-        divM.innerHTML += "<div class='boxMessage'> <input type='text' id='" + profiles[j].divName + "Input'></input><button onclick=" + "sendMessage('"+ profiles[j].divName  +"')" +'>SEND</button></div>'
+        divM.innerHTML += "<div class='boxMessage'> <input type='text' id='" + profiles[j].divName + "Input' class='sendmessage'></input><button onclick=" + "sendMessage('"+ profiles[j].divName  +"')" +'>SEND</button></div>'
         div.innerHTML += "</div>";
     }
 }

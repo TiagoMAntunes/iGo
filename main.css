@@ -841,6 +841,13 @@ input:checked + .slider:before {
     color: #B22222;
   }
   
+
+  .sendmessage {
+    margin-top: 5%;
+    padding-top: 5%;
+    padding-left: 30%;
+  }
+
   .popup .content {
     max-height: 30%;
     overflow: auto;
