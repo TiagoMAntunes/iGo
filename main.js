@@ -24,33 +24,39 @@ var profiles = [{
     "photo": "icons/prof1.jpg",
     "name": "Shrek",
     "divName" :"shrekscreenmessage",
-    "messages" :["Olá Gato das botas!", "Olá Sherk", "Tudo bem?","Sim e contigo?","Também","Como vai o projeto de IPM?","Bem e o teu?","Também!"]
+    "responses" :["Olá Gato das botas!", "Tudo bem?","Também","Bem e o teu?"],
+    "messages": [ "Olá Sherk", "Sim e contigo?", "Como vai o projeto de IPM?","Também!"]
 }, {
     "photo": "icons/simb1.jpg",
     "name": "Bart",
     "divName" :"bartscreenmessage",
-    "messages" :["Ola Gato","Oi Bart","Tiraste apontamentos das aulas de IPM?", "Sim, amanha empresto-te", "Obrigado"]
+    "responses" : ["Ola Gato", "Tiraste apontamentos das aulas de IPM?", "Obrigado"],
+    "messages" :["Oi Bart","Sim, amanha empresto-te"]
 }, {
     "photo": "icons/simb2.jpeg",
     "name": "Homer",
     "divName" :"homerscreenmessage",
-    "messages" :["Ola","Ola Homer","Queres ir beber uma jola?", "Sim!!!", "Vem ter ao MOE's amanha as 15","Ate amanha"]
+    "responses" :["Ola", "Queres ir beber uma jola?","Vem ter ao MOE's amanha as 15"],
+    "messages" :["Ola Homer", "Sim!!!", "Ate amanha"]
 }, {
     "photo": "icons/toy1.jpg",
     "name": "Woody",
     "divName" :"woodyscreenmessage",
-    "messages" :["Ola Gato das botas","Oi Woody","Preciso da tua ajuda tenho uma cobra nas botas", "A caminho!!!"]
+    "responses":["Ola Gato das botas", "Preciso da tua ajuda tenho uma cobra nas botas"],
+    "messages" :["Oi Woody", "A caminho!!!"]
 }, {
     "photo": "icons/toy2.png",
     "name": "Buzz",
     "divName" :"buzzscreenmessage",
     "description": "Para o infinito e mais alem",
-    "messages" :["Ola camarada","Oi Buzz","Vamos conquistar a galaxia?", "Dobriga.","PARA O INFINTIO E MAIS ALEM!!!"]
+    "responses" :["Ola camarada", "Vamos conquistar a galaxia?","PARA O INFINTIO E MAIS ALEM!!!"],
+    "messages" :["Oi Buzz", "Dobriga."]
 }, {
     "photo": "icons/prof5.png",
     "name": "Dragon",
     "divName" :"dragonscreenmessage",
-    "messages" :["Ola Gato das botas","Oi Dragon","Queres vir ver os teus sobrinho?", "Sim, posso amanha as 18!", "Combinado!!"]
+    "responses" :["Ola Gato das botas","Queres vir ver os teus sobrinho?","Combinado!!"],
+    "messages" :["Oi Dragon", "Sim, posso amanha as 18!"]
 }]
 
 var mainprofile = [{
@@ -89,7 +95,7 @@ function startup() {
     setRealSize();
     createNotifications();
     createMessages();
-    creatateMenuMessage();
+    createMenuMessage();
     createMenuPerfil();
     createNotificationsPops();
     setupMultimediaScreen();
@@ -290,22 +296,46 @@ function createMessages() {
     }
 }
 
-function creatateMenuMessage(){
+function createMenuMessage(){
     let div = document.getElementById('mainScreen');
-     for(j = 0; j < profiles.length; j++){
+    content1='';
+    content2='';
+    content3='';
+    for(j = 0; j < profiles.length; j++){
         div.innerHTML += "<div class='messageBox' style='display:none' id='" + profiles[j].divName + "'>";
         let divM = document.getElementById(profiles[j].divName); 
         divM.innerHTML += "<h1 id='messaperson'>" + profiles[j].name + "</h2>";
-        for(i = 0; i < profiles[j].messages.length; i++){
-            if(i%2 ==0){
-                divM.innerHTML += "<div class='containerM lighterM'><p class='messageP' id='message1'>" + profiles[j].messages[i] + "</p></div>";
+        for(i = 0, k = 0; i < profiles[j].messages.length || k < profiles[j].responses.length; i++, k++){
+            if(profiles[j].responses[k]!= null){
+                divM.innerHTML += "<div class='containerM lighterM'><p class='messageP' id='message1'>" + profiles[j].responses[k] + "</p></div>";
             }
-            else{
+            if(profiles[j].messages[i]!= null){
                 divM.innerHTML += "<div class='containerM darkerM'><p class='messageP' id='message2'>" + profiles[j].messages[i] + "</p></div>";  
             }
         }
+        divM.innerHTML += "<div class='boxMessage'> <input type='text' id='" + profiles[j].divName + "Input'></input><button onclick=" + "sendMessage('"+ profiles[j].divName  +"')" +'>SEND</button></div>'
         div.innerHTML += "</div>";
     }
+}
+
+function resetMenuMessage(){
+    for(i = 0; i < profiles.length; i++){
+        document.getElementById(profiles[i].divName).innerHTML = '';   
+    }
+
+}
+
+function sendMessage(divName) {
+    for(i = 0; i < profiles.length; i++){
+        if(profiles[i].divName == divName){
+            profiles[i].messages.push(document.getElementById(divName + 'Input').value);
+            console.log(document.getElementById(divName + 'Input').value);
+            for(j=0;j<profiles[i].messages.length;j++)
+                console.log(profiles[i].messages[j]);       
+       }
+    }
+    resetMenuMessage();
+    createMenuMessage();
 }
 
 function createMenuPerfil(){
