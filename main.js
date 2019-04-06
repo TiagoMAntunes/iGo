@@ -290,8 +290,8 @@ function createNotificationsPops(){
 }
 function createMessages() {
     let profiletable = document.getElementById("messages");
-    //profiletable.innerHTML += "<tr onclick="+ '"' + "pushScreen('" + profiles[0].divName + "');" + '"' + "><td id='rowone'><img  class='messagepic' src=" + profiles[0].photo + "><h3 id='messagename'>" + profiles[0].name + "</h3></td></tr>";
-    for(i = 0; i< profiles.length; i++){
+    profiletable.innerHTML += "<tr onclick="+ '"' + 'createMenuMessage(' + 0 + ");pushScreen('messageBox');" + '"' + "><td id='rowone'><img class='messagepic' src=" + profiles[0].photo + "><h3 id='messagename'>" + profiles[0].name + "</h3></td></tr>";
+    for(i = 1; i< profiles.length; i++){
         profiletable.innerHTML += "<tr onclick="+ '"' + 'createMenuMessage(' + i + ");pushScreen('messageBox');" + '"' + "><td class='row'><img class='messagepic' src=" + profiles[i].photo + "><h3 id='messagename'>" + profiles[i].name + "</h3></td></tr>";
     }
 }
@@ -310,7 +310,7 @@ function createMenuMessage(index){
             messages += "<div class='containerM darkerM'><p class='messageP' id='message2'>" + profiles[index].messages[i] + "</p></div>";  
         }
     }
-    messages += "<div class='boxMessage'> <input type='text' id='" + profiles[index].divName + "Input' class='sendmessage'></input><button onclick=" + "sendMessage('"+ profiles[index].divName  +"')" +'>SEND</button></div>'
+    messages += "<div class='boxMessage'><img id='micmessage' src='icons/micon.png'><input type='text' id='" + profiles[index].divName + "Input' class='sendmessage'></input><img src='icons/send.png' id='sendimage' onclick=" + "sendMessage('"+ profiles[index].divName  +"')" +'></div>'
     document.getElementById('messageBox').innerHTML = messages;
 }
 
