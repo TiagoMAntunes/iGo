@@ -683,19 +683,21 @@ input:checked + .slider:before {
 
 #tableSettings{
     margin-left: 2%;
-    width: 100%;
+    width: 96%;
     height: 50%;
 }
 #tdSettingsL{
     padding-top: 5%;
     width: 80%;
-    height: 33%;
+    height: 25%;
+    left: 0%;
 }
 
 #tdSettingsR{
     right:0%;
     width: 20%;
     height: 33%;
+    margin-right: 5%;
 }
 #definicoes td{
     border-bottom: solid 1px #ccc;
