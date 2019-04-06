@@ -442,6 +442,12 @@ function blockWatch(){
     console.log('blackScreen');
     block++;
     localStorage.setItem('locked', true);
+    if(screenStack[screenStack.length-1] == 'lockScreen'){
+        screenStack.pop();
+        document.getElementById('lockScreen').style.display = 'none';
+        pushScreen('blackScreen');
+        return;
+    }
     if(block%2 == 1){
         pushScreen('blackScreen');
         document.getElementById('top-bar').style.display = 'none';
@@ -467,6 +473,11 @@ function helpButton(){
     switch(screenStack[screenStack.length - 1]){
         case 'multimedia':
             pushScreen('helpmultimediascreen');
+            break;
+        case 'lockScreen':
+        case 'helpmultimediascreen':
+        case 'helpphotosubmit':
+        case 'helpprofileedit' :
             break;
         case 'photoSubmit':
             pushScreen('helpphotosubmit');
