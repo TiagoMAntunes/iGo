@@ -382,6 +382,11 @@ function true_modulo(val, n) {
     return ((val % n) + n) % n;
 }
 
+function resetFilters() {
+  document.getElementById("photoToEdit").style.filter = '';
+  document.getElementById("photofinal").style.filter = ''
+}
+
 function nextPicture() {
     picture_index = true_modulo(picture_index + 1, multimedia_storage.length);
     updatePicture();
@@ -521,6 +526,7 @@ function addPicture() {
     document.getElementById(screenStack[screenStack.length-1]).style.display= 'none'
     screenStack = []
     pushScreen('multimedia');
+    resetFilters();
 }
 
 function updateValue(value) {
