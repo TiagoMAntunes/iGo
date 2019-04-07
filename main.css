@@ -191,6 +191,7 @@
 }
 
 #tablePhotos {
+    z-index: -1;
     position: relative;
 }
 
@@ -430,12 +431,17 @@
 }
 
 #messatext {
-    margin-top: 8%;
+    z-index: 1;
+    margin-top: 0%;
+    padding-top: 8%;
     margin-bottom: 2%;
     padding-left: 5%;
+    background-color: white;
 }
 
 #messaperson {
+    z-index: 1;
+    line-height: 0%;
     padding-left: 5%;
 }
 
@@ -445,6 +451,7 @@
 }
 
 #messageList {
+    z-index: -1;
     position: relative;
 }
 
@@ -453,14 +460,14 @@
 }
 
 #micmessage {
-    padding: 2%;
+    padding: 1%;
     margin-top: 8%;
     width: 10%;
     height: 10%;
     position: relative;
     bottom: 0%;
     border-top: 1px solid black;
-    border-bottom: 1px solid black;
+
 }
 
 #micmessage:active {
@@ -830,7 +837,6 @@ input:checked + .slider:before {
 }
 
 
-
 .overlay {
     position: fixed;
     top: 0;
@@ -938,6 +944,7 @@ input:checked + .slider:before {
   background-color: #f1f1f1;
   border-radius: 4%;
   position: relative;
+  z-index: -1;
 }
 
 .lighterM {
@@ -982,10 +989,32 @@ input:checked + .slider:before {
     overflow-y: hidden;
 }
 
+
+#photoLabel {
+    z-index: 1;
+    margin-top: 0%;
+    padding-top: 6%;
+    margin-bottom: 0%;
+    padding-bottom: 4%;
+    padding-left: 5%;
+    background-color: white;
+}
+
+#box {
+    z-index: 2;
+}
+
+
 #messageContent {
     position: relative;
 }
 
+#zindex {
+    padding-bottom: 3%;
+    padding-top: 1%;
+    z-index: 1;
+    background-color: white;
+}
 
 /*margin-right: 2%;
 margin-bottom: 2%;

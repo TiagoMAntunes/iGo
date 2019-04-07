@@ -437,7 +437,7 @@ var currentUser = 0;
 function createMenuMessage(index){
     currentUser = index;
     let messages = '';
-    messages += "<h1 id='messaperson'>" + profiles[index].name + "</h1><div id='messageContent'>";
+    messages += "<div id='zindex'><h1 id='messaperson'>" + profiles[index].name + "</h1></div><div id='messageContent'>";
     for(i = 0, k = 0; i < profiles[index].messages.length || k < profiles[index].responses.length; i++, k++){
         if(profiles[index].responses[k]!= null){
             messages += "<div class='containerM lighterM'><p class='messageP' id='message1'>" + profiles[index].responses[k] + "</p></div>";
