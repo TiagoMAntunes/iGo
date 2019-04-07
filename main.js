@@ -86,6 +86,7 @@ var picture_index = 0;
 var count = 0;
 var mic1 = 0, mic2 = 2, mic3 = 0, mic4 = 0;
 var mics = [mic1, mic2, mic3, mic4];
+var micsid = ['#mic1', '#mic2', '#mic3', '#micmessage'];
 var numberPostFtg = 0;
 var block = 0;
 
@@ -671,6 +672,15 @@ function triggerBluetooths(value) {
 
 function microphoneOn(inputname, value, numbermic){
     if(!mics[numbermic-1]){
+        for(i = 0; i < mics.length; i++){
+            if(mics[i] == 1){
+                console.log(i);
+                mics[i] = 0;
+                console.log(micsid[i]);
+                let mic = String(micsid[i]);
+                document.getElementById(mic).style.backgroundColor = "white";
+            }
+        }
         console.log(inputname);
         document.getElementById(inputname).focus();
         document.getElementById(value).style.backgroundColor = "#E84855";
