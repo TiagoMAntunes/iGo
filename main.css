@@ -10,6 +10,7 @@
     transform: translate(-50%, -50%);    
     background-color: white;
     border-radius: 1.5%;
+    overflow-y: hidden;
 }
 #bluetoothImg{
     visibility: hidden;
@@ -121,10 +122,13 @@
 }
 
 #top-bar {
-    margin-top: 1%;
+    position: relative;
+    padding-top: 1%;
     width: 100%;
     height: 5%;
     text-align: center;
+    z-index: 99;
+    background-color: white;
 }
 
 #top-bar img {
@@ -191,7 +195,7 @@
 }
 
 #tablePhotos {
-    z-index: -1;
+    
     position: relative;
 }
 
@@ -281,7 +285,7 @@
 #photopublish {
     height: 95%;
     width: 100%;
-    overflow-y: hidden;
+    position: relative;
 }
 
 #photodescript {
@@ -375,9 +379,8 @@
     margin-top: 24%;
 }
 #profile {
-  height: 95%;
   width: 100%;
-  overflow-y: hidden;
+  position: relative;
 }
 
 #comment {
@@ -431,7 +434,7 @@
 }
 
 #messatext {
-    z-index: 1;
+    
     margin-top: 0%;
     padding-top: 8%;
     margin-bottom: 2%;
@@ -440,23 +443,23 @@
 }
 
 #messaperson {
-    z-index: 1;
+    
     line-height: 0%;
     padding-left: 5%;
 }
 
 #messageScreen {
-    overflow-y: hidden;
     height: 94%;
+    position: relative;
 }
 
 #messageList {
-    z-index: -1;
+    
     position: relative;
 }
 
 #notificationsList {
-    position: relative
+    position: relative;
 }
 
 #micmessage {
@@ -489,7 +492,7 @@
 
 
 #notificationScreen {
-    overflow-y: hidden;
+    position: relative;
     height: 94%;
 }
 
@@ -576,11 +579,6 @@ input:checked + .slider:before {
   
 .slider.round:before {
     border-radius: 50%;
-}
-
-#profile {
-    height: 95%;
-    width: 100%;
 }
 
 #profile-top {
@@ -944,7 +942,7 @@ input:checked + .slider:before {
   background-color: #f1f1f1;
   border-radius: 4%;
   position: relative;
-  z-index: -1;
+  
 }
 
 .lighterM {
@@ -991,7 +989,7 @@ input:checked + .slider:before {
 
 
 #photoLabel {
-    z-index: 1;
+    
     margin-top: 0%;
     padding-top: 6%;
     margin-bottom: 0%;
@@ -1001,7 +999,7 @@ input:checked + .slider:before {
 }
 
 #box {
-    z-index: 2;
+    
 }
 
 
@@ -1012,7 +1010,7 @@ input:checked + .slider:before {
 #zindex {
     padding-bottom: 3%;
     padding-top: 1%;
-    z-index: 1;
+    
     background-color: white;
 }
 

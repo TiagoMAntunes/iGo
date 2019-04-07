@@ -274,63 +274,89 @@ function pushScreen(screen) {
 var dragInfo = undefined
 
 function scrollWheelPhotos(event) {
-    if (document.getElementById('tablePhotos').style.top == '')
-        document.getElementById('tablePhotos').style.top = '0px';
+    if (document.getElementById('photopublish').style.top == '')
+        document.getElementById('photopublish').style.top = '0px';
     let direction = (event.clientY - dragInfo.clientY)
 
     let i = 0;
     if (direction > 0) {
-        i = 10;
+        i = 5;
     } else if (direction < 0) {
-        i = -10;
+        i = -5;
     }
 
-    let val = parseInt(document.getElementById('tablePhotos').style.top) + i;
-    let aux = -($(document.getElementById('tablePhotos')).height() - $(document.getElementById('photopublish')).height() * 0.90 + $(document.getElementById('photoLabel')).height());
-    console.log(val + ' vs ' + aux)
-    if (!(val > 0 || val <= aux))
-        document.getElementById('tablePhotos').style.top = val;
+    let val = parseInt(document.getElementById('photopublish').style.top) + i;
+    let aux = -($(document.getElementById('tablePhotos')).outerHeight() + $(document.getElementById('photoLabel')).outerHeight() - 
+                ($(document.getElementById('mainScreen')).outerHeight() - $(document.getElementById('top-bar')).outerHeight()))
+
+    if (val > 0) val = 0
+    if (val < aux) val = aux
+    document.getElementById('photopublish').style.top = val;
+    console.log(val)
 }
 
 function scrollWheelMessages(event) {
-    if (document.getElementById('messageList').style.top == '')
-        document.getElementById('messageList').style.top = '0px';
+    if (document.getElementById('messageScreen').style.top == '')
+        document.getElementById('messageScreen').style.top = '0px';
     let direction = (event.clientY - dragInfo.clientY)
-
     let i = 0;
     if (direction > 0) {
-        i = 10;
+        i = 5;
     } else if (direction < 0) {
-        i = -10;
+        i = -5;
     }
 
-    let val = parseInt(document.getElementById('messageList').style.top) + i;
-    let aux = -($(document.getElementById('messageList')).height() - $(document.getElementById('messageScreen')).height() * 0.90 + $(document.getElementById('messatext')).height());
-    console.log(val + ' vs ' + aux)
-    if (!(val > 0 || val <= aux))
-        document.getElementById('messageList').style.top = val;
+    let val = parseInt(document.getElementById('messageScreen').style.top) + i;
+    let aux = -($(document.getElementById('messageList')).outerHeight() + $(document.getElementById('messatext')).outerHeight() - 
+                ($(document.getElementById('mainScreen')).outerHeight() - $(document.getElementById('top-bar')).outerHeight()))
+    
+    if (val > 0) val = 0
+    if (val < aux) val = aux
+    document.getElementById('messageScreen').style.top = val;
 }
 
 function scrollWheelNotifications(event) {
-    if (document.getElementById('notificationsList').style.top == '')
-        document.getElementById('notificationsList').style.top = '0px';
+    if (document.getElementById('notificationScreen').style.top == '')
+        document.getElementById('notificationScreen').style.top = '0px';
     let direction = (event.clientY - dragInfo.clientY)
 
     let i = 0;
     if (direction > 0) {
-        i = 10;
+        i = 5;
     } else if (direction < 0) {
-        i = -10;
+        i = -5;
     }
 
-    let val = parseInt(document.getElementById('notificationsList').style.top) + i;
-    let aux = -($(document.getElementById('notificationsList')).height() - $(document.getElementById('notificationScreen')).height() * 0.90 + $(document.getElementById('notiftext')).height());
-    console.log(val + ' vs ' + aux)
-    if (!(val > 0 || val <= aux))
-        document.getElementById('notificationsList').style.top = val;
+    let val = parseInt(document.getElementById('notificationScreen').style.top) + i;
+    let aux = -($(document.getElementById('notificationsList')).height() + $(document.getElementById('notiftext')).height() - 
+                ($(document.getElementById('notificationScreen')).height() - $(document.getElementById('top-bar')).height()))
+    
+    if (val > 0) val = 0
+    if (val < aux) val = aux
+    document.getElementById('notificationScreen').style.top = val;
 }
 
 function scrollWheelProfile(event) {
+    if (document.getElementById('profile').style.top == '')
+        document.getElementById('profile').style.top = '0px';
+    let direction = (event.clientY - dragInfo.clientY)
+
+    let i = 0;
+    if (direction > 0) {
+        i = 5;
+    } else if (direction < 0) {
+        i = -5;
+    }
+
+    let val = parseInt(document.getElementById('profile').style.top) + i;
+    let aux = -($(document.getElementById('picturelist')).outerHeight() + $(document.getElementById('profile-top')).outerHeight() - 
+                ($(document.getElementById('mainScreen')).outerHeight() - $(document.getElementById('top-bar')).outerHeight()))
+    console.log(val)
+    console.log(aux)
+    if (val > 0) val = 0
+    if (val < aux) val = aux
+    document.getElementById('profile').style.top = val;
+    /*
     if (document.getElementById('picturelist').style.top == '')
         document.getElementById('picturelist').style.top = '0px';
     let direction = (event.clientY - dragInfo.clientY)
@@ -346,7 +372,7 @@ function scrollWheelProfile(event) {
     let aux = -($(document.getElementById('picturelist')).height() - $(document.getElementById('profile')).height() * 0.90 + $(document.getElementById('profile-top')).height());
     console.log(val + ' vs ' + aux)
     if (!(val > 0 || val <= aux))
-        document.getElementById('picturelist').style.top = val;
+        document.getElementById('picturelist').style.top = val;*/
 }
 
 function scrollWheelMessage(event) {
@@ -371,7 +397,7 @@ function scrollWheelMessage(event) {
 }
 
 function scrollWheelMovement(event) {
-    if (dragInfo == undefined)
+    if (dragInfo == undefined || event.screenX === 0 && event.screenY === 0)
         return;
     switch(screenStack[screenStack.length - 1]) {
         case 'photopublish':
@@ -398,6 +424,7 @@ function scrollWheelStart(event) {
 
 function scrollWheelFinish(event) {
     dragInfo = undefined;
+    console.log('done')
 }
 
 function updatePicture() {
@@ -408,11 +435,12 @@ function updatePicture() {
 
 
 function createNotifications() {
-    let profiletable = document.getElementById("notifications");
-    profiletable.innerHTML += "<tr><td onclick='goToPop("+ Math.floor(Math.random() * 4 ) + ");' id='rowone'><img class='notifpic' src=" + profiles[0].photo + "><h4 id='notificationmessage'>" + profiles[0].name + " gostou da sua foto</h4></td></tr>";
+    let profiletable = '';
+    profiletable += "<tr><td onclick='goToPop("+ Math.floor(Math.random() * 4 ) + ");' id='rowone'><img class='notifpic' src=" + profiles[0].photo + "><h4 id='notificationmessage'>" + profiles[0].name + " gostou da sua foto</h4></td></tr>";
     for (i = 1; i < profiles.length; i++) {
-        profiletable.innerHTML += "<tr><td onclick= 'goToPop("+ Math.floor(Math.random() * 4)+ ");' class='row'><img class='notifpic' src=" + profiles[i].photo + "><h4 id='notificationmessage'>" + profiles[i].name + " gostou da sua foto</h4></td></tr>";
+        profiletable += "<tr><td onclick= 'goToPop("+ Math.floor(Math.random() * 4)+ ");' class='row'><img class='notifpic' src=" + profiles[i].photo + "><h4 id='notificationmessage'>" + profiles[i].name + " gostou da sua foto</h4></td></tr>";
     }
+    document.getElementById("notifications").innerHTML = profiletable;
 }
 function goToPop(i){
     location.href = '#' + pictureProfileArray[i+numberPostFtg].divName;
@@ -425,11 +453,12 @@ function createNotificationsPops(){
     }
 }
 function createMessages() {
-    let profiletable = document.getElementById("messages");
-    profiletable.innerHTML += "<tr onclick="+ '"' + 'createMenuMessage(' + 0 + ");pushScreen('messageBox');" + '"' + "><td id='rowone'><img class='messagepic' src=" + profiles[0].photo + "><h3 id='messagename'>" + profiles[0].name + "</h3></td></tr>";
+    let profiletable = '';
+    profiletable += "<tr onclick="+ '"' + 'createMenuMessage(' + 0 + ");pushScreen('messageBox');" + '"' + "><td id='rowone'><img class='messagepic' src=" + profiles[0].photo + "><h3 id='messagename'>" + profiles[0].name + "</h3></td></tr>";
     for(i = 1; i< profiles.length; i++){
-        profiletable.innerHTML += "<tr onclick="+ '"' + 'createMenuMessage(' + i + ");pushScreen('messageBox');" + '"' + "><td class='row'><img class='messagepic' src=" + profiles[i].photo + "><h3 id='messagename'>" + profiles[i].name + "</h3></td></tr>";
+        profiletable += "<tr onclick="+ '"' + 'createMenuMessage(' + i + ");pushScreen('messageBox');" + '"' + "><td class='row'><img class='messagepic' src=" + profiles[i].photo + "><h3 id='messagename'>" + profiles[i].name + "</h3></td></tr>";
     }
+    document.getElementById("messages").innerHTML = profiletable;
 }
 
 var currentUser = 0;
