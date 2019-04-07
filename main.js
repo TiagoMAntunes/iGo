@@ -84,6 +84,8 @@ var pictureProfileArray = [{
 var screenStack = [];
 var picture_index = 0;
 var count = 0;
+var mic1 = 0, mic2 = 2, mic3 = 0, mic4 = 0;
+var mics = [mic1, mic2, mic3, mic4];
 var numberPostFtg = 0;
 var block = 0;
 
@@ -416,7 +418,7 @@ function scrollWheelFinish(event) {
 function updatePicture() {
     document.getElementById("imageShown").src = multimedia_storage[picture_index]['photo'];
     document.getElementById("comment").innerHTML = multimedia_storage[picture_index]['description'];
-    document.getElementById("likeButton").src = (multimedia_storage[picture_index]['liked'] == true ? 'icons/heart2.png' : 'icons/heart1.png')
+    document.getElementById("likeButton").src = (multimedia_storage[picture_index]['liked'] == true ? 'icons/heart.png' : 'icons/meme.svg')
 }
 
 
@@ -431,6 +433,7 @@ function createNotifications() {
 function goToPop(i){
     location.href = '#' + pictureProfileArray[i+numberPostFtg].divName;
 }
+
 function createNotificationsPops(){
     let profiletable = document.getElementById("watchBorder");   
     for (i = 0; i < pictureProfileArray.length; i++) {
@@ -461,7 +464,9 @@ function createMenuMessage(index){
             messages += "<div class='containerM darkerM'><p class='messageP' id='message2'>" + profiles[index].messages[i] + "</p></div>";  
         }
     }
-    messages += "<div id='box' class='boxMessage'><img id='micmessage' src='icons/micoff.png'><input type='text' id='" + profiles[index].divName + "Input' class='sendmessage'></input><img src='icons/send.png' id='sendimage' onclick=" + "sendMessage('"+ profiles[index].divName  +"')" +'></div>'
+    let name = profiles[index].divName + 'Input';
+    console.log(name);
+    messages += "<div id='box' class='boxMessage'><img id='micmessage' onclick=" + '"' + "microphoneOn('" + name + "','micmessage', 4)" + '"' + "src='icons/micoff.png'><input type='text' id='" + profiles[index].divName + "Input' class='sendmessage'></input><img src='icons/send.png' id='sendimage' onclick=" + "sendMessage('"+ profiles[index].divName  +"')" +'></div>'
     document.getElementById('messageBox').innerHTML = messages + "</div>";
 }
 
@@ -547,10 +552,10 @@ function cancelChange() {
 function likeAction(buttonElement) {
     switch (multimedia_storage[picture_index]['liked']) {
         case true:
-            buttonElement.src = 'icons/heart1.png'
+            buttonElement.src = 'icons/heart.png'
             break;
         case false:
-            buttonElement.src = 'icons/heart2.png'
+            buttonElement.src = 'icons/meme.svg'
     }
     multimedia_storage[picture_index]['liked'] = !multimedia_storage[picture_index].liked;
 }
@@ -656,4 +661,17 @@ function updateValue(value) {
 
 function triggerBluetooths(value) {
     $(document.getElementsByClassName('bluetooth-btn')).prop('checked', value)
+}
+
+function microphoneOn(inputname, value, numbermic){
+    if(!mics[numbermic-1]){
+        console.log(inputname);
+        document.getElementById(inputname).focus();
+        document.getElementById(value).style.backgroundColor = "#E84855";
+        mics[numbermic-1] = 1;
+        return;
+    }
+    document.getElementById(value).style.backgroundColor = "white";
+    mics[numbermic-1] = 0;
+    document.getElementById(inputname).blur();
 }

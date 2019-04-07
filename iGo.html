@@ -1,5 +1,4 @@
 <html>
-
 <head>
     <meta charset="utf-8">
     <title>iGo</title>
@@ -41,7 +40,7 @@
                 <h1 style='margin-left: 4%;'><span id="spanhelp">Help:</span> multimedia icons</h1>
                 <table id="iconshelp" style='margin-left: 4%;'>
                     <tr>
-                        <td><img class="columnicon" src="icons/heart1.png"></td>
+                        <td><img class="columnicon" src="icons/meme.svg"></td>
                         <td><p class="rowicon">Like</p></td>
                     </tr>
                     <tr>
@@ -202,7 +201,7 @@
             </div>
             <div id='notificationScreen' style='display: none'>
                 <h1 id="notiftext">Notifications</h1>
-                <div id='notificationsList'>
+                <div id='notificationsList' style="z-index: 1">
                     <table id='notifications'></table>
                 </div>
             	<div id='notificationScreenPop'>
@@ -212,10 +211,10 @@
                 <h1>Edit your profile:</h1>
                 <form id="formprofile">
                     <h2 class="name">Name</h2>
-                    <img id="mic1" class='mic' src="icons/micoff.png">
+                    <img id="mic1" onclick="microphoneOn('input1', 'mic1', 1)" class='mic' src="icons/micoff.png">
                     <input id="input1" class="forminput" type="text" name="nome" maxlength="14">
                     <h2 class="name">Description</h2>
-                    <img id="mic2" id="mic2" class='mic' src="icons/micoff.png">
+                    <label for="input2"><img id="mic2" onclick="microphoneOn('input2', 'mic2', 2)" id="mic2" class='mic' src="icons/micoff.png"></label>
                     <input id='input2' class="forminput" type="text" name="descricao" maxlength="19">
                 </form>
                 <div id='buttons'>
@@ -250,7 +249,7 @@
                 <h3 id="descripttext">Description:</h3>
                 <form id="photodescription">
                     <textarea id="descript" type="text" name="descricaopt"></textarea>
-                    <img id="mic3" src="icons/micoff.png" onclick="recognition.start()" />
+                    <img id="mic3" src="icons/micoff.png" onclick="microphoneOn('descript', 'mic3', 3);recognition.start()"/>
                 </form>
             </div>
             <div id='messageScreen' style='display: none'>

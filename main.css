@@ -352,11 +352,6 @@
     color: red;
 }
 
-#mic3:active{
-    background-color: #E84855;
-    border: 2px solid black;
-}
-
 #cancelbtn {
     background-color: #B22222;
     border: 2px solid #B22222;
@@ -464,6 +459,7 @@
 
 #micmessage {
     padding: 1%;
+    padding-bottom: 3%;
     margin-top: 8%;
     width: 10%;
     height: 10%;
@@ -473,21 +469,17 @@
 
 }
 
-#micmessage:active {
-    background-color: red;
-    border-top: 1px solid red;
-    border-bottom: 1px solid red;
-
-}
-
 #notifications {
     width: 100%;
 }
 
 #notiftext {
-    margin-top: 8%;
+    z-index: 0;
+    margin-top: 0%;
+    padding-top: 8%;
     margin-bottom: 2%;
     padding-left: 5%;
+    background-color: white;
 }
 
 
@@ -648,10 +640,6 @@ input:checked + .slider:before {
     margin-top: -5%;
 }
 
-.mic:active{
-    background-color: #E84855;
-    border: 2px solid black;
-}
 
 .mic {
     float: right;
