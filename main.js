@@ -558,13 +558,13 @@ function cancelChange() {
 
 function likeAction(buttonElement) {
     switch (multimedia_storage[picture_index]['liked']) {
-        case true:
+        case false:
             buttonElement.src = 'icons/coracao.svg'
             break;
-        case false:
+        case true:
             buttonElement.src = 'icons/meme.svg'
     }
-    multimedia_storage[picture_index]['liked'] = !multimedia_storage[picture_index].liked;
+    multimedia_storage[picture_index]['liked'] = !multimedia_storage[picture_index]['liked'];
 }
 function Bluetooth() {
     count++;
