@@ -281,7 +281,7 @@
 #photopublish {
     height: 95%;
     width: 100%;
-    overflow-y: scroll;
+    overflow-y: hidden;
 }
 
 #photodescript {
