@@ -191,7 +191,6 @@
 }
 
 #tablePhotos {
-    z-index: -1;
     position: relative;
 }
 
@@ -348,11 +347,6 @@
     color: red;
 }
 
-#mic3:active{
-    background-color: #E84855;
-    border: 2px solid black;
-}
-
 #cancelbtn {
     background-color: #B22222;
     border: 2px solid #B22222;
@@ -431,7 +425,6 @@
 }
 
 #messatext {
-    z-index: 1;
     margin-top: 0%;
     padding-top: 8%;
     margin-bottom: 2%;
@@ -440,7 +433,6 @@
 }
 
 #messaperson {
-    z-index: 1;
     line-height: 0%;
     padding-left: 5%;
 }
@@ -451,7 +443,6 @@
 }
 
 #messageList {
-    z-index: -1;
     position: relative;
 }
 
@@ -461,6 +452,7 @@
 
 #micmessage {
     padding: 1%;
+    padding-bottom: 3%;
     margin-top: 8%;
     width: 10%;
     height: 10%;
@@ -470,21 +462,17 @@
 
 }
 
-#micmessage:active {
-    background-color: red;
-    border-top: 1px solid red;
-    border-bottom: 1px solid red;
-
-}
-
 #notifications {
     width: 100%;
 }
 
 #notiftext {
-    margin-top: 8%;
+    z-index: 0;
+    margin-top: 0%;
+    padding-top: 8%;
     margin-bottom: 2%;
     padding-left: 5%;
+    background-color: white;
 }
 
 
@@ -650,10 +638,6 @@ input:checked + .slider:before {
     margin-top: -5%;
 }
 
-.mic:active{
-    background-color: #E84855;
-    border: 2px solid black;
-}
 
 .mic {
     float: right;
@@ -944,7 +928,6 @@ input:checked + .slider:before {
   background-color: #f1f1f1;
   border-radius: 4%;
   position: relative;
-  z-index: -1;
 }
 
 .lighterM {
@@ -991,7 +974,6 @@ input:checked + .slider:before {
 
 
 #photoLabel {
-    z-index: 1;
     margin-top: 0%;
     padding-top: 6%;
     margin-bottom: 0%;
@@ -1000,11 +982,6 @@ input:checked + .slider:before {
     background-color: white;
 }
 
-#box {
-    z-index: 2;
-}
-
-
 #messageContent {
     position: relative;
 }
@@ -1012,7 +989,6 @@ input:checked + .slider:before {
 #zindex {
     padding-bottom: 3%;
     padding-top: 1%;
-    z-index: 1;
     background-color: white;
 }
 
