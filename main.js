@@ -356,28 +356,11 @@ function scrollWheelProfile(event) {
     if (val > 0) val = 0
     if (val < aux) val = aux
     document.getElementById('profile').style.top = val;
-    /*
-    if (document.getElementById('picturelist').style.top == '')
-        document.getElementById('picturelist').style.top = '0px';
-    let direction = (event.clientY - dragInfo.clientY)
-
-    let i = 0;
-    if (direction > 0) {
-        i = 10;
-    } else if (direction < 0) {
-        i = -10;
-    }
-
-    let val = parseInt(document.getElementById('picturelist').style.top) + i;
-    let aux = -($(document.getElementById('picturelist')).height() - $(document.getElementById('profile')).height() * 0.90 + $(document.getElementById('profile-top')).height());
-    console.log(val + ' vs ' + aux)
-    if (!(val > 0 || val <= aux))
-        document.getElementById('picturelist').style.top = val;*/
 }
 
 function scrollWheelMessage(event) {
-    if (document.getElementById('messageContent').style.top == '')
-        document.getElementById('messageContent').style.top = '0px';
+    if (document.getElementById('messageBox').style.top == '')
+        document.getElementById('messageBox').style.top = '0px';
     let direction = (event.clientY - dragInfo.clientY)
 
     let i = 0;
@@ -389,11 +372,14 @@ function scrollWheelMessage(event) {
 
     let height = Array.from(document.getElementById('messageContent').children).map(el => $(el).height()).reduce((tot, el) => tot + el) * 1.23
     
-    let val = parseInt(document.getElementById('messageContent').style.top) + i;
-    let aux = -(height - $(document.getElementById('messageBox')).height() * 0.90 + $(document.getElementById('messaperson')).height());
-    console.log(val + ' vs ' + aux)
-    if (!(val > 0 || val <= aux))
-        document.getElementById('messageContent').style.top = val;
+    let val = parseInt(document.getElementById('messageBox').style.top) + i;
+    let aux = -(height + $(document.getElementById('zindex')).height() -
+            ($(document.getElementById('mainScreen')).outerHeight() - $(document.getElementById('top-bar')).outerHeight()))
+    console.log(val)
+    console.log(aux)
+    if (val > 0) val = 0
+    if (val < aux) val = aux
+    document.getElementById('messageBox').style.top = val;
 }
 
 function scrollWheelMovement(event) {
@@ -481,6 +467,7 @@ function createMenuMessage(index){
 
 function resetMenuMessage(){
     document.getElementById('messageBox').innerHTML = ''
+    document.getElementById('messageBox').style.top = 0;
 }
 
 function sendMessage(divName) {
@@ -490,8 +477,9 @@ function sendMessage(divName) {
     resetMenuMessage();
     createMenuMessage(currentUser);
     let height = Array.from(document.getElementById('messageContent').children).map(el => $(el).height()).reduce((tot, el) => tot + el) * 1.23
-    let aux = -(height - $(document.getElementById('messageBox')).height() * 0.90 + $(document.getElementById('messaperson')).height());
-    document.getElementById('messageContent').style.top = aux;
+    let aux = -(height + $(document.getElementById('zindex')).height() -
+            ($(document.getElementById('mainScreen')).outerHeight() - $(document.getElementById('top-bar')).outerHeight()))
+    document.getElementById('messageBox').style.top = aux;
 }
 
 function createMenuPerfil(){
