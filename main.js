@@ -304,7 +304,7 @@ function scrollWheelFinish(event) {
 function updatePicture() {
     document.getElementById("imageShown").src = multimedia_storage[picture_index]['photo'];
     document.getElementById("comment").innerHTML = multimedia_storage[picture_index]['description'];
-    document.getElementById("likeButton").src = (multimedia_storage[picture_index]['liked'] == true ? 'icons/liked.svg' : 'icons/like.svg')
+    document.getElementById("likeButton").src = (multimedia_storage[picture_index]['liked'] == true ? 'icons/heart2.png' : 'icons/heart1.png')
 }
 
 
@@ -347,7 +347,7 @@ function createMenuMessage(index){
             messages += "<div class='containerM darkerM'><p class='messageP' id='message2'>" + profiles[index].messages[i] + "</p></div>";  
         }
     }
-    messages += "<div class='boxMessage'><img id='micmessage' src='icons/micon.png'><input type='text' id='" + profiles[index].divName + "Input' class='sendmessage'></input><img src='icons/send.png' id='sendimage' onclick=" + "sendMessage('"+ profiles[index].divName  +"')" +'></div>'
+    messages += "<div id='box' class='boxMessage'><img id='micmessage' src='icons/micoff.png'><input type='text' id='" + profiles[index].divName + "Input' class='sendmessage'></input><img src='icons/send.png' id='sendimage' onclick=" + "sendMessage('"+ profiles[index].divName  +"')" +'></div>'
     document.getElementById('messageBox').innerHTML = messages;
 }
 
@@ -358,7 +358,8 @@ function resetMenuMessage(){
 function sendMessage(divName) {
         profiles[currentUser].messages.push(document.getElementById(divName + 'Input').value);
         resetMenuMessage();
-        createMenuMessage(currentUser);  
+        createMenuMessage(currentUser);
+        location.href = "#box";
 }
 
 function createMenuPerfil(){
@@ -426,10 +427,10 @@ function cancelChange() {
 function likeAction(buttonElement) {
     switch (multimedia_storage[picture_index]['liked']) {
         case true:
-            buttonElement.src = 'icons/like.svg'
+            buttonElement.src = 'icons/heart1.png'
             break;
         case false:
-            buttonElement.src = 'icons/liked.svg'
+            buttonElement.src = 'icons/heart2.png'
     }
     multimedia_storage[picture_index]['liked'] = !multimedia_storage[picture_index].liked;
 }
