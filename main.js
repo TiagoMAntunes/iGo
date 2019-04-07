@@ -89,6 +89,8 @@ var mics = [mic1, mic2, mic3, mic4];
 var numberPostFtg = 0;
 var block = 0;
 
+var selectedTextBox = undefined;
+
 var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition
 var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList
 var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent
@@ -140,7 +142,9 @@ recognition.onresult = function(event) {
             console.log("interim results: " + event.results[i][0].transcript);  //You can use these results to give the user near real time experience.
         } 
     } //end for loop
-    document.getElementById('descript').value = content;
+    console.log(selectedTextBox)
+    if (selectedTextBox !== undefined)
+        selectedTextBox.value = content;
 }
 
 function setRealSize() {
@@ -468,17 +472,19 @@ function createMenuMessage(index){
     console.log(name);
     messages += "<div id='box' class='boxMessage'><img id='micmessage' onclick=" + '"' + "microphoneOn('" + name + "','micmessage', 4)" + '"' + "src='icons/micoff.png'><input type='text' id='" + profiles[index].divName + "Input' class='sendmessage'></input><img src='icons/send.png' id='sendimage' onclick=" + "sendMessage('"+ profiles[index].divName  +"')" +'></div>'
     document.getElementById('messageBox').innerHTML = messages + "</div>";
+    document.getElementById('messageBox').style.top = 0;
 }
 
 function resetMenuMessage(){
     document.getElementById('messageBox').innerHTML = ''
-    document.getElementById('messageBox').style.top = 0;
 }
 
 function sendMessage(divName) {
     if (document.getElementById(divName + 'Input').value === '')
         return;
     profiles[currentUser].messages.push(document.getElementById(divName + 'Input').value);
+    if (mics[3] === 1)
+        microphoneOn(profiles[currentUser].divName + 'Input','micmessage', 4);
     resetMenuMessage();
     createMenuMessage(currentUser);
     let height = Array.from(document.getElementById('messageContent').children).map(el => $(el).height()).reduce((tot, el) => tot + el) * 1.23
@@ -669,8 +675,12 @@ function microphoneOn(inputname, value, numbermic){
         document.getElementById(inputname).focus();
         document.getElementById(value).style.backgroundColor = "#E84855";
         mics[numbermic-1] = 1;
+        selectedTextBox = document.getElementById(inputname)
+        recognition.start();
         return;
     }
+    recognition.stop()
+    selectedTextBox = undefined;
     document.getElementById(value).style.backgroundColor = "white";
     mics[numbermic-1] = 0;
     document.getElementById(inputname).blur();
