@@ -257,7 +257,6 @@
     display: inline-block;
     text-align: center;
     height: 95%;
-    overflow-y: scroll;
 }
 
 #photoToEdit {
@@ -377,7 +376,7 @@
 #profile {
   height: 95%;
   width: 100%;
-  overflow-y: scroll;
+  overflow-y: hidden;
 }
 
 #comment {
@@ -418,6 +417,8 @@
 
 #messages{
     width:100%;
+    display: relative;
+    table-layout: auto;
 }
 
 #message1 {
@@ -439,8 +440,16 @@
 }
 
 #messageScreen {
-    overflow-y: scroll;
+    overflow-y: hidden;
     height: 94%;
+}
+
+#messageList {
+    position: relative;
+}
+
+#notificationsList {
+    position: relative
 }
 
 #micmessage {
@@ -473,7 +482,7 @@
 
 
 #notificationScreen {
-    overflow-y: scroll;
+    overflow-y: hidden;
     height: 94%;
 }
 
@@ -569,7 +578,6 @@ input:checked + .slider:before {
 
 #profile-top {
     display: inline-block;
-    height: 30%;
     width: 100%;
     vertical-align: middle;
 }
@@ -618,7 +626,8 @@ input:checked + .slider:before {
 }
 
 #picturelist {
-    margin-top: 25%;
+    margin-top: 5%;
+    position: relative;
 }
 
 .forminput {
@@ -970,7 +979,11 @@ input:checked + .slider:before {
     bottom: 0%;
     width:100%;
     height: 94%;
-    overflow-y: scroll;
+    overflow-y: hidden;
+}
+
+#messageContent {
+    position: relative;
 }
 
 

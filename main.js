@@ -273,9 +273,7 @@ function pushScreen(screen) {
 
 var dragInfo = undefined
 
-function scrollWheelMovement(event) {
-    if (dragInfo == undefined)
-        return;
+function scrollWheelPhotos(event) {
     if (document.getElementById('tablePhotos').style.top == '')
         document.getElementById('tablePhotos').style.top = '0px';
     let direction = (event.clientY - dragInfo.clientY)
@@ -292,6 +290,106 @@ function scrollWheelMovement(event) {
     console.log(val + ' vs ' + aux)
     if (!(val > 0 || val <= aux))
         document.getElementById('tablePhotos').style.top = val;
+}
+
+function scrollWheelMessages(event) {
+    if (document.getElementById('messageList').style.top == '')
+        document.getElementById('messageList').style.top = '0px';
+    let direction = (event.clientY - dragInfo.clientY)
+
+    let i = 0;
+    if (direction > 0) {
+        i = 10;
+    } else if (direction < 0) {
+        i = -10;
+    }
+
+    let val = parseInt(document.getElementById('messageList').style.top) + i;
+    let aux = -($(document.getElementById('messageList')).height() - $(document.getElementById('messageScreen')).height() * 0.90 + $(document.getElementById('messatext')).height());
+    console.log(val + ' vs ' + aux)
+    if (!(val > 0 || val <= aux))
+        document.getElementById('messageList').style.top = val;
+}
+
+function scrollWheelNotifications(event) {
+    if (document.getElementById('notificationsList').style.top == '')
+        document.getElementById('notificationsList').style.top = '0px';
+    let direction = (event.clientY - dragInfo.clientY)
+
+    let i = 0;
+    if (direction > 0) {
+        i = 10;
+    } else if (direction < 0) {
+        i = -10;
+    }
+
+    let val = parseInt(document.getElementById('notificationsList').style.top) + i;
+    let aux = -($(document.getElementById('notificationsList')).height() - $(document.getElementById('notificationScreen')).height() * 0.90 + $(document.getElementById('notiftext')).height());
+    console.log(val + ' vs ' + aux)
+    if (!(val > 0 || val <= aux))
+        document.getElementById('notificationsList').style.top = val;
+}
+
+function scrollWheelProfile(event) {
+    if (document.getElementById('picturelist').style.top == '')
+        document.getElementById('picturelist').style.top = '0px';
+    let direction = (event.clientY - dragInfo.clientY)
+
+    let i = 0;
+    if (direction > 0) {
+        i = 10;
+    } else if (direction < 0) {
+        i = -10;
+    }
+
+    let val = parseInt(document.getElementById('picturelist').style.top) + i;
+    let aux = -($(document.getElementById('picturelist')).height() - $(document.getElementById('profile')).height() * 0.90 + $(document.getElementById('profile-top')).height());
+    console.log(val + ' vs ' + aux)
+    if (!(val > 0 || val <= aux))
+        document.getElementById('picturelist').style.top = val;
+}
+
+function scrollWheelMessage(event) {
+    if (document.getElementById('messageContent').style.top == '')
+        document.getElementById('messageContent').style.top = '0px';
+    let direction = (event.clientY - dragInfo.clientY)
+
+    let i = 0;
+    if (direction > 0) {
+        i = 10;
+    } else if (direction < 0) {
+        i = -10;
+    }
+
+    let height = Array.from(document.getElementById('messageContent').children).map(el => $(el).height()).reduce((tot, el) => tot + el) * 1.23
+    
+    let val = parseInt(document.getElementById('messageContent').style.top) + i;
+    let aux = -(height - $(document.getElementById('messageBox')).height() * 0.90 + $(document.getElementById('messaperson')).height());
+    console.log(val + ' vs ' + aux)
+    if (!(val > 0 || val <= aux))
+        document.getElementById('messageContent').style.top = val;
+}
+
+function scrollWheelMovement(event) {
+    if (dragInfo == undefined)
+        return;
+    switch(screenStack[screenStack.length - 1]) {
+        case 'photopublish':
+            scrollWheelPhotos(event)
+            break
+        case 'messageScreen':
+            scrollWheelMessages(event)
+            break
+        case 'notificationScreen':
+            scrollWheelNotifications(event)
+            break
+        case 'profile':
+            scrollWheelProfile(event)
+            break
+        case 'messageBox':
+            scrollWheelMessage(event)
+            break
+    }
 }
 
 function scrollWheelStart(event) {
@@ -339,7 +437,7 @@ var currentUser = 0;
 function createMenuMessage(index){
     currentUser = index;
     let messages = '';
-    messages += "<h1 id='messaperson'>" + profiles[index].name + "</h1>";
+    messages += "<h1 id='messaperson'>" + profiles[index].name + "</h1><div id='messageContent'>";
     for(i = 0, k = 0; i < profiles[index].messages.length || k < profiles[index].responses.length; i++, k++){
         if(profiles[index].responses[k]!= null){
             messages += "<div class='containerM lighterM'><p class='messageP' id='message1'>" + profiles[index].responses[k] + "</p></div>";
@@ -349,7 +447,7 @@ function createMenuMessage(index){
         }
     }
     messages += "<div id='box' class='boxMessage'><img id='micmessage' src='icons/micoff.png'><input type='text' id='" + profiles[index].divName + "Input' class='sendmessage'></input><img src='icons/send.png' id='sendimage' onclick=" + "sendMessage('"+ profiles[index].divName  +"')" +'></div>'
-    document.getElementById('messageBox').innerHTML = messages;
+    document.getElementById('messageBox').innerHTML = messages + "</div>";
 }
 
 function resetMenuMessage(){
@@ -362,7 +460,9 @@ function sendMessage(divName) {
     profiles[currentUser].messages.push(document.getElementById(divName + 'Input').value);
     resetMenuMessage();
     createMenuMessage(currentUser);
-    location.href = "#box";
+    let height = Array.from(document.getElementById('messageContent').children).map(el => $(el).height()).reduce((tot, el) => tot + el) * 1.23
+    let aux = -(height - $(document.getElementById('messageBox')).height() * 0.90 + $(document.getElementById('messaperson')).height());
+    document.getElementById('messageContent').style.top = aux;
 }
 
 function createMenuPerfil(){
