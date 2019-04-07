@@ -357,10 +357,12 @@ function resetMenuMessage(){
 }
 
 function sendMessage(divName) {
-        profiles[currentUser].messages.push(document.getElementById(divName + 'Input').value);
-        resetMenuMessage();
-        createMenuMessage(currentUser);
-        location.href = "#box";
+    if (document.getElementById(divName + 'Input').value === '')
+        return;
+    profiles[currentUser].messages.push(document.getElementById(divName + 'Input').value);
+    resetMenuMessage();
+    createMenuMessage(currentUser);
+    location.href = "#box";
 }
 
 function createMenuPerfil(){
