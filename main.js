@@ -418,7 +418,7 @@ function scrollWheelFinish(event) {
 function updatePicture() {
     document.getElementById("imageShown").src = multimedia_storage[picture_index]['photo'];
     document.getElementById("comment").innerHTML = multimedia_storage[picture_index]['description'];
-    document.getElementById("likeButton").src = (multimedia_storage[picture_index]['liked'] == true ? 'icons/heart.png' : 'icons/meme.svg')
+    document.getElementById("likeButton").src = (multimedia_storage[picture_index]['liked'] == true ? 'icons/coracao.svg' : 'icons/meme.svg')
 }
 
 
@@ -552,7 +552,7 @@ function cancelChange() {
 function likeAction(buttonElement) {
     switch (multimedia_storage[picture_index]['liked']) {
         case true:
-            buttonElement.src = 'icons/heart.png'
+            buttonElement.src = 'icons/coracao.svg'
             break;
         case false:
             buttonElement.src = 'icons/meme.svg'
