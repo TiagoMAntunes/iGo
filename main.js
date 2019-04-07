@@ -276,8 +276,8 @@ var dragInfo = undefined
 function scrollWheelMovement(event) {
     if (dragInfo == undefined)
         return;
-    if (document.getElementById('tableScreen').style.top == '')
-        document.getElementById('tableScreen').style.top = '0px';
+    if (document.getElementById('tablePhotos').style.top == '')
+        document.getElementById('tablePhotos').style.top = '0px';
     let direction = (event.clientY - dragInfo.clientY)
 
     let i = 0;
@@ -287,10 +287,11 @@ function scrollWheelMovement(event) {
         i = -10;
     }
 
-    let val = parseInt(document.getElementById('tableScreen').style.top) + i;
-    console.log(val)
-    if (!(val > 0 || val < -($(document.getElementById('tableBodyPictures')).height() - $(document.getElementById('photopublish')).height())))
-        document.getElementById('tableScreen').style.top = val;
+    let val = parseInt(document.getElementById('tablePhotos').style.top) + i;
+    let aux = -($(document.getElementById('tablePhotos')).height() - $(document.getElementById('photopublish')).height() * 0.90 + $(document.getElementById('photoLabel')).height());
+    console.log(val + ' vs ' + aux)
+    if (!(val > 0 || val <= aux))
+        document.getElementById('tablePhotos').style.top = val;
 }
 
 function scrollWheelStart(event) {

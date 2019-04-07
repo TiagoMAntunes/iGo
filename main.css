@@ -187,8 +187,11 @@
 }
 
 #tableScreen {
-    position: relative;
     height: 100%;
+}
+
+#tablePhotos {
+    position: relative;
 }
 
 .imageChoice {
@@ -681,7 +684,6 @@ input:checked + .slider:before {
     margin-right: 6%;
     border-radius: 100%;
 }
-
 
 #tableSettings{
     margin-left: 2%;
