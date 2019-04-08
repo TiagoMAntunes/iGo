@@ -86,7 +86,7 @@ var picture_index = 0;
 var count = 0;
 var mic1 = 0, mic2 = 2, mic3 = 0, mic4 = 0;
 var mics = [mic1, mic2, mic3, mic4];
-var micsid = ['#mic1', '#mic2', '#mic3', '#micmessage'];
+var micsid = ['mic1', 'mic2', 'mic3', 'micmessage'];
 var numberPostFtg = 0;
 var block = 0;
 
@@ -118,14 +118,18 @@ function startup() {
     blockWatch(); blockWatch();
 }
 
+let recognizing = false
+
 recognition.onstart = function() {
     //cenas que acontecem qd a pessoa carrega no botão vermelho
     console.log('Recording started')
+    recognizing = true
 }
 
 recognition.onend = function() {
     //acabou
     console.log('Recording ended')
+    recognition = false
 }
 
 recognition.onresult = function(event) {
@@ -671,27 +675,23 @@ function triggerBluetooths(value) {
 }
 
 function microphoneOn(inputname, value, numbermic){
-    if(!mics[numbermic-1]){
-        for(i = 0; i < mics.length; i++){
-            if(mics[i] == 1){
-                console.log(i);
-                mics[i] = 0;
-                console.log(micsid[i]);
-                let mic = String(micsid[i]);
-                document.getElementById(mic).style.backgroundColor = "white";
-            }
-        }
-        console.log(inputname);
+    let using = mics.some(val => val === 1)
+    if (using) {
+        micsid.map(id => {if (document.getElementById(id) !== null) document.getElementById(id).style.backgroundColor = 'white'}) //limpa todos
+    }
+    if (mics[numbermic-1] === 0) {
+        //start new recognition
         document.getElementById(inputname).focus();
         document.getElementById(value).style.backgroundColor = "#E84855";
+        mics = Array(mics.length).fill(0)
         mics[numbermic-1] = 1;
         selectedTextBox = document.getElementById(inputname)
-        recognition.start();
-        return;
+        if (!recognizing) recognition.start()
+    } else {
+        //just stop
+        recognition.stop()
+        document.getElementById(micsid[numbermic-1]).style.backgroundColor = 'white'
+        mics[numbermic-1] = 0
+        selectedTextBox = undefined
     }
-    recognition.stop()
-    selectedTextBox = undefined;
-    document.getElementById(value).style.backgroundColor = "white";
-    mics[numbermic-1] = 0;
-    document.getElementById(inputname).blur();
 }
