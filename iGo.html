@@ -1,4 +1,5 @@
 <html>
+
 <head>
     <meta charset="utf-8">
     <title>iGo</title>
@@ -24,10 +25,10 @@
             </div>
             <div id="mainmenu">
                 <div id=option1 onclick="pushScreen('multimedia');">
-                    <img id="cameraicon" src="icons/camera.png"/>   
+                    <img id="cameraicon" src="icons/camera.png" />
                 </div>
                 <div id=option2 onclick="pushScreen('mapaScreen');">
-                    <img id="mapicon" src="icons/map.png"/> 
+                    <img id="mapicon" src="icons/map.png" />
                 </div>
                 <div id=option3 onclick="pushScreen('saude');">
                     <img id="healthicon" src="icons/cardiogram.png">
@@ -37,45 +38,67 @@
                 </div>
             </div>
             <div id="helpmultimediascreen" style='display: none'>
-                <h1 style='margin-left: 4%;'><span id="spanhelp">Help:</span> multimedia icons</h1>
+                <h1 style='margin-left: 4%;'>
+                    <span id="spanhelp">Help:</span> multimedia icons</h1>
                 <table id="iconshelp" style='margin-left: 4%;'>
                     <tr>
-                        <td><img class="columnicon" src="icons/meme.svg"></td>
-                        <td><p class="rowicon">Like</p></td>
+                        <td>
+                            <img class="columnicon" src="icons/meme.svg">
+                        </td>
+                        <td>
+                            <p class="rowicon">Like</p>
+                        </td>
                     </tr>
                     <tr>
-                        <td><img class="columnicon" src="icons/chat(1).png"/></td>
-                        <td><p class="rowicon">Messages</p></td>
+                        <td>
+                            <img class="columnicon" src="icons/chat(1).png" />
+                        </td>
+                        <td>
+                            <p class="rowicon">Messages</p>
+                        </td>
                     </tr>
                     <tr>
-                        <td><img class="columnicon" src="icons/photo.svg"/></td>
-                        <td><p class="rowicon">Post photo</td>
+                        <td>
+                            <img class="columnicon" src="icons/photo.svg" />
+                        </td>
+                        <td>
+                            <p class="rowicon">Post photo</td>
                     </tr>
                     <tr>
-                        <td><img class="columnicon" src="icons/bell.svg"/></td>
-                        <td><p class="rowicon">Notifications</td>
+                        <td>
+                            <img class="columnicon" src="icons/bell.svg" />
+                        </td>
+                        <td>
+                            <p class="rowicon">Notifications</td>
                     </tr>
                     <tr>
-                        <td><img class="columnicon" src="icons/man.png"/></td>
-                        <td><p class="rowicon">Profile</td>
+                        <td>
+                            <img class="columnicon" src="icons/man.png" />
+                        </td>
+                        <td>
+                            <p class="rowicon">Profile</td>
                     </tr>
                 </table>
             </div>
             <div id="helpphotosubmit" style='display: none'>
-                <h1 style='margin-left: 4%;'><span id="spanhelp">Help:</span> posting photo</h1>
-                <h3 style='margin-left: 4%; margin-top: 10%'>If you want to add a description to your photo say it out loud while pressing/holding the button that looks like this:</h3>
-                <img id="mic4" src="icons/micoff.png"/>
+                <h1 style='margin-left: 4%;'>
+                    <span id="spanhelp">Help:</span> posting photo</h1>
+                <h3 style='margin-left: 4%; margin-top: 10%'>If you want to add a description to your photo say it out loud while pressing/holding the button that looks
+                    like this:</h3>
+                <img id="mic4" src="icons/micoff.png" />
             </div>
             <div id="helpprofileedit" style='display: none'>
-                <h1 style='margin-left: 4%;'><span id="spanhelp">Help:</span> editing profile<h1>
-                <h3 style='margin-left: 4%; margin-top: 10%'>If you want to change your profile name or description say it out loud while pressing/holding the button that looks like this:</h3>
-                <img id="mic4" src="icons/micoff.png"/>
+                <h1 style='margin-left: 4%;'>
+                    <span id="spanhelp">Help:</span> editing profile
+                    <h1>
+                        <h3 style='margin-left: 4%; margin-top: 10%'>If you want to change your profile name or description say it out loud while pressing/holding the
+                            button that looks like this:</h3>
+                        <img id="mic4" src="icons/micoff.png" />
             </div>
             <div id='multimedia' style='display: none'>
                 <div id='multimediaContent'>
                     <div class='arrowcontainer' onclick="previousPicture()">
-                        <img class="arrow" type="image" src="icons/arrow.png"
-                            style="transform: translate(50%,0) rotate(180deg);" />
+                        <img class="arrow" type="image" src="icons/arrow.png" style="transform: translate(50%,0) rotate(180deg);" />
                     </div>
                     <div class="container">
                         <img id="imageShown" src='images/shrek-1.jpg' class="center">
@@ -204,8 +227,8 @@
                 <div id='notificationsList' style="z-index: 1">
                     <table id='notifications'></table>
                 </div>
-            	<div id='notificationScreenPop'>
-            	</div>
+                <div id='notificationScreenPop'>
+                </div>
             </div>
             <div id='profileEdit' style='display: none'>
                 <h1>Edit your profile:</h1>
@@ -214,12 +237,18 @@
                     <img id="mic1" onclick="microphoneOn('input1', 'mic1', 1)" class='mic' src="icons/micoff.png">
                     <input id="input1" class="forminput" type="text" name="nome" maxlength="14">
                     <h2 class="name">Description</h2>
-                    <label for="input2"><img id="mic2" onclick="microphoneOn('input2', 'mic2', 2)" id="mic2" class='mic' src="icons/micoff.png"></label>
+                    <label for="input2">
+                        <img id="mic2" onclick="microphoneOn('input2', 'mic2', 2)" id="mic2" class='mic' src="icons/micoff.png">
+                    </label>
                     <input id='input2' class="forminput" type="text" name="descricao" maxlength="19">
                 </form>
                 <div id='buttons'>
-                    <button id="savebt" onclick="saveProfile()" class="buttonprofile"><b>SAVE</b></button>
-                    <button onclick="cancelChange()" id="cancelbt" class="buttonprofile"><b>CANCEL</b></button>
+                    <button id="savebt" onclick="saveProfile()" class="buttonprofile">
+                        <b>SAVE</b>
+                    </button>
+                    <button onclick="cancelChange()" id="cancelbt" class="buttonprofile">
+                        <b>CANCEL</b>
+                    </button>
                 </div>
             </div>
             <div id='photoEditing' style='display: none;'>
@@ -228,32 +257,44 @@
                 <div id='editingBottom'>
                     <table class="filters">
                         <tr class="filters">
-                            <td><img id="img1" class='filterImage' onclick='filterClick(this)'/></td>
-                            <td><img id="img2" class='filterImage' onclick='filterClick(this)'/></td>
-                            <td><img id="img3" class='filterImage' onclick='filterClick(this)'/></td>
+                            <td>
+                                <img id="img1" class='filterImage' onclick='filterClick(this)' />
+                            </td>
+                            <td>
+                                <img id="img2" class='filterImage' onclick='filterClick(this)' />
+                            </td>
+                            <td>
+                                <img id="img3" class='filterImage' onclick='filterClick(this)' />
+                            </td>
                         </tr>
                     </table>
                     <div style='margin: 0% 7% 0% 2%;'>
-                        <button onclick="pushScreen('photoSubmit')" class="nextbt"><b>NEXT</b></button>
+                        <button onclick="pushScreen('photoSubmit')" class="nextbt">
+                            <b>NEXT</b>
+                        </button>
                     </div>
                 </div>
             </div>
             <div id='photoSubmit' style='display: none'>
                 <div id="photodescript">
-                    <img class="photoToPublish" id="photofinal"/>
+                    <img class="photoToPublish" id="photofinal" />
                     <div id="buttonsphoto">
-                        <button onclick="cancelChange()" id="cancelbtn"><b>CANCEL</b></button>
-                        <button id="postbtn" onclick="addPicture()"><b>POST</b></button>
+                        <button onclick="cancelChange()" id="cancelbtn">
+                            <b>CANCEL</b>
+                        </button>
+                        <button id="postbtn" onclick="addPicture()">
+                            <b>POST</b>
+                        </button>
                     </div>
                 </div>
                 <h3 id="descripttext">Description:</h3>
                 <form id="photodescription">
                     <textarea id="descript" type="text" name="descricaopt"></textarea>
-                    <img id="mic3" src="icons/micoff.png" onclick="microphoneOn('descript', 'mic3', 3)"/>
+                    <img id="mic3" src="icons/micoff.png" onclick="microphoneOn('descript', 'mic3', 3)" />
                 </form>
             </div>
             <div id='messageScreen' style='display: none'>
-                    <h1 id="messatext">Messages</h1>
+                <h1 id="messatext">Messages</h1>
                 <div id='messageList'>
                     <table id='messages'></table>
                 </div>
@@ -265,7 +306,7 @@
             <div id="lockScreen" style='display: none'>
                 <div id='timeLockScreen'></div>
                 <div id='buttonsLock'>
-                    <img id='weatherIcon' src='icons/drop.png'>	
+                    <img id='weatherIcon' src='icons/drop.png'>
                     <img id='temperatureIcon' src='icons/thermometer.png'>
                     <h3>15º</h3>
                     <img id='bellIcon' src='icons/bell3.png'>
@@ -277,13 +318,15 @@
             <div id='bluetooth-setup' style='display: none'>
                 <h1 id='turnon'>Turn on bluetooth</h1>
                 <div style="display: flex; flex-direction: row">
-                    <img style="padding-left: 10%; padding-top: 5%" height="40%" width ="40%" src="icons/bluet2.png">
+                    <img style="padding-left: 10%; padding-top: 5%" height="40%" width="40%" src="icons/bluet2.png">
                     <div>
                         <label id='buttonblt' class="switch">
                             <input onclick="Bluetooth()" type="checkbox">
                             <span class="slider round"></span>
                         </label>
-                        <button id="nextbtn" onclick="validateBluetooth()"><b>NEXT</b></button>
+                        <button id="nextbtn" onclick="validateBluetooth()">
+                            <b>NEXT</b>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -296,20 +339,20 @@
                 </div>
                 <div class="content">
                     There is no available help in this menu.
-                 </div>
+                </div>
             </div>
         </div>
         <div id="popup2" class="overlay">
-                <div class="popup">
-                    <div id="toppopup">
-                        <h2>Help</h2>
-                        <a class="close" href="#">&times;</a>
-                    </div>
-                    <div class="content">
-                        Please turn on bluetooth in order to connect your smartphone.
-                     </div>
+            <div class="popup">
+                <div id="toppopup">
+                    <h2>Help</h2>
+                    <a class="close" href="#">&times;</a>
+                </div>
+                <div class="content">
+                    Please turn on bluetooth in order to connect your smartphone.
                 </div>
             </div>
+        </div>
     </div>
     <div id='helpButton' onclick="helpButton()"></div>
     <div id="backButton" onclick="backButton()"></div>

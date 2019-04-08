@@ -23,40 +23,40 @@ var multimedia_storage = [{
 var profiles = [{
     "photo": "icons/prof1.jpg",
     "name": "Shrek",
-    "divName" :"shrekscreenmessage",
-    "responses" :["Olá Gato das botas!", "Tudo bem?","Também","Bem e o teu?"],
-    "messages": [ "Olá Sherk", "Sim e contigo?", "Como vai o projeto de IPM?","Também!"]
+    "divName": "shrekscreenmessage",
+    "responses": ["Olá Gato das botas!", "Tudo bem?", "Também", "Bem e o teu?"],
+    "messages": ["Olá Sherk", "Sim e contigo?", "Como vai o projeto de IPM?", "Também!"]
 }, {
     "photo": "icons/simb1.jpg",
     "name": "Bart",
-    "divName" :"bartscreenmessage",
-    "responses" : ["Ola Gato", "Tiraste apontamentos das aulas de IPM?", "Obrigado"],
-    "messages" :["Oi Bart","Sim, amanha empresto-te"]
+    "divName": "bartscreenmessage",
+    "responses": ["Ola Gato", "Tiraste apontamentos das aulas de IPM?", "Obrigado"],
+    "messages": ["Oi Bart", "Sim, amanha empresto-te"]
 }, {
     "photo": "icons/simb2.jpeg",
     "name": "Homer",
-    "divName" :"homerscreenmessage",
-    "responses" :["Ola", "Queres ir beber uma jola?","Vem ter ao MOE's amanha as 15"],
-    "messages" :["Ola Homer", "Sim!!!", "Ate amanha"]
+    "divName": "homerscreenmessage",
+    "responses": ["Ola", "Queres ir beber uma jola?", "Vem ter ao MOE's amanha as 15"],
+    "messages": ["Ola Homer", "Sim!!!", "Ate amanha"]
 }, {
     "photo": "icons/toy1.jpg",
     "name": "Woody",
-    "divName" :"woodyscreenmessage",
-    "responses":["Ola Gato das botas", "Preciso da tua ajuda tenho uma cobra nas botas"],
-    "messages" :["Oi Woody", "A caminho!!!"]
+    "divName": "woodyscreenmessage",
+    "responses": ["Ola Gato das botas", "Preciso da tua ajuda tenho uma cobra nas botas"],
+    "messages": ["Oi Woody", "A caminho!!!"]
 }, {
     "photo": "icons/toy2.png",
     "name": "Buzz",
-    "divName" :"buzzscreenmessage",
+    "divName": "buzzscreenmessage",
     "description": "Para o infinito e mais alem",
-    "responses" :["Ola camarada", "Vamos conquistar a galaxia?","PARA O INFINTIO E MAIS ALEM!!!"],
-    "messages" :["Oi Buzz", "Dobriga."]
+    "responses": ["Ola camarada", "Vamos conquistar a galaxia?", "PARA O INFINTIO E MAIS ALEM!!!"],
+    "messages": ["Oi Buzz", "Dobriga."]
 }, {
     "photo": "icons/prof5.png",
     "name": "Dragon",
-    "divName" :"dragonscreenmessage",
-    "responses" :["Ola Gato das botas","Queres vir ver os teus sobrinho?","Combinado!!"],
-    "messages" :["Oi Dragon", "Sim, posso amanha as 18!"]
+    "divName": "dragonscreenmessage",
+    "responses": ["Ola Gato das botas", "Queres vir ver os teus sobrinho?", "Combinado!!"],
+    "messages": ["Oi Dragon", "Sim, posso amanha as 18!"]
 }]
 
 var mainprofile = [{
@@ -66,19 +66,19 @@ var mainprofile = [{
 
 var pictureProfileArray = [{
     "image": "images/shrek-1.jpg",
-    "divName" : "image1Pop",
+    "divName": "image1Pop",
     "style": ''
 }, {
     "image": "images/shrek-2.jpg",
-    "divName" : "image2Pop",
+    "divName": "image2Pop",
     "style": ''
 }, {
     "image": "images/shrek-3.jpg",
-    "divName" : "image3Pop",
+    "divName": "image3Pop",
     "style": ''
 }, {
     "image": "images/shrek-4.jpg",
-    "divName" : "image1Pop",
+    "divName": "image1Pop",
     "style": ''
 }]
 var screenStack = [];
@@ -96,10 +96,10 @@ var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition
 var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList
 var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent
 var recognition = new webkitSpeechRecognition()
-    recognition.continuous = true;
-    recognition.interimResults = true;
-    recognition.lang = 'en-US';
-    recognition.maxAlternatives = 1;
+recognition.continuous = true;
+recognition.interimResults = true;
+recognition.lang = 'en-US';
+recognition.maxAlternatives = 1;
 
 function startup() {
     if (localStorage.getItem("isSet") == undefined) {
@@ -120,32 +120,32 @@ function startup() {
 
 let recognizing = false
 
-recognition.onstart = function() {
+recognition.onstart = function () {
     //cenas que acontecem qd a pessoa carrega no botão vermelho
     console.log('Recording started')
     recognizing = true
 }
 
-recognition.onend = function() {
+recognition.onend = function () {
     //acabou
     console.log('Recording ended')
     recognition = false
 }
 
-recognition.onresult = function(event) {
-    if (typeof(event.results) === 'undefined') { //Something is wrong…
+recognition.onresult = function (event) {
+    if (typeof (event.results) === 'undefined') { //Something is wrong…
         recognition.stop();
         return;
     }
-    
+
     let content = ''
-    for (var i = event.resultIndex; i < event.results.length; ++i) {      
+    for (var i = event.resultIndex; i < event.results.length; ++i) {
         content += event.results[i][0].transcript
         if (event.results[i].isFinal) { //Final results
             console.log("final results: " + event.results[i][0].transcript);   //Of course – here is the place to do useful things with the results.
         } else {   //i.e. interim...
             console.log("interim results: " + event.results[i][0].transcript);  //You can use these results to give the user near real time experience.
-        } 
+        }
     } //end for loop
     console.log(selectedTextBox)
     if (selectedTextBox !== undefined)
@@ -179,7 +179,7 @@ function setRealSize() {
     //calculate where to place the side buttons
 
     //left side
-    let position = 50 - (parseInt(cover.style.width) / 2) / width * 100 - parseInt(helpButton.style.width) / width * 100 ;
+    let position = 50 - (parseInt(cover.style.width) / 2) / width * 100 - parseInt(helpButton.style.width) / width * 100;
     helpButton.style.left = position + '%';
 
     //right side
@@ -204,7 +204,7 @@ function setRealSize() {
         el.style.width = 60 / 72 * ppc;
         el.style.height = 34 / 72 * ppc;
     });
-    document.getElementById('tableSettings').style.fontSize = document.body.style.fontSize;   
+    document.getElementById('tableSettings').style.fontSize = document.body.style.fontSize;
 }
 
 function picturesSetup() {
@@ -247,13 +247,13 @@ function helpButton() {
 }
 
 function backButton() {
-    console.log(typeof(localStorage.getItem('locked')))
+    console.log(typeof (localStorage.getItem('locked')))
     console.log(localStorage.getItem('locked') === 'true' && (screenStack[screenStack.length - 1] === 'lockScreen'))
     if (localStorage.getItem('locked') === 'true' && screenStack[screenStack.length - 1] === 'lockScreen') {
         console.log('stopeed!')
         return
     }
-    if (block%2 == 1 && screenStack[screenStack.length - 1] === 'blackScreen') {
+    if (block % 2 == 1 && screenStack[screenStack.length - 1] === 'blackScreen') {
         console.log('stopeed!')
         return
     }
@@ -297,8 +297,8 @@ function scrollWheelPhotos(event) {
     }
 
     let val = parseInt(document.getElementById('photopublish').style.top) + i;
-    let aux = -($(document.getElementById('tablePhotos')).outerHeight() + $(document.getElementById('photoLabel')).outerHeight() - 
-                ($(document.getElementById('mainScreen')).outerHeight() - $(document.getElementById('top-bar')).outerHeight()))
+    let aux = -($(document.getElementById('tablePhotos')).outerHeight() + $(document.getElementById('photoLabel')).outerHeight() -
+        ($(document.getElementById('mainScreen')).outerHeight() - $(document.getElementById('top-bar')).outerHeight()))
 
     if (val > 0) val = 0
     if (val < aux) val = aux
@@ -318,9 +318,9 @@ function scrollWheelMessages(event) {
     }
 
     let val = parseInt(document.getElementById('messageScreen').style.top) + i;
-    let aux = -($(document.getElementById('messageList')).outerHeight() + $(document.getElementById('messatext')).outerHeight() - 
-                ($(document.getElementById('mainScreen')).outerHeight() - $(document.getElementById('top-bar')).outerHeight()))
-    
+    let aux = -($(document.getElementById('messageList')).outerHeight() + $(document.getElementById('messatext')).outerHeight() -
+        ($(document.getElementById('mainScreen')).outerHeight() - $(document.getElementById('top-bar')).outerHeight()))
+
     if (val > 0) val = 0
     if (val < aux) val = aux
     document.getElementById('messageScreen').style.top = val;
@@ -339,9 +339,9 @@ function scrollWheelNotifications(event) {
     }
 
     let val = parseInt(document.getElementById('notificationScreen').style.top) + i;
-    let aux = -($(document.getElementById('notificationsList')).height() + $(document.getElementById('notiftext')).height() - 
-                ($(document.getElementById('notificationScreen')).height() - $(document.getElementById('top-bar')).height()))
-    
+    let aux = -($(document.getElementById('notificationsList')).height() + $(document.getElementById('notiftext')).height() -
+        ($(document.getElementById('notificationScreen')).height() - $(document.getElementById('top-bar')).height()))
+
     if (val > 0) val = 0
     if (val < aux) val = aux
     document.getElementById('notificationScreen').style.top = val;
@@ -360,8 +360,8 @@ function scrollWheelProfile(event) {
     }
 
     let val = parseInt(document.getElementById('profile').style.top) + i;
-    let aux = -($(document.getElementById('picturelist')).outerHeight() + $(document.getElementById('profile-top')).outerHeight() - 
-                ($(document.getElementById('mainScreen')).outerHeight() - $(document.getElementById('top-bar')).outerHeight()))
+    let aux = -($(document.getElementById('picturelist')).outerHeight() + $(document.getElementById('profile-top')).outerHeight() -
+        ($(document.getElementById('mainScreen')).outerHeight() - $(document.getElementById('top-bar')).outerHeight()))
     console.log(val)
     console.log(aux)
     if (val > 0) val = 0
@@ -382,10 +382,10 @@ function scrollWheelMessage(event) {
     }
 
     let height = Array.from(document.getElementById('messageContent').children).map(el => $(el).height()).reduce((tot, el) => tot + el) * 1.23
-    
+
     let val = parseInt(document.getElementById('messageBox').style.top) + i;
     let aux = -(height + $(document.getElementById('zindex')).height() -
-            ($(document.getElementById('mainScreen')).outerHeight() - $(document.getElementById('top-bar')).outerHeight()))
+        ($(document.getElementById('mainScreen')).outerHeight() - $(document.getElementById('top-bar')).outerHeight()))
     console.log(val)
     console.log(aux)
     if (val > 0) val = 0
@@ -396,7 +396,7 @@ function scrollWheelMessage(event) {
 function scrollWheelMovement(event) {
     if (dragInfo == undefined || event.screenX === 0 && event.screenY === 0)
         return;
-    switch(screenStack[screenStack.length - 1]) {
+    switch (screenStack[screenStack.length - 1]) {
         case 'photopublish':
             scrollWheelPhotos(event)
             break
@@ -433,54 +433,54 @@ function updatePicture() {
 
 function createNotifications() {
     let profiletable = '';
-    profiletable += "<tr><td onclick='goToPop("+ Math.floor(Math.random() * 4 ) + ");' id='rowone'><img class='notifpic' src=" + profiles[0].photo + "><h4 id='notificationmessage'>" + profiles[0].name + " gostou da sua foto</h4></td></tr>";
+    profiletable += "<tr><td onclick='goToPop(" + Math.floor(Math.random() * 4) + ");' id='rowone'><img class='notifpic' src=" + profiles[0].photo + "><h4 id='notificationmessage'>" + profiles[0].name + " gostou da sua foto</h4></td></tr>";
     for (i = 1; i < profiles.length; i++) {
-        profiletable += "<tr><td onclick= 'goToPop("+ Math.floor(Math.random() * 4)+ ");' class='row'><img class='notifpic' src=" + profiles[i].photo + "><h4 id='notificationmessage'>" + profiles[i].name + " gostou da sua foto</h4></td></tr>";
+        profiletable += "<tr><td onclick= 'goToPop(" + Math.floor(Math.random() * 4) + ");' class='row'><img class='notifpic' src=" + profiles[i].photo + "><h4 id='notificationmessage'>" + profiles[i].name + " gostou da sua foto</h4></td></tr>";
     }
     document.getElementById("notifications").innerHTML = profiletable;
 }
-function goToPop(i){
-    location.href = '#' + pictureProfileArray[i+numberPostFtg].divName;
+function goToPop(i) {
+    location.href = '#' + pictureProfileArray[i + numberPostFtg].divName;
 }
 
-function createNotificationsPops(){
-    let profiletable = document.getElementById("watchBorder");   
+function createNotificationsPops() {
+    let profiletable = document.getElementById("watchBorder");
     for (i = 0; i < pictureProfileArray.length; i++) {
         console.log('doing');
-        profiletable.innerHTML += "<div class = 'overlay' id='" + pictureProfileArray[i].divName + "'><div class='popupphoto'><div id='toppopup'><a id='closepopup' href='#'>&times;</a></div><div class='content'><img id='photopopup' src='" + pictureProfileArray[i].image + "'> </div></div></div></div>";  
+        profiletable.innerHTML += "<div class = 'overlay' id='" + pictureProfileArray[i].divName + "'><div class='popupphoto'><div id='toppopup'><a id='closepopup' href='#'>&times;</a></div><div class='content'><img id='photopopup' src='" + pictureProfileArray[i].image + "'> </div></div></div></div>";
     }
 }
 function createMessages() {
     let profiletable = '';
-    profiletable += "<tr onclick="+ '"' + 'createMenuMessage(' + 0 + ");pushScreen('messageBox');" + '"' + "><td id='rowone'><img class='messagepic' src=" + profiles[0].photo + "><h3 id='messagename'>" + profiles[0].name + "</h3></td></tr>";
-    for(i = 1; i< profiles.length; i++){
-        profiletable += "<tr onclick="+ '"' + 'createMenuMessage(' + i + ");pushScreen('messageBox');" + '"' + "><td class='row'><img class='messagepic' src=" + profiles[i].photo + "><h3 id='messagename'>" + profiles[i].name + "</h3></td></tr>";
+    profiletable += "<tr onclick=" + '"' + 'createMenuMessage(' + 0 + ");pushScreen('messageBox');" + '"' + "><td id='rowone'><img class='messagepic' src=" + profiles[0].photo + "><h3 id='messagename'>" + profiles[0].name + "</h3></td></tr>";
+    for (i = 1; i < profiles.length; i++) {
+        profiletable += "<tr onclick=" + '"' + 'createMenuMessage(' + i + ");pushScreen('messageBox');" + '"' + "><td class='row'><img class='messagepic' src=" + profiles[i].photo + "><h3 id='messagename'>" + profiles[i].name + "</h3></td></tr>";
     }
     document.getElementById("messages").innerHTML = profiletable;
 }
 
 var currentUser = 0;
 
-function createMenuMessage(index){
+function createMenuMessage(index) {
     currentUser = index;
     let messages = '';
     messages += "<div id='zindex'><h1 id='messaperson'>" + profiles[index].name + "</h1></div><div id='messageContent'>";
-    for(i = 0, k = 0; i < profiles[index].messages.length || k < profiles[index].responses.length; i++, k++){
-        if(profiles[index].responses[k]!= null){
+    for (i = 0, k = 0; i < profiles[index].messages.length || k < profiles[index].responses.length; i++ , k++) {
+        if (profiles[index].responses[k] != null) {
             messages += "<div class='containerM lighterM'><p class='messageP' id='message1'>" + profiles[index].responses[k] + "</p></div>";
         }
-        if(profiles[index].messages[i]!= null){
-            messages += "<div class='containerM darkerM'><p class='messageP' id='message2'>" + profiles[index].messages[i] + "</p></div>";  
+        if (profiles[index].messages[i] != null) {
+            messages += "<div class='containerM darkerM'><p class='messageP' id='message2'>" + profiles[index].messages[i] + "</p></div>";
         }
     }
     let name = profiles[index].divName + 'Input';
     console.log(name);
-    messages += "<div id='box' class='boxMessage'><img id='micmessage' onclick=" + '"' + "microphoneOn('" + name + "','micmessage', 4)" + '"' + "src='icons/micoff.png'><input type='text' id='" + profiles[index].divName + "Input' class='sendmessage'></input><img src='icons/send.png' id='sendimage' onclick=" + "sendMessage('"+ profiles[index].divName  +"')" +'></div>'
+    messages += "<div id='box' class='boxMessage'><img id='micmessage' onclick=" + '"' + "microphoneOn('" + name + "','micmessage', 4)" + '"' + "src='icons/micoff.png'><input type='text' id='" + profiles[index].divName + "Input' class='sendmessage'></input><img src='icons/send.png' id='sendimage' onclick=" + "sendMessage('" + profiles[index].divName + "')" + '></div>'
     document.getElementById('messageBox').innerHTML = messages + "</div>";
     document.getElementById('messageBox').style.top = 0;
 }
 
-function resetMenuMessage(){
+function resetMenuMessage() {
     document.getElementById('messageBox').innerHTML = ''
 }
 
@@ -489,23 +489,23 @@ function sendMessage(divName) {
         return;
     profiles[currentUser].messages.push(document.getElementById(divName + 'Input').value);
     if (mics[3] === 1)
-        microphoneOn(profiles[currentUser].divName + 'Input','micmessage', 4);
+        microphoneOn(profiles[currentUser].divName + 'Input', 'micmessage', 4);
     resetMenuMessage();
     createMenuMessage(currentUser);
     let height = Array.from(document.getElementById('messageContent').children).map(el => $(el).height()).reduce((tot, el) => tot + el) * 1.23
     let aux = -(height + $(document.getElementById('zindex')).height() -
-            ($(document.getElementById('mainScreen')).outerHeight() - $(document.getElementById('top-bar')).outerHeight()))
+        ($(document.getElementById('mainScreen')).outerHeight() - $(document.getElementById('top-bar')).outerHeight()))
     document.getElementById('messageBox').style.top = aux;
 }
 
-function createMenuPerfil(){
+function createMenuPerfil() {
     let profiletable = document.getElementById("pictureListTable")
     let content = ''
-    for (i = 0; i < pictureProfileArray.length; i=i+2) {
+    for (i = 0; i < pictureProfileArray.length; i = i + 2) {
         content += "<tr><td><img class='imageChoice' src='" + pictureProfileArray[i].image + "' style='" + String(pictureProfileArray[i].style) + "'></td>"
         if (i + 1 < pictureProfileArray.length)
-            content += "<td><img class='imageChoice' src='" + pictureProfileArray[i+1].image + "' style='" + String(pictureProfileArray[i+1].style) + "'></td>";
-        content+='</tr>'
+            content += "<td><img class='imageChoice' src='" + pictureProfileArray[i + 1].image + "' style='" + String(pictureProfileArray[i + 1].style) + "'></td>";
+        content += '</tr>'
     }
     profiletable.innerHTML = content;
     console.log(content)
@@ -520,8 +520,8 @@ function true_modulo(val, n) {
 }
 
 function resetFilters() {
-  document.getElementById("photoToEdit").style.filter = '';
-  document.getElementById("photofinal").style.filter = ''
+    document.getElementById("photoToEdit").style.filter = '';
+    document.getElementById("photofinal").style.filter = ''
 }
 
 function nextPicture() {
@@ -542,11 +542,11 @@ function fillProfile() {
 function saveProfile() {
     let input1 = document.getElementById("input1").value;
     let input2 = document.getElementById("input2").value;
-    if(input1 != ''){
+    if (input1 != '') {
         mainprofile[0].name = input1;
     }
-    if(input2 != ''){
-        mainprofile[0].description = input2; 
+    if (input2 != '') {
+        mainprofile[0].description = input2;
     }
     fillProfile();
     backButton();
@@ -578,48 +578,48 @@ function Bluetooth() {
     else {
         document.getElementById('bluetoothImg').style.visibility = 'visible';
     }
-    triggerBluetooths(count % 2 == 0 ? false: true)
+    triggerBluetooths(count % 2 == 0 ? false : true)
 }
-function blockWatch(){
+function blockWatch() {
     console.log('blackScreen');
     block++;
     localStorage.setItem('locked', true);
-    if(screenStack[screenStack.length-1] == 'lockScreen'){
+    if (screenStack[screenStack.length - 1] == 'lockScreen') {
         screenStack.pop();
         document.getElementById('lockScreen').style.display = 'none';
         pushScreen('blackScreen');
         return;
     }
-    if(block%2 == 1){
+    if (block % 2 == 1) {
         pushScreen('blackScreen');
         document.getElementById('top-bar').style.display = 'none';
     }
-    else{
+    else {
         backButton();
         pushScreen('lockScreen');
-        
+
     }
 }
-function unlockWatch(){
+function unlockWatch() {
     localStorage.setItem('locked', false)
     backButton();
     console.log('unlock');
     document.getElementById('top-bar').style.display = '';
 }
 
-function helpButton(){
-    if(block%2 == 1){
+function helpButton() {
+    if (block % 2 == 1) {
         return;
     }
     console.log(screenStack[screenStack.length - 1]);
-    switch(screenStack[screenStack.length - 1]){
+    switch (screenStack[screenStack.length - 1]) {
         case 'multimedia':
             pushScreen('helpmultimediascreen');
             break;
         case 'lockScreen':
         case 'helpmultimediascreen':
         case 'helpphotosubmit':
-        case 'helpprofileedit' :
+        case 'helpprofileedit':
             break;
         case 'photoSubmit':
             pushScreen('helpphotosubmit');
@@ -628,16 +628,16 @@ function helpButton(){
             pushScreen('helpprofileedit');
             break;
         case 'bluetooth-setup':
-            location.href="#popup2";
+            location.href = "#popup2";
             break;
         default:
-            location.href="#popup1";
+            location.href = "#popup1";
     }
 }
 
-function bluetoothIsOff(){
-    if(count % 2 == 0){
-        location.href="#popup2";
+function bluetoothIsOff() {
+    if (count % 2 == 0) {
+        location.href = "#popup2";
         pushScreen('bluetooth-setup');
     } else {
         pushScreen('photopublish')
@@ -660,7 +660,7 @@ function addPicture() {
     numberPostFtg++;
     document.getElementById('descript').value = '';
     createMenuPerfil();
-    document.getElementById(screenStack[screenStack.length-1]).style.display= 'none'
+    document.getElementById(screenStack[screenStack.length - 1]).style.display = 'none'
     screenStack = []
     pushScreen('multimedia');
     resetFilters();
@@ -674,24 +674,24 @@ function triggerBluetooths(value) {
     $(document.getElementsByClassName('bluetooth-btn')).prop('checked', value)
 }
 
-function microphoneOn(inputname, value, numbermic){
+function microphoneOn(inputname, value, numbermic) {
     let using = mics.some(val => val === 1)
     if (using) {
-        micsid.map(id => {if (document.getElementById(id) !== null) document.getElementById(id).style.backgroundColor = 'white'}) //limpa todos
+        micsid.map(id => { if (document.getElementById(id) !== null) document.getElementById(id).style.backgroundColor = 'white' }) //limpa todos
     }
-    if (mics[numbermic-1] === 0) {
+    if (mics[numbermic - 1] === 0) {
         //start new recognition
         document.getElementById(inputname).focus();
         document.getElementById(value).style.backgroundColor = "#E84855";
         mics = Array(mics.length).fill(0)
-        mics[numbermic-1] = 1;
+        mics[numbermic - 1] = 1;
         selectedTextBox = document.getElementById(inputname)
         if (!recognizing) recognition.start()
     } else {
         //just stop
         recognition.stop()
-        document.getElementById(micsid[numbermic-1]).style.backgroundColor = 'white'
-        mics[numbermic-1] = 0
+        document.getElementById(micsid[numbermic - 1]).style.backgroundColor = 'white'
+        mics[numbermic - 1] = 0
         selectedTextBox = undefined
     }
 }
