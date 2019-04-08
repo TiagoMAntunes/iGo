@@ -674,6 +674,8 @@ function triggerBluetooths(value) {
     $(document.getElementsByClassName('bluetooth-btn')).prop('checked', value)
 }
 
+
+let status = false
 function microphoneOn(inputname, value, numbermic) {
     let using = mics.some(val => val === 1)
     if (using) {
@@ -687,11 +689,13 @@ function microphoneOn(inputname, value, numbermic) {
         mics[numbermic - 1] = 1;
         selectedTextBox = document.getElementById(inputname)
         if (!recognizing) recognition.start()
+        status = true
     } else {
         //just stop
         recognition.stop()
         document.getElementById(micsid[numbermic - 1]).style.backgroundColor = 'white'
         mics[numbermic - 1] = 0
         selectedTextBox = undefined
+        status = false
     }
 }
