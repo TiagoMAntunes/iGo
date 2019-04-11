@@ -370,8 +370,8 @@ function scrollWheelProfile(event) {
 }
 
 function scrollWheelMessage(event) {
-    if (document.getElementById('messageBox').style.top == '')
-        document.getElementById('messageBox').style.top = '0px';
+    if (document.getElementById('messageContent').style.top == '')
+        document.getElementById('messageContent').style.top = '0px';
     let direction = (event.clientY - dragInfo.clientY)
 
     let i = 0;
@@ -381,16 +381,15 @@ function scrollWheelMessage(event) {
         i = -10;
     }
 
-    let height = Array.from(document.getElementById('messageContent').children).map(el => $(el).height()).reduce((tot, el) => tot + el) * 1.23
 
-    let val = parseInt(document.getElementById('messageBox').style.top) + i;
-    let aux = -(height + $(document.getElementById('zindex')).height() -
+    //TO-DO FIX scrollwheel here
+    let val = parseInt(document.getElementById('messageContent').style.top) + i;
+    let aux = -($(document.getElementById('messageContent')).outerHeight() + $(document.getElementById('zindex')).outerHeight() -
         ($(document.getElementById('mainScreen')).outerHeight() - $(document.getElementById('top-bar')).outerHeight()))
-    console.log(val)
-    console.log(aux)
+
     if (val > 0) val = 0
     if (val < aux) val = aux
-    document.getElementById('messageBox').style.top = val;
+    document.getElementById('messageContent').style.top = val;
 }
 
 function scrollWheelMovement(event) {
@@ -492,10 +491,9 @@ function sendMessage(divName) {
         microphoneOn(profiles[currentUser].divName + 'Input', 'micmessage', 4);
     resetMenuMessage();
     createMenuMessage(currentUser);
-    let height = Array.from(document.getElementById('messageContent').children).map(el => $(el).height()).reduce((tot, el) => tot + el) * 1.23
-    let aux = -(height + $(document.getElementById('zindex')).height() -
+    let aux = -($(document.getElementById('messageContent')).outerHeight() + $(document.getElementById('zindex')).outerHeight() -
         ($(document.getElementById('mainScreen')).outerHeight() - $(document.getElementById('top-bar')).outerHeight()))
-    document.getElementById('messageBox').style.top = aux;
+    document.getElementById('messageContent').style.top = aux;
 }
 
 function createMenuPerfil() {
