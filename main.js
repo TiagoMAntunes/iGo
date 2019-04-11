@@ -381,8 +381,6 @@ function scrollWheelMessage(event) {
         i = -10;
     }
 
-
-    //TO-DO FIX scrollwheel here
     let val = parseInt(document.getElementById('messageContent').style.top) + i;
     let aux = -($(document.getElementById('messageContent')).outerHeight() + $(document.getElementById('zindex')).outerHeight() -
         ($(document.getElementById('mainScreen')).outerHeight() - $(document.getElementById('top-bar')).outerHeight()))
