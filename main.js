@@ -65,20 +65,24 @@ var mainprofile = [{
 }]
 
 var pictureProfileArray = [{
-    "image": "images/shrek-1.jpg",
-    "divName": "image1Pop",
-    "style": ''
-}, {
-    "image": "images/shrek-2.jpg",
+    "image": "images/australia.jpg",
+    "description": "Looking for kangaroos!!",
     "divName": "image2Pop",
     "style": ''
 }, {
-    "image": "images/shrek-3.jpg",
+    "image": "images/tropical.jpeg",
+    "description": "Chilling...",
+    "divName": "image1Pop",
+    "style": ''
+}, {
+    "image": "images/beach.jpg",
+    "description": "Great sunset at the beach today.",
     "divName": "image3Pop",
     "style": ''
 }, {
-    "image": "images/shrek-4.jpg",
-    "divName": "image1Pop",
+    "image": "images/passport.jpg",
+    "description": "Ready to travel!",
+    "divName": "image4Pop",
     "style": ''
 }]
 var screenStack = [];
@@ -130,7 +134,15 @@ recognition.onstart = function () {
 recognition.onend = function () {
     //acabou
     console.log('Recording ended')
-    recognition = false
+    recognizing = false
+}
+
+recognition.onerror = function(event) {
+    //quando para automaticamente
+    if (event.error == 'no-speech') {
+        console.log('User not speaking')
+        autoturnoff()
+    }
 }
 
 recognition.onresult = function (event) {
@@ -374,8 +386,8 @@ function scrollWheelProfile(event) {
 }
 
 function scrollWheelMessage(event) {
-    if (document.getElementById('messageBox').style.top == '')
-        document.getElementById('messageBox').style.top = '0px';
+    if (document.getElementById('messageContent').style.top == '')
+        document.getElementById('messageContent').style.top = '0px';
     let direction = (event.clientY - dragInfo.clientY)
 
     let i = 0;
@@ -385,17 +397,37 @@ function scrollWheelMessage(event) {
         i = -10;
     }
 
-    let height = Array.from(document.getElementById('messageContent').children).map(el => $(el).height()).reduce((tot, el) => tot + el) * 1.23
-
-    let val = parseInt(document.getElementById('messageBox').style.top) + i;
-    let aux = -(height + $(document.getElementById('zindex')).height() -
+    let val = parseInt(document.getElementById('messageContent').style.top) + i;
+    let aux = -($(document.getElementById('messageContent')).outerHeight() + $(document.getElementById('zindex')).outerHeight() -
         ($(document.getElementById('mainScreen')).outerHeight() - $(document.getElementById('top-bar')).outerHeight()))
-    console.log(val)
-    console.log(aux)
+
     if (val > 0) val = 0
     if (val < aux) val = aux
-    document.getElementById('messageBox').style.top = val;
+    document.getElementById('messageContent').style.top = val;
 }
+
+function scrollWheelHelpMultiScreen(event) {
+    if (document.getElementById('helpmultimediascreen').style.top == '')
+        document.getElementById('helpmultimediascreen').style.top = '0px';
+    let direction = (event.clientY - dragInfo.clientY)
+
+    let i = 0;
+    if (direction > 0) {
+        i = 10;
+    } else if (direction < 0) {
+        i = -10;
+    }
+
+    let val = parseInt(document.getElementById('helpmultimediascreen').style.top) + i;
+    let aux = -($(document.getElementById('helpmultimediascreen')).outerHeight() -
+        ($(document.getElementById('mainScreen')).outerHeight() - $(document.getElementById('top-bar')).outerHeight()))
+    console.log(aux)
+    console.log(val)
+    if (val > 0) val = 0
+    if (val < aux) val = aux
+    document.getElementById('helpmultimediascreen').style.top = val;
+}
+
 
 function scrollWheelMovement(event) {
     if (dragInfo == undefined || event.screenX === 0 && event.screenY === 0)
@@ -415,6 +447,9 @@ function scrollWheelMovement(event) {
             break
         case 'messageBox':
             scrollWheelMessage(event)
+            break
+        case 'helpmultimediascreen':
+            scrollWheelHelpMultiScreen(event)
             break
     }
 }
@@ -447,11 +482,19 @@ function goToPop(i) {
     location.href = '#' + pictureProfileArray[i + numberPostFtg].divName;
 }
 
+function goToPopPerfil(i) {
+    location.href = '#' + pictureProfileArray[i].divName;
+}
+function createNotificationPop(){
+     let profiletable = document.getElementById("watchBorder");
+     i = 0;
+     profiletable.innerHTML += "<div class = 'overlay' id='" + pictureProfileArray[i].divName + "'><div class='popupphoto'><div id='toppopup'><a id='closepopup' href='#'>&times;</a></div><div class='content'><img style='"+String(pictureProfileArray[i].style)+"' id='photopopup' src='" + pictureProfileArray[i].image + "'> <p id='descriptionNotifications'>"+ pictureProfileArray[i].description +"</p></div></div></div></div>";
+}
 function createNotificationsPops() {
     let profiletable = document.getElementById("watchBorder");
     for (i = 0; i < pictureProfileArray.length; i++) {
         console.log('doing');
-        profiletable.innerHTML += "<div class = 'overlay' id='" + pictureProfileArray[i].divName + "'><div class='popupphoto'><div id='toppopup'><a id='closepopup' href='#'>&times;</a></div><div class='content'><img id='photopopup' src='" + pictureProfileArray[i].image + "'></div></div></div></div>";
+        profiletable.innerHTML += "<div class = 'overlay' id='" + pictureProfileArray[i].divName + "'><div class='popupphoto'><div id='toppopup'><a id='closepopup' href='#'>&times;</a></div><div class='content'><img id='photopopup' src='" + pictureProfileArray[i].image + "'><p id='descriptionNotifications'>"+ pictureProfileArray[i].description +"</p></div></div></div></div>";
     }
 }
 function createMessages() {
@@ -496,19 +539,20 @@ function sendMessage(divName) {
         microphoneOn(profiles[currentUser].divName + 'Input', 'micmessage', 4);
     resetMenuMessage();
     createMenuMessage(currentUser);
-    let height = Array.from(document.getElementById('messageContent').children).map(el => $(el).height()).reduce((tot, el) => tot + el) * 1.23
-    let aux = -(height + $(document.getElementById('zindex')).height() -
+    let aux = -($(document.getElementById('messageContent')).outerHeight() + $(document.getElementById('zindex')).outerHeight() -
         ($(document.getElementById('mainScreen')).outerHeight() - $(document.getElementById('top-bar')).outerHeight()))
-    document.getElementById('messageBox').style.top = aux;
+    document.getElementById('messageContent').style.top = aux;
 }
 
 function createMenuPerfil() {
     let profiletable = document.getElementById("pictureListTable")
     let content = ''
     for (i = 0; i < pictureProfileArray.length; i = i + 2) {
-        content += "<tr><td><img class='imageChoice' src='" + pictureProfileArray[i].image + "' style='" + String(pictureProfileArray[i].style) + "'></td>"
-        if (i + 1 < pictureProfileArray.length)
-            content += "<td><img class='imageChoice' src='" + pictureProfileArray[i + 1].image + "' style='" + String(pictureProfileArray[i + 1].style) + "'></td>";
+        content += "<tr><td onclick="+'"'+"goToPopPerfil('"+ i +"')"+'"'+"><img class='imageChoice' src='" + pictureProfileArray[i].image + "' style='" + String(pictureProfileArray[i].style) + "'></td>"
+        if (i + 1 < pictureProfileArray.length){
+            let j = i + 1;
+            content += "<td onclick="+'"'+"goToPopPerfil('"+ j +"')"+'"'+"><img class='imageChoice' src='" + pictureProfileArray[i + 1].image + "' style='" + String(pictureProfileArray[i + 1].style) + "'></td>";
+        }
         content += '</tr>'
     }
     profiletable.innerHTML = content;
@@ -640,6 +684,9 @@ function helpButton() {
         case 'profileEdit':
             pushScreen('helpprofileedit');
             break;
+        case 'messageBox':
+            pushScreen('helpmessage');
+            break;
         case 'bluetooth-setup':
             popupon = 1;
             location.href = "#popup2";
@@ -673,6 +720,7 @@ function validateBluetooth() {
 function addPicture() {
     pictureProfileArray.unshift({
         "image": document.getElementById('photofinal').src,
+        "description": document.getElementById('descript').value,
         "divName": "Vocês são terríveis nesta merda",
         "style": document.getElementById('photofinal').style.cssText
     })
@@ -683,6 +731,7 @@ function addPicture() {
     screenStack = []
     pushScreen('multimedia');
     resetFilters();
+    createNotificationPop();
 }
 
 function updateValue(value) {
@@ -717,4 +766,13 @@ function microphoneOn(inputname, value, numbermic) {
         selectedTextBox = undefined
         status = false
     }
+}
+
+function autoturnoff() {
+    for (let i = 0; i < mics.length; i++)
+        if (mics[i] === 1) {
+            //microphone is on. turn it off
+            //TO-DO: microphoneOn(,micsid[i], i+1 );
+            break
+        }
 }

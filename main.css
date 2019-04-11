@@ -124,6 +124,7 @@
 #top-bar {
     position: relative;
     padding-top: 1%;
+    margin-bottom: 0;
     width: 100%;
     height: 5%;
     text-align: center;
@@ -195,7 +196,6 @@
 }
 
 #tablePhotos {
-    
     position: relative;
 }
 
@@ -817,9 +817,9 @@ input:checked + .slider:before {
     margin-top: 8%;
 }
 
-#helpmultimediascreen{
-    overflow-y: scroll;
-    height: 93%;
+#helpmultimediascreen {
+    position: relative;
+    overflow-y: auto;
 }
 
 
@@ -876,10 +876,17 @@ input:checked + .slider:before {
   #photopopup{
       padding-right: 8%;
       padding-left: 8%;
-      padding-bottom: 8%;
+      padding-bottom: 4%;
       width: 85%;
       height: 60%;
   }
+
+  #descriptionNotifications {
+      margin: 0%;
+      padding-left: 8%;
+      padding-bottom: 4%;
+  }
+
   .popup h2 {
     margin-top: 0;
     color: #333;
@@ -987,12 +994,15 @@ input:checked + .slider:before {
 
 #messageContent {
     position: relative;
+    z-index: 1;
+    overflow: auto;
 }
 
 #zindex {
+    position: relative;
     padding-bottom: 3%;
     padding-top: 1%;
-    
+    z-index: 10;
     background-color: white;
 }
 
