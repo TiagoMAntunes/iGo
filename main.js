@@ -66,18 +66,22 @@ var mainprofile = [{
 
 var pictureProfileArray = [{
     "image": "images/shrek-1.jpg",
+    "description": "ola 1",
     "divName": "image1Pop",
     "style": ''
 }, {
     "image": "images/shrek-2.jpg",
+    "description": "ola 2",
     "divName": "image2Pop",
     "style": ''
 }, {
     "image": "images/shrek-3.jpg",
+    "description": "ola 3",
     "divName": "image3Pop",
     "style": ''
 }, {
     "image": "images/shrek-4.jpg",
+    "description": "ola 4",
     "divName": "image1Pop",
     "style": ''
 }]
@@ -466,11 +470,19 @@ function goToPop(i) {
     location.href = '#' + pictureProfileArray[i + numberPostFtg].divName;
 }
 
+function goToPopPerfil(i) {
+    location.href = '#' + pictureProfileArray[i].divName;
+}
+function createNotificationPop(){
+     let profiletable = document.getElementById("watchBorder");
+     i = 0;
+     profiletable.innerHTML += "<div class = 'overlay' id='" + pictureProfileArray[i].divName + "'><div class='popupphoto'><div id='toppopup'><a id='closepopup' href='#'>&times;</a></div><div class='content'><img style='"+String(pictureProfileArray[i].style)+"' id='photopopup' src='" + pictureProfileArray[i].image + "'> <p>"+ pictureProfileArray[i].description +"</p></div></div></div></div>";
+}
 function createNotificationsPops() {
     let profiletable = document.getElementById("watchBorder");
     for (i = 0; i < pictureProfileArray.length; i++) {
         console.log('doing');
-        profiletable.innerHTML += "<div class = 'overlay' id='" + pictureProfileArray[i].divName + "'><div class='popupphoto'><div id='toppopup'><a id='closepopup' href='#'>&times;</a></div><div class='content'><img id='photopopup' src='" + pictureProfileArray[i].image + "'> </div></div></div></div>";
+        profiletable.innerHTML += "<div class = 'overlay' id='" + pictureProfileArray[i].divName + "'><div class='popupphoto'><div id='toppopup'><a id='closepopup' href='#'>&times;</a></div><div class='content'><img id='photopopup' src='" + pictureProfileArray[i].image + "'> <p>"+ pictureProfileArray[i].description +"</p></div></div></div></div>";
     }
 }
 function createMessages() {
@@ -524,9 +536,11 @@ function createMenuPerfil() {
     let profiletable = document.getElementById("pictureListTable")
     let content = ''
     for (i = 0; i < pictureProfileArray.length; i = i + 2) {
-        content += "<tr><td><img class='imageChoice' src='" + pictureProfileArray[i].image + "' style='" + String(pictureProfileArray[i].style) + "'></td>"
-        if (i + 1 < pictureProfileArray.length)
-            content += "<td><img class='imageChoice' src='" + pictureProfileArray[i + 1].image + "' style='" + String(pictureProfileArray[i + 1].style) + "'></td>";
+        content += "<tr><td onclick="+'"'+"goToPopPerfil('"+ i +"')"+'"'+"><img class='imageChoice' src='" + pictureProfileArray[i].image + "' style='" + String(pictureProfileArray[i].style) + "'></td>"
+        if (i + 1 < pictureProfileArray.length){
+            let j = i + 1;
+            content += "<td onclick="+'"'+"goToPopPerfil('"+ j +"')"+'"'+"><img class='imageChoice' src='" + pictureProfileArray[i + 1].image + "' style='" + String(pictureProfileArray[i + 1].style) + "'></td>";
+        }
         content += '</tr>'
     }
     profiletable.innerHTML = content;
@@ -676,6 +690,7 @@ function validateBluetooth() {
 function addPicture() {
     pictureProfileArray.unshift({
         "image": document.getElementById('photofinal').src,
+        "description": document.getElementById('descript').value,
         "divName": "Vocês são terríveis nesta merda",
         "style": document.getElementById('photofinal').style.cssText
     })
@@ -686,6 +701,7 @@ function addPicture() {
     screenStack = []
     pushScreen('multimedia');
     resetFilters();
+    createNotificationPop();
 }
 
 function updateValue(value) {
