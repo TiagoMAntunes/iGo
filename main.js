@@ -133,7 +133,15 @@ recognition.onstart = function () {
 recognition.onend = function () {
     //acabou
     console.log('Recording ended')
-    recognition = false
+    recognizing = false
+}
+
+recognition.onerror = function(event) {
+    //quando para automaticamente
+    if (event.error == 'no-speech') {
+        console.log('User not speaking')
+        autoturnoff()
+    }
 }
 
 recognition.onresult = function (event) {
@@ -736,4 +744,13 @@ function microphoneOn(inputname, value, numbermic) {
         selectedTextBox = undefined
         status = false
     }
+}
+
+function autoturnoff() {
+    for (let i = 0; i < mics.length; i++)
+        if (mics[i] === 1) {
+            //microphone is on. turn it off
+            //TO-DO: microphoneOn(,micsid[i], i+1 );
+            break
+        }
 }
