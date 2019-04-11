@@ -82,7 +82,7 @@ var pictureProfileArray = [{
 }, {
     "image": "images/shrek-4.jpg",
     "description": "ola 4",
-    "divName": "image1Pop",
+    "divName": "image4Pop",
     "style": ''
 }]
 var screenStack = [];
