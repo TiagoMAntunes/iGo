@@ -390,6 +390,29 @@ function scrollWheelMessage(event) {
     document.getElementById('messageContent').style.top = val;
 }
 
+function scrollWheelHelpMultiScreen(event) {
+    if (document.getElementById('helpmultimediascreen').style.top == '')
+        document.getElementById('helpmultimediascreen').style.top = '0px';
+    let direction = (event.clientY - dragInfo.clientY)
+
+    let i = 0;
+    if (direction > 0) {
+        i = 10;
+    } else if (direction < 0) {
+        i = -10;
+    }
+
+    let val = parseInt(document.getElementById('helpmultimediascreen').style.top) + i;
+    let aux = -($(document.getElementById('helpmultimediascreen')).outerHeight() -
+        ($(document.getElementById('mainScreen')).outerHeight() - $(document.getElementById('top-bar')).outerHeight()))
+    console.log(aux)
+    console.log(val)
+    if (val > 0) val = 0
+    if (val < aux) val = aux
+    document.getElementById('helpmultimediascreen').style.top = val;
+}
+
+
 function scrollWheelMovement(event) {
     if (dragInfo == undefined || event.screenX === 0 && event.screenY === 0)
         return;
@@ -408,6 +431,9 @@ function scrollWheelMovement(event) {
             break
         case 'messageBox':
             scrollWheelMessage(event)
+            break
+        case 'helpmultimediascreen':
+            scrollWheelHelpMultiScreen(event)
             break
     }
 }

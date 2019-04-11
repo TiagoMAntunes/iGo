@@ -818,9 +818,9 @@ input:checked + .slider:before {
     margin-top: 8%;
 }
 
-#helpmultimediascreen{
-    overflow-y: scroll;
-    height: 93%;
+#helpmultimediascreen {
+    position: relative;
+    overflow-y: auto;
 }
 
 
