@@ -335,7 +335,7 @@
             <div class="popup">
                 <div id="toppopup">
                     <h2>Help</h2>
-                    <a class="close" href="#">&times;</a>
+                    <a class="close" href="#" onclick="popupclosed()">&times;</a>
                 </div>
                 <div class="content">
                     There is no available help in this menu.
@@ -346,10 +346,21 @@
             <div class="popup">
                 <div id="toppopup">
                     <h2>Help</h2>
-                    <a class="close" href="#">&times;</a>
+                    <a class="close" href="#" onclick="popupclosed()">&times;</a>
                 </div>
                 <div class="content">
                     Please turn on bluetooth in order to connect your smartphone.
+                </div>
+            </div>
+        </div>
+        <div id="popup3" class="overlay">
+            <div class="popup">
+                <div id="toppopup">
+                    <h2>Warning</h2>
+                    <a style="padding-left: 20%" class="close" onclick="backButton()" href="#">&times;</a>
+                </div>
+                <div class="content">
+                    You didn't make any changes to your profile.
                 </div>
             </div>
         </div>

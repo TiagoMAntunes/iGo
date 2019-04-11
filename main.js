@@ -12,7 +12,7 @@ var multimedia_storage = [{
     "liked": false
 }, {
     "photo": "images/shrek-4.jpg",
-    "description": "Fiz uma amizade na minha mais recente viagem #meetingStrangers",
+    "description": "Fiz uma amizade na minha viagem #meetingStrangers",
     "liked": false
 }, {
     "photo": "images/shrek-5.jpg",
@@ -89,6 +89,7 @@ var mics = [mic1, mic2, mic3, mic4];
 var micsid = ['mic1', 'mic2', 'mic3', 'micmessage'];
 var numberPostFtg = 0;
 var block = 0;
+var popupon = 0;
 
 var selectedTextBox = undefined;
 
@@ -247,6 +248,9 @@ function helpButton() {
 }
 
 function backButton() {
+    if(popupon) {
+        location.href="#";
+    }
     console.log(typeof (localStorage.getItem('locked')))
     console.log(localStorage.getItem('locked') === 'true' && (screenStack[screenStack.length - 1] === 'lockScreen'))
     if (localStorage.getItem('locked') === 'true' && screenStack[screenStack.length - 1] === 'lockScreen') {
@@ -447,7 +451,7 @@ function createNotificationsPops() {
     let profiletable = document.getElementById("watchBorder");
     for (i = 0; i < pictureProfileArray.length; i++) {
         console.log('doing');
-        profiletable.innerHTML += "<div class = 'overlay' id='" + pictureProfileArray[i].divName + "'><div class='popupphoto'><div id='toppopup'><a id='closepopup' href='#'>&times;</a></div><div class='content'><img id='photopopup' src='" + pictureProfileArray[i].image + "'> </div></div></div></div>";
+        profiletable.innerHTML += "<div class = 'overlay' id='" + pictureProfileArray[i].divName + "'><div class='popupphoto'><div id='toppopup'><a id='closepopup' href='#'>&times;</a></div><div class='content'><img id='photopopup' src='" + pictureProfileArray[i].image + "'></div></div></div></div>";
     }
 }
 function createMessages() {
@@ -548,10 +552,19 @@ function saveProfile() {
     if (input2 != '') {
         mainprofile[0].description = input2;
     }
+    if (input1 == '' && input2 == ''){
+        location.href="#popup3";
+        return;
+    }
     fillProfile();
     backButton();
     document.getElementById("formprofile").reset();
 }
+
+function closepopup(){
+    location.href="#";
+}
+
 
 function cancelChange() {
     document.getElementById("photodescription").reset();
@@ -628,11 +641,17 @@ function helpButton() {
             pushScreen('helpprofileedit');
             break;
         case 'bluetooth-setup':
+            popupon = 1;
             location.href = "#popup2";
             break;
         default:
+            popupon = 1;
             location.href = "#popup1";
     }
+}
+
+function popupclosed(){
+    popupon = 0;
 }
 
 function bluetoothIsOff() {
