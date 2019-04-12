@@ -724,7 +724,7 @@ function addPicture() {
     pictureProfileArray.unshift({
         "image": document.getElementById('photofinal').src,
         "description": document.getElementById('descript').value,
-        "divName": document.getElementById('descript').value,
+        "divName": "Vocês são terríveis nesta merda",
         "style": document.getElementById('photofinal').style.cssText
     })
     numberPostFtg++;
@@ -780,9 +780,4 @@ function autoturnoff() {
             console.log('Found it!')
             return
         }
-}
-
-var mymap;
-function setupMap() {
-    mymap = L.map('mapid').setView([51.505, -0.09], 13);
 }
