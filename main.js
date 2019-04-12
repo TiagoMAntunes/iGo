@@ -55,7 +55,7 @@ var profiles = [{
     "photo": "icons/prof5.png",
     "name": "Dragon",
     "divName": "dragonscreenmessage",
-    "responses": ["Ola Gato das botas", "Queres vir ver os teus sobrinho?", "Combinado!!"],
+    "responses": ["Ola Gato das botas", "Queres vir ver os teus sobrinhos?", "Combinado!!"],
     "messages": ["Oi Dragon", "Sim, posso amanha as 18!"]
 }]
 
@@ -131,14 +131,16 @@ recognition.onstart = function () {
     recognizing = true
 }
 
-recognition.onend = function () {
+recognition.onend = function (event) {
     //acabou
+    console.log(event);
     console.log('Recording ended')
     recognizing = false
 }
 
 recognition.onerror = function(event) {
     //quando para automaticamente
+    console.log(event.error)
     if (event.error == 'no-speech') {
         console.log('User not speaking')
         autoturnoff()
@@ -768,10 +770,12 @@ function microphoneOn(inputname, value, numbermic) {
 }
 
 function autoturnoff() {
+    console.log('Turning off...')
     for (let i = 0; i < mics.length; i++)
         if (mics[i] === 1) {
             //microphone is on. turn it off
-            //TO-DO: microphoneOn(,micsid[i], i+1 );
-            break
+            microphoneOn('',micsid[i], i+1 );
+            console.log('Found it!')
+            return
         }
 }
