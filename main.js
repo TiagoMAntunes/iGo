@@ -762,7 +762,7 @@ function addPicture() {
     pictureProfileArray.unshift({
         "image": document.getElementById('photofinal').src,
         "description": document.getElementById('descript').value,
-        "divName": "Vocês são terríveis nesta merda",
+        "divName": document.getElementById('descript').value,
         "style": document.getElementById('photofinal').style.cssText
     })
     numberPostFtg++;
