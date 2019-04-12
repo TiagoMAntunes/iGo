@@ -6,6 +6,8 @@
     <script src="jquery-3.3.1.min.js"></script>
     <link rel="stylesheet" type="text/css" media="screen" href="main.css">
     <script src="main.js"></script>
+    <link rel="stylesheet" href="maplib/leaflet.css" />
+    <script src="maplib/leaflet.js"></script>
 </head>
 
 <body onload="startup()">
@@ -27,7 +29,7 @@
                 <div id=option1 onclick="pushScreen('multimedia');">
                     <img id="cameraicon" src="icons/camera.png" />
                 </div>
-                <div id=option2 onclick="pushScreen('mapaScreen');">
+                <div id=option2 onclick="setupMap();pushScreen('mapScreen');">
                     <img id="mapicon" src="icons/map.png" />
                 </div>
                 <div id=option3 onclick="pushScreen('saude');">
@@ -167,8 +169,8 @@
                     </table>
                 </div>
             </div>
-            <div id='mapaScreen' style='display: none'>
-                <h1>Map</h1>
+            <div id='mapScreen' style='display: none'>
+                <div id='mapid'></div>
             </div>
             <div id='saude' style='display: none'>
                 <h1>Health</h1>
