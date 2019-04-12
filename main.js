@@ -488,12 +488,12 @@ function goToPopPerfil(i) {
     location.href = '#' + pictureProfileArray[i].divName;
 }
 function createNotificationPop(){
-     let profiletable = document.getElementById("watchBorder");
+     let profiletable = document.getElementById("notificationScreenPop");
      i = 0;
      profiletable.innerHTML += "<div class = 'overlay' id='" + pictureProfileArray[i].divName + "'><div class='popupphoto'><div id='toppopup'><a id='closepopup' href='#'>&times;</a></div><div class='content'><img style='"+String(pictureProfileArray[i].style)+"' id='photopopup' src='" + pictureProfileArray[i].image + "'> <p id='descriptionNotifications'>"+ pictureProfileArray[i].description +"</p></div></div></div></div>";
 }
 function createNotificationsPops() {
-    let profiletable = document.getElementById("watchBorder");
+    let profiletable = document.getElementById("notificationScreenPop");
     for (i = 0; i < pictureProfileArray.length; i++) {
         console.log('doing');
         profiletable.innerHTML += "<div class = 'overlay' id='" + pictureProfileArray[i].divName + "'><div class='popupphoto'><div id='toppopup'><a id='closepopup' href='#'>&times;</a></div><div class='content'><img id='photopopup' src='" + pictureProfileArray[i].image + "'><p id='descriptionNotifications'>"+ pictureProfileArray[i].description +"</p></div></div></div></div>";

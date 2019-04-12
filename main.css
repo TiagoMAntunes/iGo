@@ -486,6 +486,7 @@
 #notificationScreen {
     position: relative;
     height: 94%;
+    z-index: 20;
 }
 
 #notificationmessage {
@@ -822,6 +823,11 @@ input:checked + .slider:before {
     overflow-y: auto;
 }
 
+.overlay {
+    position: relative;
+    z-index: 100;
+}
+
 
 .overlay {
     position: fixed;
@@ -832,7 +838,6 @@ input:checked + .slider:before {
     background: rgba(0, 0, 0, 0.7);
     transition: opacity 500ms;
     visibility: hidden;
-    border-radius: 3.5%;
     opacity: 0;
   }
   .overlay:target {
@@ -856,6 +861,11 @@ input:checked + .slider:before {
     width: 90%;
     position: relative;
     
+  }
+  
+
+  .outside {
+      border-radius: 3.5%;
   }
   
   #toppopup {
