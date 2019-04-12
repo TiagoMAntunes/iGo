@@ -194,7 +194,7 @@
                         </td>
                         <td id='tdSettingsR' class='tdSettings'>
                             <label class="switch">
-                                <input type="checkbox">
+                                <input onclick="GPS()" type="checkbox" class="gps-btn">
                                 <span class="slider round"></span>
                             </label>
                         </td>
@@ -342,13 +342,13 @@
             <div id='gps-setup' style='display: none'>
                 <h1 id='turnon'>Turn on the GPS</h1>
                 <div style="display: flex; flex-direction: row">
-                    <img style="padding-left: 10%; padding-top: 5%" height="40%" width="40%" src="icons/bluet2.png">
+                    <img style="padding-left: 10%; padding-top: 5%" height="40%" width="40%" src="icons/gps.png">
                     <div>
                         <label id='buttonblt' class="switch">
-                            <input onclick="Bluetooth()" type="checkbox">
+                            <input onclick="GPS()" type="checkbox">
                             <span class="slider round"></span>
                         </label>
-                        <button id="nextbtn" onclick="validateBluetooth()">
+                        <button id="nextbtn" onclick="validateGPS()">
                             <b>NEXT</b>
                         </button>
                     </div>

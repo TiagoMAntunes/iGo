@@ -94,7 +94,7 @@ var micsid = ['mic1', 'mic2', 'mic3', 'micmessage'];
 var numberPostFtg = 0;
 var block = 0;
 var popupon = 0;
-var gpson = false;
+var gpson = 0;
 
 var selectedTextBox = undefined;
 
@@ -607,6 +607,7 @@ function saveProfile() {
     }
     if (input1 == '' && input2 == ''){
         location.href="#popup3";
+        popupon = 1;
         return;
     }
     fillProfile();
@@ -641,6 +642,19 @@ function Bluetooth() {
     }
     triggerBluetooths(count % 2 == 0 ? false : true)
 }
+
+function GPS(){
+    gpson++;
+    if(gpson % 2 == 0) {
+        /*meter imagem do gps na topbar*/
+    }
+    else{
+        /*esconder imagem do gps na topbar*/
+    }
+    triggerGps(gpson % 2 == 0 ? false : true);
+}
+
+
 function blockWatch() {
     console.log('blackScreen');
     block++;
@@ -698,6 +712,7 @@ function helpButton() {
         case 'gps-setup':
             popupon = 1;
             location.href = "#popup4";
+            break;
         default:
             popupon = 1;
             location.href = "#popup1";
@@ -719,8 +734,9 @@ function bluetoothIsOff() {
 }
 
 function gpsIsOff(){
-    if(gpson == false){
+    if(gpson % 2 == 0){
         location.href = "#popup4";
+        popupon = 1;
         pushScreen('gps-setup');
     } else {
         pushScreen('mapaScreen');
@@ -733,6 +749,14 @@ function validateBluetooth() {
         pushScreen('photopublish')
     }
 }
+
+function validateGPS(){
+    if(gpson % 2 !== 0 ){
+        backButton()
+        pushScreen('mapaScreen');
+    }
+}
+
 
 function addPicture() {
     pictureProfileArray.unshift({
@@ -759,6 +783,9 @@ function triggerBluetooths(value) {
     $(document.getElementsByClassName('bluetooth-btn')).prop('checked', value)
 }
 
+function triggerGps(value) {
+    $(document.getElementsByClassName('gps-btn')).prop('checked', value);
+}
 
 let status = false
 function microphoneOn(inputname, value, numbermic) {
