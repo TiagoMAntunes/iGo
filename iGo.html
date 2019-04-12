@@ -27,7 +27,7 @@
                 <div id=option1 onclick="pushScreen('multimedia');">
                     <img id="cameraicon" src="icons/camera.png" />
                 </div>
-                <div id=option2 onclick="pushScreen('mapaScreen');">
+                <div id=option2 onclick="gpsIsOff()">
                     <img id="mapicon" src="icons/map.png" />
                 </div>
                 <div id=option3 onclick="pushScreen('saude');">
@@ -168,6 +168,7 @@
                 </div>
             </div>
             <div id='mapaScreen' style='display: none'>
+
                 <h1>Map</h1>
             </div>
             <div id='saude' style='display: none'>
@@ -338,6 +339,21 @@
                     </div>
                 </div>
             </div>
+            <div id='gps-setup' style='display: none'>
+                <h1 id='turnon'>Turn on the GPS</h1>
+                <div style="display: flex; flex-direction: row">
+                    <img style="padding-left: 10%; padding-top: 5%" height="40%" width="40%" src="icons/bluet2.png">
+                    <div>
+                        <label id='buttonblt' class="switch">
+                            <input onclick="Bluetooth()" type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                        <button id="nextbtn" onclick="validateBluetooth()">
+                            <b>NEXT</b>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
         <div id="popup1" class="overlay outside">
             <div class="popup">
@@ -369,6 +385,17 @@
                 </div>
                 <div class="content">
                     You didn't make any changes to your profile.
+                </div>
+            </div>
+        </div>
+        <div id="popup4" class="overlay outside">
+            <div class="popup">
+                <div id="toppopup">
+                    <h2>Help</h2>
+                    <a class="close" href="#" onclick="popupclosed()">&times;</a>
+                </div>
+                <div class="content">
+                    Please turn on gps in order to connect your smartphone.
                 </div>
             </div>
         </div>

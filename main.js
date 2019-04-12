@@ -94,6 +94,7 @@ var micsid = ['mic1', 'mic2', 'mic3', 'micmessage'];
 var numberPostFtg = 0;
 var block = 0;
 var popupon = 0;
+var gpson = false;
 
 var selectedTextBox = undefined;
 
@@ -488,7 +489,7 @@ function goToPop(i) {
 }
 
 function goToPopPerfil(i) {
-    popupon = 1;
+    popupon =
     location.href = '#' + pictureProfileArray[i].divName;
 }
 function createNotificationPop(){
@@ -694,6 +695,9 @@ function helpButton() {
             popupon = 1;
             location.href = "#popup2";
             break;
+        case 'gps-setup':
+            popupon = 1;
+            location.href = "#popup4";
         default:
             popupon = 1;
             location.href = "#popup1";
@@ -704,12 +708,22 @@ function popupclosed(){
     popupon = 0;
 }
 
+/*corrigir quando vier a saude*/
 function bluetoothIsOff() {
     if (count % 2 == 0) {
         location.href = "#popup2";
         pushScreen('bluetooth-setup');
     } else {
         pushScreen('photopublish')
+    }
+}
+
+function gpsIsOff(){
+    if(gpson == false){
+        location.href = "#popup4";
+        pushScreen('gps-setup');
+    } else {
+        pushScreen('mapaScreen');
     }
 }
 
