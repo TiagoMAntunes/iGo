@@ -264,6 +264,8 @@ function helpButton() {
 function backButton() {
     if(popupon) {
         location.href="#";
+        popupon = 0;
+        return;
     }
     console.log(typeof (localStorage.getItem('locked')))
     console.log(localStorage.getItem('locked') === 'true' && (screenStack[screenStack.length - 1] === 'lockScreen'))
@@ -481,27 +483,31 @@ function createNotifications() {
     document.getElementById("notifications").innerHTML = profiletable;
 }
 function goToPop(i) {
+    popupon = 1;
     location.href = '#' + pictureProfileArray[i + numberPostFtg].divName;
 }
 
 function goToPopPerfil(i) {
+    popupon = 1;
     location.href = '#' + pictureProfileArray[i].divName;
 }
 function createNotificationPop(){
      let profiletable = document.getElementById("notificationScreenPop");
      i = 0;
-     profiletable.innerHTML += "<div class = 'overlay' id='" + pictureProfileArray[i].divName + "'><div class='popupphoto'><div id='toppopup'><a id='closepopup' href='#'>&times;</a></div><div class='content'><img style='"+String(pictureProfileArray[i].style)+"' id='photopopup' src='" + pictureProfileArray[i].image + "'> <p id='descriptionNotifications'>"+ pictureProfileArray[i].description +"</p></div></div></div></div>";
+     profiletable.innerHTML += "<div class = 'overlay' id='" + pictureProfileArray[i].divName + "'><div class='popupphoto'><div id='toppopup'><a id='closepopup' href='#' onclick='popupclosed()'>&times;</a></div><div class='content'><img style='"+String(pictureProfileArray[i].style)+"' id='photopopup' src='" + pictureProfileArray[i].image + "'> <p id='descriptionNotifications'>"+ pictureProfileArray[i].description +"</p></div></div></div></div>";
 }
+
 function createNotificationsPops() {
     let profiletable = document.getElementById("notificationScreenPop");
     for (i = 0; i < pictureProfileArray.length; i++) {
         console.log('doing');
-        profiletable.innerHTML += "<div class = 'overlay' id='" + pictureProfileArray[i].divName + "'><div class='popupphoto'><div id='toppopup'><a id='closepopup' href='#'>&times;</a></div><div class='content'><img id='photopopup' src='" + pictureProfileArray[i].image + "'><p id='descriptionNotifications'>"+ pictureProfileArray[i].description +"</p></div></div></div></div>";
+        profiletable.innerHTML += "<div class = 'overlay' id='" + pictureProfileArray[i].divName + "'><div class='popupphoto'><div id='toppopup'><a id='closepopup' href='#' onclick='popupclosed()'>&times;</a></div><div class='content'><img id='photopopup' src='" + pictureProfileArray[i].image + "'><p id='descriptionNotifications'>"+ pictureProfileArray[i].description +"</p></div></div></div></div>";
     }
 }
 function createMessages() {
     let profiletable = '';
-    for (i = 0; i < profiles.length; i++) {
+    profiletable += "<tr onclick=" + '"' + "pushScreen('messageBox');" +'createMenuMessage(' + 0 +  ')"' + "><td id='rowone' class='row'><img class='messagepic' src=" + profiles[0].photo + "><h3 id='messagename'>" + profiles[0].name + "</h3></td></tr>";
+    for (i = 1; i < profiles.length; i++) {
         profiletable += "<tr onclick=" + '"' + "pushScreen('messageBox');" +'createMenuMessage(' + i +  ')"' + "><td class='row'><img class='messagepic' src=" + profiles[i].photo + "><h3 id='messagename'>" + profiles[i].name + "</h3></td></tr>";
     }
     document.getElementById("messages").innerHTML = profiletable;
@@ -509,6 +515,7 @@ function createMessages() {
 
 var currentUser = 0;
 
+/*Function that creates the messages*/
 function createMenuMessage(index) {
     currentUser = index;
     let messages = '';
@@ -605,11 +612,6 @@ function saveProfile() {
     backButton();
     document.getElementById("formprofile").reset();
 }
-
-function closepopup(){
-    location.href="#";
-}
-
 
 function cancelChange() {
     document.getElementById("photodescription").reset();
