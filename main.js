@@ -499,9 +499,8 @@ function createNotificationsPops() {
 }
 function createMessages() {
     let profiletable = '';
-    profiletable += "<tr onclick=" + '"' + 'createMenuMessage(' + 0 + ");pushScreen('messageBox');" + '"' + "><td id='rowone'><img class='messagepic' src=" + profiles[0].photo + "><h3 id='messagename'>" + profiles[0].name + "</h3></td></tr>";
-    for (i = 1; i < profiles.length; i++) {
-        profiletable += "<tr onclick=" + '"' + 'createMenuMessage(' + i + ");pushScreen('messageBox');" + '"' + "><td class='row'><img class='messagepic' src=" + profiles[i].photo + "><h3 id='messagename'>" + profiles[i].name + "</h3></td></tr>";
+    for (i = 0; i < profiles.length; i++) {
+        profiletable += "<tr onclick=" + '"' + "pushScreen('messageBox');" +'createMenuMessage(' + i +  ')"' + "><td class='row'><img class='messagepic' src=" + profiles[i].photo + "><h3 id='messagename'>" + profiles[i].name + "</h3></td></tr>";
     }
     document.getElementById("messages").innerHTML = profiletable;
 }
@@ -525,6 +524,9 @@ function createMenuMessage(index) {
     messages += "<div id='box' class='boxMessage'><img id='micmessage' onclick=" + '"' + "microphoneOn('" + name + "','micmessage', 4)" + '"' + "src='icons/micoff.png'><input type='text' id='" + profiles[index].divName + "Input' class='sendmessage'></input><img src='icons/send.png' id='sendimage' onclick=" + "sendMessage('" + profiles[index].divName + "')" + '></div>'
     document.getElementById('messageBox').innerHTML = messages + "</div>";
     document.getElementById('messageBox').style.top = 0;
+    let aux = -($(document.getElementById('messageContent')).outerHeight() + $(document.getElementById('zindex')).outerHeight() -
+        ($(document.getElementById('mainScreen')).outerHeight() - $(document.getElementById('top-bar')).outerHeight()))
+    document.getElementById('messageContent').style.top = aux;
 }
 
 function resetMenuMessage() {
@@ -539,9 +541,6 @@ function sendMessage(divName) {
         microphoneOn(profiles[currentUser].divName + 'Input', 'micmessage', 4);
     resetMenuMessage();
     createMenuMessage(currentUser);
-    let aux = -($(document.getElementById('messageContent')).outerHeight() + $(document.getElementById('zindex')).outerHeight() -
-        ($(document.getElementById('mainScreen')).outerHeight() - $(document.getElementById('top-bar')).outerHeight()))
-    document.getElementById('messageContent').style.top = aux;
 }
 
 function createMenuPerfil() {
