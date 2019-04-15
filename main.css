@@ -16,6 +16,10 @@
     visibility: hidden;
 }
 
+#gpsImg {
+    visibility: hidden;
+}
+
 #turnon {
     text-align: center;
     margin-top: 15%;

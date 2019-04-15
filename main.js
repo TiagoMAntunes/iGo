@@ -646,10 +646,10 @@ function Bluetooth() {
 function GPS(){
     gpson++;
     if(gpson % 2 == 0) {
-        /*meter imagem do gps na topbar*/
+        document.getElementById('gpsImg').style.visibility = "hidden";
     }
     else{
-        /*esconder imagem do gps na topbar*/
+        document.getElementById('gpsImg').style.visibility = "visible";
     }
     triggerGps(gpson % 2 == 0 ? false : true);
 }
