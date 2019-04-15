@@ -95,6 +95,8 @@ var numberPostFtg = 0;
 var block = 0;
 var popupon = 0;
 var gpson = 0;
+var zoom = 0;
+var mapsize = [0,0] //height, width
 
 var selectedTextBox = undefined;
 
@@ -433,6 +435,28 @@ function scrollWheelHelpMultiScreen(event) {
     document.getElementById('helpmultimediascreen').style.top = val;
 }
 
+function scrollWheelMap(event) {
+    const maxZoom = 0.99;
+    let i = 0;
+    let direction = (event.clientY - dragInfo.clientY)
+
+    if (direction > 0) {
+        i = 0.01;
+    } else if (direction < 0) {
+        i = -0.01;
+    }
+
+    let val = zoom + i;
+    if (val > maxZoom) val = maxZoom
+    if (val < 0) val = 0
+    if (mapsize[0] * (1 - val) < $(document.getElementById('mapaScreen')).height()) val = (1 - $(document.getElementById('mapaScreen')).height() / mapsize[0]) 
+    if (mapsize[1] * (1 - val) < $(document.getElementById('mapaScreen')).width()) val = (1 - $(document.getElementById('mapaScreen')).width() / mapsize[1]) 
+    zoom = val
+    
+    $(document.getElementById('mapLayer')).height(mapsize[0] * (1 - val))
+    $(document.getElementById('mapLayer')).width(mapsize[1] * (1 -  val))
+    
+}
 
 function scrollWheelMovement(event) {
     if (dragInfo == undefined || event.screenX === 0 && event.screenY === 0)
@@ -455,6 +479,9 @@ function scrollWheelMovement(event) {
             break
         case 'helpmultimediascreen':
             scrollWheelHelpMultiScreen(event)
+            break
+        case 'mapaScreen':
+            scrollWheelMap(event)
             break
     }
 }
@@ -740,6 +767,7 @@ function gpsIsOff(){
         pushScreen('gps-setup');
     } else {
         pushScreen('mapaScreen');
+        getMapSize();
     }
 }
 
@@ -754,6 +782,7 @@ function validateGPS(){
     if(gpson % 2 !== 0 ){
         backButton()
         pushScreen('mapaScreen');
+        getMapSize();
     }
 }
 
@@ -821,4 +850,9 @@ function autoturnoff() {
             console.log('Found it!')
             return
         }
+}
+
+function getMapSize() {
+    mapsize[0] = $(document.getElementById('mapLayer')).height()
+    mapsize[1] = $(document.getElementById('mapLayer')).width()
 }
