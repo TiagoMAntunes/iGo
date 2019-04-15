@@ -740,6 +740,9 @@ function helpButton() {
             popupon = 1;
             location.href = "#popup4";
             break;
+        case 'mapaScreen':
+            pushScreen('helpmapascreen');
+            break;
         default:
             popupon = 1;
             location.href = "#popup1";
