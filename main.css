@@ -1032,3 +1032,9 @@ border: 2px solid #dedede;
 margin-left: 2%;
 float: left;
 max-width: 60%;*/
+
+
+#mapaScreen {
+    overflow: auto;
+    height: 95%;
+}
