@@ -16,6 +16,10 @@
     visibility: hidden;
 }
 
+#gps-symbol{
+    float: right;
+}
+
 #gpsImg {
     visibility: hidden;
 }
