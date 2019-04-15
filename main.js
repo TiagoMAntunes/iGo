@@ -428,8 +428,7 @@ function scrollWheelHelpMultiScreen(event) {
     let val = parseInt(document.getElementById('helpmultimediascreen').style.top) + i;
     let aux = -($(document.getElementById('helpmultimediascreen')).outerHeight() -
         ($(document.getElementById('mainScreen')).outerHeight() - $(document.getElementById('top-bar')).outerHeight()))
-    console.log(aux)
-    console.log(val)
+
     if (val > 0) val = 0
     if (val < aux) val = aux
     document.getElementById('helpmultimediascreen').style.top = val;
@@ -458,6 +457,27 @@ function scrollWheelMap(event) {
     
 }
 
+function scrollWheelHelpMap(event) {
+    if (document.getElementById('helpmapascreen').style.top == '')
+        document.getElementById('helpmapascreen').style.top = '0px';
+    let direction = (event.clientY - dragInfo.clientY)
+
+    let i = 0;
+    if (direction > 0) {
+        i = 10;
+    } else if (direction < 0) {
+        i = -10;
+    }
+
+    let val = parseInt(document.getElementById('helpmapascreen').style.top) + i;
+    let aux = -($(document.getElementById('helpmapascreen')).outerHeight() -
+        ($(document.getElementById('mainScreen')).outerHeight() - $(document.getElementById('top-bar')).outerHeight()))
+    console.log(val)
+    if (val > 0) val = 0
+    if (val < aux) val = aux
+    document.getElementById('helpmapascreen').style.top = val;
+}
+
 function scrollWheelMovement(event) {
     if (dragInfo == undefined || event.screenX === 0 && event.screenY === 0)
         return;
@@ -482,6 +502,9 @@ function scrollWheelMovement(event) {
             break
         case 'mapaScreen':
             scrollWheelMap(event)
+            break
+        case 'helpmapascreen':
+            scrollWheelHelpMap(event)
             break
     }
 }
