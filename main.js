@@ -1005,5 +1005,6 @@ function printPlaces(places){
 }
 
 function calculateDistance(ponto){
-
+    let distance = Math.sqrt(Math.pow(ponto.x,2) + Math.pow(ponto.y,2));
+    return distance;
 }
