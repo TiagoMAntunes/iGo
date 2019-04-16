@@ -743,6 +743,7 @@ function helpButton() {
             pushScreen('helpmultimediascreen');
             break;
         case 'lockScreen':
+        case 'helpmapascreen':
         case 'helpmultimediascreen':
         case 'helpphotosubmit':
         case 'helpprofileedit':
