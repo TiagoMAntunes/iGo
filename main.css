@@ -1056,3 +1056,7 @@ max-width: 60%;*/
     position: relative;
     overflow-y: auto;
 }
+
+#navbarMap{
+    background-color: white;
+}
