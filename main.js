@@ -88,9 +88,9 @@ var pictureProfileArray = [{
 var screenStack = [];
 var picture_index = 0;
 var count = 0;
-var mic1 = 0, mic2 = 2, mic3 = 0, mic4 = 0;
-var mics = [mic1, mic2, mic3, mic4];
-var micsid = ['mic1', 'mic2', 'mic3', 'micmessage'];
+var mic1 = 0, mic2 = 2, mic3 = 0, mic4 = 0, mic5=0;
+var mics = [mic1, mic2, mic3, mic4, mic5];
+var micsid = ['mic1', 'mic2', 'mic3', 'micmessage', 'mic5'];
 var numberPostFtg = 0;
 var block = 0;
 var popupon = 0;
@@ -955,13 +955,8 @@ function dragMap(event) {
     else if (directionY) vi = 1
 }
 
-function goToSearchMenu(){
-    popupon = 1;
-    location.href = "#popup6";
-}
 function searchPlace(place){
     console.log(place);
-    backButton();
     flag = 0;
     for(i = 0; i < map_pins.length; i++){
         if(map_pins[i].n == place){

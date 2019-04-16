@@ -356,7 +356,15 @@
     border: 2px solid black;
     margin-left: 38%;
 }
-
+#mic5{
+    height: 18%;
+    width:18%;
+    padding: 2%;
+    border-radius: 100%;
+    margin-top: 6%;
+    border: 2px solid black;
+    margin-left: 50%;
+}
 #spanhelp{
     color: red;
 }
@@ -1065,7 +1073,16 @@ max-width: 60%;*/
     width: 100px;
     height: 100px;
 }
-#popup7{
-    width:80%;
-    height:60%;
+#searchButton{
+    background-color:  #4d95d1;
+    border: 2px solid #4d95d1;
+    border-radius: 5%;
+    color: white;
+    position: relative;
+    top: 50%;
+    padding: 5% 5%;
+}
+#searchPlace{
+    width: 98%;
+    height: 100%;
 }

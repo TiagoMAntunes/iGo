@@ -216,7 +216,7 @@
                     
                 </map>
                  <div class="navbar" id='navbarMap'>
-                    <img id='likeButton' src="icons/search.svg" onclick="goToSearchMenu()" /> 
+                    <img id='likeButton' src="icons/search.svg" onclick="pushScreen('searchPlace')" /> 
                     <img src="icons/info.svg" style="float:right;" onclick="searchPlacesNearBy()"/> 
                 </div>
             </div>
@@ -403,6 +403,12 @@
                     </div>
                 </div>
             </div>
+            <div id='searchPlace' style='display: none'>
+ 				<h2>Search a place</h2>
+ 				<input type="text" id='searchInput'></input>
+                <img id="mic5" onclick="microphoneOn('searchInput', 'mic5', 5)" class='mic' src="icons/micoff.png">
+                <button id='searchButton' onclick="searchPlace(document.getElementById('searchInput').value);" >SEARCH</button>
+            </div>
         </div>
         <div id="popup1" class="overlay outside">
             <div class="popup">
@@ -462,12 +468,11 @@
         <div id="popup6" class="overlay outside">
             <div class="popup">
                 <div id="toppopup">
-                    <h2>Map</h2>
+                    <h2>EMPTY</h2>
                     <a class="close" href="#" onclick="popupclosed()">&times;</a>
                 </div>
                 <div class="content">
-                    <input id='searchInput'></input>
-                    <button onclick="searchPlace(document.getElementById('searchInput').value);popupclosed()" >Search</button>
+                    EMPTY
                 </div>
             </div>
         </div>
