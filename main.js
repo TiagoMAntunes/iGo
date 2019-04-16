@@ -886,10 +886,11 @@ function getMapSize() {
 }
 
 class Pin {
-    constructor(x,y,name) {
+    constructor(x,y,name, type) {
         this.x = x;
         this.y = y;
         this.n = name; 
+        this.t = type;
     }
 
     getCoords(scale) {
@@ -897,6 +898,12 @@ class Pin {
             return [this.x,this.y].map(el => el * (1 - scale));
         else
             return [this.x,this.y]
+    }
+    getName(){
+        return this.n;
+    }
+    getType(){
+        return this.t;
     }
 }
 
