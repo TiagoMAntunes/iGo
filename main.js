@@ -928,3 +928,28 @@ function reloadPins() {
     }
     
 }
+
+let mapDrag = undefined
+
+function dragMapStart(event) {
+    mapDrag = event
+    console.log('Map drag start')
+}
+
+function dragMapEnd(event) {
+    mapDrag = undefined
+    console.log('Map drag end')
+}
+
+function dragMap(event) {
+    let directionY = (event.clientY - mapDrag.clientY)
+    let directionX = (event.clientX - mapDrag.clientX)
+    let hi = 0, vi = 0
+    
+    if (directionX < 0) hi = -1
+    else if (directionX > 0) hi = 1
+    
+    if (directionY < 0) vi = -1
+    else if (directionY) vi = 1
+
+}
