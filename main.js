@@ -97,6 +97,7 @@ var popupon = 0;
 var gpson = 0;
 var zoom = 0;
 var mapsize = [0,0] //height, width
+var map_pins = []
 
 var selectedTextBox = undefined;
 
@@ -881,4 +882,30 @@ function autoturnoff() {
 function getMapSize() {
     mapsize[0] = $(document.getElementById('mapLayer')).height()
     mapsize[1] = $(document.getElementById('mapLayer')).width()
+}
+
+class Pin {
+    constructor(x,y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    getCoords(scale) {
+        if (scale !== undefined)
+            return [this.x,this.y].map(el => el * (1 - scale));
+        else
+            return [this.x,this.y]
+    }
+}
+
+function addPin(x, y) {
+    map_pins.push(new Pin(x,y))
+}
+
+function reloadPins() {
+    let pins = ''
+    for (let pin of map_pins) {
+        //add pins
+    }
+    document.getElementById('map').innerHTML = pins
 }
