@@ -960,6 +960,7 @@ function goToSearchMenu(){
 }
 function searchPlace(place){
     console.log(place);
+    backButton();
     flag = 0;
     for(i = 0; i < map_pins.length; i++){
         if(map_pins[i].n == place){
@@ -972,7 +973,7 @@ function searchPlace(place){
         openNoPlaceFoundPop();   
     }
     resetInputPlace();
-    backButton();
+    
 }
 
 function doPath(){
@@ -980,7 +981,8 @@ function doPath(){
 }
 
 function openNoPlaceFoundPop(){
-
+    popupon = 1;
+    location.href = "#popup7";
 }
 
 function resetInputPlace(){
