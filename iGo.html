@@ -215,6 +215,13 @@
                 <map name='map'>
                     
                 </map>
+                 <div class="navbar" id='navbarMap'>
+                    <img id='likeButton' src="icons/search.svg" onclick="goToSearchMenu()" /> 
+                    <img onclick="pushScreen('messageScreen')" src="icons/chat(1).png" />
+                    <img onclick="bluetoothIsOff()" src="icons/photo.svg" />
+                    <img onclick="pushScreen('notificationScreen')" src="icons/bell.svg" />
+                    <img src="icons/info.svg" onclick="searchPlacesNearBy()"/> 
+                </div>
             </div>
             <div id='saude' style='display: none'>
                 <h1>Health</h1>
@@ -452,6 +459,18 @@
                 </div>
                 <div class="content">
                     Please turn on gps in order to connect your smartphone.
+                </div>
+            </div>
+        </div>
+        <div id="popup6" class="overlay outside">
+            <div class="popup">
+                <div id="toppopup">
+                    <h2>Map</h2>
+                    <a class="close" href="#" onclick="popupclosed()">&times;</a>
+                </div>
+                <div class="content">
+                    <input id='searchInput'></input>
+                    <button onclick="searchPlace(document.getElementById('searchInput').value);popupclosed()" >Search</button>
                 </div>
             </div>
         </div>

@@ -1057,6 +1057,9 @@ max-width: 60%;*/
     overflow-y: auto;
 }
 
+#navbarMap{
+    background-color: white;
+}
 .pin {
     position: absolute;
     width: 100px;

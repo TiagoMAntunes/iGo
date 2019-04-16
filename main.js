@@ -885,9 +885,10 @@ function getMapSize() {
 }
 
 class Pin {
-    constructor(x,y) {
+    constructor(x,y,name) {
         this.x = x;
         this.y = y;
+        this.n = name; 
     }
 
     getCoords(scale) {
@@ -898,8 +899,8 @@ class Pin {
     }
 }
 
-function addPin(x, y) {
-    map_pins.push(new Pin(x,y))
+function addPin(x, y, name) {
+    map_pins.push(new Pin(x,y,name))
 }
 
 function reloadPins() {
@@ -951,5 +952,56 @@ function dragMap(event) {
     
     if (directionY < 0) vi = -1
     else if (directionY) vi = 1
+}
+
+function goToSearchMenu(){
+    popupon = 1;
+    location.href = "#popup6";
+}
+function searchPlace(place){
+    console.log(place);
+    flag = 0;
+    for(i = 0; i < map_pins.length; i++){
+        if(map_pins[i].n == place){
+            console.log("expetaculo");
+            doPath();
+            flag = 1;
+        }
+    }
+    if(flag == 0){
+        openNoPlaceFoundPop();   
+    }
+    resetInputPlace();
+    backButton();
+}
+
+function doPath(){
+
+}
+
+function openNoPlaceFoundPop(){
+
+}
+
+function resetInputPlace(){
+    document.getElementById('searchInput').value = '';
+}
+
+function searchPlacesNearBy(){
+    let places = []
+    console.log("searching...");
+    for(i = 0; i < map_pins.length; i++){
+        if(calculateDistance(map_pins[i])>= distance){
+            places.push(map_pins[i]);
+        }
+    }
+    printPlaces(places);
+}
+
+function printPlaces(places){
+
+}
+
+function calculateDistance(ponto){
 
 }
