@@ -885,9 +885,10 @@ function getMapSize() {
 }
 
 class Pin {
-    constructor(x,y) {
+    constructor(x,y,name) {
         this.x = x;
         this.y = y;
+        this.n = name; 
     }
 
     getCoords(scale) {
@@ -898,8 +899,8 @@ class Pin {
     }
 }
 
-function addPin(x, y) {
-    map_pins.push(new Pin(x,y))
+function addPin(x, y, name) {
+    map_pins.push(new Pin(x,y,name))
 }
 
 function reloadPins() {
@@ -937,7 +938,7 @@ function searchPlace(place){
     console.log(place);
     flag = 0;
     for(i = 0; i < map_pins.length; i++){
-        if(map_pins[i].name == place){
+        if(map_pins[i].n == place){
             console.log("expetaculo");
             doPath();
             flag = 1;
