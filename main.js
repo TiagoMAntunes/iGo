@@ -455,7 +455,7 @@ function scrollWheelMap(event) {
     
     $(document.getElementById('mapLayer')).height(mapsize[0] * (1 - val))
     $(document.getElementById('mapLayer')).width(mapsize[1] * (1 -  val))
-    
+    reloadPins()
 }
 
 function scrollWheelHelpMap(event) {
@@ -903,9 +903,28 @@ function addPin(x, y) {
 }
 
 function reloadPins() {
-    let pins = ''
+    let map = document.getElementById('pins')
+    map.innerHTML = ''
+    let pins = '', i = 0
     for (let pin of map_pins) {
-        //add pins
+        let newpin = document.createElement("IMG");
+        
+        //setting up data
+        newpin.src = "icons/park.svg"
+        newpin.id="pin" + (i++).toString()
+        newpin.className = "pin"
+        
+        //position
+        newpin.style.left = $(document.getElementById('mapLayer')).position()['left'] + pin.getCoords(zoom)[1]
+        newpin.style.top = $(document.getElementById('mapLayer')).position()['top']+ pin.getCoords(zoom)[0]
+        
+        //size
+        let scale = 1 - zoom
+        if (scale < 0.3) scale = 0.3
+        newpin.style.height = 100 * scale + 'px';
+        newpin.style.width = 100* scale + 'px';
+        
+        map.appendChild(newpin)
     }
     document.getElementById('map').innerHTML = pins
 }
