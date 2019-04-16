@@ -1046,7 +1046,7 @@ max-width: 60%;*/
 
 
 #mapLayer {
-    position: relative;
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%)
@@ -1055,4 +1055,10 @@ max-width: 60%;*/
 #helpmapascreen {
     position: relative;
     overflow-y: auto;
+}
+
+.pin {
+    position: absolute;
+    width: 100px;
+    height: 100px;
 }
