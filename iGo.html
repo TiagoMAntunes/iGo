@@ -404,10 +404,13 @@
                 </div>
             </div>
             <div id='searchPlace' style='display: none'>
- 				<h2>Search a place</h2>
- 				<input type="text" id='searchInput'></input>
+                <h1 id="searchHeading">Search a place:</h1>
+                <form id="searchForm">
+                    <input type="text" id='searchInput'></input>
+                </form>
                 <img id="mic5" onclick="microphoneOn('searchInput', 'mic5', 5)" class='mic' src="icons/micoff.png">
-                <button id='searchButton' onclick="searchPlace(document.getElementById('searchInput').value);" >SEARCH</button>
+                <button id='searchButton' onclick="searchPlace(document.getElementById('searchInput').value);"><b>SEARCH</b></button>
+                <button id="cancelButton" onclick="cancelSearch()"><b>CANCEL</b></button>
             </div>
         </div>
         <div id="popup1" class="overlay outside">

@@ -672,6 +672,11 @@ function cancelChange() {
     backButton();
 }
 
+function cancelSearch() {
+    document.getElementById("searchForm").reset();
+    backButton();
+}
+
 
 function likeAction(buttonElement) {
     switch (multimedia_storage[picture_index]['liked']) {
