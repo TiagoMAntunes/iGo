@@ -950,16 +950,24 @@ function dragMapEnd(event) {
     console.log('Map drag end')
 }
 
+const dragspeed = 10
+
 function dragMap(event) {
     let directionY = (event.clientY - mapDrag.clientY)
     let directionX = (event.clientX - mapDrag.clientX)
     let hi = 0, vi = 0
     
-    if (directionX < 0) hi = -1
-    else if (directionX > 0) hi = 1
+    if (directionX < 0) hi = -dragspeed
+    else if (directionX > 0) hi = dragspeed
     
-    if (directionY < 0) vi = -1
-    else if (directionY) vi = 1
+    if (directionY < 0) vi = -dragspeed
+    else if (directionY) vi = dragspeed
+
+    vi += $(document.getElementById('mapLayer')).offset().top
+    hi += $(document.getElementById('mapLayer')).offset().left
+
+    $(document.getElementById('mapLayer')).offset({left: hi, top: vi})
+
 }
 
 function searchPlace(place){
