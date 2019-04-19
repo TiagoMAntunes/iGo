@@ -1123,20 +1123,39 @@ max-width: 60%;*/
     margin-block-end: 0%;
 }
 
-
-
-
-
 #joystick{
-    position: fixed;
-    top: 75%;
-    right: 5%;
+    position: absolute;
+    top: 60%;
+    right: 15%;
     width:20%;
     height: 10%;
 }
 
 .controller{
-    width: 33%;
     height: 33%;
 }
 
+#upArrow {
+    margin-bottom: 5%;
+    padding-left: 30%;
+}
+
+#rightArrow {
+    margin-left: 3%;
+    margin-bottom: 5%;
+}
+
+#leftArrow {
+    margin-left: 11%;
+    margin-right: 4%;
+    margin-bottom: 5%;
+}
+
+#downArrow {
+    padding-left: 30%;
+    margin-top: 5%;
+}
+
+#middleArrows {
+    height: 70%;
+}
