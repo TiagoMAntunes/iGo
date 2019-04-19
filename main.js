@@ -312,7 +312,6 @@ function backButton() {
         return
     }
     if(screenStack[screenStack.length - 1] === 'mapaScreen'){
-        console.log('cona');
         desativeJoystick();
     }
     console.log('hi')
