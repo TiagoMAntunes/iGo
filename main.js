@@ -307,6 +307,10 @@ function backButton() {
         console.log('stopeed!')
         return
     }
+    if(screenStack[screenStack.length - 1] === 'mapaScreen'){
+        console.log('cona');
+        desativeJoystick();
+    }
     console.log('hi')
     let screen = screenStack.pop()
     if (screen != undefined) {
@@ -326,6 +330,9 @@ function pushScreen(screen) {
         document.getElementById(screenStack[screenStack.length - 1]).style.display = 'none';
     else {
         document.getElementById('mainmenu').style.display = 'none';
+    }
+    if(screen=='mapaScreen'){
+        ativeJoystick();
     }
     screenStack.push(screen);
     console.log(screenStack);
@@ -836,7 +843,7 @@ function gpsIsOff(){
     } else {
         pushScreen('mapaScreen');
         getMapSize();
-        reloadPins()
+        reloadPins();
     }
 }
 
@@ -1140,4 +1147,13 @@ function downPosition(){
     let pin = searchPin("atualPosition");
     pin.x += 50
     reloadPins();
+}
+
+function ativeJoystick(){
+    document.getElementById('joystick').style.display = '';
+}
+
+
+function desativeJoystick(){
+    document.getElementById('joystick').style.display = 'none';
 }
