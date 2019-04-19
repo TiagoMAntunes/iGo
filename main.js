@@ -912,8 +912,8 @@ class Pin {
     }
 }
 
-function addPin(x, y, name) {
-    map_pins.push(new Pin(x,y,name))
+function addPin(x, y, name, type) {
+    map_pins.push(new Pin(x,y,name,type))
 }
 
 function reloadPins() {
@@ -924,7 +924,7 @@ function reloadPins() {
         let newpin = document.createElement("IMG");
         
         //setting up data
-        newpin.src = "icons/park.svg"
+        newpin.src = "icons/" + pin.t + ".svg"
         newpin.id="pin" + (i++).toString()
         newpin.className = "pin"
         
@@ -975,6 +975,7 @@ function searchPlace(place){
             console.log("expetaculo");
             doPath();
             flag = 1;
+            backButton();
         }
     }
     if(flag == 0){
