@@ -479,8 +479,8 @@ function scrollWheelMap(event) {
     if (mapsize[1] * (1 - val) < $(document.getElementById('mapaScreen')).width()) val = (1 - $(document.getElementById('mapaScreen')).width() / mapsize[1]) 
     zoom = val
     
-    $(document.getElementById('mapLayer')).height(mapsize[0] * (1 - val))
-    $(document.getElementById('mapLayer')).width(mapsize[1] * (1 -  val))
+    $(document.getElementById('mapLayer')).height(mapsize[0] * (1 - zoom))
+    $(document.getElementById('mapLayer')).width(mapsize[1] * (1 - zoom))
     reloadPins()
 }
 
@@ -831,6 +831,7 @@ function gpsIsOff(){
     } else {
         pushScreen('mapaScreen');
         getMapSize();
+        reloadPins()
     }
 }
 
@@ -846,6 +847,7 @@ function validateGPS(){
         backButton()
         pushScreen('mapaScreen');
         getMapSize();
+        reloadPins()
     }
 }
 
@@ -929,11 +931,12 @@ class Pin {
     }
 
     getCoords(scale) {
-        if (scale == undefined)
+        if (scale !== undefined)
             return [this.x,this.y].map(el => el * (1 - scale));
         else
             return [this.x,this.y]
     }
+    
     getName(){
         return this.n;
     }
@@ -943,7 +946,7 @@ class Pin {
 }
 
 function addAllPins(){
-    addPin(100,100,"ola","park");
+    addPin(2500,2500,"ola","park");
     addPin(200,200,"ola2","restaurant");
     addPin(300,300,"ola3", "hotel");
     addPin(400,40,"ola4","metro");
