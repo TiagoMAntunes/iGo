@@ -1048,6 +1048,10 @@ function openNoPlaceFoundPop(){
     popupon = 1;
     location.href = "#popup7";
 }
+function openPointsOfInterestPop(){
+    popupon = 1;
+    location.href = "#popup6";
+}
 
 function resetInputPlace(){
     document.getElementById('searchInput').value = '';
@@ -1057,8 +1061,9 @@ function searchPlacesNearBy(){
     let places = []
     console.log("searching...");
     for(i = 0; i < map_pins.length; i++){
-        if(calculateDistance(map_pins[i]) <= 200){
+        if(calculateDistance(map_pins[i]) <= 2012515){
             places.push(map_pins[i]);
+            console.log(map_pins[i].n);
         }
     }
     if(places.length == 0){
@@ -1071,6 +1076,13 @@ function searchPlacesNearBy(){
 
 function printPlaces(places){
     console.log(places);
+    let something = '<ul>';
+    for(let pin of places){
+        something += "<li>"+pin.n+"</li>";
+    }
+    something += '</ul>';
+    document.getElementById('popupListOfInterest').innerHTML = something;
+    openPointsOfInterestPop();
 }
 
 function calculateDistance(ponto){
