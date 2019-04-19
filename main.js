@@ -471,6 +471,33 @@ function scrollWheelHelpMultiScreen(event) {
     document.getElementById('helpmultimediascreen').style.top = val;
 }
 
+function mapBoundariesPositioning() {
+    const position = Object.values($(document.getElementById('mapLayer')).position())
+    const leftBorder = $(document.getElementById('mapaScreen')).position().left
+    const topBorder = $(document.getElementById('mapaScreen')).position().top
+    const rightBorder = leftBorder + $(document.getElementById('mapaScreen')).width()
+    const bottomBorder = topBorder + $(document.getElementById('mapaScreen')).height()
+    console.log(position)
+    if (position[0] > topBorder){
+        $(document.getElementById('mapLayer')).offset({top: $(document.getElementById('mapLayer')).offset().top - position[0] + topBorder})
+        console.log('top')
+    }
+    if (position[1] > leftBorder) {
+        $(document.getElementById('mapLayer')).offset({left: $(document.getElementById('mapLayer')).offset().left - position[1] + leftBorder})
+        console.log('left')
+    }
+
+    if (position[0] + $(document.getElementById('mapLayer')).height() < rightBorder){
+        $(document.getElementById('mapLayer')).offset({top: $(document.getElementById('mapLayer')).offset().top - position[0] - $(document.getElementById('mapLayer')).height() + rightBorder})
+        console.log('right')
+    }
+    if (position[1] + $(document.getElementById('mapLayer')).width() < bottomBorder) {
+        $(document.getElementById('mapLayer')).offset({left: $(document.getElementById('mapLayer')).offset().left - position[1] - $(document.getElementById('mapLayer')).width() + bottomBorder})
+        console.log('bottom')
+    }
+    
+}
+
 function scrollWheelMap(event) {
     const maxZoom = 0.99;
     let i = 0;
@@ -491,6 +518,7 @@ function scrollWheelMap(event) {
     
     $(document.getElementById('mapLayer')).height(mapsize[0] * (1 - zoom))
     $(document.getElementById('mapLayer')).width(mapsize[1] * (1 - zoom))
+    mapBoundariesPositioning()
     reloadPins()
 }
 
@@ -1018,7 +1046,7 @@ function dragMapEnd(event) {
     console.log('Map drag end')
 }
 
-const dragspeed = 10
+const dragspeed = 3
 
 function validateMapBoundaries(vertical, horizontal) {
     const position = [vertical, horizontal]
@@ -1049,7 +1077,7 @@ function dragMap(event) {
 
     if (validateMapBoundaries($(document.getElementById('mapLayer')).position().top + vi, $(document.getElementById('mapLayer')).position().left + hi)) 
         $(document.getElementById('mapLayer')).offset({left: hi + $(document.getElementById('mapLayer')).offset().left, top: $(document.getElementById('mapLayer')).offset().top + vi})
-    
+    reloadPins()
 }
 
 function searchPlace(place){
