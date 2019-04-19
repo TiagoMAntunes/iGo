@@ -753,8 +753,13 @@ function blockWatch() {
     }
     else {
         backButton();
+        if(notifications.length != 0){
+            document.getElementById('bellIcon').src = 'icons/bell1.png';
+        }
+        else{
+            document.getElementById('bellIcon').src = 'icons/bell3.png';   
+        }
         pushScreen('lockScreen');
-
     }
 }
 function unlockWatch() {
