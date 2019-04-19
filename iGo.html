@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <title>iGo</title>
     <script src="jquery-3.3.1.min.js"></script>
-    <script src="interact.js"></script>
     <link rel="stylesheet" type="text/css" media="screen" href="main.css">
     <script src="main.js"></script>
 </head>
@@ -228,7 +227,7 @@
                 </div>
             </div>
             <div id='mapaScreen' style='display: none'>
-                <img class="draggable" id="mapLayer" src="images/lisbon_map.jpg" >
+                <img class="draggable" id="mapLayer" src="images/lisbon_map.jpg" ondragstart="dragMapStart(event)" ondragend="dragMapEnd(event)" ondrag="dragMap(event)">
                 <div id='pins' style="position: absolute"></div>
                 <map name='map'>
                     
