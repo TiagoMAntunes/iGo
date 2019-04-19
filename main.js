@@ -947,6 +947,7 @@ class Pin {
 
 function addAllPins(){
     addPin(2500,2500,"ola","park");
+    addPin(3500,2500,"atualPosition","gps")
     addPin(3500,3500,"ola2","restaurant");
     addPin(1000,3500,"ola3", "hotel");
     addPin(3500,1500,"ola4","metro");
@@ -966,7 +967,7 @@ function reloadPins() {
         let newpin = document.createElement("IMG");
         
         //setting up data
-        if(pin.t=="park"){
+        if(pin.t=="park" || pin.t == "gps"){
             newpin.src = "icons/" + pin.t + ".svg"
         }
         else{
