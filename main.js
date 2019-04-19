@@ -144,6 +144,7 @@ function startup() {
     picturesSetup();
     addAllPins();
     blockWatch(); blockWatch();
+    GPS()
 }
 
 let recognizing = false
@@ -1020,8 +1021,20 @@ function dragMapEnd(event) {
 
 const dragspeed = 10
 
-function validateMapBoundaries() {
-    //cenas
+function validateMapBoundaries(vertical, horizontal) {
+    const position = [vertical, horizontal]
+    const leftBorder = $(document.getElementById('mapaScreen')).position().left
+    const topBorder = $(document.getElementById('mapaScreen')).position().top
+    const rightBorder = leftBorder + $(document.getElementById('mapaScreen')).width()
+    const bottomBorder = topBorder + $(document.getElementById('mapaScreen')).height()
+    
+    if (!(position[0] <= topBorder)) console.log('Problem 1 in ' + position[0] + ',' + topBorder)
+    if (!(position[1] <= leftBorder)) console.log('Problem 2 in ' + position[1] + ',' + leftBorder)
+    if (!(position[0] + $(document.getElementById('mapLayer')).height() >= bottomBorder)) console.log('Problem 3 in ' + (position[0] + $(document.getElementById('mapLayer')).height()) + ',' + bottomBorder)
+    if (!(position[1] + $(document.getElementById('mapLayer')).width() >= rightBorder)) console.log('Problem 4 in ' + (position[1] + $(document.getElementById('mapLayer')).width()) + ',' + rightBorder)
+   
+    return position[0] <= topBorder && position[1] <= leftBorder && position[0] + $(document.getElementById('mapLayer')).height() >= bottomBorder
+        && position[1] + $(document.getElementById('mapLayer')).width() >= rightBorder; 
 }
 
 function dragMap(event) {
@@ -1035,11 +1048,9 @@ function dragMap(event) {
     if (directionY < 0) vi = -dragspeed
     else if (directionY) vi = dragspeed
 
-    vi += $(document.getElementById('mapLayer')).offset().top
-    hi += $(document.getElementById('mapLayer')).offset().left
-
-    $(document.getElementById('mapLayer')).offset({left: hi, top: vi})
-    validateMapBoundaries()
+    if (validateMapBoundaries($(document.getElementById('mapLayer')).position().top + vi, $(document.getElementById('mapLayer')).position().left + hi)) 
+        $(document.getElementById('mapLayer')).offset({left: hi + $(document.getElementById('mapLayer')).offset().left, top: $(document.getElementById('mapLayer')).offset().top + vi})
+    
 }
 
 function searchPlace(place){
