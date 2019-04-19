@@ -425,6 +425,10 @@
                 <button id='searchButton' onclick="searchPlace(document.getElementById('searchInput').value);"><b>SEARCH</b></button>
                 <button id="cancelButton" onclick="cancelSearch()"><b>CANCEL</b></button>
             </div>
+            <div id="pointsInterest" style="display: none">
+                <h1 id="pointsHeading">Points of Interest</h1>
+                    <div class="content" id='ListOfInterest'></div>
+            </div>
         </div>
         <div id="popup1" class="overlay outside">
             <div class="popup">
@@ -478,16 +482,6 @@
                 </div>
                 <div class="content">
                     Please turn on gps in order to connect your smartphone.
-                </div>
-            </div>
-        </div>
-        <div id="popup6" class="overlay outside">
-            <div class="popup">
-                <div id="toppopup">
-                    <h2>Points of Interest</h2>
-                    <a class="close" href="#" onclick="popupclosed()">&times;</a>
-                </div>
-                <div class="content" id='popupListOfInterest'>
                 </div>
             </div>
         </div>

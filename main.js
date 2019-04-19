@@ -1107,10 +1107,6 @@ function openNoPlaceFoundPop(){
     popupon = 1;
     location.href = "#popup7";
 }
-function openPointsOfInterestPop(){
-    popupon = 1;
-    location.href = "#popup6";
-}
 
 function resetInputPlace(){
     document.getElementById('searchInput').value = '';
@@ -1135,13 +1131,21 @@ function searchPlacesNearBy(){
 
 function printPlaces(places){
     console.log(places);
-    let something = '<ul>';
+    let something = '<table id="tableInterest">';
     for(let pin of places){
-        something += "<li>"+pin.n+"</li>";
+        console.log('yo');
+        something += "<tr>"
+        if(pin.t=="park" || pin.t == "atualPosition"){
+            something += "<td><img class='iconInterest' src='icons/" + pin.t + ".svg'></td>";
+        }
+        else{
+            something += "<td><img class='iconInterest' src='icons/" + pin.t + ".png'></td>";
+        }
+        something += "<td><p class='nameInterest'>" +pin.n+"</p></td></tr>";
     }
-    something += '</ul>';
-    document.getElementById('popupListOfInterest').innerHTML = something;
-    openPointsOfInterestPop();
+    something += '</table>';
+    document.getElementById('ListOfInterest').innerHTML = something;
+    pushScreen('pointsInterest');
 }
 
 function calculateDistance(ponto){
