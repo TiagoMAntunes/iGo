@@ -1096,9 +1096,39 @@ function clearArray(array){
         array.pop();
     }
 }
-
+function searchPin(name){
+    for(let pin of map_pins){
+        if(pin.n == name){
+            return pin;
+        }
+    }
+}
 function addNotification(){
     numberNoti++;
     notifications.push(pictureProfileArray[numberPostFtg - numberNoti].divName);
     console.log(notifications);
+}
+
+function upPosition(){
+    let pin = searchPin("atualPosition");
+    pin.x -= 50
+    reloadPins();
+}
+
+function leftPosition(){
+    let pin = searchPin("atualPosition");
+    pin.y -= 50
+    reloadPins();   
+}
+
+function rightPosition(){
+    let pin = searchPin("atualPosition");
+    pin.y += 50
+    reloadPins();
+}
+
+function downPosition(){
+    let pin = searchPin("atualPosition");
+    pin.x += 50
+    reloadPins();
 }

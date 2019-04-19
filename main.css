@@ -1129,12 +1129,14 @@ max-width: 60%;*/
 
 #joystick{
     position: fixed;
-    top: 65%;
+    top: 75%;
     right: 5%;
-    width:25%;
-    height: 4%;
+    width:20%;
+    height: 10%;
 }
+
 .controller{
     width: 33%;
-    height: 50%
+    height: 33%;
 }
+

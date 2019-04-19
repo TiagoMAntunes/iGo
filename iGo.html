@@ -510,10 +510,16 @@
         ondrag="scrollWheelMovement(event)"></div>
     </div>
     <div id='joystick'>
-    	<div  id='upArrow'><img class = 'controller' src='icons/up-arrow.svg'/></div>
-    	<div  id='leftArrow'> <img class = 'controller' src='icons/left-arrow.svg'/> </div>
-    	<div  id='downArrow'> <img class = 'controller2' src='icons/down-arrow.png'/></div>
-    	<div  id='rightArrow'> <img class = 'controller' src='icons/right-arrow.svg'/></div>
+    	<table>
+    		<tr>
+    			<td colspan="3" id='upArrow'><img onclick='upPosition()' class = 'controller' src='icons/up-arrow.svg'/></td>
+    		</tr>
+    		<tr>
+    			<td  onclick='leftPosition()' id='leftArrow'> <img class = 'controller' src='icons/left-arrow.svg'/> </td>
+    			<td  onclick='downPosition()' id='downArrow'> <img class = 'controller' src='icons/down-arrow.svg'/></td>
+    			<td  onclick='rightPosition()' id='rightArrow'> <img class = 'controller' src='icons/right-arrow.svg'/></td>
+    		</tr>
+    	</table>
     </div>
 </body>
 
