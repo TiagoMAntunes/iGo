@@ -104,12 +104,14 @@ var mic1 = 0, mic2 = 2, mic3 = 0, mic4 = 0, mic5=0;
 var mics = [mic1, mic2, mic3, mic4, mic5];
 var micsid = ['mic1', 'mic2', 'mic3', 'micmessage', 'mic5'];
 var numberPostFtg = 0;
+var numberNoti = 0;
 var block = 0;
 var popupon = 0;
 var gpson = 0;
 var zoom = 0;
 var mapsize = [0,0] //height, width
 var map_pins = []
+var notifications = []
 
 var selectedTextBox = undefined;
 
@@ -1059,4 +1061,16 @@ function printPlaces(places){
 function calculateDistance(ponto){
     let distance = Math.sqrt(Math.pow(ponto.x,2) + Math.pow(ponto.y,2));
     return distance;
+}
+
+function clearArray(array){
+    while(array.length){
+        array.pop();
+    }
+}
+
+function addNotification(){
+    numberNoti++;
+    notifications.push(pictureProfileArray[numberPostFtg - numberNoti].divName);
+    console.log(notifications);
 }
