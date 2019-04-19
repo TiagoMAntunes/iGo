@@ -1086,3 +1086,8 @@ max-width: 60%;*/
     width: 98%;
     height: 100%;
 }
+
+.draggable {
+    touch-action: none;
+    user-select: none;
+}
