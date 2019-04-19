@@ -775,6 +775,7 @@ function helpButton() {
         case 'helpmapascreen':
         case 'helpmultimediascreen':
         case 'helpphotosubmit':
+        case 'helpsearchplace':
         case 'helpprofileedit':
             break;
         case 'photoSubmit':
@@ -785,6 +786,9 @@ function helpButton() {
             break;
         case 'messageBox':
             pushScreen('helpmessage');
+            break;
+        case 'searchPlace':
+            pushScreen('helpsearchplace');
             break;
         case 'bluetooth-setup':
             popupon = 1;
