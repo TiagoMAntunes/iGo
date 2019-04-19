@@ -88,13 +88,16 @@ var pictureProfileArray = [{
 
 var lockScreenIcons = [{
     "weather":"icons/drop.png",
-    "temperature":"5"
+    "temperature":"5",
+    "thermometer": "icons/coldterm.svg"
 },{
    "weather":"icons/cloud.png",
-    "temperature":"15" 
+    "temperature":"15",
+    "thermometer": "icons/normalterm.svg"
 },{
     "weather": "icons/contrast.png",
-    "temperature":"30"
+    "temperature":"30",
+    "thermometer": "icons/warmterm.svg"
 }]
 
 var screenStack = [];
@@ -246,7 +249,7 @@ function createLockScreenIcons(){
     let lockIcons = '';
     let indice = Math.floor(Math.random()*3);
     lockIcons += "<img id='weatherIcon' src='"+ lockScreenIcons[indice].weather+"'>"
-    lockIcons += "<img id='temperatureIcon' src='icons/thermometer.png'>"
+    lockIcons += "<img id='temperatureIcon' src='"+ lockScreenIcons[indice].thermometer+"'>"
     lockIcons += "<h3>" + lockScreenIcons[indice].temperature + "º</h3>"
     lockIcons += "<img id='bellIcon' src='icons/bell3.png'>"
     document.getElementById('buttonsLock').innerHTML = lockIcons;
