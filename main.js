@@ -85,6 +85,18 @@ var pictureProfileArray = [{
     "divName": "image4Pop",
     "style": ''
 }]
+
+var lockScreenIcons = [{
+    "weather":"icons/drop.png",
+    "temperature":"5"
+},{
+   "weather":"icons/cloud.png",
+    "temperature":"15" 
+},{
+    "weather": "icons/contrast.png",
+    "temperature":"30"
+}]
+
 var screenStack = [];
 var picture_index = 0;
 var count = 0;
@@ -118,6 +130,7 @@ function startup() {
         localStorage.setItem("isSet", true);
     }
     setRealSize();
+    createLockScreenIcons();
     createNotifications();
     createMessages();
     createMenuPerfil();
@@ -225,6 +238,16 @@ function setRealSize() {
         el.style.height = 34 / 72 * ppc;
     });
     document.getElementById('tableSettings').style.fontSize = document.body.style.fontSize;
+}
+
+function createLockScreenIcons(){
+    let lockIcons = '';
+    let indice = Math.floor(Math.random()*3);
+    lockIcons += "<img id='weatherIcon' src='"+ lockScreenIcons[indice].weather+"'>"
+    lockIcons += "<img id='temperatureIcon' src='icons/thermometer.png'>"
+    lockIcons += "<h3>" + lockScreenIcons[indice].temperature + "º</h3>"
+    lockIcons += "<img id='bellIcon' src='icons/bell3.png'>"
+    document.getElementById('buttonsLock').innerHTML = lockIcons;
 }
 
 function picturesSetup() {
