@@ -947,10 +947,10 @@ class Pin {
 
 function addAllPins(){
     addPin(2500,2500,"ola","park");
-    addPin(200,200,"ola2","restaurant");
-    addPin(300,300,"ola3", "hotel");
-    addPin(400,40,"ola4","metro");
-    addPin(500,500,"ola5","museum");
+    addPin(3500,3500,"ola2","restaurant");
+    addPin(1000,3500,"ola3", "hotel");
+    addPin(3500,1500,"ola4","metro");
+    addPin(3500,2000,"ola5","museum");
     reloadPins();
 }
 
@@ -1058,11 +1058,15 @@ function searchPlacesNearBy(){
     console.log("searching...");
     for(i = 0; i < map_pins.length; i++){
         if(calculateDistance(map_pins[i]) <= 200){
-            places.push(map_pins[i].n);
+            places.push(map_pins[i]);
         }
     }
-    printPlaces(places);
-
+    if(places.length == 0){
+        openNoPlaceFoundPop();
+    } 
+    else{
+        printPlaces(places);
+    }
 }
 
 function printPlaces(places){
