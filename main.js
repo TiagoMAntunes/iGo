@@ -1004,6 +1004,10 @@ function dragMapEnd(event) {
 
 const dragspeed = 10
 
+function validateMapBoundaries() {
+    //cenas
+}
+
 function dragMap(event) {
     let directionY = (event.clientY - mapDrag.clientY)
     let directionX = (event.clientX - mapDrag.clientX)
@@ -1019,7 +1023,7 @@ function dragMap(event) {
     hi += $(document.getElementById('mapLayer')).offset().left
 
     $(document.getElementById('mapLayer')).offset({left: hi, top: vi})
-
+    validateMapBoundaries()
 }
 
 function searchPlace(place){
