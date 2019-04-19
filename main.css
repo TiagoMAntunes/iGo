@@ -1071,6 +1071,9 @@ max-width: 60%;*/
     position: absolute;
     width: 100px;
     height: 100px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%)
 }
 #searchButton{
     background-color:  #2E8B57;;
@@ -1098,6 +1101,11 @@ max-width: 60%;*/
 #searchPlace{
     width: 98%;
     height: 100%;
+}
+
+.draggable {
+    touch-action: none;
+    user-select: none;
 }
 
 #searchHeading {
