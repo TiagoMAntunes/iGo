@@ -1122,3 +1122,21 @@ max-width: 60%;*/
 #searchForm {
     margin-block-end: 0%;
 }
+
+
+
+
+
+#joystick{
+    position: fixed;
+    top: 75%;
+    right: 5%;
+    width:20%;
+    height: 10%;
+}
+
+.controller{
+    width: 33%;
+    height: 33%;
+}
+

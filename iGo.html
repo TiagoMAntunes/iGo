@@ -109,6 +109,14 @@
                 <table id="iconshelp" style='margin-left: 4%;'>
                     <tr>
                         <td>
+                            <img class="columnicon" src="icons/atualPosition.svg">
+                        </td>
+                        <td>
+                            <p class="rowicon">Atual Position</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
                             <img class="columnicon" src="icons/park.svg">
                         </td>
                         <td>
@@ -173,7 +181,7 @@
                     <img id='likeButton' src="icons/heart.png" onclick="likeAction(this)" />
                     <img onclick="pushScreen('messageScreen')" src="icons/chat(1).png" />
                     <img onclick="bluetoothIsOff()" src="icons/photo.svg" />
-                    <img onclick="pushScreen('notificationScreen')" src="icons/bell.svg" />
+                    <img onclick="pushScreen('notificationScreen');clearArray(notifications)" src="icons/bell.svg" />
                     <img src="icons/man.png" onclick="pushScreen('profile');fillProfile()" />
                 </div>
             </div>
@@ -476,11 +484,10 @@
         <div id="popup6" class="overlay outside">
             <div class="popup">
                 <div id="toppopup">
-                    <h2>EMPTY</h2>
+                    <h2>Points of Interest</h2>
                     <a class="close" href="#" onclick="popupclosed()">&times;</a>
                 </div>
-                <div class="content">
-                    EMPTY
+                <div class="content" id='popupListOfInterest'>
                 </div>
             </div>
         </div>
@@ -500,6 +507,18 @@
     <div id="backButton" onclick="backButton()"></div>
     <div id="scrollWheel" ondblclick="blockWatch()" draggable="true" ondragstart="scrollWheelStart(event)" ondragend="scrollWheelFinish(event)"
         ondrag="scrollWheelMovement(event)"></div>
+    </div>
+    <div id='joystick' style='display: none'>
+    	<table>
+    		<tr>
+    			<td colspan="3" id='upArrow'><img onclick='upPosition()' class = 'controller' src='icons/up-arrow.svg'/></td>
+    		</tr>
+    		<tr>
+    			<td  onclick='leftPosition()' id='leftArrow'> <img class = 'controller' src='icons/left-arrow.svg'/> </td>
+    			<td  onclick='downPosition()' id='downArrow'> <img class = 'controller' src='icons/down-arrow.svg'/></td>
+    			<td  onclick='rightPosition()' id='rightArrow'> <img class = 'controller' src='icons/right-arrow.svg'/></td>
+    		</tr>
+    	</table>
     </div>
 </body>
 

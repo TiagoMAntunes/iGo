@@ -308,6 +308,10 @@ function backButton() {
         console.log('stopeed!')
         return
     }
+    if(screenStack[screenStack.length - 1] === 'mapaScreen'){
+        console.log('cona');
+        desativeJoystick();
+    }
     console.log('hi')
     let screen = screenStack.pop()
     if (screen != undefined) {
@@ -327,6 +331,9 @@ function pushScreen(screen) {
         document.getElementById(screenStack[screenStack.length - 1]).style.display = 'none';
     else {
         document.getElementById('mainmenu').style.display = 'none';
+    }
+    if(screen=='mapaScreen'){
+        ativeJoystick();
     }
     screenStack.push(screen);
     console.log(screenStack);
@@ -754,8 +761,13 @@ function blockWatch() {
     }
     else {
         backButton();
+        if(notifications.length != 0){
+            document.getElementById('bellIcon').src = 'icons/bell1.png';
+        }
+        else{
+            document.getElementById('bellIcon').src = 'icons/bell3.png';   
+        }
         pushScreen('lockScreen');
-
     }
 }
 function unlockWatch() {
@@ -832,7 +844,7 @@ function gpsIsOff(){
     } else {
         pushScreen('mapaScreen');
         getMapSize();
-        reloadPins()
+        reloadPins();
     }
 }
 
@@ -948,10 +960,11 @@ class Pin {
 
 function addAllPins(){
     addPin(2500,2500,"ola","park");
-    addPin(200,200,"ola2","restaurant");
-    addPin(300,300,"ola3", "hotel");
-    addPin(400,40,"ola4","metro");
-    addPin(500,500,"ola5","museum");
+    addPin(2650,3000,"atualPosition","atualPosition")
+    addPin(3500,3500,"ola2","restaurant");
+    addPin(1000,3500,"ola3", "hotel");
+    addPin(3500,1500,"ola4","metro");
+    addPin(3500,2000,"ola5","museum");
     reloadPins();
 }
 
@@ -967,7 +980,7 @@ function reloadPins() {
         let newpin = document.createElement("IMG");
         
         //setting up data
-        if(pin.t=="park"){
+        if(pin.t=="park" || pin.t == "atualPosition"){
             newpin.src = "icons/" + pin.t + ".svg"
         }
         else{
@@ -1063,6 +1076,10 @@ function openNoPlaceFoundPop(){
     popupon = 1;
     location.href = "#popup7";
 }
+function openPointsOfInterestPop(){
+    popupon = 1;
+    location.href = "#popup6";
+}
 
 function resetInputPlace(){
     document.getElementById('searchInput').value = '';
@@ -1072,16 +1089,28 @@ function searchPlacesNearBy(){
     let places = []
     console.log("searching...");
     for(i = 0; i < map_pins.length; i++){
-        if(calculateDistance(map_pins[i]) <= 200){
-            places.push(map_pins[i].n);
+        if(calculateDistance(map_pins[i]) <= 2012515){
+            places.push(map_pins[i]);
+            console.log(map_pins[i].n);
         }
     }
-    printPlaces(places);
-
+    if(places.length == 0){
+        openNoPlaceFoundPop();
+    } 
+    else{
+        printPlaces(places);
+    }
 }
 
 function printPlaces(places){
     console.log(places);
+    let something = '<ul>';
+    for(let pin of places){
+        something += "<li>"+pin.n+"</li>";
+    }
+    something += '</ul>';
+    document.getElementById('popupListOfInterest').innerHTML = something;
+    openPointsOfInterestPop();
 }
 
 function calculateDistance(ponto){
@@ -1094,9 +1123,48 @@ function clearArray(array){
         array.pop();
     }
 }
-
+function searchPin(name){
+    for(let pin of map_pins){
+        if(pin.n == name){
+            return pin;
+        }
+    }
+}
 function addNotification(){
     numberNoti++;
     notifications.push(pictureProfileArray[numberPostFtg - numberNoti].divName);
     console.log(notifications);
+}
+
+function upPosition(){
+    let pin = searchPin("atualPosition");
+    pin.x -= 50
+    reloadPins();
+}
+
+function leftPosition(){
+    let pin = searchPin("atualPosition");
+    pin.y -= 50
+    reloadPins();   
+}
+
+function rightPosition(){
+    let pin = searchPin("atualPosition");
+    pin.y += 50
+    reloadPins();
+}
+
+function downPosition(){
+    let pin = searchPin("atualPosition");
+    pin.x += 50
+    reloadPins();
+}
+
+function ativeJoystick(){
+    document.getElementById('joystick').style.display = '';
+}
+
+
+function desativeJoystick(){
+    document.getElementById('joystick').style.display = 'none';
 }
