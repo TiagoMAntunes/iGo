@@ -124,6 +124,7 @@ function startup() {
     createNotificationsPops();
     setupMultimediaScreen();
     picturesSetup();
+    addAllPins();
     blockWatch(); blockWatch();
 }
 
@@ -899,7 +900,7 @@ class Pin {
     }
 
     getCoords(scale) {
-        if (scale !== undefined)
+        if (scale == undefined)
             return [this.x,this.y].map(el => el * (1 - scale));
         else
             return [this.x,this.y]
@@ -910,6 +911,15 @@ class Pin {
     getType(){
         return this.t;
     }
+}
+
+function addAllPins(){
+    addPin(100,100,"ola","park");
+    addPin(200,200,"ola2","restaurant");
+    addPin(300,300,"ola3", "hotel");
+    addPin(400,40,"ola4","metro");
+    addPin(500,500,"ola5","museum");
+    reloadPins();
 }
 
 function addPin(x, y, name, type) {
@@ -924,7 +934,12 @@ function reloadPins() {
         let newpin = document.createElement("IMG");
         
         //setting up data
-        newpin.src = "icons/" + pin.t + ".svg"
+        if(pin.t=="park"){
+            newpin.src = "icons/" + pin.t + ".svg"
+        }
+        else{
+            newpin.src = "icons/" + pin.t + ".png"
+        }
         newpin.id="pin" + (i++).toString()
         newpin.className = "pin"
         
@@ -1002,15 +1017,16 @@ function searchPlacesNearBy(){
     let places = []
     console.log("searching...");
     for(i = 0; i < map_pins.length; i++){
-        if(calculateDistance(map_pins[i])>= distance){
-            places.push(map_pins[i]);
+        if(calculateDistance(map_pins[i]) <= 200){
+            places.push(map_pins[i].n);
         }
     }
     printPlaces(places);
+
 }
 
 function printPlaces(places){
-
+    console.log(places);
 }
 
 function calculateDistance(ponto){
