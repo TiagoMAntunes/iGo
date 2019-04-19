@@ -357,13 +357,12 @@
     margin-left: 38%;
 }
 #mic5{
-    height: 18%;
-    width:18%;
+    height: 10%;
+    width: 10%;
     padding: 2%;
     border-radius: 100%;
-    margin-top: 6%;
     border: 2px solid black;
-    margin-left: 50%;
+    margin-top: -12%;
 }
 #spanhelp{
     color: red;
@@ -1074,14 +1073,28 @@ max-width: 60%;*/
     height: 100px;
 }
 #searchButton{
-    background-color:  #4d95d1;
-    border: 2px solid #4d95d1;
+    background-color:  #2E8B57;;
+    border: 2px solid #2E8B57;;
     border-radius: 5%;
     color: white;
-    position: relative;
-    top: 50%;
     padding: 5% 5%;
+    float: right;
+    margin-top: 20%;
+    margin-right: -20%;
 }
+
+#cancelButton{
+    background-color: #B22222;
+    border: 2px solid #B22222;
+    border-radius: 5%;
+    color: white;
+    padding: 5% 5%;
+    float: right;
+    margin-top: 20%;
+    margin-right: 5%;
+}
+
+
 #searchPlace{
     width: 98%;
     height: 100%;
@@ -1090,4 +1103,19 @@ max-width: 60%;*/
 .draggable {
     touch-action: none;
     user-select: none;
+}
+
+#searchHeading {
+    padding-left: 5%;
+    margin-top: 25%;
+}
+
+#searchInput {
+    margin-left: 5%;
+    height: 10%;
+    width: 60%;
+}
+
+#searchForm {
+    margin-block-end: 0%;
 }

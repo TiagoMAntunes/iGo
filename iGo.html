@@ -95,6 +95,7 @@
                             button that looks like this:</h3>
                         <img id="mic4" src="icons/micoff.png" />
             </div>
+
             <div id="helpmessage" style="display: none">
                 <h1 style="margin-left: 4%">
                     <span id="spanhelp">Help:</span> sending message</h1>
@@ -117,7 +118,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <img class="columnicon" src="icons/train.png" />
+                            <img class="columnicon" src="icons/metro.png" />
                         </td>
                         <td>
                             <p class="rowicon">Metro</p>
@@ -125,14 +126,14 @@
                     </tr>
                     <tr>
                         <td>
-                            <img class="columnicon" src="icons/food.png" />
+                            <img class="columnicon" src="icons/restaurant.png" />
                         </td>
                         <td>
                             <p class="rowicon">Restaurant</td>
                     </tr>
                     <tr>
                         <td>
-                            <img class="columnicon" src="icons/greek-temple.png" />
+                            <img class="columnicon" src="icons/museum.png" />
                         </td>
                         <td>
                             <p class="rowicon">Museum</td>
@@ -145,6 +146,14 @@
                             <p class="rowicon">Hotel</td>
                     </tr>
                 </table>
+            </div>
+            <div id="helpsearchplace" style='display: none'>
+                <h1 style='margin-left: 4%;'>
+                    <span id="spanhelp">Help:</span> searching place
+                    <h1>
+                        <h3 style='margin-left: 4%; margin-top: 10%'>If you want to search a place by its name say it out loud while pressing/holding the
+                            button that looks like this:</h3>
+                        <img id="mic4" src="icons/micoff.png" />
             </div>
             <div id='multimedia' style='display: none'>
                 <div id='multimediaContent'>
@@ -341,7 +350,7 @@
                         <button onclick="cancelChange()" id="cancelbtn">
                             <b>CANCEL</b>
                         </button>
-                        <button id="postbtn" onclick="addPicture()">
+                        <button id="postbtn" onclick="addPicture();setTimeout(addNotification,10000)">
                             <b>POST</b>
                         </button>
                     </div>
@@ -365,10 +374,6 @@
             <div id="lockScreen" style='display: none'>
                 <div id='timeLockScreen'></div>
                 <div id='buttonsLock'>
-                    <img id='weatherIcon' src='icons/drop.png'>
-                    <img id='temperatureIcon' src='icons/thermometer.png'>
-                    <h3>15º</h3>
-                    <img id='bellIcon' src='icons/bell3.png'>
                 </div>
                 <div id='fingerPrint'>
                     <img id='fingerPrintImg' src='icons/fingerprint.svg' alt='fingerPrint' onclick='unlockWatch()'>
@@ -405,10 +410,13 @@
                 </div>
             </div>
             <div id='searchPlace' style='display: none'>
- 				<h2>Search a place</h2>
- 				<input type="text" id='searchInput'></input>
+                <h1 id="searchHeading">Search a place:</h1>
+                <form id="searchForm">
+                    <input type="text" id='searchInput'></input>
+                </form>
                 <img id="mic5" onclick="microphoneOn('searchInput', 'mic5', 5)" class='mic' src="icons/micoff.png">
-                <button id='searchButton' onclick="searchPlace(document.getElementById('searchInput').value);" >SEARCH</button>
+                <button id='searchButton' onclick="searchPlace(document.getElementById('searchInput').value);"><b>SEARCH</b></button>
+                <button id="cancelButton" onclick="cancelSearch()"><b>CANCEL</b></button>
             </div>
         </div>
         <div id="popup1" class="overlay outside">

@@ -85,6 +85,18 @@ var pictureProfileArray = [{
     "divName": "image4Pop",
     "style": ''
 }]
+
+var lockScreenIcons = [{
+    "weather":"icons/drop.png",
+    "temperature":"5"
+},{
+   "weather":"icons/cloud.png",
+    "temperature":"15" 
+},{
+    "weather": "icons/contrast.png",
+    "temperature":"30"
+}]
+
 var screenStack = [];
 var picture_index = 0;
 var count = 0;
@@ -92,12 +104,14 @@ var mic1 = 0, mic2 = 2, mic3 = 0, mic4 = 0, mic5=0;
 var mics = [mic1, mic2, mic3, mic4, mic5];
 var micsid = ['mic1', 'mic2', 'mic3', 'micmessage', 'mic5'];
 var numberPostFtg = 0;
+var numberNoti = 0;
 var block = 0;
 var popupon = 0;
 var gpson = 0;
 var zoom = 0;
 var mapsize = [0,0] //height, width
 var map_pins = []
+var notifications = []
 
 var selectedTextBox = undefined;
 
@@ -118,12 +132,14 @@ function startup() {
         localStorage.setItem("isSet", true);
     }
     setRealSize();
+    createLockScreenIcons();
     createNotifications();
     createMessages();
     createMenuPerfil();
     createNotificationsPops();
     setupMultimediaScreen();
     picturesSetup();
+    addAllPins();
     blockWatch(); blockWatch();
 }
 
@@ -224,6 +240,16 @@ function setRealSize() {
         el.style.height = 34 / 72 * ppc;
     });
     document.getElementById('tableSettings').style.fontSize = document.body.style.fontSize;
+}
+
+function createLockScreenIcons(){
+    let lockIcons = '';
+    let indice = Math.floor(Math.random()*3);
+    lockIcons += "<img id='weatherIcon' src='"+ lockScreenIcons[indice].weather+"'>"
+    lockIcons += "<img id='temperatureIcon' src='icons/thermometer.png'>"
+    lockIcons += "<h3>" + lockScreenIcons[indice].temperature + "º</h3>"
+    lockIcons += "<img id='bellIcon' src='icons/bell3.png'>"
+    document.getElementById('buttonsLock').innerHTML = lockIcons;
 }
 
 function picturesSetup() {
@@ -672,6 +698,11 @@ function cancelChange() {
     backButton();
 }
 
+function cancelSearch() {
+    document.getElementById("searchForm").reset();
+    backButton();
+}
+
 
 function likeAction(buttonElement) {
     switch (multimedia_storage[picture_index]['liked']) {
@@ -746,6 +777,7 @@ function helpButton() {
         case 'helpmapascreen':
         case 'helpmultimediascreen':
         case 'helpphotosubmit':
+        case 'helpsearchplace':
         case 'helpprofileedit':
             break;
         case 'photoSubmit':
@@ -756,6 +788,9 @@ function helpButton() {
             break;
         case 'messageBox':
             pushScreen('helpmessage');
+            break;
+        case 'searchPlace':
+            pushScreen('helpsearchplace');
             break;
         case 'bluetooth-setup':
             popupon = 1;
@@ -894,7 +929,7 @@ class Pin {
     }
 
     getCoords(scale) {
-        if (scale !== undefined)
+        if (scale == undefined)
             return [this.x,this.y].map(el => el * (1 - scale));
         else
             return [this.x,this.y]
@@ -907,8 +942,17 @@ class Pin {
     }
 }
 
-function addPin(x, y, name) {
-    map_pins.push(new Pin(x,y,name))
+function addAllPins(){
+    addPin(100,100,"ola","park");
+    addPin(200,200,"ola2","restaurant");
+    addPin(300,300,"ola3", "hotel");
+    addPin(400,40,"ola4","metro");
+    addPin(500,500,"ola5","museum");
+    reloadPins();
+}
+
+function addPin(x, y, name, type) {
+    map_pins.push(new Pin(x,y,name,type))
 }
 
 function reloadPins() {
@@ -919,7 +963,12 @@ function reloadPins() {
         let newpin = document.createElement("IMG");
         
         //setting up data
-        newpin.src = "icons/park.svg"
+        if(pin.t=="park"){
+            newpin.src = "icons/" + pin.t + ".svg"
+        }
+        else{
+            newpin.src = "icons/" + pin.t + ".png"
+        }
         newpin.id="pin" + (i++).toString()
         newpin.className = "pin"
         
@@ -978,6 +1027,7 @@ function searchPlace(place){
             console.log("expetaculo");
             doPath();
             flag = 1;
+            backButton();
         }
     }
     if(flag == 0){
@@ -1004,18 +1054,31 @@ function searchPlacesNearBy(){
     let places = []
     console.log("searching...");
     for(i = 0; i < map_pins.length; i++){
-        if(calculateDistance(map_pins[i])>= distance){
-            places.push(map_pins[i]);
+        if(calculateDistance(map_pins[i]) <= 200){
+            places.push(map_pins[i].n);
         }
     }
     printPlaces(places);
+
 }
 
 function printPlaces(places){
-
+    console.log(places);
 }
 
 function calculateDistance(ponto){
     let distance = Math.sqrt(Math.pow(ponto.x,2) + Math.pow(ponto.y,2));
     return distance;
+}
+
+function clearArray(array){
+    while(array.length){
+        array.pop();
+    }
+}
+
+function addNotification(){
+    numberNoti++;
+    notifications.push(pictureProfileArray[numberPostFtg - numberNoti].divName);
+    console.log(notifications);
 }
