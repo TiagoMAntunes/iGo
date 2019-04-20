@@ -1087,7 +1087,7 @@ function searchPlace(place){
     for(i = 0; i < map_pins.length; i++){
         if(map_pins[i].n == place){
             console.log("expetaculo");
-            doPath();
+            doPath(map_pins[i]);
             flag = 1;
             backButton();
         }
@@ -1099,8 +1099,13 @@ function searchPlace(place){
     
 }
 
-function doPath(){
-
+function doPath(pin){
+    let atualPosition = searchPin('atualPosition');
+    let path = '';
+    path += '<svg height="100%" width="100%">';
+    path += '<polyline points="0, 20 20, 40 40, 60 60, 100" style="fill:none;stroke:red;stroke-width:4" />';
+    path += '</svg>';
+    document.getElementById('path').innerHTML = path;
 }
 
 function openNoPlaceFoundPop(){
