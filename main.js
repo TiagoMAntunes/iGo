@@ -1116,7 +1116,7 @@ function searchPlacesNearBy(){
     let places = []
     console.log("searching...");
     for(i = 0; i < map_pins.length; i++){
-        if(calculateDistance(map_pins[i]) <= 2012515){
+        if(calculateDistance(map_pins[i]) <= 1000 && map_pins[i].n != 'atualPosition'){
             places.push(map_pins[i]);
             console.log(map_pins[i].n);
         }
@@ -1149,7 +1149,8 @@ function printPlaces(places){
 }
 
 function calculateDistance(ponto){
-    let distance = Math.sqrt(Math.pow(ponto.x,2) + Math.pow(ponto.y,2));
+    let pin = searchPin("atualPosition");
+    let distance = Math.sqrt(Math.pow(ponto.x - pin.x,2) + Math.pow(ponto.y - pin.y,2));
     return distance;
 }
 
