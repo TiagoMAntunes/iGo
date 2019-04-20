@@ -1046,7 +1046,7 @@ function dragMapEnd(event) {
     console.log('Map drag end')
 }
 
-const dragspeed = 3
+const dragspeed = 7
 
 function validateMapBoundaries(vertical, horizontal) {
     const position = [vertical, horizontal]
@@ -1068,13 +1068,14 @@ function dragMap(event) {
     let directionY = (event.clientY - mapDrag.clientY)
     let directionX = (event.clientX - mapDrag.clientX)
     let hi = 0, vi = 0
-    
-    if (directionX < 0) hi = -dragspeed
-    else if (directionX > 0) hi = dragspeed
-    
-    if (directionY < 0) vi = -dragspeed
-    else if (directionY) vi = dragspeed
 
+    let totalsize = Math.abs(directionX) + Math.abs(directionY)
+    if (directionX < 0) hi = -dragspeed * Math.abs(directionX / totalsize)
+    else if (directionX > 0) hi = dragspeed * Math.abs(directionX / totalsize)
+    
+    if (directionY < 0) vi = -dragspeed * Math.abs(directionY / totalsize)
+    else if (directionY) vi = dragspeed * Math.abs(directionY / totalsize)
+    
     if (validateMapBoundaries($(document.getElementById('mapLayer')).position().top + vi, $(document.getElementById('mapLayer')).position().left + hi)) 
         $(document.getElementById('mapLayer')).offset({left: hi + $(document.getElementById('mapLayer')).offset().left, top: $(document.getElementById('mapLayer')).offset().top + vi})
     reloadPins()
@@ -1106,10 +1107,6 @@ function openNoPlaceFoundPop(){
     popupon = 1;
     location.href = "#popup7";
 }
-function openPointsOfInterestPop(){
-    popupon = 1;
-    location.href = "#popup6";
-}
 
 function resetInputPlace(){
     document.getElementById('searchInput').value = '';
@@ -1134,13 +1131,21 @@ function searchPlacesNearBy(){
 
 function printPlaces(places){
     console.log(places);
-    let something = '<ul>';
+    let something = '<table id="tableInterest">';
     for(let pin of places){
-        something += "<li>"+pin.n+"</li>";
+        console.log('yo');
+        something += "<tr>"
+        if(pin.t=="park" || pin.t == "atualPosition"){
+            something += "<td><img class='iconInterest' src='icons/" + pin.t + ".svg'></td>";
+        }
+        else{
+            something += "<td><img class='iconInterest' src='icons/" + pin.t + ".png'></td>";
+        }
+        something += "<td><p class='nameInterest'>" +pin.n+"</p></td></tr>";
     }
-    something += '</ul>';
-    document.getElementById('popupListOfInterest').innerHTML = something;
-    openPointsOfInterestPop();
+    something += '</table>';
+    document.getElementById('ListOfInterest').innerHTML = something;
+    pushScreen('pointsInterest');
 }
 
 function calculateDistance(ponto){

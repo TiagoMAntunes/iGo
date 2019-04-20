@@ -112,7 +112,7 @@
                             <img class="columnicon" src="icons/atualPosition.svg">
                         </td>
                         <td>
-                            <p class="rowicon">Atual Position</p>
+                            <p class="rowicon">Current Position</p>
                         </td>
                     </tr>
                     <tr>
@@ -425,6 +425,10 @@
                 <button id='searchButton' onclick="searchPlace(document.getElementById('searchInput').value);"><b>SEARCH</b></button>
                 <button id="cancelButton" onclick="cancelSearch()"><b>CANCEL</b></button>
             </div>
+            <div id="pointsInterest" style="display: none">
+                <h1 id="pointsHeading">Points of Interest</h1>
+                    <div class="content" id='ListOfInterest'></div>
+            </div>
         </div>
         <div id="popup1" class="overlay outside">
             <div class="popup">
@@ -481,16 +485,6 @@
                 </div>
             </div>
         </div>
-        <div id="popup6" class="overlay outside">
-            <div class="popup">
-                <div id="toppopup">
-                    <h2>Points of Interest</h2>
-                    <a class="close" href="#" onclick="popupclosed()">&times;</a>
-                </div>
-                <div class="content" id='popupListOfInterest'>
-                </div>
-            </div>
-        </div>
         <div id="popup7" class="overlay outside">
             <div class="popup">
                 <div id="toppopup">
@@ -509,16 +503,14 @@
         ondrag="scrollWheelMovement(event)"></div>
     </div>
     <div id='joystick' style='display: none'>
-    	<table>
-    		<tr>
-    			<td colspan="3" id='upArrow'><img onclick='upPosition()' class = 'controller' src='icons/up-arrow.svg'/></td>
-    		</tr>
-    		<tr>
-    			<td  onclick='leftPosition()' id='leftArrow'> <img class = 'controller' src='icons/left-arrow.svg'/> </td>
-    			<td  onclick='downPosition()' id='downArrow'> <img class = 'controller' src='icons/down-arrow.svg'/></td>
-    			<td  onclick='rightPosition()' id='rightArrow'> <img class = 'controller' src='icons/right-arrow.svg'/></td>
-    		</tr>
-    	</table>
+    	<div>
+            <img id='upArrow' onclick='upPosition()' class = 'controller' src='icons/up-arrow.svg'/>
+        </div>
+    	<div>
+            <img id='leftArrow' onclick='leftPosition()' class = 'controller' src='icons/left-arrow.svg'/>
+            <img id="downArrow" onclick='downPosition()' class='controller' src='icons/down-arrow.svg'/>
+            <img id='rightArrow' onclick='rightPosition()' class = 'controller' src='icons/right-arrow.svg'/>
+        </div>
     </div>
 </body>
 
