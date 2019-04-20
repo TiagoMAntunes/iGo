@@ -1047,7 +1047,7 @@ function dragMapEnd(event) {
     console.log('Map drag end')
 }
 
-const dragspeed = 3
+const dragspeed = 7
 
 function validateMapBoundaries(vertical, horizontal) {
     const position = [vertical, horizontal]
@@ -1069,13 +1069,14 @@ function dragMap(event) {
     let directionY = (event.clientY - mapDrag.clientY)
     let directionX = (event.clientX - mapDrag.clientX)
     let hi = 0, vi = 0
-    
-    if (directionX < 0) hi = -dragspeed
-    else if (directionX > 0) hi = dragspeed
-    
-    if (directionY < 0) vi = -dragspeed
-    else if (directionY) vi = dragspeed
 
+    let totalsize = Math.abs(directionX) + Math.abs(directionY)
+    if (directionX < 0) hi = -dragspeed * Math.abs(directionX / totalsize)
+    else if (directionX > 0) hi = dragspeed * Math.abs(directionX / totalsize)
+    
+    if (directionY < 0) vi = -dragspeed * Math.abs(directionY / totalsize)
+    else if (directionY) vi = dragspeed * Math.abs(directionY / totalsize)
+    
     if (validateMapBoundaries($(document.getElementById('mapLayer')).position().top + vi, $(document.getElementById('mapLayer')).position().left + hi)) 
         $(document.getElementById('mapLayer')).offset({left: hi + $(document.getElementById('mapLayer')).offset().left, top: $(document.getElementById('mapLayer')).offset().top + vi})
     reloadPins()
