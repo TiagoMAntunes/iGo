@@ -117,7 +117,7 @@ var mapsize = [0,0] //height, width
 var map_pins = []
 var notifications = []
 var notifiRandom = []
-var bluetoothProfile = [['shrek-1.jpg','air.jpeg', 'hotel.jpg', 'newy.png', 'sunshine.jpg', 'climbing.jpg', 'food.jpg', 'airballon.jpg'], ['shrek-2.jpg','air.jpeg', 'hotel.jpg', 'newy.png', 'sunshine.jpg', 'climbing.jpg', 'food.jpg', 'airballon.jpg'], ['shrek-3.jpg','air.jpeg', 'hotel.jpg', 'newy.png', 'sunshine.jpg', 'climbing.jpg', 'food.jpg', 'airballon.jpg']];
+var bluetoothProfile = [['images/shrek-1.jpg','images/air.jpeg', 'images/hotel.jpg', 'images/newy.png', 'images/sunshine.jpg', 'images/climbing.jpg', 'images/food.jpg', 'images/airballon.jpg'], ['images/shrek-2.jpg','images/air.jpeg', 'images/hotel.jpg', 'images/newy.png', 'images/sunshine.jpg', 'images/climbing.jpg', 'images/food.jpg', 'images/airballon.jpg'], ['images/shrek-3.jpg','images/air.jpeg', 'images/hotel.jpg', 'images/newy.png', 'images/sunshine.jpg', 'images/climbing.jpg', 'images/food.jpg', 'images/airballon.jpg']];
 
 var selectedTextBox = undefined;
 
@@ -142,6 +142,7 @@ function startup() {
     createRandomArrayNotifications();
     createNotifications();
     createMessages();
+    createShareMenu(2);
     createMenuPerfil();
     createNotificationsPops();
     setupMultimediaScreen();
@@ -593,22 +594,20 @@ function updatePicture() {
     document.getElementById("likeButton").src = (multimedia_storage[picture_index]['liked'] == true ? 'icons/coracao.svg' : 'icons/meme.svg')
 }   
                        
-function createShareMenu(){
+function createShareMenu(i){
     let ftg='';
     ftg += "<tbody id='tableBodyPictures'>";
-    for (i = 0; i < bluetoothProfile.length; i++){
-        for(j = 0; j < bluetoothProfile[i]; j++ ){
-            ftg += "<tr>";
-            ftg += '<td><img class="imageChoice publisheable" src="'+ bluetoothProfile[i][j]+'"></td>'
-            if (j + 1 < bluetoothProfile[i].length){
-                let k = j + 1;
-                ftg += '<td><img class="imageChoice publisheable" src="'+ bluetoothProfile[i][k]+'"></td>';    
-            }
-            ftg += "</tr>";
+    for(j = 0; j < bluetoothProfile[i].length; j= j + 2 ){
+        ftg += "<tr>";
+        ftg += '<td><img class="imageChoice publisheable" src='+ bluetoothProfile[i][j]+'></td>'
+        if (j + 1 < bluetoothProfile[i].length){
+            let k = j + 1;
+            ftg += '<td><img class="imageChoice publisheable" src='+ bluetoothProfile[i][k]+'></td>';    
         }
+        ftg += "</tr>";
+    }
     ftg += " </tbody>";
     document.getElementById('tablePhotos').innerHTML = ftg;
-    }
 }
 
 function createRandomArrayNotifications(){
