@@ -1066,8 +1066,49 @@ max-width: 60%;*/
 }
 
 #navbarMap{
-    background-color: white;
+    width: 20%;
+    background-color: #ced0ce;
+    border: 2px solid #8b8b8b;
+    border-right: 1px solid #8b8b8b;
+    border-top-left-radius: 5%;
+    border-bottom-left-radius: 5%;
+    overflow: none;
+    position: fixed;
+    bottom: 0;
+    height: 20%;
+    margin-bottom: 5%;
+    margin-left: 5%;
 }
+
+#navbar2Map {
+    right: 54%;
+    width: 20%;
+    background-color: #ced0ce;
+    border: 2px solid #8b8b8b;
+    border-left: 2px solid #8b8b8b;
+    border-top-right-radius: 5%;
+    border-bottom-right-radius: 5%;
+    overflow: none;
+    position: fixed;
+    bottom: 0;
+    height: 20%;
+    margin-bottom: 5%;
+}
+
+#searchmapbutton {
+    padding: 5%;
+    width: 70%;
+    margin-top: 15%;
+    margin-left: 15%;
+}
+
+#infoButton {
+    padding: 5%;
+    width: 70%;
+    margin-top: 10%;
+    margin-right: 7%;
+}
+
 .pin {
     position: absolute;
     width: 100px;
@@ -1181,3 +1222,30 @@ max-width: 60%;*/
     padding-left: 4%;
     margin: 0;
 }
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:hover {background-color: #f1f1f1}
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }

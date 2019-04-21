@@ -233,9 +233,11 @@
                 <map name='map'>
                     
                 </map>
-                 <div class="navbar" id='navbarMap'>
-                    <img id='likeButton' src="icons/search.svg" onclick="pushScreen('searchPlace')" /> 
-                    <img src="icons/info.svg" style="float:right;" onclick="searchPlacesNearBy()"/> 
+                 <div id='navbarMap'>
+                    <img id='searchmapbutton' src="icons/search.svg" onclick="pushScreen('searchPlace')" /> 
+                 </div>
+                 <div id='navbar2Map'>
+                    <img id='infoButton' src="icons/info.svg" style="float:right;" onclick="searchPlacesNearBy()"/> 
                 </div>
             </div>
             <div id='saude' style='display: none'>
@@ -246,7 +248,14 @@
                 <table id='tableSettings'>
                     <tr>
                         <td id='tdSettingsL' class='tdSettings'>
-                            <h3>Bluetooth</h3>
+                            <div class="dropdown">
+                                    <h3>Bluetooth</h3>
+                                    <div class="dropdown-content">
+                                    <a href="#">Phone 1</a>
+                                    <a href="#">Phone 2</a>
+                                    <a href="#">Phone 3</a>
+                                    </div>
+                                  </div>
                         </td>
                         <td id='tdSettingsR' class='tdSettings'>
                             <label class="switch">

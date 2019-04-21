@@ -59,7 +59,7 @@ var profiles = [{
     "messages": ["Oi Dragon", "Sim, posso amanha as 18!"]
 }]
 
-var mainprofile = [{
+var mainprofiles = [{
     "name": "Gato das botas",
     "description": "Espadachim nos tempos livres"
 }]
@@ -708,17 +708,17 @@ function previousPicture() {
 
 function fillProfile() {
     let informations = document.getElementById('profileInf');
-    informations.innerHTML = "<h1 id='profileName'>" + mainprofile[0].name + "</h1><p id='profileDescr'>" + mainprofile[0].description + "</p><button class='btn-edit' onclick=\"pushScreen('profileEdit')\">Edit Profile</button>";
+    informations.innerHTML = "<h1 id='profileName'>" + s[0].name + "</h1><p id='profileDescr'>" + s[0].description + "</p><button class='btn-edit' onclick=\"pushScreen('profileEdit')\">Edit Profile</button>";
 }
 
 function saveProfile() {
     let input1 = document.getElementById("input1").value;
     let input2 = document.getElementById("input2").value;
     if (input1 != '') {
-        mainprofile[0].name = input1;
+        s[0].name = input1;
     }
     if (input2 != '') {
-        mainprofile[0].description = input2;
+        s[0].description = input2;
     }
     if (input1 == '' && input2 == ''){
         location.href="#popup3";
