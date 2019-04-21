@@ -611,6 +611,7 @@ function createShareMenu(i){
 }
 
 function selectPhone(i){
+    console.log(i);
     if(i == 1){
         document.getElementById('phone1').style.color = "green";
         document.getElementById('phone2').style.color = "black";
@@ -766,17 +767,17 @@ function previousPicture() {
 
 function fillProfile() {
     let informations = document.getElementById('profileInf');
-    informations.innerHTML = "<h1 id='profileName'>" + s[0].name + "</h1><p id='profileDescr'>" + s[0].description + "</p><button class='btn-edit' onclick=\"pushScreen('profileEdit')\">Edit Profile</button>";
+    informations.innerHTML = "<h1 id='profileName'>" + mainprofiles[0].name + "</h1><p id='profileDescr'>" + mainprofiles[0].description + "</p><button class='btn-edit' onclick=\"pushScreen('profileEdit')\">Edit Profile</button>";
 }
 
 function saveProfile() {
     let input1 = document.getElementById("input1").value;
     let input2 = document.getElementById("input2").value;
     if (input1 != '') {
-        s[0].name = input1;
+        mainprofiles[0].name = input1;
     }
     if (input2 != '') {
-        s[0].description = input2;
+        mainprofiles[0].description = input2;
     }
     if (input1 == '' && input2 == ''){
         location.href="#popup3";
