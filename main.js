@@ -1196,10 +1196,12 @@ function addNotification(){
 }
 
 function ativeNotification(){
-    document.getElementById('bellIcon').src = 'icons/bell1.png';
-    document.getElementById('bellButton').src = 'icons/bell1.png';
     addNotificationInArray();
     createNotifications();
+    if(screenStack[screenStack.length - 1] != 'notificationScreen'){
+        document.getElementById('bellIcon').src = 'icons/bell1.png';
+        document.getElementById('bellButton').src = 'icons/bell1.png';
+    }
 }
 
 function desativeNotification(){
