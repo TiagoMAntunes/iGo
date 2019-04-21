@@ -181,7 +181,7 @@
                     <img id='likeButton' src="icons/heart.png" onclick="likeAction(this)" />
                     <img onclick="pushScreen('messageScreen')" src="icons/chat(1).png" />
                     <img onclick="bluetoothIsOff()" src="icons/photo.svg" />
-                    <img id = 'bellButton' onclick="pushScreen('notificationScreen');clearArray(notifications)" src="icons/bell3.png" />
+                    <img onclick="pushScreen('notificationScreen');clearArray(notifications)" src="icons/bell.svg" />
                     <img src="icons/man.png" onclick="pushScreen('profile');fillProfile()" />
                 </div>
             </div>
@@ -189,6 +189,40 @@
                 <div id='tableScreen'>
                     <h2 id='photoLabel'>Press a photo to publish:</h2>
                     <table id="tablePhotos" style='height: 100px'>
+                        <tbody id='tableBodyPictures'>
+                            <tr id='teste'>
+                                <td>
+                                    <img class="imageChoice publisheable" src="images/shrek-1.jpg">
+                                </td>
+                                <td>
+                                    <img class="imageChoice publisheable" src="images/newy.png">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img class="imageChoice publisheable" src="images/hotel.jpg">
+                                </td>
+                                <td>
+                                    <img class="imageChoice publisheable" src="images/shrek-4.jpg">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img class="imageChoice publisheable" src="images/air.jpeg">
+                                </td>
+                                <td>
+                                    <img class="imageChoice publisheable" src="images/shrek-3.jpg">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img class="imageChoice publisheable" src="images/shrek-2.jpg">
+                                </td>
+                                <td>
+                                    <img class="imageChoice publisheable" src="images/italy.jpg">
+                                </td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -214,20 +248,10 @@
                 <table id='tableSettings'>
                     <tr>
                         <td id='tdSettingsL' class='tdSettings'>
-                            <div class="dropdown">
-                                    <h3>Bluetooth</h3>
-                                    <div class="dropdown-content">
-                                    <a href="#">Phone 1</a>
-                                    <a href="#">Phone 2</a>
-                                    <a href="#">Phone 3</a>
-                                    </div>
-                                  </div>
+                            <h3>Bluetooth</h3>
                         </td>
                         <td id='tdSettingsR' class='tdSettings'>
-                            <label class="switch">
-                                <input onclick="Bluetooth()" type="checkbox" class="bluetooth-btn">
-                                <span class="slider round"></span>
-                            </label>
+                            <img width="60%" src="icons/right-arrow.svg" onclick="pushScreen('choose-phone')"/>
                         </td>
                     </tr>
                     <tr>
@@ -257,6 +281,41 @@
                     <img id='settingsImgL' src='icons/brightnesslow.png'>
                     <input type="range" id="opacity-slider" min=".4" max="1" step=".01" value="1" oninput="updateValue(this.value)">
                     <img id='settingsImgR' src='icons/brightnessmore.png'>
+                </div>
+            </div>
+            <div id="choose-phone" style='display: none'>
+                <h1 style='margin-left: 4%'>Bluetooth</h1>
+                <table style="width: 96%; margin-left: 2%">
+                    <tr>
+                        <td style="padding-bottom: 5%; border-bottom: solid 1px #ccc;"  id='tdSettingsL'  class='tdSettings'>
+                            <p style="margin-left: 4%">Bluetooth</p>
+                        </td>
+                        <td style="border-bottom: solid 1px #ccc;" id='tdSettingsR' class='tdSettings'>
+                            <label class="switch">
+                                <input onclick="Bluetooth()" type="checkbox" class="bluetooth-btn">
+                                <span class="slider round"></span>
+                            </label>
+                        </td>
+                    </tr>
+                </table>
+                <div id="dropdown">
+                    <h3 style="margin-left: 4%">Choose the phone to connect:</h3>
+                    <table style="width: 96%; margin-left: 2%">
+                            <tr>
+                                <td style="padding-bottom: 5%" id='tdSettingsL'  class='tdSettings'>
+                                    <p id="phone1" onclick="createShareMenu(0);selectPhone(1)" style="margin-left: 4%">Phone 1</p>
+                                </td>
+                            <tr>
+                                <td style="padding-bottom: 5%" id='tdSettingsL'  class='tdSettings'>
+                                    <p id="phone2" onclick="createShareMenu(1);selectPhone(2)" style="margin-left: 4%">Phone 2</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding-bottom: 5%"  id='tdSettingsL'  class='tdSettings'>
+                                    <p id="phone3" onclick="createShareMenu(2);selectPhone(3)" style="margin-left: 4%">Phone 3</p>
+                                </td>
+                            </tr>
+                    </table>
                 </div>
             </div>
             <div id='profile' style='display: none'>
