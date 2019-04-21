@@ -117,6 +117,7 @@ var mapsize = [0,0] //height, width
 var map_pins = []
 var notifications = []
 var notifiRandom = []
+var bluetoothProfile = [['shrek-1.jpg','air.jpeg', 'hotel.jpg', 'newy.png', 'sunshine.jpg', 'climbing.jpg', 'food.jpg', 'airballon.jpg'], ['shrek-2.jpg','air.jpeg', 'hotel.jpg', 'newy.png', 'sunshine.jpg', 'climbing.jpg', 'food.jpg', 'airballon.jpg'], ['shrek-3.jpg','air.jpeg', 'hotel.jpg', 'newy.png', 'sunshine.jpg', 'climbing.jpg', 'food.jpg', 'airballon.jpg']];
 
 var selectedTextBox = undefined;
 
@@ -591,39 +592,6 @@ function updatePicture() {
     document.getElementById("comment").innerHTML = multimedia_storage[picture_index]['description'];
     document.getElementById("likeButton").src = (multimedia_storage[picture_index]['liked'] == true ? 'icons/coracao.svg' : 'icons/meme.svg')
 }   
-<tbody id='tableBodyPictures'>
-                            <tr id='teste'>
-                                <td>
-                                    <img class="imageChoice publisheable" src="images/shrek-1.jpg">
-                                </td>
-                                <td>
-                                    <img class="imageChoice publisheable" src="images/newy.png">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img class="imageChoice publisheable" src="images/hotel.jpg">
-                                </td>
-                                <td>
-                                    <img class="imageChoice publisheable" src="images/shrek-4.jpg">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img class="imageChoice publisheable" src="images/air.jpeg">
-                                </td>
-                                <td>
-                                    <img class="imageChoice publisheable" src="images/shrek-3.jpg">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img class="imageChoice publisheable" src="images/shrek-2.jpg">
-                                </td>
-                                <td>
-                                    <img class="imageChoice publisheable" src="images/italy.jpg">
-                                </td>
-                            </tr>
                        
 function createShareMenu(){
     let ftg='';
@@ -640,6 +608,7 @@ function createShareMenu(){
         }
     ftg += " </tbody>";
     document.getElementById('tablePhotos').innerHTML = ftg;
+    }
 }
 
 function createRandomArrayNotifications(){
