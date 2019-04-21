@@ -815,9 +815,11 @@ function Bluetooth() {
     count++;
     if (count % 2 == 0) {
         document.getElementById('bluetoothImg').style.visibility = 'hidden';
+        document.getElementById('dropdown').style.display = 'none';
     }
     else {
         document.getElementById('bluetoothImg').style.visibility = 'visible';
+        document.getElementById('dropdown').style.display = 'inline';
     }
     triggerBluetooths(count % 2 == 0 ? false : true)
 }
