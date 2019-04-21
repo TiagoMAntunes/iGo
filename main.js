@@ -107,6 +107,7 @@ var mic1 = 0, mic2 = 2, mic3 = 0, mic4 = 0, mic5=0;
 var mics = [mic1, mic2, mic3, mic4, mic5];
 var micsid = ['mic1', 'mic2', 'mic3', 'micmessage', 'mic5'];
 var numberPostFtg = 0;
+var indiceFtg = -1;
 var numberNoti = 0;
 var block = 0;
 var popupon = 0;
@@ -115,6 +116,7 @@ var zoom = 0;
 var mapsize = [0,0] //height, width
 var map_pins = []
 var notifications = []
+var notifiRandom = []
 
 var selectedTextBox = undefined;
 
@@ -136,6 +138,7 @@ function startup() {
     }
     setRealSize();
     createLockScreenIcons();
+    createRandomArrayNotifications();
     createNotifications();
     createMessages();
     createMenuPerfil();
@@ -588,13 +591,31 @@ function updatePicture() {
     document.getElementById("comment").innerHTML = multimedia_storage[picture_index]['description'];
     document.getElementById("likeButton").src = (multimedia_storage[picture_index]['liked'] == true ? 'icons/coracao.svg' : 'icons/meme.svg')
 }
+function createRandomArrayNotifications(){
+    for (i = 0; i < profiles.length; i++){
+        notifiRandom.push({
+            "number" : Math.floor(Math.random() * 4),
+            "profileName": profiles[i].name,
+            "profilePhoto" : profiles[i].photo 
+        })
+    }
+}
 
+function addNotificationInArray(){
+    let number = Math.floor(Math.random()* (profiles.length-1));
+    notifiRandom.unshift({
+            "number" : indiceFtg,
+            "profileName": profiles[number].name,
+            "profilePhoto" :profiles[number].photo  
+    });
+    indiceFtg--;
+}
 
 function createNotifications() {
     let profiletable = '';
-    profiletable += "<tr><td onclick='goToPop(" + Math.floor(Math.random() * 4) + ");' id='rowone'><img class='notifpic' src=" + profiles[0].photo + "><h4 id='notificationmessage'>" + profiles[0].name + " gostou da sua foto</h4></td></tr>";
-    for (i = 1; i < profiles.length; i++) {
-        profiletable += "<tr><td onclick= 'goToPop(" + Math.floor(Math.random() * 4) + ");' class='row'><img class='notifpic' src=" + profiles[i].photo + "><h4 id='notificationmessage'>" + profiles[i].name + " gostou da sua foto</h4></td></tr>";
+    profiletable += "<tr><td onclick='goToPop(" + notifiRandom[0].number + ");' id='rowone'><img class='notifpic' src=" + notifiRandom[0].profilePhoto + "><h4 id='notificationmessage'>" + notifiRandom[0].profileName + " gostou da sua foto</h4></td></tr>";
+    for (i = 1; i < notifiRandom.length; i++) {
+        profiletable += "<tr><td onclick= 'goToPop(" + notifiRandom[i].number + ");' class='row'><img class='notifpic' src=" + notifiRandom[i].profilePhoto + "><h4 id='notificationmessage'>" + notifiRandom[i].profileName + " gostou da sua foto</h4></td></tr>";
     }
     document.getElementById("notifications").innerHTML = profiletable;
 }
@@ -791,12 +812,6 @@ function blockWatch() {
     }
     else {
         backButton();
-        if(notifications.length != 0){
-            document.getElementById('bellIcon').src = 'icons/bell1.png';
-        }
-        else{
-            document.getElementById('bellIcon').src = 'icons/bell3.png';   
-        }
         pushScreen('lockScreen');
     }
 }
@@ -1163,6 +1178,8 @@ function clearArray(array){
     while(array.length){
         array.pop();
     }
+    if(array == notifications)
+        desativeNotification();
 }
 function searchPin(name){
     for(let pin of map_pins){
@@ -1175,7 +1192,21 @@ function addNotification(){
     numberNoti++;
     notifications.push(pictureProfileArray[numberPostFtg - numberNoti].divName);
     console.log(notifications);
+    ativeNotification();
 }
+
+function ativeNotification(){
+    document.getElementById('bellIcon').src = 'icons/bell1.png';
+    document.getElementById('bellButton').src = 'icons/bell1.png';
+    addNotificationInArray();
+    createNotifications();
+}
+
+function desativeNotification(){
+    document.getElementById('bellIcon').src = 'icons/bell3.png';
+    document.getElementById('bellButton').src = 'icons/bell3.png';
+}
+
 
 function upPosition(){
     let pin = searchPin("atualPosition");
