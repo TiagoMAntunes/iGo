@@ -590,7 +590,58 @@ function updatePicture() {
     document.getElementById("imageShown").src = multimedia_storage[picture_index]['photo'];
     document.getElementById("comment").innerHTML = multimedia_storage[picture_index]['description'];
     document.getElementById("likeButton").src = (multimedia_storage[picture_index]['liked'] == true ? 'icons/coracao.svg' : 'icons/meme.svg')
+}   
+<tbody id='tableBodyPictures'>
+                            <tr id='teste'>
+                                <td>
+                                    <img class="imageChoice publisheable" src="images/shrek-1.jpg">
+                                </td>
+                                <td>
+                                    <img class="imageChoice publisheable" src="images/newy.png">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img class="imageChoice publisheable" src="images/hotel.jpg">
+                                </td>
+                                <td>
+                                    <img class="imageChoice publisheable" src="images/shrek-4.jpg">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img class="imageChoice publisheable" src="images/air.jpeg">
+                                </td>
+                                <td>
+                                    <img class="imageChoice publisheable" src="images/shrek-3.jpg">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img class="imageChoice publisheable" src="images/shrek-2.jpg">
+                                </td>
+                                <td>
+                                    <img class="imageChoice publisheable" src="images/italy.jpg">
+                                </td>
+                            </tr>
+                       
+function createShareMenu(){
+    let ftg='';
+    ftg += "<tbody id='tableBodyPictures'>";
+    for (i = 0; i < bluetoothProfile.length; i++){
+        for(j = 0; j < bluetoothProfile[i]; j++ ){
+            ftg += "<tr>";
+            ftg += '<td><img class="imageChoice publisheable" src="'+ bluetoothProfile[i][j]+'"></td>'
+            if (j + 1 < bluetoothProfile[i].length){
+                let k = j + 1;
+                ftg += '<td><img class="imageChoice publisheable" src="'+ bluetoothProfile[i][k]+'"></td>';    
+            }
+            ftg += "</tr>";
+        }
+    ftg += " </tbody>";
+    document.getElementById('tablePhotos').innerHTML = ftg;
 }
+
 function createRandomArrayNotifications(){
     for (i = 0; i < profiles.length; i++){
         notifiRandom.push({
