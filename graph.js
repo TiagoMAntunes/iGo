@@ -12,8 +12,8 @@ class Graph {
 }
 
 class Edge{
-	constructor(N, id){
-		this.weigth = N;
+	constructor(id, xi, yi, xf, yf){
+		this.weigth = [xi,yi,xf,yf]
 		this.id = id;
 	}
 	getWeigth(){
