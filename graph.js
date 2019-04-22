@@ -79,7 +79,7 @@ function Dijkstra(graph, source, target) {
 	}
 }
 
-let g = new Graph(11)
+/*let g = new Graph(11)
 let pins = []
 pins.push([0, 3957, 3225])
 pins.push([1, 3950, 3183])
@@ -108,4 +108,4 @@ g.insert(pins[8], pins[9])
 g.insert(pins[5], pins[10])
 g.insert(pins[9], pins[10])
 let vals = Dijkstra(g, 3, 9)
-console.log(vals[0].map(el => el +1))
+console.log(vals[0].map(el => el +1))*/
