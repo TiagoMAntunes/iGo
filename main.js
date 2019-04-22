@@ -1086,6 +1086,8 @@ function reloadPins() {
         
         map.appendChild(newpin)
     }
+    $(document.getElementById('map-canvas')).width($(document.getElementById('mapLayer')).width())
+    $(document.getElementById('map-canvas')).height($(document.getElementById('mapLayer')).height())
     
 }
 
