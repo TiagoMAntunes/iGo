@@ -16,11 +16,26 @@ class Edge{
 		this.weigth = [xi,yi,xf,yf]
 		this.id = id;
 	}
-	getWeigth(){
-		return this.weigth;
+	getXi(){
+		return this.weigth[0];
+	}
+
+	getXf(){
+		return this.weigth[2];
+	}
+
+	getYi(){
+		return this.weigth[1];
+	}
+
+	getYf(){
+		return this.weigth[3];
 	}
 	getId(){
 		return this.id;
+	}
+	calculateDistance(){
+		return Math.sqrt(Math.pow(weigth.getXf() - weigth.getXi(),2) + Math.pow(weigth.getYf() - weigth.getYi(),2));
 	}
 
 }
