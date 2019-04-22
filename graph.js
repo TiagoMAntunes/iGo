@@ -45,7 +45,16 @@ class Edge {
 
 }
 
-
+function doTraceback(parents, source, target){
+	j = target;
+	pathArray = [];
+	pathArray.push(target);
+	while(j != source){
+		j = parents[j];
+		pathArray.unshift(j); 
+	}
+	return pathArray;
+}
 
 function Dijkstra(graph, source, target) {
 	let dist = new Array(graph.V).fill(Number.MAX_SAFE_INTEGER)
@@ -108,4 +117,6 @@ g.insert(pins[8], pins[9])
 g.insert(pins[5], pins[10])
 g.insert(pins[9], pins[10])
 let vals = Dijkstra(g, 3, 9)
-console.log(vals[0].map(el => el +1))*/
+console.log(vals[0].map(el => el +1))
+list = doTraceback(vals[0],3,9)
+console.log(list.map(el => el +1)) */
