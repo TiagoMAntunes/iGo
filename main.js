@@ -1086,8 +1086,8 @@ function reloadPins() {
         
         map.appendChild(newpin)
     }
-    $(document.getElementById('map-canvas')).width($(document.getElementById('mapLayer')).width())
-    $(document.getElementById('map-canvas')).height($(document.getElementById('mapLayer')).height())
+    //$(document.getElementById('map-canvas')).width($(document.getElementById('mapLayer')).width())
+    //$(document.getElementById('map-canvas')).height($(document.getElementById('mapLayer')).height())
     
 }
 
@@ -1157,12 +1157,13 @@ function searchPlace(place){
 }
 
 function doPath(pin){
-    let atualPosition = searchPin('atualPosition');
-    let path = '';
-    path += '<svg height="100%" width="100%">';
-    path += '<polyline points="0, 20 20, 40 40, 60 60, 100" style="fill:none;stroke:red;stroke-width:4" />';
-    path += '</svg>';
-    document.getElementById('path').innerHTML = path;
+    let canvas = document.getElementById('map-canvas').getContext('2d');
+    canvas.beginPath()
+    canvas.moveTo(50,50)
+    canvas.lineTo(100, 100)
+    canvas.strokeStyle='#000000'
+    canvas.stroke()
+    console.log('desenhado')
 }
 
 function openNoPlaceFoundPop(){
@@ -1283,4 +1284,37 @@ function ativeJoystick(){
 
 function desativeJoystick(){
     document.getElementById('joystick').style.display = 'none';
+}
+
+var graph;
+
+function setupGraph() {
+    let pins = []
+    pins.push([0, 3957, 3225])
+    pins.push([1, 3950, 3183])
+    pins.push([2, 3965, 3261])
+    pins.push([3, 3971, 3300])
+    pins.push([4, 4024, 3292])
+    pins.push([5, 4015, 3254])
+    pins.push([6, 4009, 3212])
+    pins.push([7, 4003, 3176])
+    pins.push([8, 3996, 3138])
+    pins.push([9, 4043, 3129])
+    pins.push([10, 4063, 3244])
+
+    g.insert(pins[0], pins[1])
+    g.insert(pins[0], pins[2])
+    g.insert(pins[2], pins[3])
+    g.insert(pins[2], pins[5])
+    g.insert(pins[3], pins[4])
+    g.insert(pins[0], pins[6])
+    g.insert(pins[1], pins[7])
+    g.insert(pins[4], pins[5])
+    g.insert(pins[5], pins[6])
+    g.insert(pins[6], pins[7])
+    g.insert(pins[7], pins[8])
+    g.insert(pins[8], pins[9])
+    g.insert(pins[5], pins[10])
+    g.insert(pins[9], pins[10])
+    graph = new Graph(pins.length)
 }
