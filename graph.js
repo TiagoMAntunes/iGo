@@ -11,6 +11,20 @@ class Graph {
     }
 }
 
+class Edge{
+	constructor(N, id){
+		this.weigth = N;
+		this.id = id;
+	}
+	getWeigth(){
+		return this.weigth;
+	}
+	getId(){
+		return this.id;
+	}
+
+}
+
 let g = new Graph(5)
 g.insert(1,2)
 g.insert(0,3)
