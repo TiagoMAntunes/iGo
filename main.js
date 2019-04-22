@@ -613,19 +613,19 @@ function createShareMenu(i){
 function selectPhone(i){
     console.log(i);
     if(i == 1){
-        document.getElementById('phone1').style.color = "green";
-        document.getElementById('phone2').style.color = "black";
-        document.getElementById('phone3').style.color = "black";
+        document.getElementById('phone1').style.backgroundColor = "#ccc";
+        document.getElementById('phone2').style.backgroundColor = "white";
+        document.getElementById('phone3').style.backgroundColor = "white";
     }
     else if(i == 2){
-        document.getElementById('phone1').style.color = "black";
-        document.getElementById('phone2').style.color = "green";
-        document.getElementById('phone3').style.color = "black";
+        document.getElementById('phone1').style.backgroundColor = "white";
+        document.getElementById('phone2').style.backgroundColor = "#ccc";
+        document.getElementById('phone3').style.backgroundColor = "white";
     }
     else{
-        document.getElementById('phone1').style.color = "black";
-        document.getElementById('phone2').style.color = "black";
-        document.getElementById('phone3').style.color = "green";
+        document.getElementById('phone1').style.backgroundColor = "white";
+        document.getElementById('phone2').style.backgroundColor = "white";
+        document.getElementById('phone3').style.backgroundColor = "#ccc";
     }
 }
 
