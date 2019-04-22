@@ -36,7 +36,7 @@ class Edge{
 		return this.id;
 	}
 	calculateDistance(){
-		return Math.sqrt(Math.pow(weigth.getXf() - weigth.getXi(),2) + Math.pow(weigth.getYf() - weigth.getYi(),2));
+		return Math.sqrt(Math.pow(this.getXf() - this.getXi(),2) + Math.pow(this.getYf() - this.getYi(),2));
 	}
 
 }
