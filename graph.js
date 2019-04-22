@@ -64,7 +64,7 @@ function Dijkstra(graph, source, target) {
 				smallestVal = dist[i]
 			}
 		}
-		
+
 		queue.splice(queue.indexOf(u), 1)
 
 		for (let v of graph.getEdges(u)) {
@@ -74,18 +74,38 @@ function Dijkstra(graph, source, target) {
 				parent[v.getId()] = u
 			}
 			if (v.getId() === target)
-				return parent
+				return [parent, dist]
 		}
 	}
 }
 
-let g = new Graph(4)
-let pin1 = [0, 1, 2]
-let pin2 = [1, 2, 5]
-let pin3 = [2, 5, 10]
-let pin4 = [3, 1, 7]
+let g = new Graph(11)
+let pins = []
+pins.push([0, 3957, 3225])
+pins.push([1, 3950, 3183])
+pins.push([2, 3965, 3261])
+pins.push([3, 3971, 3300])
+pins.push([4, 4024, 3292])
+pins.push([5, 4015, 3254])
+pins.push([6, 4009, 3212])
+pins.push([7, 4003, 3176])
+pins.push([8, 3996, 3138])
+pins.push([9, 4043, 3129])
+pins.push([10, 4063, 3244])
 
-g.insert(pin1,pin2)
-g.insert(pin2,pin3)
-g.insert(pin3,pin4)
-console.log(Dijkstra(g, 0, 3))
+g.insert(pins[0], pins[1])
+g.insert(pins[0], pins[2])
+g.insert(pins[2], pins[3])
+g.insert(pins[2], pins[5])
+g.insert(pins[3], pins[4])
+g.insert(pins[0], pins[6])
+g.insert(pins[1], pins[7])
+g.insert(pins[4], pins[5])
+g.insert(pins[5], pins[6])
+g.insert(pins[6], pins[7])
+g.insert(pins[7], pins[8])
+g.insert(pins[8], pins[9])
+g.insert(pins[5], pins[10])
+g.insert(pins[9], pins[10])
+let vals = Dijkstra(g, 3, 9)
+console.log(vals[0].map(el => el +1))
