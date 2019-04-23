@@ -482,7 +482,7 @@ function mapBoundariesPositioning() {
     const topBorder = $(document.getElementById('mapaScreen')).position().top
     const rightBorder = leftBorder + $(document.getElementById('mapaScreen')).width()
     const bottomBorder = topBorder + $(document.getElementById('mapaScreen')).height()
-    console.log(position)
+    
     if (position[0] > topBorder){
         $(document.getElementById('mapLayer')).offset({top: $(document.getElementById('mapLayer')).offset().top - position[0] + topBorder})
         console.log('top')
@@ -500,6 +500,7 @@ function mapBoundariesPositioning() {
         $(document.getElementById('mapLayer')).offset({left: $(document.getElementById('mapLayer')).offset().left - position[1] - $(document.getElementById('mapLayer')).width() + bottomBorder})
         console.log('bottom')
     }
+    console.log(position)
     
 }
 
@@ -513,17 +514,25 @@ function scrollWheelMap(event) {
     } else if (direction < 0) {
         i = -0.01;
     }
-
+    let offset = false
     let val = zoom + i;
     if (val > maxZoom) val = maxZoom
     if (val < 0) val = 0
-    if (mapsize[0] * (1 - val) < $(document.getElementById('mapaScreen')).height()) val = (1 - $(document.getElementById('mapaScreen')).height() / mapsize[0]) 
-    if (mapsize[1] * (1 - val) < $(document.getElementById('mapaScreen')).width()) val = (1 - $(document.getElementById('mapaScreen')).width() / mapsize[1]) 
+    if (mapsize[0] * (1 - val) < $(document.getElementById('mapaScreen')).height()) {
+        val = (1 - $(document.getElementById('mapaScreen')).height() / mapsize[0]) 
+        offset = true
+    }
+    else if (mapsize[1] * (1 - val) < $(document.getElementById('mapaScreen')).width()) {
+        val = (1 - $(document.getElementById('mapaScreen')).width() / mapsize[1]) 
+    }
     zoom = val
     
     $(document.getElementById('mapLayer')).height(mapsize[0] * (1 - zoom))
     $(document.getElementById('mapLayer')).width(mapsize[1] * (1 - zoom))
     mapBoundariesPositioning()
+    if (offset) {
+        $(document.getElementById('mapLayer')).offset({top: $(document.getElementById('mapaScreen')).offset().top})
+    }
     reloadPins()
 }
 
