@@ -147,6 +147,7 @@ function startup() {
     createNotificationsPops();
     setupMultimediaScreen();
     picturesSetup();
+    setupGraph();
     addAllPins();
     blockWatch(); blockWatch();
     GPS()
@@ -1144,9 +1145,10 @@ function searchPlace(place){
     for(i = 0; i < map_pins.length; i++){
         if(map_pins[i].n == place){
             console.log("expetaculo");
-            doPath(map_pins[i]);
+            doPath(6);
             flag = 1;
             backButton();
+            break
         }
     }
     if(flag == 0){
@@ -1156,14 +1158,29 @@ function searchPlace(place){
     
 }
 
-function doPath(pin){
-    let canvas = document.getElementById('map-canvas').getContext('2d');
-    canvas.beginPath()
-    canvas.moveTo(50,50)
-    canvas.lineTo(100, 100)
-    canvas.strokeStyle='#000000'
-    canvas.stroke()
+function doPath(target){
+    let current = searchPin('atualPosition');
+    let closerPin = searchClosestPin(current);
+    let vals = Dijkstra(g, 2, target)
+    console.log(vals[0].map(el => el +1))
+    list = doTraceback(vals[0],2,target)
+    drawPath(list);
+    console.log(list.map(el => el +1))
     console.log('desenhado')
+}
+
+function searchClosestPin(pin){
+
+}
+
+function drawPath(list){
+    let canvas = document.getElementById('map-canvas').getContext('2d');
+    for(i = 0; i < list.length - 1; i++){
+        canvas.moveTo(pins[list[i]][1]-3900,pins[list[i]][2]-3100);
+        let j = i + 1;
+        canvas.lineTo(pins[list[j]][1]-3900, pins[list[j]][2]-3100);
+        canvas.stroke();
+    }
 }
 
 function openNoPlaceFoundPop(){
@@ -1286,10 +1303,11 @@ function desativeJoystick(){
     document.getElementById('joystick').style.display = 'none';
 }
 
-var graph;
+var g;
+var pins = [];
 
 function setupGraph() {
-    let pins = []
+    
     pins.push([0, 3957, 3225])
     pins.push([1, 3950, 3183])
     pins.push([2, 3965, 3261])
@@ -1302,6 +1320,7 @@ function setupGraph() {
     pins.push([9, 4043, 3129])
     pins.push([10, 4063, 3244])
 
+    g = new Graph(pins.length)
     g.insert(pins[0], pins[1])
     g.insert(pins[0], pins[2])
     g.insert(pins[2], pins[3])
@@ -1316,5 +1335,4 @@ function setupGraph() {
     g.insert(pins[8], pins[9])
     g.insert(pins[5], pins[10])
     g.insert(pins[9], pins[10])
-    graph = new Graph(pins.length)
 }
