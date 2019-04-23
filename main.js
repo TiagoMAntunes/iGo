@@ -501,7 +501,6 @@ function mapBoundariesPositioning() {
         $(document.getElementById('mapLayer')).offset({left: $(document.getElementById('mapLayer')).offset().left - position[1] - $(document.getElementById('mapLayer')).width() + bottomBorder})
         console.log('bottom')
     }
-    console.log(position)
     
 }
 
@@ -1096,9 +1095,8 @@ function reloadPins() {
         
         map.appendChild(newpin)
     }
-    //$(document.getElementById('map-canvas')).width($(document.getElementById('mapLayer')).width())
-    //$(document.getElementById('map-canvas')).height($(document.getElementById('mapLayer')).height())
-    
+    $(document.getElementById('map-canvas')).width($(document.getElementById('mapLayer')).width())
+    $(document.getElementById('map-canvas')).height($(document.getElementById('mapLayer')).height())
 }
 
 let mapDrag = undefined
