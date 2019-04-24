@@ -1100,6 +1100,7 @@ function reloadPins() {
     }
     $(document.getElementById('map-canvas')).width($(document.getElementById('mapLayer')).width())
     $(document.getElementById('map-canvas')).height($(document.getElementById('mapLayer')).height())
+    $('#map-canvas').offset($('#mapLayer').offset())
 }
 
 let mapDrag = undefined
