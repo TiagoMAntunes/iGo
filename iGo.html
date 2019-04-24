@@ -204,12 +204,23 @@
                 <map name='map'>
                     
                 </map>
-                 <div id='navbarMap'>
+                <div id='navbarMap'>
                     <img id='searchmapbutton' src="icons/search.svg" onclick="pushScreen('searchPlace')" /> 
-                 </div>
-                 <div id='navbar2Map'>
+                </div>
+                <div id='navbar2Map'>
                     <img id='infoButton' src="icons/info.svg" style="float:right;" onclick="searchPlacesNearBy()"/> 
                 </div>
+                <div id='navbarNavigation' class="navbar"  style='display: none'>
+                    <img id='iconsNavigation' src="icons/car.png" onclick="topbarNavigation()">
+                    <img id='iconsNavigation' src="icons/3d.png">
+                    <img id='iconsNavigation' src="icons/walker.svg" onclick="topbarNavigation()">
+                </div>
+                <div id='topbarNavigation' style='display: none'>
+                    <h2>2min (850 m)</h2>
+                    <button id="startNavigation" onclick="startNavigation()">START</button>
+                    <button id="endNavigation" onclick="endNavigation()" style='display: none'>END</button>
+                </div>
+                
             </div>
             <div id='saude' style='display: none'>
                 <h1>Health</h1>

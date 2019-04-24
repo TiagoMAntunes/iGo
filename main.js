@@ -319,6 +319,7 @@ function backButton() {
     }
     if(screenStack[screenStack.length - 1] === 'mapaScreen'){
         desativeJoystick();
+        hideNavbars();
     }
     console.log('hi')
     let screen = screenStack.pop()
@@ -1164,6 +1165,7 @@ function searchPlace(place){
             doPath(6);
             flag = 1;
             backButton();
+            bottombarNavigation();
             break
         }
     }
@@ -1173,6 +1175,32 @@ function searchPlace(place){
     resetInputPlace();
     
 }
+
+function bottombarNavigation() {
+    document.getElementById('navbarMap').style.visibility = 'hidden';
+    document.getElementById('navbar2Map').style.visibility = 'hidden';
+    document.getElementById('navbarNavigation').style.display = 'unset';
+}
+
+function topbarNavigation() {
+    document.getElementById('topbarNavigation').style.display = 'flex';
+    document.getElementById('topbarNavigation').style.flexDirection = 'row';
+}
+
+function startNavigation() {
+    document.getElementById('topbarNavigation').style.backgroundColor = "#ccc";
+    document.getElementById('startNavigation').style.display = 'none';
+    document.getElementById('endNavigation').style.display = 'unset';
+}
+
+function endNavigation() {
+    document.getElementById('topbarNavigation').style.backgroundColor = "white";
+    document.getElementById('startNavigation').style.display = 'unset';
+    document.getElementById('endNavigation').style.display = 'none';
+}
+
+
+
 var path = [];
 function doPath(target){
     let current = searchPin('atualPosition');
@@ -1320,6 +1348,13 @@ function ativeJoystick(){
 
 function desativeJoystick(){
     document.getElementById('joystick').style.display = 'none';
+}
+
+function hideNavbars(){
+    document.getElementById('navbarMap').style.visibility = 'visible';
+    document.getElementById('navbar2Map').style.visibility = 'visible';
+    document.getElementById('navbarNavigation').style.display = 'none';
+    document.getElementById('topbarNavigation').style.display = 'none';
 }
 
 var g;
