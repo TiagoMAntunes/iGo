@@ -590,6 +590,9 @@ function scrollWheelMovement(event) {
 
 function scrollWheelStart(event) {
     dragInfo = event;
+    var img = new Image();
+    img.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=';
+    event.dataTransfer.setDragImage(img, 0, 0);
 }
 
 function scrollWheelFinish(event) {
@@ -1103,6 +1106,9 @@ let mapDrag = undefined
 
 function dragMapStart(event) {
     mapDrag = event
+    var img = new Image();
+    img.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=';
+    event.dataTransfer.setDragImage(img, 0, 0);
     console.log('Map drag start')
 }
 
