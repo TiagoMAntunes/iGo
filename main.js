@@ -1182,7 +1182,15 @@ function bottombarNavigation() {
     document.getElementById('navbarNavigation').style.display = 'unset';
 }
 
-function topbarNavigation() {
+function topbarNavigation(mode) {
+    if(mode === "car"){
+        document.getElementById('car').style.backgroundColor = '#ccc';
+        document.getElementById('walk').style.backgroundColor = 'white';
+    }
+    else{
+        document.getElementById('walk').style.backgroundColor = '#ccc';
+        document.getElementById('car').style.backgroundColor = "white"
+    }
     document.getElementById('topbarNavigation').style.display = 'flex';
     document.getElementById('topbarNavigation').style.flexDirection = 'row';
 }
@@ -1355,6 +1363,8 @@ function hideNavbars(){
     document.getElementById('navbar2Map').style.visibility = 'visible';
     document.getElementById('navbarNavigation').style.display = 'none';
     document.getElementById('topbarNavigation').style.display = 'none';
+    document.getElementById('walk').style.backgroundColor = 'white';
+    document.getElementById('car').style.backgroundColor = 'white';
 }
 
 var g;
