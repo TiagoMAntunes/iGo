@@ -1101,6 +1101,8 @@ function reloadPins() {
     $(document.getElementById('map-canvas')).width($(document.getElementById('mapLayer')).width())
     $(document.getElementById('map-canvas')).height($(document.getElementById('mapLayer')).height())
     $('#map-canvas').offset($('#mapLayer').offset())
+
+    drawPath()
 }
 
 let mapDrag = undefined
@@ -1171,15 +1173,15 @@ function searchPlace(place){
     resetInputPlace();
     
 }
-
+var path = [];
 function doPath(target){
     let current = searchPin('atualPosition');
     let closerPin = searchClosestPin(current);
     let vals = Dijkstra(g, 2, target)
     console.log(vals[0].map(el => el +1))
-    list = doTraceback(vals[0],2,target)
-    drawPath(list);
-    console.log(list.map(el => el +1))
+    path = doTraceback(vals[0],2,target)
+    drawPath();
+    console.log(path.map(el => el +1))
     console.log('desenhado')
 }
 
@@ -1187,13 +1189,16 @@ function searchClosestPin(pin){
 
 }
 
-function drawPath(list){
+function drawPath(){
+    let list = path
     let canvas = document.getElementById('map-canvas').getContext('2d');
     for(i = 0; i < list.length - 1; i++){
+        canvas.beginPath()
         canvas.moveTo(pins[list[i]][1]-3900,pins[list[i]][2]-3100);
         let j = i + 1;
         canvas.lineTo(pins[list[j]][1]-3900, pins[list[j]][2]-3100);
         canvas.stroke();
+        canvas.closePath()
     }
 }
 
