@@ -1240,7 +1240,7 @@ function drawPathToPin(current, closerPin){
     values = calculateValues(current, pins[closerPin]);
     console.log(values);
     canvas.beginPath()
-    canvas.moveTo(values[0], values[1]);
+    canvas.moveTo(values[1], values[0]);
     canvas.lineTo(values[2], values[3]);
     canvas.stroke();
     canvas.closePath()
