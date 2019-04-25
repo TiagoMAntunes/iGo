@@ -1142,19 +1142,15 @@ function validateMapBoundaries(vertical, horizontal) {
 }
 
 function dragMap(event) {
-    let directionY = (event.clientY - mapDrag.clientY)
-    let directionX = (event.clientX - mapDrag.clientX)
+    if (event.screenX === 0 && event.screenY === 0)
+        return
     let hi = 0, vi = 0
 
-    let totalsize = Math.abs(directionX) + Math.abs(directionY)
-    if (directionX < 0) hi = -dragspeed * Math.abs(directionX / totalsize)
-    else if (directionX > 0) hi = dragspeed * Math.abs(directionX / totalsize)
-    
-    if (directionY < 0) vi = -dragspeed * Math.abs(directionY / totalsize)
-    else if (directionY) vi = dragspeed * Math.abs(directionY / totalsize)
-    
-    if (validateMapBoundaries($(document.getElementById('mapLayer')).position().top + vi, $(document.getElementById('mapLayer')).position().left + hi)) 
-        $(document.getElementById('mapLayer')).offset({left: hi + $(document.getElementById('mapLayer')).offset().left, top: $(document.getElementById('mapLayer')).offset().top + vi})
+    hi = mapDrag.clientX - event.clientX
+    vi = mapDrag.clientY - event.clientY
+    mapDrag = event
+    if (validateMapBoundaries($(document.getElementById('mapLayer')).position().top - vi, $(document.getElementById('mapLayer')).position().left - hi)) 
+        $(document.getElementById('mapLayer')).offset({left: $(document.getElementById('mapLayer')).offset().left - hi, top: $(document.getElementById('mapLayer')).offset().top - vi})
     reloadPins()
 }
 
