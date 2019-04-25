@@ -1268,7 +1268,7 @@ max-width: 60%;*/
 }
 
 #topbarNavigation {
-    border-top: 2px solid black;
+    border-bottom: 2px solid black;
     overflow: none;
     position: fixed;
     top: 0;
