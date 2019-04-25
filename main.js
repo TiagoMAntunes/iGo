@@ -1101,6 +1101,8 @@ function reloadPins() {
     }
     $(document.getElementById('map-canvas')).width($(document.getElementById('mapLayer')).width())
     $(document.getElementById('map-canvas')).height($(document.getElementById('mapLayer')).height())
+    document.getElementById('map-canvas').height = $(document.getElementById('map-canvas')).height()
+    document.getElementById('map-canvas').width = $(document.getElementById('map-canvas')).width()
     $('#map-canvas').offset($('#mapLayer').offset())
 
     drawPath()
@@ -1229,10 +1231,11 @@ function drawPath(){
     let list = path
     let canvas = document.getElementById('map-canvas').getContext('2d');
     for(i = 0; i < list.length - 1; i++){
+        //values has the scaled coordinates
+        const values = [pins[list[i]][1],pins[list[i]][2], pins[list[i+1]][1],pins[list[i+1]][2]].map(el => el * (1-zoom))
         canvas.beginPath()
-        canvas.moveTo(pins[list[i]][1]-3900,pins[list[i]][2]-3100);
-        let j = i + 1;
-        canvas.lineTo(pins[list[j]][1]-3900, pins[list[j]][2]-3100);
+        canvas.moveTo(values[0], values[1]);
+        canvas.lineTo(values[2], values[3]);
         canvas.stroke();
         canvas.closePath()
     }
