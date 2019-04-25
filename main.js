@@ -1219,6 +1219,8 @@ function endNavigation() {
     document.getElementById('car').style.backgroundColor = "white";
     document.getElementById('walk').style.backgroundColor = 'white';
     nav = 0;
+    let canvas = document.getElementById('map-canvas').getContext('2d');
+    canvas.clearRect(0,0,$('#map-canvas').height(), $('#map-canvas').width());
 
 }
 
