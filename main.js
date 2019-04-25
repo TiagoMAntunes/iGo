@@ -537,8 +537,10 @@ function scrollWheelMap(event) {
     $(document.getElementById('mapLayer')).width(mapsize[1] * (1 - zoom))
     const baseOffset = $('#mapaScreen').offset()
     $('#mapLayer').offset({top: baseOffset.top - ver_pos * (1-zoom) + $('#mapaScreen').height() / 2, left: baseOffset.left - hor_pos * (1-zoom) + $('#mapaScreen').width() / 2})
-    mapBoundariesPositioning()
-    reloadPins()
+    mapBoundariesPositioning();
+    reloadPins();
+    if(nav == 1)
+        recalibratePath();
 }
 
 function scrollWheelHelpMap(event) {
@@ -1149,6 +1151,8 @@ function dragMap(event) {
     if (validateMapBoundaries($(document.getElementById('mapLayer')).position().top - vi, $(document.getElementById('mapLayer')).position().left - hi)) 
         $(document.getElementById('mapLayer')).offset({left: $(document.getElementById('mapLayer')).offset().left - hi, top: $(document.getElementById('mapLayer')).offset().top - vi})
     reloadPins()
+    if(nav == 1)
+        recalibratePath()
 }
 
 function searchPlace(place){
