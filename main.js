@@ -1262,6 +1262,7 @@ function calculateValues(current, closerPin) {
 function drawPath(){
     let list = path
     let canvas = document.getElementById('map-canvas').getContext('2d');
+    canvas.clearRect(0,0,$('#map-canvas').height(), $('#map-canvas').width());
     for(i = 0; i < list.length - 1; i++){
         //values has the scaled coordinates
         const values = [pins[list[i]][1],pins[list[i]][2], pins[list[i+1]][1],pins[list[i+1]][2]].map(el => el * (1-zoom))
