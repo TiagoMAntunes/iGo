@@ -1227,11 +1227,9 @@ function searchClosestPin(){
     distance = calculateDistancePin(pins[0]);
     for(let i = 1; i < pins.length; i++){
         d = calculateDistancePin(pins[i]);
-        console.log(d);
         if(d < distance){
             distance = d;
             pin = pins[i][0];
-            console.log(pin);
         }
     }
     return pin;
@@ -1319,6 +1317,13 @@ function calculateDistance(ponto){
     let distance = Math.sqrt(Math.pow(ponto.x - pin.x,2) + Math.pow(ponto.y - pin.y,2));
     return distance;
 }
+
+function calculateDistancePin(ponto){
+    let pin = searchPin("atualPosition");
+    let distance = Math.sqrt(Math.pow(ponto[2] - pin.x,2) + Math.pow(ponto[1] - pin.y,2));
+    return distance;
+}
+
 
 
 function clearArray(array){
