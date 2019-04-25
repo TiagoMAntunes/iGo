@@ -526,14 +526,14 @@ function scrollWheelMap(event) {
     else if (mapsize[1] * (1 - val) < $(document.getElementById('mapaScreen')).width()) {
         val = (1 - $(document.getElementById('mapaScreen')).width() / mapsize[1]) 
     }
+    let hor_pos = ($('#mapaScreen').width() / 2 - $('#mapLayer').position().left) / (1-zoom)
+    let ver_pos = ($('#mapaScreen').height() / 2 - $('#mapLayer').position().top) / (1-zoom)
     zoom = val
-    
     $(document.getElementById('mapLayer')).height(mapsize[0] * (1 - zoom))
     $(document.getElementById('mapLayer')).width(mapsize[1] * (1 - zoom))
+    const baseOffset = $('#mapaScreen').offset()
+    $('#mapLayer').offset({top: baseOffset.top - ver_pos * (1-zoom) + $('#mapaScreen').height() / 2, left: baseOffset.left - hor_pos * (1-zoom) + $('#mapaScreen').width() / 2})
     mapBoundariesPositioning()
-    if (offset) {
-        $(document.getElementById('mapLayer')).offset({top: $(document.getElementById('mapaScreen')).offset().top})
-    }
     reloadPins()
 }
 
