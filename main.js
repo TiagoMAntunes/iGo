@@ -1320,11 +1320,6 @@ function calculateDistance(ponto){
     return distance;
 }
 
-function calculateDistancePin(ponto){
-    let pin = searchPin("atualPosition");
-    let distance = Math.sqrt(Math.pow(ponto[2] - pin.x,2) + Math.pow(ponto[1] - pin.y,2));
-    return distance;
-}
 
 function clearArray(array){
     while(array.length){
