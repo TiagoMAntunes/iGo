@@ -1104,7 +1104,6 @@ function reloadPins() {
     document.getElementById('map-canvas').width = $(document.getElementById('map-canvas')).width()
     $('#map-canvas').offset($('#mapLayer').offset())
 
-    drawPath()
 }
 
 let mapDrag = undefined
@@ -1151,8 +1150,10 @@ function dragMap(event) {
     if (validateMapBoundaries($(document.getElementById('mapLayer')).position().top - vi, $(document.getElementById('mapLayer')).position().left - hi)) 
         $(document.getElementById('mapLayer')).offset({left: $(document.getElementById('mapLayer')).offset().left - hi, top: $(document.getElementById('mapLayer')).offset().top - vi})
     reloadPins()
-    if(nav == 1)
+    if(nav == 1){
+        console.log("recalibrating...")
         recalibratePath()
+    }
 }
 
 function searchPlace(place){
