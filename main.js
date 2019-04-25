@@ -151,6 +151,8 @@ function startup() {
     addAllPins();
     blockWatch(); blockWatch();
     GPS()
+    mapsize[0] = document.getElementById('mapLayer').height
+    mapsize[1] = document.getElementById('mapLayer').width
 }
 
 let recognizing = false
@@ -940,8 +942,7 @@ function gpsIsOff(){
         popupon = 1;
         pushScreen('gps-setup');
     } else {
-        pushScreen('mapaScreen');
-        getMapSize();
+        pushScreen('mapaScreen')
         reloadPins();
     }
 }
@@ -957,7 +958,6 @@ function validateGPS(){
     if(gpson % 2 !== 0 ){
         backButton()
         pushScreen('mapaScreen');
-        getMapSize();
         reloadPins()
     }
 }
@@ -1026,11 +1026,6 @@ function autoturnoff() {
             console.log('Found it!')
             return
         }
-}
-
-function getMapSize() {
-    mapsize[0] = $(document.getElementById('mapLayer')).height()
-    mapsize[1] = $(document.getElementById('mapLayer')).width()
 }
 
 class Pin {
