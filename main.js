@@ -1158,7 +1158,7 @@ function searchPlace(place){
             doPath(6);
             flag = 1;
             backButton();
-            bottombarNavigation();
+            barsNavigation();
             break
         }
     }
@@ -1169,37 +1169,38 @@ function searchPlace(place){
     
 }
 
-function bottombarNavigation() {
+function barsNavigation() {
     document.getElementById('navbarMap').style.visibility = 'hidden';
     document.getElementById('navbar2Map').style.visibility = 'hidden';
     document.getElementById('navbarNavigation').style.display = 'unset';
+    document.getElementById('car').style.backgroundColor = '#ccc';
+    document.getElementById('topbarNavigation').style.display = 'flex';
+    document.getElementById('topbarNavigation').style.flexDirection = 'row';
+    document.getElementById('endNavigation').style.display = 'unset';
 }
 
 function topbarNavigation(mode) {
     if(mode === "car"){
+        timeAndDistance.innerText = '10min (850m)';
         document.getElementById('car').style.backgroundColor = '#ccc';
         document.getElementById('walk').style.backgroundColor = 'white';
     }
     else{
+        timeAndDistance.innerText = '30min (850m)';
         document.getElementById('walk').style.backgroundColor = '#ccc';
         document.getElementById('car').style.backgroundColor = "white"
     }
-    document.getElementById('topbarNavigation').style.display = 'flex';
-    document.getElementById('topbarNavigation').style.flexDirection = 'row';
 }
 
 function startNavigation() {
-    console.log('cinzento')
     document.getElementById('top-bar').style.backgroundColor = "#ccc";
     document.getElementById('topbarNavigation').style.backgroundColor = "#ccc";
     document.getElementById('startNavigation').style.display = 'none';
-    document.getElementById('endNavigation').style.display = 'unset';
 }
 
 function endNavigation() {
     document.getElementById('top-bar').style.backgroundColor = "white";
     document.getElementById('topbarNavigation').style.backgroundColor = "white";
-    document.getElementById('startNavigation').style.display = 'unset';
     document.getElementById('endNavigation').style.display = 'none';
     document.getElementById('topbarNavigation').style.display = 'none';
     document.getElementById('navbarNavigation').style.display = 'none';
@@ -1408,7 +1409,6 @@ function hideNavbars(){
     document.getElementById('walk').style.backgroundColor = 'white';
     document.getElementById('car').style.backgroundColor = 'white';
     document.getElementById('top-bar').style.backgroundColor = "white";
-    document.getElementById('startNavigation').style.display = 'unset';
     document.getElementById('endNavigation').style.display = 'none';
     document.getElementById('topbarNavigation').style.backgroundColor = "white";
 }
