@@ -113,6 +113,8 @@ var block = 0;
 var popupon = 0;
 var gpson = 0;
 var zoom = 0;
+var nav = 0;
+var modeWalk = 0;
 var mapsize = [0,0] //height, width
 var map_pins = []
 var notifications = []
@@ -1151,10 +1153,11 @@ function dragMap(event) {
 
 function searchPlace(place){
     console.log(place);
-    flag = 0;
+    let flag = 0;
     for(i = 0; i < map_pins.length; i++){
         if(map_pins[i].n == place){
             console.log("expetaculo");
+            nav = 1;
             doPath(6);
             flag = 1;
             backButton();
@@ -1173,19 +1176,26 @@ function barsNavigation() {
     document.getElementById('navbarMap').style.visibility = 'hidden';
     document.getElementById('navbar2Map').style.visibility = 'hidden';
     document.getElementById('navbarNavigation').style.display = 'unset';
-    document.getElementById('car').style.backgroundColor = '#ccc';
     document.getElementById('topbarNavigation').style.display = 'flex';
     document.getElementById('topbarNavigation').style.flexDirection = 'row';
     document.getElementById('endNavigation').style.display = 'unset';
+    if(modeWalk == 0){
+        document.getElementById('car').style.backgroundColor = '#ccc';
+    }
+    else{
+         document.getElementById('walk').style.backgroundColor = '#ccc';
+    }
 }
 
 function topbarNavigation(mode) {
     if(mode === "car"){
+        modeWalk = 0;
         timeAndDistance.innerText = '10min (850m)';
         document.getElementById('car').style.backgroundColor = '#ccc';
         document.getElementById('walk').style.backgroundColor = 'white';
     }
     else{
+        modeWalk = 1;
         timeAndDistance.innerText = '30min (850m)';
         document.getElementById('walk').style.backgroundColor = '#ccc';
         document.getElementById('car').style.backgroundColor = "white"
@@ -1208,12 +1218,16 @@ function endNavigation() {
     document.getElementById('navbar2Map').style.visibility = 'visible';
     document.getElementById('car').style.backgroundColor = "white";
     document.getElementById('walk').style.backgroundColor = 'white';
+    nav = 0;
 
 }
 
-
-
 var path = [];
+
+function recalibratePath(){
+    doPath(6);
+}
+
 function doPath(target){
     clearArray(path);
     let current = searchPin('atualPosition');
@@ -1245,6 +1259,7 @@ function drawPathToPin(current, closerPin){
     let canvas = document.getElementById('map-canvas').getContext('2d');
     values = calculateValues(current, pins[closerPin]);
     console.log(values);
+    canvas.clearRect(0,0,$('#map-canvas').height(), $('#map-canvas').width());
     canvas.beginPath()
     canvas.moveTo(values[1], values[0]);
     canvas.lineTo(values[2], values[3]);
@@ -1262,7 +1277,6 @@ function calculateValues(current, closerPin) {
 function drawPath(){
     let list = path
     let canvas = document.getElementById('map-canvas').getContext('2d');
-    canvas.clearRect(0,0,$('#map-canvas').height(), $('#map-canvas').width());
     for(i = 0; i < list.length - 1; i++){
         //values has the scaled coordinates
         const values = [pins[list[i]][1],pins[list[i]][2], pins[list[i+1]][1],pins[list[i+1]][2]].map(el => el * (1-zoom))
@@ -1371,26 +1385,42 @@ function desativeNotification(){
 
 function upPosition(){
     let pin = searchPin("atualPosition");
-    pin.x -= 50
+    let y = modeWalk == 0 ? 50 : 20;
+    pin.x -= y
     reloadPins();
+    if(nav == 1){
+        recalibratePath();
+    }
 }
 
 function leftPosition(){
     let pin = searchPin("atualPosition");
-    pin.y -= 50
-    reloadPins();   
+    let y = modeWalk == 0 ? 50 : 20;
+    pin.y -= y
+    reloadPins();
+    if(nav == 1){
+        recalibratePath();
+    }   
 }
 
 function rightPosition(){
     let pin = searchPin("atualPosition");
-    pin.y += 50
+    let y = modeWalk == 0 ? 50 : 20;
+    pin.y += y
     reloadPins();
+    if(nav == 1){
+        recalibratePath();
+    }
 }
 
 function downPosition(){
     let pin = searchPin("atualPosition");
-    pin.x += 50
+    let y = modeWalk == 0 ? 50 : 20;
+    pin.x += y
     reloadPins();
+    if(nav == 1){
+        recalibratePath();
+    }
 }
 
 function ativeJoystick(){
