@@ -1058,7 +1058,7 @@ class Pin {
 
 function addAllPins(){
     addPin(2500,2500,"ola","park");
-    addPin(2650,3000,"atualPosition","atualPosition")
+    addPin(3244,4063 ,"atualPosition","atualPosition")
     addPin(3500,3500,"ola2","restaurant");
     addPin(1000,3500,"ola3", "hotel");
     addPin(3500,1500,"ola4","metro");
@@ -1213,20 +1213,52 @@ function endNavigation() {
 
 var path = [];
 function doPath(target){
+    clearArray(path);
     let current = searchPin('atualPosition');
-    let closerPin = searchClosestPin(current);
-    let vals = Dijkstra(g, 2, target)
+    let closerPin = searchClosestPin();
+    console.log("closerPin: " + closerPin);
+    let vals = Dijkstra(g, closerPin, target)
     console.log(vals[0].map(el => el +1))
-    path = doTraceback(vals[0],2,target)
+    path = doTraceback(vals[0],closerPin,target)
+    drawPathToPin(current, closerPin);
     drawPath();
     console.log(path.map(el => el +1))
     console.log('desenhado')
 }
 
-function searchClosestPin(pin){
-
+function searchClosestPin(){
+    let pin = pins[0][0];
+    distance = calculateDistancePin(pins[0]);
+    for(let i = 1; i < pins.length; i++){
+        d = calculateDistancePin(pins[i]);
+        console.log(d);
+        if(d < distance){
+            distance = d;
+            pin = pins[i][0];
+            console.log(pin);
+        }
+    }
+    return pin;
 }
 
+function drawPathToPin(current, closerPin){
+    let canvas = document.getElementById('map-canvas').getContext('2d');
+    values = calculateValues(current, pins[closerPin]);
+    console.log(values);
+    canvas.beginPath()
+    canvas.moveTo(values[0], values[1]);
+    canvas.lineTo(values[2], values[3]);
+    canvas.stroke();
+    canvas.closePath()
+}
+function calculateValues(current, closerPin) {
+    let values = []
+    values.push(current.x * (1-zoom));
+    values.push(current.y * (1-zoom));
+    values.push(closerPin[1] * (1-zoom));
+    values.push(closerPin[2] * (1-zoom));
+    return values; 
+}
 function drawPath(){
     let list = path
     let canvas = document.getElementById('map-canvas').getContext('2d');
@@ -1289,6 +1321,12 @@ function printPlaces(places){
 function calculateDistance(ponto){
     let pin = searchPin("atualPosition");
     let distance = Math.sqrt(Math.pow(ponto.x - pin.x,2) + Math.pow(ponto.y - pin.y,2));
+    return distance;
+}
+
+function calculateDistancePin(ponto){
+    let pin = searchPin("atualPosition");
+    let distance = Math.sqrt(Math.pow(ponto[2] - pin.x,2) + Math.pow(ponto[1] - pin.y,2));
     return distance;
 }
 
