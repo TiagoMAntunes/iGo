@@ -526,14 +526,14 @@ function scrollWheelMap(event) {
     else if (mapsize[1] * (1 - val) < $(document.getElementById('mapaScreen')).width()) {
         val = (1 - $(document.getElementById('mapaScreen')).width() / mapsize[1]) 
     }
+    let hor_pos = ($('#mapaScreen').width() / 2 - $('#mapLayer').position().left) / (1-zoom)
+    let ver_pos = ($('#mapaScreen').height() / 2 - $('#mapLayer').position().top) / (1-zoom)
     zoom = val
-    
     $(document.getElementById('mapLayer')).height(mapsize[0] * (1 - zoom))
     $(document.getElementById('mapLayer')).width(mapsize[1] * (1 - zoom))
+    const baseOffset = $('#mapaScreen').offset()
+    $('#mapLayer').offset({top: baseOffset.top - ver_pos * (1-zoom) + $('#mapaScreen').height() / 2, left: baseOffset.left - hor_pos * (1-zoom) + $('#mapaScreen').width() / 2})
     mapBoundariesPositioning()
-    if (offset) {
-        $(document.getElementById('mapLayer')).offset({top: $(document.getElementById('mapaScreen')).offset().top})
-    }
     reloadPins()
 }
 
@@ -1142,19 +1142,15 @@ function validateMapBoundaries(vertical, horizontal) {
 }
 
 function dragMap(event) {
-    let directionY = (event.clientY - mapDrag.clientY)
-    let directionX = (event.clientX - mapDrag.clientX)
+    if (event.screenX === 0 && event.screenY === 0)
+        return
     let hi = 0, vi = 0
 
-    let totalsize = Math.abs(directionX) + Math.abs(directionY)
-    if (directionX < 0) hi = -dragspeed * Math.abs(directionX / totalsize)
-    else if (directionX > 0) hi = dragspeed * Math.abs(directionX / totalsize)
-    
-    if (directionY < 0) vi = -dragspeed * Math.abs(directionY / totalsize)
-    else if (directionY) vi = dragspeed * Math.abs(directionY / totalsize)
-    
-    if (validateMapBoundaries($(document.getElementById('mapLayer')).position().top + vi, $(document.getElementById('mapLayer')).position().left + hi)) 
-        $(document.getElementById('mapLayer')).offset({left: hi + $(document.getElementById('mapLayer')).offset().left, top: $(document.getElementById('mapLayer')).offset().top + vi})
+    hi = mapDrag.clientX - event.clientX
+    vi = mapDrag.clientY - event.clientY
+    mapDrag = event
+    if (validateMapBoundaries($(document.getElementById('mapLayer')).position().top - vi, $(document.getElementById('mapLayer')).position().left - hi)) 
+        $(document.getElementById('mapLayer')).offset({left: $(document.getElementById('mapLayer')).offset().left - hi, top: $(document.getElementById('mapLayer')).offset().top - vi})
     reloadPins()
 }
 
