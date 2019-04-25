@@ -114,6 +114,7 @@ var popupon = 0;
 var gpson = 0;
 var zoom = 0;
 var nav = 0;
+var modeWalk = 0;
 var mapsize = [0,0] //height, width
 var map_pins = []
 var notifications = []
@@ -1175,19 +1176,26 @@ function barsNavigation() {
     document.getElementById('navbarMap').style.visibility = 'hidden';
     document.getElementById('navbar2Map').style.visibility = 'hidden';
     document.getElementById('navbarNavigation').style.display = 'unset';
-    document.getElementById('car').style.backgroundColor = '#ccc';
     document.getElementById('topbarNavigation').style.display = 'flex';
     document.getElementById('topbarNavigation').style.flexDirection = 'row';
     document.getElementById('endNavigation').style.display = 'unset';
+    if(modeWalk == 0){
+        document.getElementById('car').style.backgroundColor = '#ccc';
+    }
+    else{
+         document.getElementById('walk').style.backgroundColor = '#ccc';
+    }
 }
 
 function topbarNavigation(mode) {
     if(mode === "car"){
+        modeWalk = 0;
         timeAndDistance.innerText = '10min (850m)';
         document.getElementById('car').style.backgroundColor = '#ccc';
         document.getElementById('walk').style.backgroundColor = 'white';
     }
     else{
+        modeWalk = 1;
         timeAndDistance.innerText = '30min (850m)';
         document.getElementById('walk').style.backgroundColor = '#ccc';
         document.getElementById('car').style.backgroundColor = "white"
@@ -1377,7 +1385,8 @@ function desativeNotification(){
 
 function upPosition(){
     let pin = searchPin("atualPosition");
-    pin.x -= 50
+    let y = modeWalk == 0 ? 50 : 20;
+    pin.x -= y
     reloadPins();
     if(nav == 1){
         recalibratePath();
@@ -1386,7 +1395,8 @@ function upPosition(){
 
 function leftPosition(){
     let pin = searchPin("atualPosition");
-    pin.y -= 50
+    let y = modeWalk == 0 ? 50 : 20;
+    pin.y -= y
     reloadPins();
     if(nav == 1){
         recalibratePath();
@@ -1395,7 +1405,8 @@ function leftPosition(){
 
 function rightPosition(){
     let pin = searchPin("atualPosition");
-    pin.y += 50
+    let y = modeWalk == 0 ? 50 : 20;
+    pin.y += y
     reloadPins();
     if(nav == 1){
         recalibratePath();
@@ -1404,7 +1415,8 @@ function rightPosition(){
 
 function downPosition(){
     let pin = searchPin("atualPosition");
-    pin.x += 50
+    let y = modeWalk == 0 ? 50 : 20;
+    pin.x += y
     reloadPins();
     if(nav == 1){
         recalibratePath();
