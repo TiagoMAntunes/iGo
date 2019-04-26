@@ -1392,15 +1392,19 @@ function desativeNotification(){
 
 function upPosition(){
     let pin = searchPin("atualPosition");
-    reloadPins();
+    let flag = 0;
     let pin2 = searchPinCoordinates(pin.y, pin.x)
     console.log(pin2);
     let directions = getDirections(pin2);
-    console.log(directions[0]);
-    console.log(directions[1]);
-    console.log(directions[2]);
-    let y = modeWalk == 0 ? 50 : 20;
-    pin.x -= y
+    for(i = 0; i < directions.length; i++){
+        if(directions[i][0] == 0){
+            let pin3 = pins[directions[i][1]];
+            flag++;    
+            pin.x = pin3[2];
+            pin.y = pin3[1];
+        }
+    }
+    reloadPins();
     if(nav == 1){
         recalibratePath();
         console.log(path);
@@ -1412,8 +1416,18 @@ function upPosition(){
 
 function leftPosition(){
     let pin = searchPin("atualPosition");
-    let y = modeWalk == 0 ? 50 : 20;
-    pin.y -= y
+    let flag = 0;
+    let pin2 = searchPinCoordinates(pin.y, pin.x)
+    console.log(pin2);
+    let directions = getDirections(pin2);
+    for(i = 0; i < directions.length; i++){
+        if(directions[i][0] == 3){
+            let pin3 = pins[directions[i][1]];
+            flag++;    
+            pin.x = pin3[2];
+            pin.y = pin3[1];
+        }
+    }
     reloadPins();
     if(nav == 1){
         recalibratePath();
@@ -1426,8 +1440,18 @@ function leftPosition(){
 
 function rightPosition(){
     let pin = searchPin("atualPosition");
-    let y = modeWalk == 0 ? 50 : 20;
-    pin.y += y
+    let flag = 0;
+    let pin2 = searchPinCoordinates(pin.y, pin.x)
+    console.log(pin2);
+    let directions = getDirections(pin2);
+    for(i = 0; i < directions.length; i++){
+        if(directions[i][0] == 1){
+            let pin3 = pins[directions[i][1]];
+            flag++;    
+            pin.x = pin3[2];
+            pin.y = pin3[1];
+        }
+    }
     reloadPins();
     if(nav == 1){
         recalibratePath();
@@ -1440,8 +1464,18 @@ function rightPosition(){
 
 function downPosition(){
     let pin = searchPin("atualPosition");
-    let y = modeWalk == 0 ? 50 : 20;
-    pin.x += y
+    let flag = 0;
+    let pin2 = searchPinCoordinates(pin.y, pin.x)
+    console.log(pin2);
+    let directions = getDirections(pin2);
+    for(i = 0; i < directions.length; i++){
+        if(directions[i][0] == 2){
+            let pin3 = pins[directions[i][1]];
+            flag++;    
+            pin.x = pin3[2];
+            pin.y = pin3[1];
+        }
+    }
     reloadPins();
     if(nav == 1){
         recalibratePath();
@@ -1552,10 +1586,10 @@ function getDirections(pin){
             directions.push([2,adj2[i].getId()]);  
         }
         else if((pin[1] - adj2[i].getXf() < 0) && (pin[2] - adj2[i].getYf() == 0)){
-            directions.push([3,adj2[i].getId()]);
+            directions.push([1,adj2[i].getId()]);
         }
         else if((pin[1] - adj2[i].getXf() > 0) && (pin[2] - adj2[i].getYf() == 0)){
-            directions.push([1,adj2[i].getId()]);
+            directions.push([3,adj2[i].getId()]);
         }
     }
     return directions;
