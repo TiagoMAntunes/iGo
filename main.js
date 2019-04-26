@@ -115,6 +115,7 @@ var gpson = 0;
 var zoom = 0;
 var nav = 0;
 var modeWalk = 0;
+var directions = []
 var mapsize = [0,0] //height, width
 var map_pins = []
 var notifications = []
@@ -153,6 +154,7 @@ function startup() {
     addAllPins();
     blockWatch(); blockWatch();
     GPS()
+    setupInitialPosition();
     mapsize[0] = document.getElementById('mapLayer').height
     mapsize[1] = document.getElementById('mapLayer').width
     toggle3D()
@@ -1403,23 +1405,26 @@ function desativeNotification(){
     document.getElementById('bellIcon').src = 'icons/bell3.png';
     document.getElementById('bellButton').src = 'icons/bell3.png';
 }
-
+function setupInitialPosition(){
+    let pin = searchPin("atualPosition");
+    let pin2 = searchPinCoordinates(pin.y, pin.x)
+    directions = graphMovement(pin2);
+    updateDisplayController();
+}
 
 function upPosition(){
+    let pino
     let pin = searchPin("atualPosition");
-    let flag = 0;
-    let pin2 = searchPinCoordinates(pin.y, pin.x)
-    console.log(pin2);
-    let directions = getDirections(pin2);
     for(i = 0; i < directions.length; i++){
         if(directions[i][0] == 0){
-            let pin3 = pins[directions[i][1]];
-            flag++;    
-            pin.x = pin3[2];
-            pin.y = pin3[1];
+            pino = pins[directions[i][1]];   
+            pin.x = pino[2];
+            pin.y = pino[1];
         }
     }
     reloadPins();
+    directions = graphMovement(pino);
+    updateDisplayController();
     if(nav == 1){
         recalibratePath();
         console.log(path);
@@ -1430,20 +1435,18 @@ function upPosition(){
 }
 
 function leftPosition(){
+    let pino;
     let pin = searchPin("atualPosition");
-    let flag = 0;
-    let pin2 = searchPinCoordinates(pin.y, pin.x)
-    console.log(pin2);
-    let directions = getDirections(pin2);
     for(i = 0; i < directions.length; i++){
         if(directions[i][0] == 3){
-            let pin3 = pins[directions[i][1]];
-            flag++;    
-            pin.x = pin3[2];
-            pin.y = pin3[1];
+            pino = pins[directions[i][1]]; 
+            pin.x = pino[2];
+            pin.y = pino[1];
         }
     }
     reloadPins();
+    directions = graphMovement(pino);
+    updateDisplayController();
     if(nav == 1){
         recalibratePath();
         console.log(path);
@@ -1454,20 +1457,18 @@ function leftPosition(){
 }
 
 function rightPosition(){
+    let pino
     let pin = searchPin("atualPosition");
-    let flag = 0;
-    let pin2 = searchPinCoordinates(pin.y, pin.x)
-    console.log(pin2);
-    let directions = getDirections(pin2);
     for(i = 0; i < directions.length; i++){
         if(directions[i][0] == 1){
-            let pin3 = pins[directions[i][1]];
-            flag++;    
-            pin.x = pin3[2];
-            pin.y = pin3[1];
+            pino = pins[directions[i][1]];    
+            pin.x = pino[2];
+            pin.y = pino[1];
         }
     }
     reloadPins();
+    directions = graphMovement(pino);
+    updateDisplayController();
     if(nav == 1){
         recalibratePath();
         console.log(path);
@@ -1478,20 +1479,18 @@ function rightPosition(){
 }
 
 function downPosition(){
+    let pino
     let pin = searchPin("atualPosition");
-    let flag = 0;
-    let pin2 = searchPinCoordinates(pin.y, pin.x)
-    console.log(pin2);
-    let directions = getDirections(pin2);
     for(i = 0; i < directions.length; i++){
         if(directions[i][0] == 2){
-            let pin3 = pins[directions[i][1]];
-            flag++;    
-            pin.x = pin3[2];
-            pin.y = pin3[1];
+            pino = pins[directions[i][1]];   
+            pin.x = pino[2];
+            pin.y = pino[1];
         }
     }
     reloadPins();
+    directions = graphMovement(pino);
+    updateDisplayController();
     if(nav == 1){
         recalibratePath();
         console.log(path);
@@ -1499,6 +1498,52 @@ function downPosition(){
             endNavigation();
         }
     }
+}
+
+function graphMovement(pin){
+    clearArray(directions)
+    return getDirections(pin);
+}
+
+function updateDisplayController(){
+    let flag= [0,0,0,0];
+    for(i = 0; i < directions.length; i++){
+        if(directions[i][0] == 0){
+            displayButton('upArrow');
+            flag[0] = 1
+        }
+        else if(directions[i][0] == 1){
+            displayButton('rightArrow');
+            flag[1] = 1
+        }
+        else if(directions[i][0] == 2){
+            displayButton('downArrow');
+            flag[2] = 1
+        }
+        else{
+            displayButton('leftArrow');
+            flag[3] = 1
+        }
+    }
+    if(flag[0]==0){
+        displayNoneButton('upArrow');
+    }
+    if(flag[1]==0){
+        displayNoneButton('rightArrow');
+    }
+    if(flag[2]==0){
+        displayNoneButton('downArrow');
+    }
+    if(flag[3]==0){
+        displayNoneButton('leftArrow');
+    }
+}
+function displayButton(id){
+    document.getElementById(id).style.visibility='';
+}
+
+function displayNoneButton(id){
+    document.getElementById(id).style.visibility='hidden';
 }
 
 function ativeJoystick(){
@@ -1594,8 +1639,11 @@ function searchPinCoordinates(x,y){
 }
 
 function getDirections(pin){
+    console.log(pin)
     let adj2 = g.getEdges(pin[0]);
-    let directions = [];
+    console.log(adj2);
+    console.log(pin);
+    console.log(pin[0])
     for(let i = 0; i < adj2.length; i++){
         if((pin[1] - adj2[i].getXf() == 0 ) && (pin[2] - adj2[i].getYf() > 0)){
             directions.push([0,adj2[i].getId()]);
