@@ -155,6 +155,7 @@ function startup() {
     GPS()
     mapsize[0] = document.getElementById('mapLayer').height
     mapsize[1] = document.getElementById('mapLayer').width
+    toggle3D()
 }
 
 let recognizing = false
@@ -483,27 +484,29 @@ function scrollWheelHelpMultiScreen(event) {
 }
 
 function mapBoundariesPositioning() {
-    const position = Object.values($(document.getElementById('mapLayer')).position())
-    const leftBorder = $(document.getElementById('mapaScreen')).position().left
-    const topBorder = $(document.getElementById('mapaScreen')).position().top
-    const rightBorder = leftBorder + $(document.getElementById('mapaScreen')).width()
-    const bottomBorder = topBorder + $(document.getElementById('mapaScreen')).height()
+    let border = upgrademap ? $(document.getelementById('bettermap')) : $(document.getelementById('mapaScreen'))
+    let current = getCurrentMap()
+    const position = Object.values(current.position())
+    const leftBorder = border.position().left
+    const topBorder = border.position().top
+    const rightBorder = leftBorder + border.width()
+    const bottomBorder = topBorder + border.height()
     
     if (position[0] > topBorder){
-        $(document.getElementById('mapLayer')).offset({top: $(document.getElementById('mapLayer')).offset().top - position[0] + topBorder})
+        current.offset({top: current.offset().top - position[0] + topBorder})
         console.log('top')
     }
     if (position[1] > leftBorder) {
-        $(document.getElementById('mapLayer')).offset({left: $(document.getElementById('mapLayer')).offset().left - position[1] + leftBorder})
+        current.offset({left: current.offset().left - position[1] + leftBorder})
         console.log('left')
     }
 
-    if (position[0] + $(document.getElementById('mapLayer')).height() < rightBorder){
-        $(document.getElementById('mapLayer')).offset({top: $(document.getElementById('mapLayer')).offset().top - position[0] - $(document.getElementById('mapLayer')).height() + rightBorder})
+    if (position[0] + current.height() < rightBorder){
+        current.offset({top: current.offset().top - position[0] - current.height() + rightBorder})
         console.log('right')
     }
-    if (position[1] + $(document.getElementById('mapLayer')).width() < bottomBorder) {
-        $(document.getElementById('mapLayer')).offset({left: $(document.getElementById('mapLayer')).offset().left - position[1] - $(document.getElementById('mapLayer')).width() + bottomBorder})
+    if (position[1] + current.width() < bottomBorder) {
+        current.offset({left: current.offset().left - position[1] - current.width() + bottomBorder})
         console.log('bottom')
     }
     
@@ -513,7 +516,8 @@ function scrollWheelMap(event) {
     const maxZoom = 0.99;
     let i = 0;
     let direction = (event.clientY - dragInfo.clientY)
-
+    let border = upgrademap ? $(document.getelementById('bettermap')) : $(document.getelementById('mapaScreen'))
+    let current = getCurrentMap()
     if (direction > 0) {
         i = 0.01;
     } else if (direction < 0) {
@@ -523,20 +527,20 @@ function scrollWheelMap(event) {
     let val = zoom + i;
     if (val > maxZoom) val = maxZoom
     if (val < 0) val = 0
-    if (mapsize[0] * (1 - val) < $(document.getElementById('mapaScreen')).height()) {
-        val = (1 - $(document.getElementById('mapaScreen')).height() / mapsize[0]) 
+    if (mapsize[0] * (1 - val) < border.height()) {
+        val = (1 - border.height() / mapsize[0]) 
         offset = true
     }
-    else if (mapsize[1] * (1 - val) < $(document.getElementById('mapaScreen')).width()) {
-        val = (1 - $(document.getElementById('mapaScreen')).width() / mapsize[1]) 
+    else if (mapsize[1] * (1 - val) < border.width()) {
+        val = (1 - border.width() / mapsize[1]) 
     }
-    let hor_pos = ($('#mapaScreen').width() / 2 - $('#mapLayer').position().left) / (1-zoom)
-    let ver_pos = ($('#mapaScreen').height() / 2 - $('#mapLayer').position().top) / (1-zoom)
+    let hor_pos = (border.width() / 2 - current.position().left) / (1-zoom)
+    let ver_pos = (border.height() / 2 - current.position().top) / (1-zoom)
     zoom = val
-    $(document.getElementById('mapLayer')).height(mapsize[0] * (1 - zoom))
-    $(document.getElementById('mapLayer')).width(mapsize[1] * (1 - zoom))
-    const baseOffset = $('#mapaScreen').offset()
-    $('#mapLayer').offset({top: baseOffset.top - ver_pos * (1-zoom) + $('#mapaScreen').height() / 2, left: baseOffset.left - hor_pos * (1-zoom) + $('#mapaScreen').width() / 2})
+    current.height(mapsize[0] * (1 - zoom))
+    current.width(mapsize[1] * (1 - zoom))
+    const baseOffset = border.offset()
+    current.offset({top: baseOffset.top - ver_pos * (1-zoom) + border.height() / 2, left: baseOffset.left - hor_pos * (1-zoom) + border.width() / 2})
     mapBoundariesPositioning();
     reloadPins();
     if(nav == 1)
@@ -1070,7 +1074,7 @@ function addPin(x, y, name, type) {
 }
 
 function reloadPins() {
-    let map = document.getElementById('pins')
+    let map = document.getElementById(upgrademap ? 'betterpins' : 'pins')
     map.innerHTML = ''
     let pins = '', i = 0
     for (let pin of map_pins) {
@@ -1087,8 +1091,8 @@ function reloadPins() {
         newpin.className = "pin"
         
         //position
-        newpin.style.left = $(document.getElementById('mapLayer')).position()['left'] + pin.getCoords(zoom)[1]
-        newpin.style.top = $(document.getElementById('mapLayer')).position()['top']+ pin.getCoords(zoom)[0]
+        newpin.style.left = $(getCurrentMap()).position()['left'] + pin.getCoords(zoom)[1]
+        newpin.style.top = $(getCurrentMap()).position()['top']+ pin.getCoords(zoom)[0]
         
         //size
         let scale = 1 - zoom
@@ -1102,12 +1106,11 @@ function reloadPins() {
     
     const maps = [['map-canvas', 'mapLayer'], ['bettermap-canvas','bettermap-img']]
     map = upgrademap ? maps[1] : maps[0] //decide between 3d or not
-
     $('#' + map[0]).width($('#' + map[1]).width())
     $('#' + map[0]).height($('#' + map[1]).height())
     document.getElementById(map[0]).height = $('#' + map[0]).height()
     document.getElementById(map[0]).width = $('#' + map[0]).width()
-    $('#' + map[0]).offset($(map[1]).offset())
+    $('#' + map[0]).offset($('#' + map[1]).offset())
 
 }
 
@@ -1130,18 +1133,25 @@ const dragspeed = 7
 
 function validateMapBoundaries(vertical, horizontal) {
     const position = [vertical, horizontal]
-    const leftBorder = $(document.getElementById('mapaScreen')).position().left
-    const topBorder = $(document.getElementById('mapaScreen')).position().top
-    const rightBorder = leftBorder + $(document.getElementById('mapaScreen')).width()
-    const bottomBorder = topBorder + $(document.getElementById('mapaScreen')).height()
+    const current = $(getCurrentMap())
+    const border = upgrademap ? $(document.getElementById('bettermap')) : $(document.getElementById('mapaScreen'))
+
+    const leftBorder = border.position().left
+    const topBorder = border.position().top
+    const rightBorder = leftBorder + border.width()
+    const bottomBorder = topBorder + border.height()
     
     if (!(position[0] <= topBorder)) console.log('Problem 1 in ' + position[0] + ',' + topBorder)
     if (!(position[1] <= leftBorder)) console.log('Problem 2 in ' + position[1] + ',' + leftBorder)
-    if (!(position[0] + $(document.getElementById('mapLayer')).height() >= bottomBorder)) console.log('Problem 3 in ' + (position[0] + $(document.getElementById('mapLayer')).height()) + ',' + bottomBorder)
-    if (!(position[1] + $(document.getElementById('mapLayer')).width() >= rightBorder)) console.log('Problem 4 in ' + (position[1] + $(document.getElementById('mapLayer')).width()) + ',' + rightBorder)
+    if (!(position[0] + current.height() >= bottomBorder)) console.log('Problem 3 in ' + (position[0] + current.height()) + ',' + bottomBorder)
+    if (!(position[1] + current.width() >= rightBorder)) console.log('Problem 4 in ' + (position[1] + current.width()) + ',' + rightBorder)
    
-    return position[0] <= topBorder && position[1] <= leftBorder && position[0] + $(document.getElementById('mapLayer')).height() >= bottomBorder
-        && position[1] + $(document.getElementById('mapLayer')).width() >= rightBorder; 
+    return position[0] <= topBorder && position[1] <= leftBorder && position[0] + current.height() >= bottomBorder
+        && position[1] + current.width() >= rightBorder; 
+}
+
+function getCurrentMap() {
+    return upgrademap ? document.getElementById('bettermap-img') : document.getElementById('mapLayer')
 }
 
 function dragMap(event) {
@@ -1152,8 +1162,8 @@ function dragMap(event) {
     hi = mapDrag.clientX - event.clientX
     vi = mapDrag.clientY - event.clientY
     mapDrag = event
-    if (validateMapBoundaries($(document.getElementById('mapLayer')).position().top - vi, $(document.getElementById('mapLayer')).position().left - hi)) 
-        $(document.getElementById('mapLayer')).offset({left: $(document.getElementById('mapLayer')).offset().left - hi, top: $(document.getElementById('mapLayer')).offset().top - vi})
+    if (validateMapBoundaries($(getCurrentMap()).position().top - vi, $(getCurrentMap()).position().left - hi)) 
+        $(getCurrentMap()).offset({left: $(getCurrentMap()).offset().left - hi, top: $(getCurrentMap()).offset().top - vi})
     reloadPins()
     if(nav == 1){
         console.log("recalibrating...")
