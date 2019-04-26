@@ -1397,6 +1397,10 @@ function upPosition(){
     reloadPins();
     if(nav == 1){
         recalibratePath();
+        console.log(path);
+        if(path.length == 1){
+            endNavigation();
+        }
     }
 }
 
@@ -1407,6 +1411,10 @@ function leftPosition(){
     reloadPins();
     if(nav == 1){
         recalibratePath();
+        console.log(path);
+        if(path.length == 1){
+            endNavigation();
+        }
     }   
 }
 
@@ -1417,6 +1425,10 @@ function rightPosition(){
     reloadPins();
     if(nav == 1){
         recalibratePath();
+        console.log(path);
+        if(path.length == 1){
+            endNavigation();
+        }
     }
 }
 
@@ -1427,6 +1439,10 @@ function downPosition(){
     reloadPins();
     if(nav == 1){
         recalibratePath();
+        console.log(path);
+        if(path.length == 1){
+            endNavigation();
+        }
     }
 }
 
