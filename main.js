@@ -1372,7 +1372,6 @@ function calculateDistancePin(ponto){
 }
 
 
-
 function clearArray(array){
     while(array.length){
         array.pop();
