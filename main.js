@@ -1472,33 +1472,33 @@ var pins = [];
 
 function setupGraph() {
     
-    pins.push([0, 3957, 3225])
-    pins.push([1, 3950, 3183])
-    pins.push([2, 3965, 3261])
-    pins.push([3, 3971, 3300])
-    pins.push([4, 4024, 3292])
-    pins.push([5, 4015, 3254])
-    pins.push([6, 4009, 3212])
-    pins.push([7, 4003, 3176])
-    pins.push([8, 3996, 3138])
-    pins.push([9, 4043, 3129])
-    pins.push([10, 4063, 3244])
+    pins.push([0, 3950, 3300])
+    pins.push([1, 3950, 3280])
+    pins.push([2, 3950, 3260])
+    pins.push([3, 3950, 3240])
+    pins.push([4, 3950, 3220])
+    pins.push([5, 4025, 3300])
+    pins.push([6, 4025, 3280])
+    pins.push([7, 4025, 3260])
+    pins.push([8, 4025, 3240])
+    pins.push([9, 4025, 3220])
+    pins.push([10, 4063, 3300])
 
     g = new Graph(pins.length)
+    g.insert(pins[0], pins[5])
     g.insert(pins[0], pins[1])
-    g.insert(pins[0], pins[2])
+    g.insert(pins[1], pins[2])
+    g.insert(pins[1], pins[6])
+    g.insert(pins[2], pins[7])
     g.insert(pins[2], pins[3])
-    g.insert(pins[2], pins[5])
     g.insert(pins[3], pins[4])
-    g.insert(pins[0], pins[6])
-    g.insert(pins[1], pins[7])
-    g.insert(pins[4], pins[5])
+    g.insert(pins[3], pins[8])
+    g.insert(pins[4], pins[9])
     g.insert(pins[5], pins[6])
+    g.insert(pins[5], pins[10])
     g.insert(pins[6], pins[7])
     g.insert(pins[7], pins[8])
     g.insert(pins[8], pins[9])
-    g.insert(pins[5], pins[10])
-    g.insert(pins[9], pins[10])
 }
 
 function toggle3D() {
@@ -1508,4 +1508,32 @@ function toggle3D() {
         console.log(item.style.display)
     }
 
+}
+
+function searchPinCoordinates(x,y){
+    for(let i = 0; i < pins.length; i++){
+        if(pins[i][1] == x && pins[i][2] == y){
+            return pins[i];
+        }
+    }
+}
+
+function getDirections(pin){
+    let adj = pin.getEdges();
+    let directions = [];
+    for(let i = 0; i < adj.length; i++){
+        if((pin.x - adj[i].x == 0 ) && (pin.y - adj[i].y > 0)){
+            adj.push([1,adj[i][0]]);
+        }
+        else if((pin.x - adj[i].x == 0) && (pin.y - adj[i].y < 0)){
+            adj.push([3,adj[i][0]]);  
+        }
+        else if((pin.x - adj[i].x < 0) && (pin.y - adj[i].y == 0)){
+            adj.push([0,adj[i][0]]);
+        }
+        else if((pin.x - adj[i].x > 0) && (pin.y - adj[i].y == 0)){
+            adj.push([2,adj[i][0]]);
+        }
+    }
+    return adj;
 }
