@@ -485,8 +485,8 @@ function scrollWheelHelpMultiScreen(event) {
 }
 
 function mapBoundariesPositioning() {
-    let border = upgrademap ? $(document.getelementById('bettermap')) : $(document.getelementById('mapaScreen'))
-    let current = getCurrentMap()
+    let border = upgrademap ? $(document.getElementById('bettermap')) : $(document.getElementById('mapaScreen'))
+    let current = $(getCurrentMap())
     const position = Object.values(current.position())
     const leftBorder = border.position().left
     const topBorder = border.position().top
@@ -517,8 +517,8 @@ function scrollWheelMap(event) {
     const maxZoom = 0.99;
     let i = 0;
     let direction = (event.clientY - dragInfo.clientY)
-    let border = upgrademap ? $(document.getelementById('bettermap')) : $(document.getelementById('mapaScreen'))
-    let current = getCurrentMap()
+    let border = upgrademap ? $(document.getElementById('bettermap')) : $(document.getElementById('mapaScreen'))
+    let current = $(getCurrentMap())
     if (direction > 0) {
         i = 0.01;
     } else if (direction < 0) {
