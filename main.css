@@ -1102,6 +1102,20 @@ max-width: 60%;*/
     margin-bottom: 5%;
 }
 
+#navbarcenter {
+    right: 5%;
+    width: 20%;
+    background-color: #ced0ce;
+    border: 2px solid #8b8b8b;
+    border-left: 2px solid #8b8b8b;
+    border-radius: 5%;
+    overflow: none;
+    position: fixed;
+    bottom: 0;
+    height: 20%;
+    margin-bottom: 5%;
+}
+
 #searchmapbutton {
     padding: 5%;
     width: 70%;
@@ -1300,7 +1314,7 @@ max-width: 60%;*/
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    width: 80%;
+    width: 60%;
     height: 60%;
     display: none;
     overflow: auto;
