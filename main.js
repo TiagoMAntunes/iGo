@@ -1256,10 +1256,14 @@ function doPath(target){
     clearArray(path);
     let current = searchPin('atualPosition');
     let closerPin = searchClosestPin();
-    console.log("closerPin: " + closerPin);
     let vals = Dijkstra(g, closerPin, target)
-    console.log(vals[0].map(el => el +1))
     path = doTraceback(vals[0],closerPin,target)
+    console.log(path);
+    let d = 0;
+    for(let i=0; i < path.length;i++){
+        d += vals[1][path[i]];
+    }
+    document.getElementById('distance').innerHTML = d;
     drawPathToPin(current, closerPin);
     drawPath();
     console.log(path.map(el => el +1))
@@ -1282,7 +1286,6 @@ function searchClosestPin(){
 function drawPathToPin(current, closerPin){
     let canvas = document.getElementById('map-canvas').getContext('2d');
     values = calculateValues(current, pins[closerPin]);
-    console.log(values);
     canvas.clearRect(0,0,$('#map-canvas').height(), $('#map-canvas').width());
     canvas.beginPath()
     canvas.moveTo(values[1], values[0]);
@@ -1299,7 +1302,7 @@ function calculateValues(current, closerPin) {
     return values; 
 }
 function drawPath(){
-    let list = path
+    let list = path;
     let canvas = document.getElementById('map-canvas').getContext('2d');
     for(i = 0; i < list.length - 1; i++){
         //values has the scaled coordinates
