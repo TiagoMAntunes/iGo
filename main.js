@@ -1057,7 +1057,7 @@ class Pin {
 
 function addAllPins(){
     addPin(2500,2500,"ola","park");
-    addPin(3244,4063 ,"atualPosition","atualPosition")
+    addPin(3300,4025 ,"atualPosition","atualPosition")
     addPin(3500,3500,"ola2","restaurant");
     addPin(1000,3500,"ola3", "hotel");
     addPin(3500,1500,"ola4","metro");
@@ -1392,9 +1392,15 @@ function desativeNotification(){
 
 function upPosition(){
     let pin = searchPin("atualPosition");
+    reloadPins();
+    let pin2 = searchPinCoordinates(pin.y, pin.x)
+    console.log(pin2);
+    let directions = getDirections(pin2);
+    console.log(directions[0]);
+    console.log(directions[1]);
+    console.log(directions[2]);
     let y = modeWalk == 0 ? 50 : 20;
     pin.x -= y
-    reloadPins();
     if(nav == 1){
         recalibratePath();
         console.log(path);
@@ -1519,21 +1525,21 @@ function searchPinCoordinates(x,y){
 }
 
 function getDirections(pin){
-    let adj = pin.getEdges();
+    let adj2 = g.getEdges(pin[0]);
     let directions = [];
-    for(let i = 0; i < adj.length; i++){
-        if((pin.x - adj[i].x == 0 ) && (pin.y - adj[i].y > 0)){
-            adj.push([1,adj[i][0]]);
+    for(let i = 0; i < adj2.length; i++){
+        if((pin[1] - adj2[i].getXf() == 0 ) && (pin[2] - adj2[i].getYf() > 0)){
+            directions.push([0,adj2[i].getId()]);
         }
-        else if((pin.x - adj[i].x == 0) && (pin.y - adj[i].y < 0)){
-            adj.push([3,adj[i][0]]);  
+        else if((pin[1] - adj2[i].getXf() == 0) && (pin[2] - adj2[i].getYf() < 0)){
+            directions.push([2,adj2[i].getId()]);  
         }
-        else if((pin.x - adj[i].x < 0) && (pin.y - adj[i].y == 0)){
-            adj.push([0,adj[i][0]]);
+        else if((pin[1] - adj2[i].getXf() < 0) && (pin[2] - adj2[i].getYf() == 0)){
+            directions.push([3,adj2[i].getId()]);
         }
-        else if((pin.x - adj[i].x > 0) && (pin.y - adj[i].y == 0)){
-            adj.push([2,adj[i][0]]);
+        else if((pin[1] - adj2[i].getXf() > 0) && (pin[2] - adj2[i].getYf() == 0)){
+            directions.push([1,adj2[i].getId()]);
         }
     }
-    return adj;
+    return directions;
 }
