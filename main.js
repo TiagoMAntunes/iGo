@@ -1491,5 +1491,22 @@ function toggle3D() {
         $(item).css('display',$(item).css('display') === 'none' ? "initial" : "none")
         console.log(item.style.display)
     }
+}
+
+function centerPosition() {
+    let pin = searchPin('atualPosition')
+    zoom = 0;
+    $(document.getElementById('mapLayer')).height(mapsize[0] * (1 - zoom))
+    $(document.getElementById('mapLayer')).width(mapsize[1] * (1 - zoom))
+    let hor_pos = ($('#mapaScreen').width() / 2 - $('#mapLayer').position().left) / (1-zoom)
+    let ver_pos = ($('#mapaScreen').height() / 2 - $('#mapLayer').position().top) / (1-zoom)
+    let offset_x = (pin.y - hor_pos) * (1-zoom) 
+    let offset_y = (pin.x - ver_pos) * (1-zoom)
+    const baseOffset = $('#mapLayer').offset()
+    $('#mapLayer').offset({top: baseOffset.top - offset_y, left: baseOffset.left - offset_x})
+    mapBoundariesPositioning();
+    reloadPins();
+    if(nav == 1)
+        recalibratePath();
 
 }
