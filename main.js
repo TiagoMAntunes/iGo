@@ -157,7 +157,6 @@ function startup() {
     setupInitialPosition();
     mapsize[0] = document.getElementById('mapLayer').height
     mapsize[1] = document.getElementById('mapLayer').width
-    toggle3D()
 }
 
 let recognizing = false
