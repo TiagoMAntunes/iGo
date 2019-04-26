@@ -532,8 +532,38 @@
         </div>
     </div>
     <div id="bettermap">
-        <img id="bettermap-img" src="images/lisbon_map.jpg" >
-        
+        <div id="bettermap-wrapper">
+            <img class="draggable" id="bettermap-img" src="images/lisbon_map.jpg" ondragstart="dragMapStart(event)" ondragend="dragMapEnd(event)" ondrag="dragMap(event)">
+            <canvas id='bettermap-canvas'></canvas>
+        </div>
+        <!--
+        <div id="map-wrapper" draggable="true" ondragstart="dragMapStart(event)" ondragend="dragMapEnd(event)" ondrag="dragMap(event)">
+            <img class="draggable" id="mapLayer" src="images/lisbon_map.jpg" >
+            <canvas id='map-canvas' onmousedown="() => console.log('bom dia')"></canvas>
+        </div>
+        <div id='pins' style="position: absolute"></div>
+        <div id='path' style="position:absolute"></div> 
+        <map name='map'>
+            
+        </map>
+        <div id='navbarMap'>
+            <img id='searchmapbutton' src="icons/search.svg" onclick="pushScreen('searchPlace')" /> 
+        </div>
+        <div id='navbar2Map'>
+            <img id='infoButton' src="icons/info.svg" style="float:right;" onclick="searchPlacesNearBy()"/> 
+        </div>
+        <div id='navbarNavigation' style='display: none'>
+            <img id='car' class="iconsNavigation" src="icons/car.png" onclick="topbarNavigation('car')">
+            <img id='3d' class="iconsNavigation" src="icons/3d.png" onclick="toggle3D()">
+            <img id='walk' class="iconsNavigation" src="icons/walker.svg" onclick="topbarNavigation('walk')">
+        </div>
+        <div id='navbarcenter'>
+            <img id='centermap' src='icons/precision.svg' onclick="centerPosition()" />
+        </div>
+        <div id='topbarNavigation' style='display: none'>
+            <h2 id="timeAndDistance">10min (850 m)</h2>
+            <button id="endNavigation" onclick="endNavigation()" style='display: none'>END</button>
+        </div>-->
     </div>
 </body>
 

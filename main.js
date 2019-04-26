@@ -1098,11 +1098,16 @@ function reloadPins() {
         
         map.appendChild(newpin)
     }
-    $(document.getElementById('map-canvas')).width($(document.getElementById('mapLayer')).width())
-    $(document.getElementById('map-canvas')).height($(document.getElementById('mapLayer')).height())
-    document.getElementById('map-canvas').height = $(document.getElementById('map-canvas')).height()
-    document.getElementById('map-canvas').width = $(document.getElementById('map-canvas')).width()
-    $('#map-canvas').offset($('#mapLayer').offset())
+
+    
+    const maps = [['map-canvas', 'mapLayer'], ['bettermap-canvas','bettermap-img']]
+    map = upgrademap ? maps[1] : maps[0] //decide between 3d or not
+
+    $('#' + map[0]).width($('#' + map[1]).width())
+    $('#' + map[0]).height($('#' + map[1]).height())
+    document.getElementById(map[0]).height = $('#' + map[0]).height()
+    document.getElementById(map[0]).width = $('#' + map[0]).width()
+    $('#' + map[0]).offset($(map[1]).offset())
 
 }
 
@@ -1501,12 +1506,15 @@ function setupGraph() {
     g.insert(pins[8], pins[9])
 }
 
+var upgrademap = false;
+
 function toggle3D() {
     const items = [document.getElementById('watchBorder'), document.getElementById('helpButton'), document.getElementById('backButton'), document.getElementById('scrollWheel'), document.getElementById('bettermap')]
     for (let item of items) {
         $(item).css('display',$(item).css('display') === 'none' ? "initial" : "none")
         console.log(item.style.display)
     }
+    upgrademap = !upgrademap
 }
 
 function centerPosition() {
