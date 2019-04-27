@@ -532,8 +532,8 @@
         </div>
     </div>
     <div id="bettermap">
-        <div id="bettermap-wrapper">
-            <img class="draggable" id="bettermap-img" src="images/lisbon_map.jpg" ondragstart="dragMapStart(event)" ondragend="dragMapEnd(event)" ondrag="dragMap(event)">
+        <div id="bettermap-wrapper" draggable="true" ondragstart="dragMapStart(event)" ondragend="dragMapEnd(event)" ondrag="dragMap(event)">
+            <img class="draggable" id="bettermap-img" src="images/lisbon_map.jpg">
             <canvas id='bettermap-canvas'></canvas>
         </div>
         <div id='betterpins' style="position: absolute"></div>

@@ -1611,6 +1611,7 @@ function toggle3D() {
         console.log(item.style.display)
     }
     upgrademap = !upgrademap
+    reloadPins()
 }
 
 function centerPosition() {
