@@ -1311,7 +1311,7 @@ max-width: 60%;*/
 
 #bettermap {
     position: absolute;
-    top: 50%;
+    top: 32%;
     left: 50%;
     width: 60%;
     height: 60%;
@@ -1347,4 +1347,20 @@ max-width: 60%;*/
     margin-top: 10%;
     margin-left: 12%;
     padding: 5%;
+}
+
+#augmentedHelp {
+    width: 100%;
+    height: 95%;
+}
+
+.augmentedHelp-btn {
+    height: 50%;
+    width: 50%;
+    display: inline-block;
+}
+
+.augmentedHelp-btn img {
+    height: 100%;
+    width: 100%;
 }
