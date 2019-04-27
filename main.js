@@ -204,6 +204,8 @@ recognition.onresult = function (event) {
         selectedTextBox.value = content;
 }
 
+var offsets = {help: 0, back: 0, scroll: 0}
+
 function setRealSize() {
     let div = document.getElementById("mainScreen");
     let width = localStorage.getItem("horizontalPx");
@@ -244,7 +246,9 @@ function setRealSize() {
     backButton.style.top = 50 - top * 0.6 + '%';
     scrollWheel.style.top = 50 - top * 0.1 + '%';
     helpButton.style.top = 50 - top * 0.6 + '%';
-
+    offsets['back'] = 50 - top * 0.6
+    offsets['scroll'] = 50 - top * 0.1
+    offsets['help'] = 50 - top * 0.6
     let fontsize = parseInt(window.getComputedStyle(document.body).fontSize);
     document.body.style.fontSize = fontsize / 72 * ppc;
 
@@ -1616,6 +1620,9 @@ function toggle3D() {
     let item = document.getElementById('bettermap')
     $(item).css('display',$(item).css('display') === 'none' ? "initial" : "none")
     $('#watchBorder').css('top', $(item).css('display') === 'none' ? '50%' : '80%');
+    $('#helpButton').css('top', offsets['help'] + ($(item).css('display') === 'none' ? 0 : 30) + '%');
+    $('#backButton').css('top', offsets['back'] + ($(item).css('display') === 'none' ? 0 : 30) + '%');
+    $('#scrollWheel').css('top', offsets['scroll'] + ($(item).css('display') === 'none' ? 0 : 30) + '%');
     upgrademap = !upgrademap
     pushScreen('augmentedHelp')
     reloadPins()
