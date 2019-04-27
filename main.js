@@ -120,6 +120,7 @@ var mapsize = [0,0] //height, width
 var map_pins = []
 var notifications = []
 var notifiRandom = []
+var vals = []
 var bluetoothProfile = [['images/shrek-1.jpg','images/air.jpeg', 'images/hotel.jpg', 'images/newy.png', 'images/sunshine.jpg', 'images/climbing.jpg', 'images/food.jpg', 'images/airballon.jpg'], ['images/shrek-2.jpg','images/air.jpeg', 'images/hotel.jpg', 'images/newy.png', 'images/sunshine.jpg', 'images/climbing.jpg', 'images/food.jpg', 'images/airballon.jpg'], ['images/shrek-3.jpg','images/air.jpeg', 'images/hotel.jpg', 'images/newy.png', 'images/sunshine.jpg', 'images/climbing.jpg', 'images/food.jpg', 'images/airballon.jpg']];
 
 var selectedTextBox = undefined;
@@ -1211,13 +1212,15 @@ function barsNavigation() {
 function topbarNavigation(mode) {
     if(mode === "car"){
         modeWalk = 0;
-        timeAndDistance.innerText = '10min (850m)';
+        document.getElementById('timeAndDistance').innerHTML = '10min (<span id="distance"></span>m)';
+        calculateDistanceGPS();
         document.getElementById('car').style.backgroundColor = '#ccc';
         document.getElementById('walk').style.backgroundColor = 'white';
     }
     else{
         modeWalk = 1;
-        timeAndDistance.innerText = '30min (850m)';
+        document.getElementById('timeAndDistance').innerHTML = '30min (<span id="distance"></span>m)';
+        calculateDistanceGPS();
         document.getElementById('walk').style.backgroundColor = '#ccc';
         document.getElementById('car').style.backgroundColor = "white"
     }
@@ -1255,18 +1258,23 @@ function doPath(target){
     clearArray(path);
     let current = searchPin('atualPosition');
     let closerPin = searchClosestPin();
-    let vals = Dijkstra(g, closerPin, target)
+    clearArray(vals);
+    vals = Dijkstra(g, closerPin, target)
     path = doTraceback(vals[0],closerPin,target)
     console.log(path);
+    calculateDistanceGPS();
+    drawPathToPin(current, closerPin);
+    drawPath();
+    console.log(path.map(el => el +1))
+    console.log('desenhado')
+}
+
+function calculateDistanceGPS(){
     let d = 0;
     for(let i=0; i < path.length;i++){
         d += vals[1][path[i]];
     }
     document.getElementById('distance').innerHTML = d;
-    drawPathToPin(current, closerPin);
-    drawPath();
-    console.log(path.map(el => el +1))
-    console.log('desenhado')
 }
 
 function searchClosestPin(){
