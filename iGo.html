@@ -217,7 +217,7 @@
                     <img id='searchmapbutton' src="icons/search.svg" onclick="pushScreen('searchPlace')" /> 
                 </div>
                 <div id='navbar2Map'>
-                    <img id='infoButton' src="icons/info.svg" style="float:right;" onclick="searchPlacesNearBy()"/> 
+                    <img id='infoButton' src="icons/info.svg" style="float:right;" onclick="doneSearching();pushScreen('pointsInterest')"/> 
                 </div>
                 <div id='navbarNavigation' style='display: none'>
                     <img id='car' class="iconsNavigation" src="icons/car.png" onclick="topbarNavigation('car')">
@@ -455,7 +455,14 @@
             </div>
             <div id="pointsInterest" style="display: none">
                 <h1 id="pointsHeading">Points of Interest</h1>
-                    <div class="content" id='ListOfInterest'></div>
+                	<div id = 'counterDistance'>
+                		<button onclick="plusOne()">+</button>
+                		<input id="radius" value='1'>
+                		<button onclick="lessOne()">-</button>
+                		<button onclick="doneRadius();searchPlacesNearBy(document.getElementById('radius').value)">DONE</button>
+                		<button>CANCEL</button>
+                	</div>
+                    <div style='display:none' class="content" id='ListOfInterest'></div>
             </div>
             <div id='augmentedHelp' style="display: none">
                 <div class="augmentedHelp-btn" id="bettermove" draggable="true" ondragstart="dragMapStart(event)" ondragend="dragMapEnd(event)" ondrag="dragMap(event)">
