@@ -1622,6 +1622,7 @@ function toggle3D() {
     $(item).css('display',$(item).css('display') === 'none' ? "initial" : "none")
     $('#watchBorder').css('top', $(item).css('display') === 'none' ? '50%' : '80%');
     upgrademap = !upgrademap
+    pushScreen('augmentedHelp')
     reloadPins()
 }
 
