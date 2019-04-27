@@ -829,6 +829,11 @@ function cancelSearch() {
     backButton();
 }
 
+function cancelPoints() {
+    document.getElementById("radius").value = "1";
+    backButton();
+}
+
 
 function likeAction(buttonElement) {
     switch (multimedia_storage[picture_index]['liked']) {
@@ -1257,6 +1262,20 @@ function endNavigation() {
 
 }
 
+function goto2dmap() {
+    toggle3D();
+    backButton();
+    /*atualizar o mapa 2d com as mudancas que fizemos no 3d*/
+}
+
+
+function finish3dmap() {
+    endNavigation();
+    toggle3D();
+    backButton();
+}
+
+
 var path = [];
 
 function recalibratePath(){
@@ -1633,7 +1652,11 @@ function toggle3D() {
     $('#backButton').css('top', offsets['back'] + ($(item).css('display') === 'none' ? 0 : 30) + '%');
     $('#scrollWheel').css('top', offsets['scroll'] + ($(item).css('display') === 'none' ? 0 : 30) + '%');
     upgrademap = !upgrademap
-    pushScreen('augmentedHelp')
+    if(screenStack[screenStack.length - 1] === 'mapaScreen'){
+        console.log('oh yeahhh')
+        pushScreen('augmentedHelp');
+    }
+    console.log(screenStack[screenStack.length -1])
     reloadPins()
 }
 
@@ -1708,6 +1731,7 @@ function lessOne(){
 function doneRadius(){
     document.getElementById('counterDistance').style.display = 'none';
     document.getElementById('ListOfInterest').style.display = '';
+    document.getElementById('radius').value = "1";
 }
 
 function doneSearching(){
