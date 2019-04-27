@@ -14,7 +14,7 @@
         <button style="float: left">Settings</button>
     </a>
     <div id="bettermap">
-        <div id="bettermap-wrapper" draggable="true" ondragstart="dragMapStart(event)" ondragend="dragMapEnd(event)" ondrag="dragMap(event)">
+        <div id="bettermap-wrapper">
             <img class="draggable" id="bettermap-img" src="images/lisbon_map.jpg">
             <canvas id='bettermap-canvas'></canvas>
         </div>
@@ -458,7 +458,7 @@
                     <div class="content" id='ListOfInterest'></div>
             </div>
             <div id='augmentedHelp' style="display: none">
-                <div class="augmentedHelp-btn" id="bettermove">
+                <div class="augmentedHelp-btn" id="bettermove" draggable="true" ondragstart="dragMapStart(event)" ondragend="dragMapEnd(event)" ondrag="dragMap(event)">
                     <img src="icons/move.svg">
                 </div>
                 <div class="augmentedHelp-btn" id="better3d"></div>
