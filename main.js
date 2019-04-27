@@ -1296,9 +1296,9 @@ function searchClosestPin(){
 }
 
 function drawPathToPin(current, closerPin){
-    let canvas = document.getElementById('map-canvas').getContext('2d');
+    let canvas = document.getElementById((upgrademap ? "better" : "") + 'map-canvas').getContext('2d');
     values = calculateValues(current, pins[closerPin]);
-    canvas.clearRect(0,0,$('#map-canvas').height(), $('#map-canvas').width());
+    canvas.clearRect(0,0,$('#' + (upgrademap ? "better" : "") + 'map-canvas').height(), $('#' + (upgrademap ? "better" : "") + 'map-canvas').width());
     canvas.beginPath()
     canvas.moveTo(values[1], values[0]);
     canvas.lineTo(values[2], values[3]);
@@ -1315,7 +1315,7 @@ function calculateValues(current, closerPin) {
 }
 function drawPath(){
     let list = path;
-    let canvas = document.getElementById('map-canvas').getContext('2d');
+    let canvas = document.getElementById((upgrademap ? "better" : "") + 'map-canvas').getContext('2d');
     for(i = 0; i < list.length - 1; i++){
         //values has the scaled coordinates
         const values = [pins[list[i]][1],pins[list[i]][2], pins[list[i+1]][1],pins[list[i+1]][2]].map(el => el * (1-zoom))
