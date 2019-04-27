@@ -13,6 +13,15 @@
     <a href="settings.html">
         <button style="float: left">Settings</button>
     </a>
+    <div id="bettermap">
+        <div id="bettermap-wrapper" draggable="true" ondragstart="dragMapStart(event)" ondragend="dragMapEnd(event)" ondrag="dragMap(event)">
+            <img class="draggable" id="bettermap-img" src="images/lisbon_map.jpg">
+            <canvas id='bettermap-canvas'></canvas>
+        </div>
+        <div id='betterpins' style="position: absolute"></div>
+        <div id='betterpath' style="position:absolute"></div> 
+        <map name='bettermap'></map>
+    </div>
     <div id=watchBorder>
         <div id=mainScreen>
             <div id="top-bar">
@@ -530,15 +539,6 @@
             <img id="downArrow" style='visibility: hidden;' onclick='downPosition()' class='controller' src='icons/down-arrow.svg'/>
             <img id='rightArrow' style='visibility: hidden;' onclick='rightPosition()' class = 'controller' src='icons/right-arrow.svg'/>
         </div>
-    </div>
-    <div id="bettermap">
-        <div id="bettermap-wrapper" draggable="true" ondragstart="dragMapStart(event)" ondragend="dragMapEnd(event)" ondrag="dragMap(event)">
-            <img class="draggable" id="bettermap-img" src="images/lisbon_map.jpg">
-            <canvas id='bettermap-canvas'></canvas>
-        </div>
-        <div id='betterpins' style="position: absolute"></div>
-        <div id='betterpath' style="position:absolute"></div> 
-        <map name='bettermap'></map>
     </div>
 </body>
 

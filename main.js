@@ -1605,11 +1605,14 @@ function setupGraph() {
 var upgrademap = false;
 
 function toggle3D() {
-    const items = [document.getElementById('watchBorder'), document.getElementById('helpButton'), document.getElementById('backButton'), document.getElementById('scrollWheel'), document.getElementById('bettermap')]
+    /*const items = [document.getElementById('watchBorder'), document.getElementById('helpButton'), document.getElementById('backButton'), document.getElementById('scrollWheel'), document.getElementById('bettermap')]
     for (let item of items) {
         $(item).css('display',$(item).css('display') === 'none' ? "initial" : "none")
         console.log(item.style.display)
-    }
+    }*/
+    let item = document.getElementById('bettermap')
+    $(item).css('display',$(item).css('display') === 'none' ? "initial" : "none")
+    $('#watchBorder').css('top', $(item).css('display') === 'none' ? '50%' : '80%');
     upgrademap = !upgrademap
     reloadPins()
 }
