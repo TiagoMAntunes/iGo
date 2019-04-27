@@ -1116,6 +1116,20 @@ max-width: 60%;*/
     margin-bottom: 5%;
 }
 
+#navbarcenterNavigation {
+    right: 5%;
+    width: 20%;
+    background-color: #ced0ce;
+    border: 2px solid #8b8b8b;
+    border-left: 2px solid #8b8b8b;
+    border-radius: 5%;
+    overflow: none;
+    position: fixed;
+    bottom: 18%;
+    height: 20%;
+    margin-bottom: 5%;
+}
+
 #searchmapbutton {
     padding: 5%;
     width: 70%;

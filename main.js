@@ -1199,12 +1199,14 @@ function searchPlace(place){
 }
 
 function barsNavigation() {
+    document.getElementById('navbarcenter').style.visibility = 'hidden';
     document.getElementById('navbarMap').style.visibility = 'hidden';
     document.getElementById('navbar2Map').style.visibility = 'hidden';
     document.getElementById('navbarNavigation').style.display = 'unset';
     document.getElementById('topbarNavigation').style.display = 'flex';
     document.getElementById('topbarNavigation').style.flexDirection = 'row';
     document.getElementById('endNavigation').style.display = 'unset';
+    document.getElementById('navbarcenterNavigation').style.visibility = 'visible';
     if(modeWalk == 0){
         document.getElementById('car').style.backgroundColor = '#ccc';
     }
@@ -1237,6 +1239,7 @@ function startNavigation() {
 }
 
 function endNavigation() {
+    document.getElementById('navbarcenter').style.visibility = 'visible';
     document.getElementById('top-bar').style.backgroundColor = "white";
     document.getElementById('topbarNavigation').style.backgroundColor = "white";
     document.getElementById('endNavigation').style.display = 'none';
@@ -1246,6 +1249,8 @@ function endNavigation() {
     document.getElementById('navbar2Map').style.visibility = 'visible';
     document.getElementById('car').style.backgroundColor = "white";
     document.getElementById('walk').style.backgroundColor = 'white';
+    document.getElementById('navbarcenterNavigation').style.visibility = 'hidden';
+
     nav = 0;
     let canvas = document.getElementById('map-canvas').getContext('2d');
     canvas.clearRect(0,0,$('#map-canvas').height(), $('#map-canvas').width());
@@ -1575,6 +1580,8 @@ function hideNavbars(){
     document.getElementById('navbar2Map').style.visibility = 'visible';
     document.getElementById('navbarNavigation').style.display = 'none';
     document.getElementById('topbarNavigation').style.display = 'none';
+    document.getElementById('navbarcenter').style.visibility = 'visible';
+    document.getElementById('navbarcenterNavigation').style.visibility = 'hidden';
     document.getElementById('walk').style.backgroundColor = 'white';
     document.getElementById('car').style.backgroundColor = 'white';
     document.getElementById('top-bar').style.backgroundColor = "white";
