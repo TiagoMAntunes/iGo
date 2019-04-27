@@ -1613,11 +1613,6 @@ function setupGraph() {
 var upgrademap = false;
 
 function toggle3D() {
-    /*const items = [document.getElementById('watchBorder'), document.getElementById('helpButton'), document.getElementById('backButton'), document.getElementById('scrollWheel'), document.getElementById('bettermap')]
-    for (let item of items) {
-        $(item).css('display',$(item).css('display') === 'none' ? "initial" : "none")
-        console.log(item.style.display)
-    }*/
     let item = document.getElementById('bettermap')
     $(item).css('display',$(item).css('display') === 'none' ? "initial" : "none")
     $('#watchBorder').css('top', $(item).css('display') === 'none' ? '50%' : '80%');
@@ -1629,14 +1624,16 @@ function toggle3D() {
 function centerPosition() {
     let pin = searchPin('atualPosition')
     zoom = 0;
-    $(document.getElementById('mapLayer')).height(mapsize[0] * (1 - zoom))
-    $(document.getElementById('mapLayer')).width(mapsize[1] * (1 - zoom))
-    let hor_pos = ($('#mapaScreen').width() / 2 - $('#mapLayer').position().left) / (1-zoom)
-    let ver_pos = ($('#mapaScreen').height() / 2 - $('#mapLayer').position().top) / (1-zoom)
+    let current = $(getCurrentMap())
+    let border = upgrademap ? $(document.getElementById('bettermap')) : $(document.getElementById('mapaScreen'))
+    current.height(mapsize[0] * (1 - zoom))
+    current.width(mapsize[1] * (1 - zoom))
+    let hor_pos = (border.width() / 2 - current.position().left) / (1-zoom)
+    let ver_pos = (border.height() / 2 - current.position().top) / (1-zoom)
     let offset_x = (pin.y - hor_pos) * (1-zoom) 
     let offset_y = (pin.x - ver_pos) * (1-zoom)
-    const baseOffset = $('#mapLayer').offset()
-    $('#mapLayer').offset({top: baseOffset.top - offset_y, left: baseOffset.left - offset_x})
+    const baseOffset = current.offset()
+    current.offset({top: baseOffset.top - offset_y, left: baseOffset.left - offset_x})
     mapBoundariesPositioning();
     reloadPins();
     if(nav == 1)
