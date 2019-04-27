@@ -1262,11 +1262,11 @@ function doPath(target){
     vals = Dijkstra(g, closerPin, target)
     path = doTraceback(vals[0],closerPin,target)
     console.log(path);
-    calculateDistanceGPS();
     drawPathToPin(current, closerPin);
     drawPath();
     console.log(path.map(el => el +1))
     console.log('desenhado')
+    calculateDistanceGPS();
 }
 
 function calculateDistanceGPS(){
@@ -1275,6 +1275,7 @@ function calculateDistanceGPS(){
         d += vals[1][path[i]];
     }
     document.getElementById('distance').innerHTML = d;
+    console.log("distance " + d);
 }
 
 function searchClosestPin(){
@@ -1331,11 +1332,11 @@ function resetInputPlace(){
     document.getElementById('searchInput').value = '';
 }
 
-function searchPlacesNearBy(){
+function searchPlacesNearBy(distance){
     let places = []
     console.log("searching...");
     for(i = 0; i < map_pins.length; i++){
-        if(calculateDistance(map_pins[i]) <= 1000 && map_pins[i].n != 'atualPosition'){
+        if(calculateDistance(map_pins[i]) <= (distance*1000) && map_pins[i].n != 'atualPosition'){
             places.push(map_pins[i]);
             console.log(map_pins[i].n);
         }
@@ -1346,6 +1347,7 @@ function searchPlacesNearBy(){
     else{
         printPlaces(places);
     }
+    backButton();
 }
 
 function printPlaces(places){
@@ -1669,4 +1671,31 @@ function getDirections(pin){
         }
     }
     return directions;
+}
+
+function plusOne(){
+    let d = document.getElementById('radius').value;
+    console.log(d)
+    if(d < 99){
+        d++;
+        document.getElementById('radius').value = d;
+    }
+}
+
+function lessOne(){
+    let d = document.getElementById('radius').value;
+    if(d > 1){
+        d--;
+        document.getElementById('radius').value = d;
+    }
+}
+
+function doneRadius(){
+    document.getElementById('counterDistance').style.display = 'none';
+    document.getElementById('ListOfInterest').style.display = '';
+}
+
+function doneSearching(){
+     document.getElementById('counterDistance').style.display = '';
+    document.getElementById('ListOfInterest').style.display = 'none';
 }
