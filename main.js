@@ -1372,6 +1372,7 @@ function drawPath(){
     let canvas = document.getElementById((upgrademap ? "better" : "") + 'map-canvas').getContext('2d');
     for(i = 0; i < list.length - 1; i++){
         //values has the scaled coordinates
+        canvas.lineWidth = 5;
         const values = [pins[list[i]][1],pins[list[i]][2], pins[list[i+1]][1],pins[list[i+1]][2]].map(el => el * (1-zoom))
         canvas.beginPath()
         canvas.moveTo(values[0], values[1]);
