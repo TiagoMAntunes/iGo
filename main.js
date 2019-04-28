@@ -1196,6 +1196,10 @@ function searchPlace(place){
             break
         }
     }
+    if (path.length === 1) {
+        endNavigation()
+        alert('MUDAR Já chegou ao seu destino')
+    }
     if(flag == 0){
         openNoPlaceFoundPop();   
     }
