@@ -325,6 +325,9 @@ function backButton() {
         desativeJoystick();
         hideNavbars();
     }
+    if(screenStack[screenStack.lenght -1] === 'augmentedHelp'){
+        
+    }
     let screen = screenStack.pop()
     if (screen != undefined) {
         document.getElementById(screen).style.display = 'none';
