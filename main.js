@@ -1178,6 +1178,9 @@ function goToTarget(){
     let destiny = document.getElementById('titleInformation').innerHTML;
     endNavigation();
     searchPlace(destiny);
+    if(screenStack[screenStack.length - 1] == 'pointsInterest'){
+        backButton();
+    }
 }
 
 function dragMapStart(event) {
@@ -1283,14 +1286,14 @@ function barsNavigation() {
 function topbarNavigation(mode) {
     if(mode === "car"){
         modeWalk = 0;
-        document.getElementById('timeAndDistance').innerHTML = '<span id="timeGPS"></span>min (<span id="distance"></span>m)';
+        document.getElementById('timeAndDistance').innerHTML = '<span id="timeGPS"></span> min (<span id="distance"></span>m)';
         calculateDistanceGPS();
         document.getElementById('car').style.backgroundColor = '#ccc';
         document.getElementById('walk').style.backgroundColor = 'white';
     }
     else{
         modeWalk = 1;
-        document.getElementById('timeAndDistance').innerHTML = '<span id="timeGPS"></span>min (<span id="distance"></span>m)';
+        document.getElementById('timeAndDistance').innerHTML = '<span id="timeGPS"></span> min (<span id="distance"></span>m)';
         calculateDistanceGPS();
         document.getElementById('walk').style.backgroundColor = '#ccc';
         document.getElementById('car').style.backgroundColor = "white"
