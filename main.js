@@ -182,7 +182,6 @@ function startup() {
     setupGraph();
     addAllPins();
     blockWatch(); blockWatch();
-    GPS()
     setupInitialPosition();
     mapsize[0] = document.getElementById('mapLayer').height
     mapsize[1] = document.getElementById('mapLayer').width
