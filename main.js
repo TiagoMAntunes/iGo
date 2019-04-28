@@ -150,6 +150,7 @@ var notifications = []
 var notifiRandom = []
 var vals = []
 var bluetoothProfile = [['images/shrek-1.jpg','images/air.jpeg', 'images/hotel.jpg', 'images/newy.png', 'images/sunshine.jpg', 'images/climbing.jpg', 'images/food.jpg', 'images/airballon.jpg'], ['images/shrek-2.jpg','images/air.jpeg', 'images/hotel.jpg', 'images/newy.png', 'images/sunshine.jpg', 'images/climbing.jpg', 'images/food.jpg', 'images/airballon.jpg'], ['images/shrek-3.jpg','images/air.jpeg', 'images/hotel.jpg', 'images/newy.png', 'images/sunshine.jpg', 'images/climbing.jpg', 'images/food.jpg', 'images/airballon.jpg']];
+var directionsIMG =['icons/up-arrow2.svg','icons/right-arrow2.svg','icons/down-arrow2.svg','icons/left-arrow2.svg']
 
 var selectedTextBox = undefined;
 
@@ -1233,6 +1234,7 @@ function clearPath() {
 
 function searchPlace(place){
     let flag = 0;
+    let direct;
     for(i = 0; i < map_pins.length; i++){
         if(map_pins[i].n == place){
             nav = 1;
@@ -1240,6 +1242,8 @@ function searchPlace(place){
             target = pino[0]
             doPath(target);
             flag = 1;
+            direct = findCurrentDirection();
+            document.getElementById('direct').src = directionsIMG[direct];
             backButton();
             barsNavigation();
             break
@@ -1253,6 +1257,7 @@ function searchPlace(place){
     if(flag == 0){
         openNoPlaceFoundPop();   
     }
+
     resetInputPlace();
     
 }
@@ -1522,8 +1527,10 @@ function setupInitialPosition(){
 }
 function findCurrentDirection(){
     let direct
+    console.log(path);
+    console.log(directions)
     for(let i = 0;i < directions.length; i++){
-        if(directions[i][1] == path[0]){
+        if(directions[i][1] == path[1]){
             direct = directions[i][0]
             break;
         }
@@ -1543,12 +1550,12 @@ function upPosition(){
     }
     reloadPins();
     directions = graphMovement(pino);
-     direct = findCurrentDirection();
-    console.log(direct)
-    document.getElementById('direct').src = directionsIMG[direct];
     updateDisplayController();
     if(nav == 1){
         recalibratePath();
+        direct = findCurrentDirection();
+        console.log(direct)
+        document.getElementById('direct').src = directionsIMG[direct];
         centerPosition();
         if(path.length == 1){
             endOn3Dmap();
@@ -1573,8 +1580,10 @@ function leftPosition(){
     updateDisplayController();
     if(nav == 1){
         recalibratePath();
-        centerPosition();
-        if(path.length == 1){
+        direct = findCurrentDirection();
+        console.log(direct)
+        document.getElementById('direct').src = directionsIMG[direct];
+        centerPosition();        if(path.length == 1){
             endOn3Dmap()
             endNavigation();
             openPopArriveTarget()
@@ -1597,6 +1606,9 @@ function rightPosition(){
     updateDisplayController();
     if(nav == 1){
         recalibratePath();
+        direct = findCurrentDirection();
+        console.log(direct)
+        document.getElementById('direct').src = directionsIMG[direct];
         centerPosition();
         if(path.length == 1){
             endOn3Dmap()
@@ -1621,6 +1633,9 @@ function downPosition(){
     updateDisplayController();
     if(nav == 1){
         recalibratePath();
+        direct = findCurrentDirection();
+        console.log(direct)
+        document.getElementById('direct').src = directionsIMG[direct];
         centerPosition();
         if(path.length == 1){
             endOn3Dmap()
