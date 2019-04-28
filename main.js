@@ -113,29 +113,17 @@ var popsGPS = [{
     "description":"Good spaguetti and pasta",
     "picture": "images/restaurant.jpg"
 },{
-<<<<<<< HEAD
     "name":"Museum",
     "description":"MonaLisa in room 505",
     "picture": "images/museum.jpg"
-=======
-    "name":"Hotel",
-    "description":"5 star with a good view",
-    "picture": ""
->>>>>>> d8e17831eae72b46241de0d5797221dd4fa95aac
 },{
     "name":"Metro",
     "description":"Principal metro station of San Francisco city",
     "picture": "images/metro.jpg"
 },{
-<<<<<<< HEAD
     "name":"Hotel",
     "description":"5 star with a good view",
     "picture": "images/hotel2.jpg"
-=======
-    "name":"Museum",
-    "description":"MonaLisa in room 505",
-    "picture": ""
->>>>>>> d8e17831eae72b46241de0d5797221dd4fa95aac
 }]
 
 var screenStack = [];
