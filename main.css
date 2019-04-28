@@ -1515,3 +1515,7 @@ max-width: 60%;*/
     color: white;
     margin-left: 70%;   
 }
+
+#pin0 {
+    z-index: 1;
+}
