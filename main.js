@@ -512,8 +512,8 @@ function mapBoundariesPositioning() {
     let border = upgrademap ? $(document.getElementById('bettermap')) : $(document.getElementById('mapaScreen'))
     let current = $(getCurrentMap())
     const position = Object.values(current.position())
-    const leftBorder = border.position().left
-    const topBorder = border.position().top
+    const leftBorder = 0
+    const topBorder = 0
     const rightBorder = leftBorder + border.width()
     const bottomBorder = topBorder + border.height()
     
@@ -1168,19 +1168,6 @@ function dragMapEnd(event) {
 
 const dragspeed = 7
 
-function validateMapBoundaries(vertical, horizontal) {
-    const position = [vertical, horizontal]
-    const current = $(getCurrentMap())
-    const border = upgrademap ? $(document.getElementById('bettermap')) : $(document.getElementById('mapaScreen'))
-
-    const leftBorder = border.position().left
-    const topBorder = border.position().top
-    const rightBorder = leftBorder + border.width()
-    const bottomBorder = topBorder + border.height()
-   
-    return position[0] <= topBorder && position[1] <= leftBorder && position[0] + current.height() >= bottomBorder
-        && position[1] + current.width() >= rightBorder; 
-}
 
 function getCurrentMap() {
     return upgrademap ? document.getElementById('bettermap-img') : document.getElementById('mapLayer')
@@ -1194,8 +1181,8 @@ function dragMap(event) {
     hi = mapDrag.clientX - event.clientX
     vi = mapDrag.clientY - event.clientY
     mapDrag = event
-    if (validateMapBoundaries($(getCurrentMap()).position().top - vi, $(getCurrentMap()).position().left - hi)) 
-        $(getCurrentMap()).offset({left: $(getCurrentMap()).offset().left - hi, top: $(getCurrentMap()).offset().top - vi})
+    $(getCurrentMap()).offset({left: $(getCurrentMap()).offset().left - hi, top: $(getCurrentMap()).offset().top - vi})
+    mapBoundariesPositioning()
     reloadPins()
     repositionCanvas()
 
