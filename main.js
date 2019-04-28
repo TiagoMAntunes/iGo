@@ -1081,7 +1081,7 @@ function addAllPins(){
     addPin(639, 139 ,"atualPosition","atualPosition")
     addPin(730, 13,"ola2","restaurant");
     addPin(816, 139,"ola3", "hotel");
-    addPin(649,328,"ola4","metro");
+    addPin(639,328,"ola4","metro");
     addPin(771,202,"ola5","museum");
     reloadPins();
 }
