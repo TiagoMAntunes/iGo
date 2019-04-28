@@ -841,7 +841,7 @@ function cancelSearch() {
 }
 
 function cancelPoints() {
-    document.getElementById("radius").value = "1";
+    document.getElementById("radius").value = "100";
     backButton();
 }
 
