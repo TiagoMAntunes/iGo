@@ -101,6 +101,10 @@ var lockScreenIcons = [{
 }]
 
 var popsGPS = [{
+     "name":"",
+    "description":"",
+    "picture": ""
+},{
     "name":"Park",
     "description":"Beautiful birds and a cool lake to chill out",
     "picture": ""
@@ -109,16 +113,16 @@ var popsGPS = [{
     "description":"Good spaguetti and pasta",
     "picture": ""
 },{
-    "name":"Museum",
-    "description":"MonaLisa in room 505",
+    "name":"Hotel",
+    "description":"5 star with a good view",
     "picture": ""
 },{
     "name":"Metro",
     "description":"Principal metro station of San Francisco city",
     "picture": ""
 },{
-    "name":"Hotel",
-    "description":"5 star with a good view",
+    "name":"Museum",
+    "description":"MonaLisa in room 505",
     "picture": ""
 }]
 
@@ -862,6 +866,7 @@ function cancelSearch() {
 }
 
 function cancelPoints() {
+    document.getElementById("radius").value = "100";
     backButton();
 }
 
@@ -1098,8 +1103,8 @@ class Pin {
 }
 
 function addAllPins(){
-    addPin(548,44,"p","park");
     addPin(639, 139 ,"atualPosition","atualPosition")
+    addPin(548,44,"p","park");
     addPin(685, 233,"r","restaurant");
     addPin(816, 107,"h", "hotel");
     addPin(639,360,"m","metro");
@@ -1125,6 +1130,11 @@ function reloadPins() {
         else{
             newpin.src = "icons/" + pin.t + ".png"
         }
+
+        if(pin.t != "atualPosition"){
+            newpin.click(screenInfo(i))
+        }
+
         newpin.id="pin" + (i++).toString()
         newpin.className = "pin"
         
@@ -1154,6 +1164,13 @@ function reloadPins() {
 }
 
 let mapDrag = undefined
+
+function screenInfo(numberPin) {
+    let pin = map_pins[numberPin];
+    document.getElementById("titleInformation").innerHTML = popsGPS[numberPin]['name'];
+    document.getElementById("descriptionInformation").innerHTML = popsGPS[numberPin]['description'];
+    document.getElementById("imageInformation").src = popsGPS[numberPin]['picture'];
+}
 
 function dragMapStart(event) {
     mapDrag = event
@@ -1231,7 +1248,9 @@ function searchPlace(place){
 
 function endOn3Dmap() {
     if(screenStack[screenStack.length - 1] == 'augmentedHelp'){
-        goto2dmap()
+        toggle3D();
+        centerPosition()
+        reloadPins()
         drawPath()
     }
 }
@@ -1503,9 +1522,9 @@ function upPosition(){
     reloadPins();
     directions = graphMovement(pino);
     updateDisplayController();
-    centerPosition();
     if(nav == 1){
         recalibratePath();
+        centerPosition();
         if(path.length == 1){
             endOn3Dmap();
             endNavigation();
@@ -1527,9 +1546,9 @@ function leftPosition(){
     reloadPins();
     directions = graphMovement(pino);
     updateDisplayController();
-    centerPosition();
     if(nav == 1){
-        recalibratePath();    
+        recalibratePath();
+        centerPosition();
         if(path.length == 1){
             endOn3Dmap()
             endNavigation();
@@ -1551,9 +1570,9 @@ function rightPosition(){
     reloadPins();
     directions = graphMovement(pino);
     updateDisplayController();
-    centerPosition();
     if(nav == 1){
         recalibratePath();
+        centerPosition();
         if(path.length == 1){
             endOn3Dmap()
             endNavigation();
@@ -1575,9 +1594,9 @@ function downPosition(){
     reloadPins();
     directions = graphMovement(pino);
     updateDisplayController();
-    centerPosition();
     if(nav == 1){
         recalibratePath();
+        centerPosition();
         if(path.length == 1){
             endOn3Dmap()
             endNavigation();
@@ -1922,6 +1941,7 @@ function lessOne(){
 function doneRadius(){
     document.getElementById('counterDistance').style.display = 'none';
     document.getElementById('ListOfInterest').style.display = '';
+    document.getElementById('radius').value = "100";
 }
 
 function doneSearching(){
