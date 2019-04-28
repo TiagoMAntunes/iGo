@@ -1174,6 +1174,12 @@ function screenInfo(numberPin) {
     pushScreen('Information');
 }
 
+function goToTarget(){
+    let destiny = document.getElementById('titleInformation').innerHTML;
+    endNavigation();
+    searchPlace(destiny);
+}
+
 function dragMapStart(event) {
     mapDrag = event
     var img = new Image();
