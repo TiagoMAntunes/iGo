@@ -1850,7 +1850,7 @@ function getDirections(pin){
 function plusOne(){
     let d = document.getElementById('radius').value;
     if(d < 9900){
-        d+= 100;
+        d = eval(d) + 100;
         console.log(d);
         document.getElementById('radius').value = d;
     }
