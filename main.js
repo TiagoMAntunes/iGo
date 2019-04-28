@@ -1519,9 +1519,20 @@ function setupInitialPosition(){
     let pin = searchPin("atualPosition");
     let pin2 = searchPinCoordinates(pin.y, pin.x)
     directions = graphMovement(pin2);
+    direct = findCurrentDirection();
+    document.getElementById('direct').src = directionsIMG[direct];
     updateDisplayController();
 }
-
+function findCurrentDirection(){
+    let direct
+    for(i = 0;i < directions.length; i++){
+        if(directions[i][1] == path[0]){
+            direct = directions[i][0]
+            break;
+        }
+    }
+    return direct
+}
 function upPosition(){
     let pino
     let pin = searchPin("atualPosition");
