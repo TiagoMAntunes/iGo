@@ -101,6 +101,10 @@ var lockScreenIcons = [{
 }]
 
 var popsGPS = [{
+     "name":"",
+    "description":"",
+    "picture": ""
+},{
     "name":"Park",
     "description":"Beautiful birds and a cool lake to chill out",
     "picture": ""
@@ -109,16 +113,16 @@ var popsGPS = [{
     "description":"Good spaguetti and pasta",
     "picture": ""
 },{
-    "name":"Museum",
-    "description":"MonaLisa in room 505",
+    "name":"Hotel",
+    "description":"5 star with a good view",
     "picture": ""
 },{
     "name":"Metro",
     "description":"Principal metro station of San Francisco city",
     "picture": ""
 },{
-    "name":"Hotel",
-    "description":"5 star with a good view",
+    "name":"Museum",
+    "description":"MonaLisa in room 505",
     "picture": ""
 }]
 
@@ -1099,8 +1103,8 @@ class Pin {
 }
 
 function addAllPins(){
-    addPin(548,44,"p","park");
     addPin(639, 139 ,"atualPosition","atualPosition")
+    addPin(548,44,"p","park");
     addPin(685, 233,"r","restaurant");
     addPin(816, 107,"h", "hotel");
     addPin(639,360,"m","metro");
@@ -1128,7 +1132,7 @@ function reloadPins() {
         }
 
         if(pin.t != "atualPosition"){
-            newpin.onclick = screenInfo(i);
+            $(newpin.click(screenInfo(i))
         }
 
         newpin.id="pin" + (i++).toString()
