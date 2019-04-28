@@ -119,7 +119,7 @@ var popsGPS = [{
 },{
     "name":"Metro",
     "description":"Principal metro station of San Francisco city",
-    "picture": "images/metro.jpg"
+    "picture": "images/metro.JPG"
 },{
     "name":"Hotel",
     "description":"5 star with a good view",
@@ -866,7 +866,6 @@ function cancelSearch() {
 }
 
 function cancelPoints() {
-    document.getElementById("radius").value = "100";
     backButton();
 }
 
@@ -1080,11 +1079,12 @@ function autoturnoff() {
 }
 
 class Pin {
-    constructor(x,y,name, type) {
+    constructor(x,y,name, type, index) {
         this.x = x;
         this.y = y;
         this.n = name; 
         this.t = type;
+        this.i = index;
     }
 
     getCoords(scale) {
@@ -1103,17 +1103,17 @@ class Pin {
 }
 
 function addAllPins(){
-    addPin(639, 139 ,"atualPosition","atualPosition")
-    addPin(548,44,"p","park");
-    addPin(685, 233,"r","restaurant");
-    addPin(816, 107,"h", "hotel");
-    addPin(639,360,"m","metro");
-    addPin(771,233,"mu","museum");
+    addPin(639, 139 ,"atualPosition","atualPosition", 0)
+    addPin(548,44,"Park","park",1);
+    addPin(685, 233,"Restaurant","restaurant",2);
+    addPin(816, 107,"Hotel", "hotel",3);
+    addPin(639,360,"Metro","metro",4);
+    addPin(771,233,"Museum","museum",5);
     reloadPins();
 }
 
-function addPin(x, y, name, type) {
-    map_pins.push(new Pin(x,y,name,type))
+function addPin(x, y, name, type,index) {
+    map_pins.push(new Pin(x,y,name,type,index))
 }
 
 function reloadPins() {
@@ -1130,9 +1130,9 @@ function reloadPins() {
         else{
             newpin.src = "icons/" + pin.t + ".png"
         }
-
+        let j = i
         if(pin.t != "atualPosition"){
-            newpin.click(screenInfo(i))
+            $(newpin).click(function() {screenInfo(j)})
         }
 
         newpin.id="pin" + (i++).toString()
@@ -1166,10 +1166,12 @@ function reloadPins() {
 let mapDrag = undefined
 
 function screenInfo(numberPin) {
+    console.log(numberPin);
     let pin = map_pins[numberPin];
-    document.getElementById("titleInformation").innerHTML = popsGPS[numberPin]['name'];
-    document.getElementById("descriptionInformation").innerHTML = popsGPS[numberPin]['description'];
-    document.getElementById("imageInformation").src = popsGPS[numberPin]['picture'];
+    document.getElementById("titleInformation").innerHTML = popsGPS[numberPin].name;
+    document.getElementById("descriptionInformation").innerHTML = popsGPS[numberPin].description;
+    document.getElementById("imageInformation").src = popsGPS[numberPin].picture;
+    pushScreen('Information');
 }
 
 function dragMapStart(event) {
@@ -1442,7 +1444,7 @@ function resetPlaces(){
 function printPlaces(places){
     let something = '<table id="tableInterest">';
     for(let pin of places){
-        something += "<tr>"
+        something += "<tr onclick='screenInfo("+pin.i+")'>"
         if(pin.t=="park" || pin.t == "atualPosition"){
             something += "<td><img class='iconInterest' src='icons/" + pin.t + ".svg'></td>";
         }
@@ -1941,7 +1943,6 @@ function lessOne(){
 function doneRadius(){
     document.getElementById('counterDistance').style.display = 'none';
     document.getElementById('ListOfInterest').style.display = '';
-    document.getElementById('radius').value = "100";
 }
 
 function doneSearching(){
