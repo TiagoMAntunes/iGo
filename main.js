@@ -840,6 +840,7 @@ function cancelSearch() {
 }
 
 function cancelPoints() {
+    document.getElementById("radius").value = "100";
     backButton();
 }
 
@@ -1103,6 +1104,7 @@ function reloadPins() {
         else{
             newpin.src = "icons/" + pin.t + ".png"
         }
+
         newpin.id="pin" + (i++).toString()
         newpin.className = "pin"
         
@@ -1117,6 +1119,9 @@ function reloadPins() {
         newpin.style.height = 100 * scale + 'px';
         newpin.style.width = 100* scale + 'px';
         
+        if(pin.t != "atualPosition"){
+            newpin.onclick = screenInfo(i);
+        }
         map.appendChild(newpin)
     }
 
@@ -1132,6 +1137,12 @@ function reloadPins() {
 }
 
 let mapDrag = undefined
+
+function screenInfo(numberPin) {
+    let pin = map_pins[numberPin];
+    document.getElementById("Information").
+    
+}
 
 function dragMapStart(event) {
     mapDrag = event
@@ -1222,7 +1233,9 @@ function searchPlace(place){
 
 function endOn3Dmap() {
     if(screenStack[screenStack.length - 1] == 'augmentedHelp'){
-        goto2dmap()
+        toggle3D();
+        centerPosition()
+        reloadPins()
         drawPath()
     }
 }
@@ -1494,9 +1507,9 @@ function upPosition(){
     reloadPins();
     directions = graphMovement(pino);
     updateDisplayController();
-    centerPosition();
     if(nav == 1){
         recalibratePath();
+        centerPosition();
         if(path.length == 1){
             endOn3Dmap();
             endNavigation();
@@ -1518,9 +1531,9 @@ function leftPosition(){
     reloadPins();
     directions = graphMovement(pino);
     updateDisplayController();
-    centerPosition();
     if(nav == 1){
-        recalibratePath();    
+        recalibratePath();
+        centerPosition();
         if(path.length == 1){
             endOn3Dmap()
             endNavigation();
@@ -1542,9 +1555,9 @@ function rightPosition(){
     reloadPins();
     directions = graphMovement(pino);
     updateDisplayController();
-    centerPosition();
     if(nav == 1){
         recalibratePath();
+        centerPosition();
         if(path.length == 1){
             endOn3Dmap()
             endNavigation();
@@ -1566,9 +1579,9 @@ function downPosition(){
     reloadPins();
     directions = graphMovement(pino);
     updateDisplayController();
-    centerPosition();
     if(nav == 1){
         recalibratePath();
+        centerPosition();
         if(path.length == 1){
             endOn3Dmap()
             endNavigation();
@@ -1913,6 +1926,7 @@ function lessOne(){
 function doneRadius(){
     document.getElementById('counterDistance').style.display = 'none';
     document.getElementById('ListOfInterest').style.display = '';
+    document.getElementById('radius').value = "100";
 }
 
 function doneSearching(){
