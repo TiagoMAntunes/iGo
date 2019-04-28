@@ -520,7 +520,7 @@ function mapBoundariesPositioning() {
     const topBorder = 0
     const rightBorder = leftBorder + border.width()
     const bottomBorder = topBorder + border.height()
-    
+    console.log(rightBorder)
     if (position[0] > topBorder){
         current.offset({top: current.offset().top - position[0] + topBorder})
     }
@@ -528,11 +528,11 @@ function mapBoundariesPositioning() {
         current.offset({left: current.offset().left - position[1] + leftBorder})
     }
 
-    if (position[0] + current.height() < rightBorder){
-        current.offset({top: current.offset().top - position[0] - current.height() + rightBorder})
+    if (position[0] + current.height() < bottomBorder){
+        current.offset({top: current.offset().top - position[0] - current.height() + bottomBorder})
     }
-    if (position[1] + current.width() < bottomBorder) {
-        current.offset({left: current.offset().left - position[1] - current.width() + bottomBorder})
+    if (position[1] + current.width() < rightBorder) {
+        current.offset({left: current.offset().left - position[1] - current.width() + rightBorder})
     }
     
 }
