@@ -1078,12 +1078,12 @@ class Pin {
 }
 
 function addAllPins(){
-    addPin(548,75,"ola","park");
+    addPin(548,44,"p","park");
     addPin(639, 139 ,"atualPosition","atualPosition")
-    addPin(730, 13,"ola2","restaurant");
-    addPin(816, 139,"ola3", "hotel");
-    addPin(639,328,"ola4","metro");
-    addPin(771,202,"ola5","museum");
+    addPin(707, 13,"r","restaurant");
+    addPin(816, 107,"h", "hotel");
+    addPin(639,360,"m","metro");
+    addPin(771,223,"mu","museum");
     reloadPins();
 }
 
@@ -1213,7 +1213,7 @@ function searchPlace(place){
     if (path.length === 1) {
         endOn3Dmap();
         endNavigation()
-        alert('MUDAR Já chegou ao seu destino')
+        openPopArriveTarget();
     }
     if(flag == 0){
         openNoPlaceFoundPop();   
@@ -1485,9 +1485,11 @@ function upPosition(){
     updateDisplayController();
     if(nav == 1){
         recalibratePath();
+        centerPosition();
         if(path.length == 1){
             endOn3Dmap();
             endNavigation();
+            openPopArriveTarget()
         }
     }
 }
@@ -1507,9 +1509,11 @@ function leftPosition(){
     updateDisplayController();
     if(nav == 1){
         recalibratePath();
+        centerPosition();
         if(path.length == 1){
             endOn3Dmap()
             endNavigation();
+            openPopArriveTarget()
         }
     }   
 }
@@ -1529,9 +1533,11 @@ function rightPosition(){
     updateDisplayController();
     if(nav == 1){
         recalibratePath();
+        centerPosition();
         if(path.length == 1){
             endOn3Dmap()
             endNavigation();
+            openPopArriveTarget()
         }
     }
 }
@@ -1551,9 +1557,11 @@ function downPosition(){
     updateDisplayController();
     if(nav == 1){
         recalibratePath();
+        centerPosition();
         if(path.length == 1){
             endOn3Dmap()
             endNavigation();
+            openPopArriveTarget()
         }
     }
 }
@@ -1690,9 +1698,17 @@ function setupGraph() {
     pins.push([48, 391, 816])
 
 
+    pins.push([49,233,771])
+    pins.push([50,107,816])
+    pins.push([51,13,707])
+    pins.push([52,44,548])
+    pins.push([53,360,639])
+
+
     g = new Graph(pins.length)
     
-    g.insert(pins[0], pins[1])
+    g.insert(pins[0], pins[52])
+    g.insert(pins[52],pins[1])
     g.insert(pins[0], pins[7])
     g.insert(pins[1], pins[2])
     g.insert(pins[1], pins[8])
@@ -1730,12 +1746,14 @@ function setupGraph() {
     g.insert(pins[17], pins[24])
     g.insert(pins[18], pins[19])
     g.insert(pins[18], pins[25])
-    g.insert(pins[19], pins[20])
+    g.insert(pins[19], pins[53])
+    g.insert(pins[53], pins[20])
     g.insert(pins[19], pins[26])
     g.insert(pins[20], pins[27])
 
     g.insert(pins[21], pins[22])
-    g.insert(pins[21], pins[28])
+    g.insert(pins[21], pins[51])
+    g.insert(pins[51], pins[28])
     g.insert(pins[22], pins[23])
     g.insert(pins[22], pins[29])
     g.insert(pins[23], pins[24])
@@ -1782,7 +1800,8 @@ function setupGraph() {
     g.insert(pins[36], pins[43])
     g.insert(pins[37], pins[38])
     g.insert(pins[37], pins[44])
-    g.insert(pins[38], pins[39])
+    g.insert(pins[38], pins[49])
+    g.insert(pins[49], pins[39])
     g.insert(pins[38], pins[45])
     g.insert(pins[39], pins[40])
     g.insert(pins[39], pins[46])
@@ -1791,7 +1810,8 @@ function setupGraph() {
     g.insert(pins[41], pins[48])
 
     g.insert(pins[42], pins[43])
-    g.insert(pins[43], pins[44])
+    g.insert(pins[43], pins[50])
+    g.insert(pins[50], pins[44])
     g.insert(pins[44], pins[45])
     g.insert(pins[45], pins[46])
     g.insert(pins[46], pins[47])
@@ -1898,4 +1918,9 @@ function popUpCancelTrip(){
 function popUpCancelTrip3D(){
     popupon = 1;
     location.href = "#popup9";
+}
+
+function openPopArriveTarget(){
+    popupon = 1;
+    location.href = "#popup10";
 }
