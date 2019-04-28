@@ -100,6 +100,28 @@ var lockScreenIcons = [{
     "thermometer": "icons/warmterm.svg"
 }]
 
+var popsGPS = [{
+    "name":"Park",
+    "description":"Beautiful birds and a cool lake to chill out",
+    "picture": ""
+},{
+    "name":"Restaurant",
+    "description":"Good spaguetti and pasta",
+    "picture": ""
+},{
+    "name":"Museum",
+    "description":"MonaLisa in room 505",
+    "picture": ""
+},{
+    "name":"Metro",
+    "description":"Principal metro station of San Francisco city",
+    "picture": ""
+},{
+    "name":"Hotel",
+    "description":"5 star with a good view",
+    "picture": ""
+}]
+
 var screenStack = [];
 var picture_index = 0;
 var count = 0;
