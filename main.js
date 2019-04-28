@@ -316,7 +316,7 @@ function backButton() {
         popUpCancelTrip()
         return
     }
-     if(screenStack[screenStack.length - 1] == 'augmentedHelp' && nav == 1){
+     if(screenStack[screenStack.length - 1] == 'augmentedHelp' && nav == 1 && upgrademap ){
          console.log('yo')
         popUpCancelTrip3D()
         return;
