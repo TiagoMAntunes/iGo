@@ -884,7 +884,6 @@ input:checked + .slider:before {
     
   }
   
-
   .outside {
       border-radius: 3.5%;
   }
@@ -1490,4 +1489,29 @@ max-width: 60%;*/
     border-radius: 5%;
     color: white;
     margin-top: 14%;
+}
+
+#titleInformation {
+    margin-left: 5%;
+    line-height: 80%;
+}
+
+#descriptionInformation {
+    margin-left: 5%;  
+}
+
+#imageInformation {
+    width: 86%;
+    height: 49%;
+    margin-left: 5%;
+}
+
+#goToInformation {
+    margin-top: 3%;
+    background-color: #2E8B57;
+    padding: 2% 4%;
+    border: 2px solid #2E8B57;
+    border-radius: 5%;
+    color: white;
+    margin-left: 70%;   
 }
