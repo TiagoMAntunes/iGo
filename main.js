@@ -1082,7 +1082,7 @@ function addAllPins(){
     addPin(707, 13,"r","restaurant");
     addPin(816, 107,"h", "hotel");
     addPin(639,360,"m","metro");
-    addPin(771,223,"mu","museum");
+    addPin(771,233,"mu","museum");
     reloadPins();
 }
 
