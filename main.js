@@ -114,6 +114,7 @@ var popupon = 0;
 var gpson = 0;
 var zoom = 0;
 var nav = 0;
+var target = -1;
 var modeWalk = 0;
 var directions = []
 var mapsize = [0,0] //height, width
@@ -1073,12 +1074,12 @@ class Pin {
 }
 
 function addAllPins(){
-    addPin(2500,2500,"ola","park");
-    addPin(3300,4025 ,"atualPosition","atualPosition")
-    addPin(3500,3500,"ola2","restaurant");
-    addPin(1000,3500,"ola3", "hotel");
-    addPin(3500,1500,"ola4","metro");
-    addPin(3500,2000,"ola5","museum");
+    addPin(548,75,"ola","park");
+    addPin(639, 139 ,"atualPosition","atualPosition")
+    addPin(730, 13,"ola2","restaurant");
+    addPin(829, 139,"ola3", "hotel");
+    addPin(649,328,"ola4","metro");
+    addPin(771,202,"ola5","museum");
     reloadPins();
 }
 
@@ -1195,7 +1196,9 @@ function searchPlace(place){
     for(i = 0; i < map_pins.length; i++){
         if(map_pins[i].n == place){
             nav = 1;
-            doPath(6);
+            let pino = searchPinCoordinates(map_pins[i].y,map_pins[i].x);
+            target = pino[0]
+            doPath(target);
             flag = 1;
             backButton();
             barsNavigation();
@@ -1290,7 +1293,7 @@ function finish3dmap() {
 var path = [];
 
 function recalibratePath(){
-    doPath(6);
+    doPath(target);
 }
 
 function doPath(target){
@@ -1766,6 +1769,13 @@ function setupGraph() {
     g.insert(pins[40], pins[41])
     g.insert(pins[40], pins[47])
     g.insert(pins[41], pins[48])
+
+    g.insert(pins[42], pins[43])
+    g.insert(pins[43], pins[44])
+    g.insert(pins[44], pins[45])
+    g.insert(pins[45], pins[46])
+    g.insert(pins[46], pins[47])
+    g.insert(pins[47], pins[48])
     
 }
 
