@@ -840,7 +840,6 @@ function cancelSearch() {
 }
 
 function cancelPoints() {
-    document.getElementById("radius").value = "100";
     backButton();
 }
 
@@ -1495,9 +1494,9 @@ function upPosition(){
     reloadPins();
     directions = graphMovement(pino);
     updateDisplayController();
+    centerPosition();
     if(nav == 1){
         recalibratePath();
-        centerPosition();
         if(path.length == 1){
             endOn3Dmap();
             endNavigation();
@@ -1519,9 +1518,9 @@ function leftPosition(){
     reloadPins();
     directions = graphMovement(pino);
     updateDisplayController();
+    centerPosition();
     if(nav == 1){
-        recalibratePath();
-        centerPosition();
+        recalibratePath();    
         if(path.length == 1){
             endOn3Dmap()
             endNavigation();
@@ -1543,9 +1542,9 @@ function rightPosition(){
     reloadPins();
     directions = graphMovement(pino);
     updateDisplayController();
+    centerPosition();
     if(nav == 1){
         recalibratePath();
-        centerPosition();
         if(path.length == 1){
             endOn3Dmap()
             endNavigation();
@@ -1567,9 +1566,9 @@ function downPosition(){
     reloadPins();
     directions = graphMovement(pino);
     updateDisplayController();
+    centerPosition();
     if(nav == 1){
         recalibratePath();
-        centerPosition();
         if(path.length == 1){
             endOn3Dmap()
             endNavigation();
@@ -1914,7 +1913,6 @@ function lessOne(){
 function doneRadius(){
     document.getElementById('counterDistance').style.display = 'none';
     document.getElementById('ListOfInterest').style.display = '';
-    document.getElementById('radius').value = "100";
 }
 
 function doneSearching(){
