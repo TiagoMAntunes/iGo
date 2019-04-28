@@ -956,7 +956,8 @@ function gpsIsOff(){
         pushScreen('gps-setup');
     } else {
         pushScreen('mapaScreen')
-        reloadPins();
+        centerPosition();
+        
     }
 }
 
@@ -971,7 +972,7 @@ function validateGPS(){
     if(gpson % 2 !== 0 ){
         backButton()
         pushScreen('mapaScreen');
-        reloadPins()
+        centerPosition()
     }
 }
 
@@ -1641,7 +1642,7 @@ function toggle3D() {
     upgrademap = !upgrademap
     if(screenStack[screenStack.length - 1] === 'mapaScreen'){
         pushScreen('augmentedHelp');
-        reloadPins()    
+        centerPosition()    
         drawPath()
     }
 }
