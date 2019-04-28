@@ -1082,11 +1082,12 @@ function autoturnoff() {
 }
 
 class Pin {
-    constructor(x,y,name, type) {
+    constructor(x,y,name, type, index) {
         this.x = x;
         this.y = y;
         this.n = name; 
         this.t = type;
+        this.i = index;
     }
 
     getCoords(scale) {
@@ -1105,17 +1106,17 @@ class Pin {
 }
 
 function addAllPins(){
-    addPin(639, 139 ,"atualPosition","atualPosition")
-    addPin(548,44,"p","park");
-    addPin(685, 233,"r","restaurant");
-    addPin(816, 107,"h", "hotel");
-    addPin(639,360,"m","metro");
-    addPin(771,233,"mu","museum");
+    addPin(639, 139 ,"atualPosition","atualPosition", 0)
+    addPin(548,44,"Park","park",1);
+    addPin(685, 233,"Restaurant","restaurant",2);
+    addPin(816, 107,"Hotel", "hotel",3);
+    addPin(639,360,"Metro","metro",4);
+    addPin(771,233,"Museum","museum",5);
     reloadPins();
 }
 
-function addPin(x, y, name, type) {
-    map_pins.push(new Pin(x,y,name,type))
+function addPin(x, y, name, type,index) {
+    map_pins.push(new Pin(x,y,name,type,index))
 }
 
 function reloadPins() {
@@ -1446,7 +1447,7 @@ function resetPlaces(){
 function printPlaces(places){
     let something = '<table id="tableInterest">';
     for(let pin of places){
-        something += "<tr>"
+        something += "<tr onclick='screenInfo("+pin.i+")'>"
         if(pin.t=="park" || pin.t == "atualPosition"){
             something += "<td><img class='iconInterest' src='icons/" + pin.t + ".svg'></td>";
         }
