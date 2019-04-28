@@ -1447,8 +1447,8 @@ max-width: 60%;*/
 }
 
 #donebtnPoints {
-    background-color:  #2E8B57;;
-    border: 2px solid #2E8B57;;
+    background-color:  #2E8B57;
+    border: 2px solid #2E8B57;
     border-radius: 5%;
     color: white;
     padding: 5% 5%;
@@ -1471,4 +1471,23 @@ max-width: 60%;*/
 #pointsInterest {
     position: relative;
     overflow-y: auto;
+}
+
+#noButton {
+    padding: 5% 8%;
+    background-color: #B22222;
+    border: 2px solid #B22222;
+    border-radius: 5%;
+    color: white;
+    margin-top: 14%;
+    margin-right: 18%;
+}
+
+#yesButton {
+    padding: 5% 5%;
+    background-color: #2E8B57;
+    border: 2px solid #2E8B57;
+    border-radius: 5%;
+    color: white;
+    margin-top: 14%;
 }

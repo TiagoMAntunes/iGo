@@ -545,15 +545,15 @@
             </div>
         </div>
          <div id="popup8" class="overlay outside">
-            <div class="popup">
+            <div class="popup" style="width: 35%">
                 <div id="toppopup">
-                    <h2>Navegation</h2>
-                    <a class="close" href="#" onclick="popupclosed()">&times;</a>
+                    <h2 style="padding-left: 5%">Navigation</h2>
+                    <a style="padding-left: 10%; margin-top: -2%" class="close" href="#" onclick="popupclosed()">&times;</a>
                 </div>
-                <div class="content">
+                <div class="content" style="padding-left: 5%">
                 	Are you sure you want to cancel?
-                	<button onclick="backButton()" id=''>NO</button>
-                	<button onclick = 'endNavigation();backButton()' id = ''>YES</button>
+                	<button id="noButton" onclick="backButton()" id=''>NO</button>
+                	<button id="yesButton" onclick = 'endNavigation();backButton()' id = ''>YES</button>
                 </div>
             </div>
         </div>
