@@ -1077,12 +1077,12 @@ class Pin {
 }
 
 function addAllPins(){
-    addPin(548,44,"ola","park");
+    addPin(548,44,"ola","p");
     addPin(639, 139 ,"atualPosition","atualPosition")
-    addPin(707, 13,"ola2","restaurant");
-    addPin(816, 107,"ola3", "hotel");
-    addPin(639,360,"ola4","metro");
-    addPin(771,223,"ola5","museum");
+    addPin(707, 13,"ola2","r");
+    addPin(816, 107,"ola3", "h");
+    addPin(639,360,"ola4","m");
+    addPin(771,223,"ola5","mu");
     reloadPins();
 }
 
@@ -1211,7 +1211,7 @@ function searchPlace(place){
     }
     if (path.length === 1) {
         endNavigation()
-        alert('MUDAR Já chegou ao seu destino')
+        openPopArriveTarget();
     }
     if(flag == 0){
         openNoPlaceFoundPop();   
@@ -1477,6 +1477,7 @@ function upPosition(){
         centerPosition();
         if(path.length == 1){
             endNavigation();
+            openPopArriveTarget()
         }
     }
 }
@@ -1499,7 +1500,7 @@ function leftPosition(){
         centerPosition();
         if(path.length == 1){
             endNavigation();
-
+            openPopArriveTarget()
         }
     }   
 }
@@ -1522,6 +1523,7 @@ function rightPosition(){
         centerPosition();
         if(path.length == 1){
             endNavigation();
+            openPopArriveTarget()
         }
     }
 }
@@ -1544,6 +1546,7 @@ function downPosition(){
         centerPosition();
         if(path.length == 1){
             endNavigation();
+            openPopArriveTarget()
         }
     }
 }
@@ -1900,4 +1903,9 @@ function popUpCancelTrip(){
 function popUpCancelTrip3D(){
     popupon = 1;
     location.href = "#popup9";
+}
+
+function openPopArriveTarget(){
+    popupon = 1;
+    location.href = "#popup10";
 }
