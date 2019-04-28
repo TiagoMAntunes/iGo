@@ -114,6 +114,7 @@ var popupon = 0;
 var gpson = 0;
 var zoom = 0;
 var nav = 0;
+var target = -1;
 var modeWalk = 0;
 var directions = []
 var mapsize = [0,0] //height, width
@@ -313,6 +314,10 @@ function backButton() {
     }
     if(screenStack[screenStack.length - 1] == 'mapaScreen' && nav == 1){
         popUpCancelTrip()
+        return
+    }
+     if(screenStack[screenStack.length - 1] == 'augmentedHelp' && nav == 1){
+        popUpCancelTrip3D()
         return
     }
     if (localStorage.getItem('locked') === 'true' && screenStack[screenStack.length - 1] === 'lockScreen') {
@@ -1072,12 +1077,12 @@ class Pin {
 }
 
 function addAllPins(){
-    addPin(2500,2500,"ola","park");
-    addPin(3300,4025 ,"atualPosition","atualPosition")
-    addPin(3500,3500,"ola2","restaurant");
-    addPin(1000,3500,"ola3", "hotel");
-    addPin(3500,1500,"ola4","metro");
-    addPin(3500,2000,"ola5","museum");
+    addPin(548,75,"ola","park");
+    addPin(639, 139 ,"atualPosition","atualPosition")
+    addPin(730, 13,"ola2","restaurant");
+    addPin(829, 139,"ola3", "hotel");
+    addPin(649,328,"ola4","metro");
+    addPin(771,202,"ola5","museum");
     reloadPins();
 }
 
@@ -1194,7 +1199,9 @@ function searchPlace(place){
     for(i = 0; i < map_pins.length; i++){
         if(map_pins[i].n == place){
             nav = 1;
-            doPath(6);
+            let pino = searchPinCoordinates(map_pins[i].y,map_pins[i].x);
+            target = pino[0]
+            doPath(target);
             flag = 1;
             backButton();
             barsNavigation();
@@ -1289,7 +1296,7 @@ function finish3dmap() {
 var path = [];
 
 function recalibratePath(){
-    doPath(6);
+    doPath(target);
 }
 
 function doPath(target){
@@ -1609,33 +1616,170 @@ var pins = [];
 
 function setupGraph() {
     
-    pins.push([0, 3950, 3300])
-    pins.push([1, 3950, 3280])
-    pins.push([2, 3950, 3260])
-    pins.push([3, 3950, 3240])
-    pins.push([4, 3950, 3220])
-    pins.push([5, 4025, 3300])
-    pins.push([6, 4025, 3280])
-    pins.push([7, 4025, 3260])
-    pins.push([8, 4025, 3240])
-    pins.push([9, 4025, 3220])
-    pins.push([10, 4063, 3300])
+    pins.push([0, 13, 548])
+    pins.push([1, 75, 548])
+    pins.push([2, 139, 548])
+    pins.push([3, 202, 548])
+    pins.push([4, 265, 548])
+    pins.push([5, 328, 548])
+    pins.push([6, 391, 548])
+
+    pins.push([7, 13, 593])
+    pins.push([8, 75, 593])
+    pins.push([9, 139, 593])
+    pins.push([10, 202, 593])
+    pins.push([11, 265, 593])
+    pins.push([12, 328, 593])
+    pins.push([13, 391, 593])
+
+    pins.push([14, 13, 639])
+    pins.push([15, 75, 639])
+    pins.push([16, 139, 639])
+    pins.push([17, 202, 639])
+    pins.push([18, 265, 639])
+    pins.push([19, 328, 639])
+    pins.push([20, 391, 639])
+    
+
+    pins.push([21, 13, 685])
+    pins.push([22, 75, 685])
+    pins.push([23, 139, 685])
+    pins.push([24, 202, 685])
+    pins.push([25, 265, 685])
+    pins.push([26, 328, 685])
+    pins.push([27, 391, 685])
+
+    pins.push([28, 13, 730])
+    pins.push([29, 75, 730])
+    pins.push([30, 139, 730])
+    pins.push([31, 202, 730])
+    pins.push([32, 265, 730])
+    pins.push([33, 328, 730])
+    pins.push([34, 391, 730])
+
+    pins.push([35, 13, 771])
+    pins.push([36, 75, 771])
+    pins.push([37, 139, 771])
+    pins.push([38, 202, 771])
+    pins.push([39, 265, 771])
+    pins.push([40, 328, 771])
+    pins.push([41, 391, 771])
+
+    pins.push([42, 13, 829])
+    pins.push([43, 75, 829])
+    pins.push([44, 139, 829])
+    pins.push([45, 202, 829])
+    pins.push([46, 265, 829])
+    pins.push([47, 328, 829])
+    pins.push([48, 391, 829])
 
     g = new Graph(pins.length)
-    g.insert(pins[0], pins[5])
+    
     g.insert(pins[0], pins[1])
+    g.insert(pins[0], pins[7])
     g.insert(pins[1], pins[2])
-    g.insert(pins[1], pins[6])
-    g.insert(pins[2], pins[7])
+    g.insert(pins[1], pins[8])
     g.insert(pins[2], pins[3])
+    g.insert(pins[2], pins[9])
     g.insert(pins[3], pins[4])
-    g.insert(pins[3], pins[8])
-    g.insert(pins[4], pins[9])
+    g.insert(pins[3], pins[10])
+    g.insert(pins[4], pins[5])
+    g.insert(pins[4], pins[11])
     g.insert(pins[5], pins[6])
-    g.insert(pins[5], pins[10])
-    g.insert(pins[6], pins[7])
+    g.insert(pins[5], pins[12])
+    g.insert(pins[6], pins[13])
+
     g.insert(pins[7], pins[8])
+    g.insert(pins[7], pins[14])
     g.insert(pins[8], pins[9])
+    g.insert(pins[8], pins[15])
+    g.insert(pins[9], pins[10])
+    g.insert(pins[9], pins[16])
+    g.insert(pins[10], pins[11])
+    g.insert(pins[10], pins[17])
+    g.insert(pins[11], pins[12])
+    g.insert(pins[11], pins[18])
+    g.insert(pins[12], pins[13])
+    g.insert(pins[12], pins[19])
+    g.insert(pins[13], pins[20])
+    
+    g.insert(pins[14], pins[15])
+    g.insert(pins[14], pins[21])
+    g.insert(pins[15], pins[16])
+    g.insert(pins[15], pins[22])
+    g.insert(pins[16], pins[17])
+    g.insert(pins[16], pins[23])
+    g.insert(pins[17], pins[18])
+    g.insert(pins[17], pins[24])
+    g.insert(pins[18], pins[19])
+    g.insert(pins[18], pins[25])
+    g.insert(pins[19], pins[20])
+    g.insert(pins[19], pins[26])
+    g.insert(pins[20], pins[27])
+
+    g.insert(pins[21], pins[22])
+    g.insert(pins[21], pins[28])
+    g.insert(pins[22], pins[23])
+    g.insert(pins[22], pins[29])
+    g.insert(pins[23], pins[24])
+    g.insert(pins[23], pins[30])
+    g.insert(pins[24], pins[25])
+    g.insert(pins[24], pins[31])
+    g.insert(pins[25], pins[26])
+    g.insert(pins[25], pins[32])
+    g.insert(pins[26], pins[27])
+    g.insert(pins[26], pins[33])
+    g.insert(pins[27], pins[34])
+
+    g.insert(pins[28], pins[29])
+    g.insert(pins[28], pins[35])
+    g.insert(pins[29], pins[30])
+    g.insert(pins[29], pins[36])
+    g.insert(pins[30], pins[31])
+    g.insert(pins[30], pins[37])
+    g.insert(pins[31], pins[32])
+    g.insert(pins[31], pins[38])
+    g.insert(pins[32], pins[33])
+    g.insert(pins[32], pins[39])
+    g.insert(pins[33], pins[34])
+    g.insert(pins[33], pins[40])
+    g.insert(pins[34], pins[41])
+
+    g.insert(pins[28], pins[29])
+    g.insert(pins[28], pins[35])
+    g.insert(pins[29], pins[30])
+    g.insert(pins[29], pins[36])
+    g.insert(pins[30], pins[31])
+    g.insert(pins[30], pins[37])
+    g.insert(pins[31], pins[32])
+    g.insert(pins[31], pins[38])
+    g.insert(pins[32], pins[33])
+    g.insert(pins[32], pins[39])
+    g.insert(pins[33], pins[34])
+    g.insert(pins[33], pins[40])
+    g.insert(pins[34], pins[41])
+
+    g.insert(pins[35], pins[36])
+    g.insert(pins[35], pins[42])
+    g.insert(pins[36], pins[37])
+    g.insert(pins[36], pins[43])
+    g.insert(pins[37], pins[38])
+    g.insert(pins[37], pins[44])
+    g.insert(pins[38], pins[39])
+    g.insert(pins[38], pins[45])
+    g.insert(pins[39], pins[40])
+    g.insert(pins[39], pins[46])
+    g.insert(pins[40], pins[41])
+    g.insert(pins[40], pins[47])
+    g.insert(pins[41], pins[48])
+
+    g.insert(pins[42], pins[43])
+    g.insert(pins[43], pins[44])
+    g.insert(pins[44], pins[45])
+    g.insert(pins[45], pins[46])
+    g.insert(pins[46], pins[47])
+    g.insert(pins[47], pins[48])
+    
 }
 
 var upgrademap = false;
@@ -1732,4 +1876,9 @@ function doneSearching(){
 function popUpCancelTrip(){
     popupon = 1;
     location.href = "#popup8";
+}
+
+function popUpCancelTrip3D(){
+    popupon = 1;
+    location.href = "#popup9";
 }
