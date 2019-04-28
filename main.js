@@ -317,7 +317,6 @@ function backButton() {
         return
     }
      if(screenStack[screenStack.length - 1] == 'augmentedHelp' && nav == 1){
-         console.log('yo')
         popUpCancelTrip3D()
         return;
     }
@@ -1504,7 +1503,7 @@ function upPosition(){
         if(path.length == 1){
             endOn3Dmap();
             endNavigation();
-            /*openPopArriveTarget()*/
+            openPopArriveTarget()
         }
     }
 }
@@ -1528,7 +1527,7 @@ function leftPosition(){
         if(path.length == 1){
             endOn3Dmap()
             endNavigation();
-            /*openPopArriveTarget()*/
+            openPopArriveTarget()
         }
     }   
 }
@@ -1552,7 +1551,7 @@ function rightPosition(){
         if(path.length == 1){
             endOn3Dmap()
             endNavigation();
-            /*openPopArriveTarget()*/
+            openPopArriveTarget()
         }
     }
 }
@@ -1576,7 +1575,7 @@ function downPosition(){
         if(path.length == 1){
             endOn3Dmap()
             endNavigation();
-            /*openPopArriveTarget()*/
+            openPopArriveTarget()
         }
     }
 }
