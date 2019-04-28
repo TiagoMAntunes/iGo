@@ -1178,6 +1178,9 @@ function goToTarget(){
     let destiny = document.getElementById('titleInformation').innerHTML;
     endNavigation();
     searchPlace(destiny);
+    if(screenStack[screenStack.length - 1] == 'pointsInterest'){
+        backButton();
+    }
 }
 
 function dragMapStart(event) {
