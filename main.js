@@ -553,6 +553,26 @@ function scrollWheelHelpMap(event) {
     document.getElementById('helpmapascreen').style.top = val;
 }
 
+function scrollWheelPointsInterest(event) {
+    if (document.getElementById('pointsInterest').style.top == '')
+        document.getElementById('pointsInterest').style.top = '0px';
+    let direction = (event.clientY - dragInfo.clientY)
+
+    let i = 0;
+    if (direction > 0) {
+        i = 10;
+    } else if (direction < 0) {
+        i = -10;
+    }
+
+    let val = parseInt(document.getElementById('pointsInterest').style.top) + i;
+    let aux = -($(document.getElementById('pointsInterest')).outerHeight() -
+        ($(document.getElementById('mainScreen')).outerHeight() - $(document.getElementById('top-bar')).outerHeight()))
+    if (val > 0) val = 0
+    if (val < aux) val = aux
+    document.getElementById('pointsInterest').style.top = val;
+}
+
 function scrollWheelMovement(event) {
     if (dragInfo == undefined || event.screenX === 0 && event.screenY === 0)
         return;
@@ -580,6 +600,9 @@ function scrollWheelMovement(event) {
             break
         case 'helpmapascreen':
             scrollWheelHelpMap(event)
+            break
+        case 'pointsInterest':
+            scrollWheelPointsInterest(event)
             break
     }
 }

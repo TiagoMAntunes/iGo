@@ -1467,3 +1467,8 @@ max-width: 60%;*/
     margin-top: 17%;
     margin-right: 5%; 
 }
+
+#pointsInterest {
+    position: relative;
+    overflow-y: auto;
+}
