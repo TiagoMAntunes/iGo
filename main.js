@@ -1113,7 +1113,8 @@ function reloadPins() {
         
         //size
         let scale = 1 - zoom
-        if (scale < 0.3) scale = 0.3
+        if (scale < 0.1) scale = 0.1
+        if (scale > 0.5) scale = 0.5
         newpin.style.height = 100 * scale + 'px';
         newpin.style.width = 100* scale + 'px';
         
