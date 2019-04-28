@@ -1518,13 +1518,11 @@ function setupInitialPosition(){
     let pin = searchPin("atualPosition");
     let pin2 = searchPinCoordinates(pin.y, pin.x)
     directions = graphMovement(pin2);
-    direct = findCurrentDirection();
-    document.getElementById('direct').src = directionsIMG[direct];
     updateDisplayController();
 }
 function findCurrentDirection(){
     let direct
-    for(i = 0;i < directions.length; i++){
+    for(let i = 0;i < directions.length; i++){
         if(directions[i][1] == path[0]){
             direct = directions[i][0]
             break;
@@ -1534,6 +1532,7 @@ function findCurrentDirection(){
 }
 function upPosition(){
     let pino
+    let direct
     let pin = searchPin("atualPosition");
     for(i = 0; i < directions.length; i++){
         if(directions[i][0] == 0){
@@ -1544,6 +1543,9 @@ function upPosition(){
     }
     reloadPins();
     directions = graphMovement(pino);
+     direct = findCurrentDirection();
+    console.log(direct)
+    document.getElementById('direct').src = directionsIMG[direct];
     updateDisplayController();
     if(nav == 1){
         recalibratePath();
