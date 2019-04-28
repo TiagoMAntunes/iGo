@@ -311,6 +311,14 @@ function backButton() {
         popupon = 0;
         return;
     }
+    if(screenStack[screenStack.length - 1] == 'mapaScreen' && nav == 1){
+        popUpCancelTrip()
+        return
+    }
+     if(screenStack[screenStack.length - 1] == 'augmentedHelp' && nav == 1){
+        popUpCancelTrip3D()
+        return
+    }
     if (localStorage.getItem('locked') === 'true' && screenStack[screenStack.length - 1] === 'lockScreen') {
         return
     }
@@ -331,6 +339,7 @@ function backButton() {
     } else {
         document.getElementById('mainmenu').style.display = '';
     }
+
 }
 
 function pushScreen(screen) {
@@ -553,6 +562,26 @@ function scrollWheelHelpMap(event) {
     document.getElementById('helpmapascreen').style.top = val;
 }
 
+function scrollWheelPointsInterest(event) {
+    if (document.getElementById('pointsInterest').style.top == '')
+        document.getElementById('pointsInterest').style.top = '0px';
+    let direction = (event.clientY - dragInfo.clientY)
+
+    let i = 0;
+    if (direction > 0) {
+        i = 10;
+    } else if (direction < 0) {
+        i = -10;
+    }
+
+    let val = parseInt(document.getElementById('pointsInterest').style.top) + i;
+    let aux = -($(document.getElementById('pointsInterest')).outerHeight() -
+        ($(document.getElementById('mainScreen')).outerHeight() - $(document.getElementById('top-bar')).outerHeight()))
+    if (val > 0) val = 0
+    if (val < aux) val = aux
+    document.getElementById('pointsInterest').style.top = val;
+}
+
 function scrollWheelMovement(event) {
     if (dragInfo == undefined || event.screenX === 0 && event.screenY === 0)
         return;
@@ -580,6 +609,9 @@ function scrollWheelMovement(event) {
             break
         case 'helpmapascreen':
             scrollWheelHelpMap(event)
+            break
+        case 'pointsInterest':
+            scrollWheelPointsInterest(event)
             break
     }
 }
@@ -933,7 +965,8 @@ function gpsIsOff(){
         pushScreen('gps-setup');
     } else {
         pushScreen('mapaScreen')
-        reloadPins();
+        centerPosition();
+        
     }
 }
 
@@ -948,7 +981,7 @@ function validateGPS(){
     if(gpson % 2 !== 0 ){
         backButton()
         pushScreen('mapaScreen');
-        reloadPins()
+        centerPosition()
     }
 }
 
@@ -1618,7 +1651,7 @@ function toggle3D() {
     upgrademap = !upgrademap
     if(screenStack[screenStack.length - 1] === 'mapaScreen'){
         pushScreen('augmentedHelp');
-        reloadPins()    
+        centerPosition()    
         drawPath()
     }
 }
@@ -1695,4 +1728,14 @@ function doneRadius(){
 function doneSearching(){
      document.getElementById('counterDistance').style.display = '';
     document.getElementById('ListOfInterest').style.display = 'none';
+}
+
+function popUpCancelTrip(){
+    popupon = 1;
+    location.href = "#popup8";
+}
+
+function popUpCancelTrip3D(){
+    popupon = 1;
+    location.href = "#popup9";
 }
