@@ -1783,6 +1783,33 @@ function setupGraph() {
     pins.push([52,44,548])
     pins.push([53,360,639])
 
+    pins.push([54,13,861])
+    pins.push([55,75,861])
+    pins.push([56,139,861])
+    pins.push([57,265,861])
+    pins.push([58,328,861])
+    pins.push([59,391,861])     
+
+    pins.push([60,454,548])
+    pins.push([61,454,593])
+    pins.push([62,454,639])
+    pins.push([63,454,685])
+    pins.push([64,454,730])
+    pins.push([65,454,771])
+    pins.push([66,454,816])
+    pins.push([67,454,861])
+    pins.push([68,454,616])
+    pins.push([69,412,616])    
+
+    pins.push([70,517,548])
+    pins.push([71,517,593])
+    pins.push([72,517,639])
+    pins.push([73,517,685])
+    pins.push([74,517,730])
+    pins.push([75,517,771])
+    pins.push([76,517,816])
+    pins.push([77,517,861])
+
 
     g = new Graph(pins.length)
     
@@ -1896,8 +1923,51 @@ function setupGraph() {
     g.insert(pins[46], pins[47])
     g.insert(pins[47], pins[48])
     
-}
+    g.insert(pins[42], pins[54])
+    g.insert(pins[43], pins[55])
+    g.insert(pins[55], pins[56])
+    g.insert(pins[44], pins[56])
+    g.insert(pins[57], pins[46])
+    g.insert(pins[57], pins[58])
+    g.insert(pins[58], pins[59])
+    g.insert(pins[58], pins[47])
+    g.insert(pins[59], pins[48])
 
+    g.insert(pins[6], pins[60])
+    g.insert(pins[13], pins[61])
+    g.insert(pins[20], pins[62])
+    g.insert(pins[27], pins[63])
+    g.insert(pins[34], pins[64])
+    g.insert(pins[41], pins[65])
+    g.insert(pins[48], pins[66])
+    g.insert(pins[59], pins[67])
+    g.insert(pins[60], pins[61])
+    g.insert(pins[61], pins[68])
+    g.insert(pins[68], pins[62])
+    g.insert(pins[68], pins[69])
+    g.insert(pins[62], pins[63])
+    g.insert(pins[63], pins[64])
+    g.insert(pins[64], pins[65])
+    g.insert(pins[65], pins[66])
+    g.insert(pins[66], pins[67])
+
+    g.insert(pins[60], pins[70])
+    g.insert(pins[61], pins[71])
+    g.insert(pins[62], pins[72])
+    g.insert(pins[63], pins[73])
+    g.insert(pins[64], pins[74])
+    g.insert(pins[65], pins[75])
+    g.insert(pins[66], pins[76])
+    g.insert(pins[67], pins[77])
+    g.insert(pins[70], pins[71])
+    g.insert(pins[71], pins[72])
+    g.insert(pins[72], pins[73])
+    g.insert(pins[73], pins[74])
+    g.insert(pins[74], pins[75])
+    g.insert(pins[75], pins[76])
+    g.insert(pins[76], pins[77])
+
+}
 var upgrademap = false;
 
 function toggle3D() {
