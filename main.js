@@ -170,7 +170,6 @@ recognition.onstart = function () {
 
 recognition.onend = function (event) {
     //acabou
-    console.log(event);
     console.log('Recording ended')
     recognizing = false
 }
@@ -191,15 +190,9 @@ recognition.onresult = function (event) {
     }
 
     let content = ''
-    for (var i = event.resultIndex; i < event.results.length; ++i) {
+    for (var i = event.resultIndex; i < event.results.length; ++i)
         content += event.results[i][0].transcript
-        if (event.results[i].isFinal) { //Final results
-            console.log("final results: " + event.results[i][0].transcript);   //Of course – here is the place to do useful things with the results.
-        } else {   //i.e. interim...
-            console.log("interim results: " + event.results[i][0].transcript);  //You can use these results to give the user near real time experience.
-        }
-    } //end for loop
-    console.log(selectedTextBox)
+    
     if (selectedTextBox !== undefined)
         selectedTextBox.value = content;
 }
@@ -318,21 +311,16 @@ function backButton() {
         popupon = 0;
         return;
     }
-    console.log(typeof (localStorage.getItem('locked')))
-    console.log(localStorage.getItem('locked') === 'true' && (screenStack[screenStack.length - 1] === 'lockScreen'))
     if (localStorage.getItem('locked') === 'true' && screenStack[screenStack.length - 1] === 'lockScreen') {
-        console.log('stopeed!')
         return
     }
     if (block % 2 == 1 && screenStack[screenStack.length - 1] === 'blackScreen') {
-        console.log('stopeed!')
         return
     }
     if(screenStack[screenStack.length - 1] === 'mapaScreen'){
         desativeJoystick();
         hideNavbars();
     }
-    console.log('hi')
     let screen = screenStack.pop()
     if (screen != undefined) {
         document.getElementById(screen).style.display = 'none';
@@ -346,7 +334,6 @@ function backButton() {
 }
 
 function pushScreen(screen) {
-    console.log('Screen to load ' + screen);
     if (screenStack.length != 0)
         document.getElementById(screenStack[screenStack.length - 1]).style.display = 'none';
     else {
@@ -381,7 +368,6 @@ function scrollWheelPhotos(event) {
     if (val > 0) val = 0
     if (val < aux) val = aux
     document.getElementById('photopublish').style.top = val;
-    console.log(val)
 }
 
 function scrollWheelMessages(event) {
@@ -440,8 +426,6 @@ function scrollWheelProfile(event) {
     let val = parseInt(document.getElementById('profile').style.top) + i;
     let aux = -($(document.getElementById('picturelist')).outerHeight() + $(document.getElementById('profile-top')).outerHeight() -
         ($(document.getElementById('mainScreen')).outerHeight() - $(document.getElementById('top-bar')).outerHeight()))
-    console.log(val)
-    console.log(aux)
     if (val > 0) val = 0
     if (val < aux) val = aux
     document.getElementById('profile').style.top = val;
@@ -500,20 +484,16 @@ function mapBoundariesPositioning() {
     
     if (position[0] > topBorder){
         current.offset({top: current.offset().top - position[0] + topBorder})
-        console.log('top')
     }
     if (position[1] > leftBorder) {
         current.offset({left: current.offset().left - position[1] + leftBorder})
-        console.log('left')
     }
 
     if (position[0] + current.height() < rightBorder){
         current.offset({top: current.offset().top - position[0] - current.height() + rightBorder})
-        console.log('right')
     }
     if (position[1] + current.width() < bottomBorder) {
         current.offset({left: current.offset().left - position[1] - current.width() + bottomBorder})
-        console.log('bottom')
     }
     
 }
@@ -568,7 +548,6 @@ function scrollWheelHelpMap(event) {
     let val = parseInt(document.getElementById('helpmapascreen').style.top) + i;
     let aux = -($(document.getElementById('helpmapascreen')).outerHeight() -
         ($(document.getElementById('mainScreen')).outerHeight() - $(document.getElementById('top-bar')).outerHeight()))
-    console.log(val)
     if (val > 0) val = 0
     if (val < aux) val = aux
     document.getElementById('helpmapascreen').style.top = val;
@@ -614,7 +593,6 @@ function scrollWheelStart(event) {
 
 function scrollWheelFinish(event) {
     dragInfo = undefined;
-    console.log('done')
 }
 
 function updatePicture() {
@@ -640,7 +618,6 @@ function createShareMenu(i){
 }
 
 function selectPhone(i){
-    console.log(i);
     if(i == 1){
         document.getElementById('phone1').style.backgroundColor = "#ccc";
         document.getElementById('phone2').style.backgroundColor = "white";
@@ -704,7 +681,6 @@ function createNotificationPop(){
 function createNotificationsPops() {
     let profiletable = document.getElementById("notificationScreenPop");
     for (i = 0; i < pictureProfileArray.length; i++) {
-        console.log('doing');
         profiletable.innerHTML += "<div class = 'overlay' id='" + pictureProfileArray[i].divName + "'><div class='popupphoto'><div id='toppopup'><a id='closepopup' href='#' onclick='popupclosed()'>&times;</a></div><div class='content'><img id='photopopup' src='" + pictureProfileArray[i].image + "'><p id='descriptionNotifications'>"+ pictureProfileArray[i].description +"</p></div></div></div></div>";
     }
 }
@@ -733,7 +709,6 @@ function createMenuMessage(index) {
         }
     }
     let name = profiles[index].divName + 'Input';
-    console.log(name);
     messages += "<div id='box' class='boxMessage'><img id='micmessage' onclick=" + '"' + "microphoneOn('" + name + "','micmessage', 4)" + '"' + "src='icons/micoff.png'><input type='text' id='" + profiles[index].divName + "Input' class='sendmessage'></input><img src='icons/send.png' id='sendimage' onclick=" + "sendMessage('" + profiles[index].divName + "')" + '></div>'
     document.getElementById('messageBox').innerHTML = messages + "</div>";
     document.getElementById('messageBox').style.top = 0;
@@ -768,7 +743,6 @@ function createMenuPerfil() {
         content += '</tr>'
     }
     profiletable.innerHTML = content;
-    console.log(content)
 }
 
 function setupMultimediaScreen() {
@@ -871,7 +845,6 @@ function GPS(){
 
 
 function blockWatch() {
-    console.log('blackScreen');
     block++;
     localStorage.setItem('locked', true);
     if (screenStack[screenStack.length - 1] == 'lockScreen') {
@@ -892,7 +865,6 @@ function blockWatch() {
 function unlockWatch() {
     localStorage.setItem('locked', false)
     backButton();
-    console.log('unlock');
     document.getElementById('top-bar').style.display = '';
 }
 
@@ -900,7 +872,6 @@ function helpButton() {
     if (block % 2 == 1) {
         return;
     }
-    console.log(screenStack[screenStack.length - 1]);
     switch (screenStack[screenStack.length - 1]) {
         case 'multimedia':
             pushScreen('helpmultimediascreen');
@@ -1037,12 +1008,10 @@ function microphoneOn(inputname, value, numbermic) {
 }
 
 function autoturnoff() {
-    console.log('Turning off...')
     for (let i = 0; i < mics.length; i++)
         if (mics[i] === 1) {
             //microphone is on. turn it off
             microphoneOn('',micsid[i], i+1 );
-            console.log('Found it!')
             return
         }
 }
@@ -1132,12 +1101,10 @@ function dragMapStart(event) {
     var img = new Image();
     img.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=';
     event.dataTransfer.setDragImage(img, 0, 0);
-    console.log('Map drag start')
 }
 
 function dragMapEnd(event) {
     mapDrag = undefined
-    console.log('Map drag end')
 }
 
 const dragspeed = 7
@@ -1151,11 +1118,6 @@ function validateMapBoundaries(vertical, horizontal) {
     const topBorder = border.position().top
     const rightBorder = leftBorder + border.width()
     const bottomBorder = topBorder + border.height()
-    
-    if (!(position[0] <= topBorder)) console.log('Problem 1 in ' + position[0] + ',' + topBorder)
-    if (!(position[1] <= leftBorder)) console.log('Problem 2 in ' + position[1] + ',' + leftBorder)
-    if (!(position[0] + current.height() >= bottomBorder)) console.log('Problem 3 in ' + (position[0] + current.height()) + ',' + bottomBorder)
-    if (!(position[1] + current.width() >= rightBorder)) console.log('Problem 4 in ' + (position[1] + current.width()) + ',' + rightBorder)
    
     return position[0] <= topBorder && position[1] <= leftBorder && position[0] + current.height() >= bottomBorder
         && position[1] + current.width() >= rightBorder; 
@@ -1176,18 +1138,29 @@ function dragMap(event) {
     if (validateMapBoundaries($(getCurrentMap()).position().top - vi, $(getCurrentMap()).position().left - hi)) 
         $(getCurrentMap()).offset({left: $(getCurrentMap()).offset().left - hi, top: $(getCurrentMap()).offset().top - vi})
     reloadPins()
-    if(nav == 1){
-        console.log("recalibrating...")
-        recalibratePath()
-    }
+    repositionCanvas()
+
+}
+
+function repositionCanvas() {
+    const maps = [['map-canvas', 'mapLayer'], ['bettermap-canvas','bettermap-img']]
+    map = upgrademap ? maps[1] : maps[0] //decide between 3d or not
+    $('#' + map[0]).width($('#' + map[1]).width())
+    $('#' + map[0]).height($('#' + map[1]).height())
+    $('#' + map[0]).offset($('#' + map[1]).offset())
+    drawPath()
+}
+
+function clearPath() {
+    let canvas = document.getElementById((upgrademap ? 'better' : '') + 'map-canvas').getContext('2d');
+    canvas.clearRect(0,0,$('#' + (upgrademap ? 'better' : '') + 'map-canvas').height(), $('#' + (upgrademap ? 'better' : '') + 'map-canvas').width());
+    
 }
 
 function searchPlace(place){
-    console.log(place);
     let flag = 0;
     for(i = 0; i < map_pins.length; i++){
         if(map_pins[i].n == place){
-            console.log("expetaculo");
             nav = 1;
             doPath(6);
             flag = 1;
@@ -1294,11 +1267,7 @@ function doPath(target){
     clearArray(vals);
     vals = Dijkstra(g, closerPin, target)
     path = doTraceback(vals[0],closerPin,target)
-    console.log(path);
-    //drawPathToPin(current, closerPin);
     drawPath();
-    console.log(path.map(el => el +1))
-    console.log('desenhado')
     calculateDistanceGPS();
 }
 
@@ -1308,7 +1277,6 @@ function calculateDistanceGPS(){
         d += vals[1][path[i]];
     }
     document.getElementById('distance').innerHTML = d;
-    console.log("distance " + d);
 }
 
 function searchClosestPin(){
@@ -1367,11 +1335,9 @@ function resetInputPlace(){
 
 function searchPlacesNearBy(distance){
     let places = []
-    console.log("searching...");
     for(i = 0; i < map_pins.length; i++){
         if(calculateDistance(map_pins[i]) <= (distance*1000) && map_pins[i].n != 'atualPosition'){
             places.push(map_pins[i]);
-            console.log(map_pins[i].n);
         }
     }
     if(places.length == 0){
@@ -1384,10 +1350,8 @@ function searchPlacesNearBy(distance){
 }
 
 function printPlaces(places){
-    console.log(places);
     let something = '<table id="tableInterest">';
     for(let pin of places){
-        console.log('yo');
         something += "<tr>"
         if(pin.t=="park" || pin.t == "atualPosition"){
             something += "<td><img class='iconInterest' src='icons/" + pin.t + ".svg'></td>";
@@ -1432,7 +1396,6 @@ function searchPin(name){
 function addNotification(){
     numberNoti++;
     notifications.push(pictureProfileArray[numberPostFtg - numberNoti].divName);
-    console.log(notifications);
     ativeNotification();
 }
 
@@ -1471,7 +1434,6 @@ function upPosition(){
     updateDisplayController();
     if(nav == 1){
         recalibratePath();
-        console.log(path);
         if(path.length == 1){
             endNavigation();
         }
@@ -1493,7 +1455,6 @@ function leftPosition(){
     updateDisplayController();
     if(nav == 1){
         recalibratePath();
-        console.log(path);
         if(path.length == 1){
             endNavigation();
         }
@@ -1515,7 +1476,6 @@ function rightPosition(){
     updateDisplayController();
     if(nav == 1){
         recalibratePath();
-        console.log(path);
         if(path.length == 1){
             endNavigation();
         }
@@ -1537,7 +1497,6 @@ function downPosition(){
     updateDisplayController();
     if(nav == 1){
         recalibratePath();
-        console.log(path);
         if(path.length == 1){
             endNavigation();
         }
@@ -1658,12 +1617,10 @@ function toggle3D() {
     $('#scrollWheel').css('top', offsets['scroll'] + ($(item).css('display') === 'none' ? 0 : 30) + '%');
     upgrademap = !upgrademap
     if(screenStack[screenStack.length - 1] === 'mapaScreen'){
-        console.log('oh yeahhh')
         pushScreen('augmentedHelp');
         reloadPins()    
         drawPath()
     }
-    console.log(screenStack[screenStack.length -1])
 }
 
 function centerPosition() {
@@ -1695,11 +1652,7 @@ function searchPinCoordinates(x,y){
 }
 
 function getDirections(pin){
-    console.log(pin)
     let adj2 = g.getEdges(pin[0]);
-    console.log(adj2);
-    console.log(pin);
-    console.log(pin[0])
     for(let i = 0; i < adj2.length; i++){
         if((pin[1] - adj2[i].getXf() == 0 ) && (pin[2] - adj2[i].getYf() > 0)){
             directions.push([0,adj2[i].getId()]);
@@ -1719,7 +1672,6 @@ function getDirections(pin){
 
 function plusOne(){
     let d = document.getElementById('radius').value;
-    console.log(d)
     if(d < 99){
         d++;
         document.getElementById('radius').value = d;
