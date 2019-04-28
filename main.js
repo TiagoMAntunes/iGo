@@ -1127,6 +1127,10 @@ function reloadPins() {
             newpin.src = "icons/" + pin.t + ".png"
         }
 
+        if(pin.t != "atualPosition"){
+            newpin.onclick = screenInfo(i);
+        }
+
         newpin.id="pin" + (i++).toString()
         newpin.className = "pin"
         
@@ -1141,9 +1145,6 @@ function reloadPins() {
         newpin.style.height = 100 * scale + 'px';
         newpin.style.width = 100* scale + 'px';
         
-        if(pin.t != "atualPosition"){
-            newpin.onclick = screenInfo(i);
-        }
         map.appendChild(newpin)
     }
 
@@ -1162,8 +1163,9 @@ let mapDrag = undefined
 
 function screenInfo(numberPin) {
     let pin = map_pins[numberPin];
-    document.getElementById("Information").
-    
+    document.getElementById("titleInformation").innerHTML = popsGPS[numberPin]['name'];
+    document.getElementById("descriptionInformation").innerHTML = popsGPS[numberPin]['description'];
+    document.getElementById("imageInformation").src = popsGPS[numberPin]['picture'];
 }
 
 function dragMapStart(event) {
