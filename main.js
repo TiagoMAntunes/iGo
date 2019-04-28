@@ -101,6 +101,10 @@ var lockScreenIcons = [{
 }]
 
 var popsGPS = [{
+     "name":"",
+    "description":"",
+    "picture": ""
+},{
     "name":"Park",
     "description":"Beautiful birds and a cool lake to chill out",
     "picture": "images/park.jpg"
@@ -109,17 +113,29 @@ var popsGPS = [{
     "description":"Good spaguetti and pasta",
     "picture": "images/restaurant.jpg"
 },{
+<<<<<<< HEAD
     "name":"Museum",
     "description":"MonaLisa in room 505",
     "picture": "images/museum.jpg"
+=======
+    "name":"Hotel",
+    "description":"5 star with a good view",
+    "picture": ""
+>>>>>>> d8e17831eae72b46241de0d5797221dd4fa95aac
 },{
     "name":"Metro",
     "description":"Principal metro station of San Francisco city",
     "picture": "images/metro.jpg"
 },{
+<<<<<<< HEAD
     "name":"Hotel",
     "description":"5 star with a good view",
     "picture": "images/hotel2.jpg"
+=======
+    "name":"Museum",
+    "description":"MonaLisa in room 505",
+    "picture": ""
+>>>>>>> d8e17831eae72b46241de0d5797221dd4fa95aac
 }]
 
 var screenStack = [];
@@ -512,11 +528,11 @@ function mapBoundariesPositioning() {
     let border = upgrademap ? $(document.getElementById('bettermap')) : $(document.getElementById('mapaScreen'))
     let current = $(getCurrentMap())
     const position = Object.values(current.position())
-    const leftBorder = border.position().left
-    const topBorder = border.position().top
+    const leftBorder = 0
+    const topBorder = 0
     const rightBorder = leftBorder + border.width()
     const bottomBorder = topBorder + border.height()
-    
+    console.log(rightBorder)
     if (position[0] > topBorder){
         current.offset({top: current.offset().top - position[0] + topBorder})
     }
@@ -524,11 +540,11 @@ function mapBoundariesPositioning() {
         current.offset({left: current.offset().left - position[1] + leftBorder})
     }
 
-    if (position[0] + current.height() < rightBorder){
-        current.offset({top: current.offset().top - position[0] - current.height() + rightBorder})
+    if (position[0] + current.height() < bottomBorder){
+        current.offset({top: current.offset().top - position[0] - current.height() + bottomBorder})
     }
-    if (position[1] + current.width() < bottomBorder) {
-        current.offset({left: current.offset().left - position[1] - current.width() + bottomBorder})
+    if (position[1] + current.width() < rightBorder) {
+        current.offset({left: current.offset().left - position[1] - current.width() + rightBorder})
     }
     
 }
@@ -1099,8 +1115,8 @@ class Pin {
 }
 
 function addAllPins(){
-    addPin(548,44,"p","park");
     addPin(639, 139 ,"atualPosition","atualPosition")
+    addPin(548,44,"p","park");
     addPin(685, 233,"r","restaurant");
     addPin(816, 107,"h", "hotel");
     addPin(639,360,"m","metro");
@@ -1128,7 +1144,7 @@ function reloadPins() {
         }
 
         if(pin.t != "atualPosition"){
-            newpin.onclick = screenInfo(i);
+            newpin.click(screenInfo(i))
         }
 
         newpin.id="pin" + (i++).toString()
@@ -1181,19 +1197,6 @@ function dragMapEnd(event) {
 
 const dragspeed = 7
 
-function validateMapBoundaries(vertical, horizontal) {
-    const position = [vertical, horizontal]
-    const current = $(getCurrentMap())
-    const border = upgrademap ? $(document.getElementById('bettermap')) : $(document.getElementById('mapaScreen'))
-
-    const leftBorder = border.position().left
-    const topBorder = border.position().top
-    const rightBorder = leftBorder + border.width()
-    const bottomBorder = topBorder + border.height()
-   
-    return position[0] <= topBorder && position[1] <= leftBorder && position[0] + current.height() >= bottomBorder
-        && position[1] + current.width() >= rightBorder; 
-}
 
 function getCurrentMap() {
     return upgrademap ? document.getElementById('bettermap-img') : document.getElementById('mapLayer')
@@ -1207,8 +1210,8 @@ function dragMap(event) {
     hi = mapDrag.clientX - event.clientX
     vi = mapDrag.clientY - event.clientY
     mapDrag = event
-    if (validateMapBoundaries($(getCurrentMap()).position().top - vi, $(getCurrentMap()).position().left - hi)) 
-        $(getCurrentMap()).offset({left: $(getCurrentMap()).offset().left - hi, top: $(getCurrentMap()).offset().top - vi})
+    $(getCurrentMap()).offset({left: $(getCurrentMap()).offset().left - hi, top: $(getCurrentMap()).offset().top - vi})
+    mapBoundariesPositioning()
     reloadPins()
     repositionCanvas()
 
