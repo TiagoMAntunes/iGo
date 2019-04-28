@@ -1080,7 +1080,7 @@ function addAllPins(){
     addPin(548,75,"ola","park");
     addPin(639, 139 ,"atualPosition","atualPosition")
     addPin(730, 13,"ola2","restaurant");
-    addPin(829, 139,"ola3", "hotel");
+    addPin(816, 139,"ola3", "hotel");
     addPin(649,328,"ola4","metro");
     addPin(771,202,"ola5","museum");
     reloadPins();
@@ -1666,13 +1666,14 @@ function setupGraph() {
     pins.push([40, 328, 771])
     pins.push([41, 391, 771])
 
-    pins.push([42, 13, 829])
-    pins.push([43, 75, 829])
-    pins.push([44, 139, 829])
-    pins.push([45, 202, 829])
-    pins.push([46, 265, 829])
-    pins.push([47, 328, 829])
-    pins.push([48, 391, 829])
+    pins.push([42, 13, 816])
+    pins.push([43, 75, 816])
+    pins.push([44, 139, 816])
+    pins.push([45, 202, 816])
+    pins.push([46, 265, 816])
+    pins.push([47, 328, 816])
+    pins.push([48, 391, 816])
+
 
     g = new Graph(pins.length)
     
@@ -1851,7 +1852,6 @@ function plusOne(){
     let d = document.getElementById('radius').value;
     if(d < 9900){
         d = eval(d) + 100;
-        console.log(d);
         document.getElementById('radius').value = d;
     }
 }
