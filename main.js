@@ -1223,9 +1223,7 @@ function searchPlace(place){
 
 function endOn3Dmap() {
     if(screenStack[screenStack.length - 1] == 'augmentedHelp'){
-        toggle3D();
-        centerPosition()
-        reloadPins()
+        goto2dmap()
         drawPath()
     }
 }
