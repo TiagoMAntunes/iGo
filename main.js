@@ -1474,6 +1474,7 @@ function upPosition(){
     updateDisplayController();
     if(nav == 1){
         recalibratePath();
+        centerPosition();
         if(path.length == 1){
             endNavigation();
         }
@@ -1495,8 +1496,10 @@ function leftPosition(){
     updateDisplayController();
     if(nav == 1){
         recalibratePath();
+        centerPosition();
         if(path.length == 1){
             endNavigation();
+
         }
     }   
 }
@@ -1516,6 +1519,7 @@ function rightPosition(){
     updateDisplayController();
     if(nav == 1){
         recalibratePath();
+        centerPosition();
         if(path.length == 1){
             endNavigation();
         }
@@ -1537,6 +1541,7 @@ function downPosition(){
     updateDisplayController();
     if(nav == 1){
         recalibratePath();
+        centerPosition();
         if(path.length == 1){
             endNavigation();
         }
