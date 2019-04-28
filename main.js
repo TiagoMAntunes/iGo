@@ -312,7 +312,7 @@ function backButton() {
         return;
     }
     if(screenStack[screenStack.length - 1] == 'mapaScreen' && nav == 1){
-        endNavigation()
+        popUpCancelTrip()
         return
     }
     if (localStorage.getItem('locked') === 'true' && screenStack[screenStack.length - 1] === 'lockScreen') {
@@ -1724,4 +1724,9 @@ function doneRadius(){
 function doneSearching(){
      document.getElementById('counterDistance').style.display = '';
     document.getElementById('ListOfInterest').style.display = 'none';
+}
+
+function popUpCancelTrip(){
+    popupon = 1;
+    location.href = "#popup8";
 }
