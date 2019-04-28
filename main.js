@@ -1849,16 +1849,17 @@ function getDirections(pin){
 
 function plusOne(){
     let d = document.getElementById('radius').value;
-    if(d < 99){
-        d++;
+    if(d < 9900){
+        d+= 100;
+        console.log(d);
         document.getElementById('radius').value = d;
     }
 }
 
 function lessOne(){
     let d = document.getElementById('radius').value;
-    if(d > 1){
-        d--;
+    if(d > 100){
+        d= d - 100;
         document.getElementById('radius').value = d;
     }
 }
@@ -1866,7 +1867,7 @@ function lessOne(){
 function doneRadius(){
     document.getElementById('counterDistance').style.display = 'none';
     document.getElementById('ListOfInterest').style.display = '';
-    document.getElementById('radius').value = "1";
+    document.getElementById('radius').value = "100";
 }
 
 function doneSearching(){
