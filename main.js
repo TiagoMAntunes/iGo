@@ -103,23 +103,23 @@ var lockScreenIcons = [{
 var popsGPS = [{
     "name":"Park",
     "description":"Beautiful birds and a cool lake to chill out",
-    "picture": ""
+    "picture": "images/park.jpg"
 },{
     "name":"Restaurant",
     "description":"Good spaguetti and pasta",
-    "picture": ""
+    "picture": "images/restaurant.jpg"
 },{
     "name":"Museum",
     "description":"MonaLisa in room 505",
-    "picture": ""
+    "picture": "images/museum.jpg"
 },{
     "name":"Metro",
     "description":"Principal metro station of San Francisco city",
-    "picture": ""
+    "picture": "images/metro.jpg"
 },{
     "name":"Hotel",
     "description":"5 star with a good view",
-    "picture": ""
+    "picture": "images/hotel2.jpg"
 }]
 
 var screenStack = [];
