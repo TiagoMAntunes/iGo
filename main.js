@@ -1130,9 +1130,9 @@ function reloadPins() {
         else{
             newpin.src = "icons/" + pin.t + ".png"
         }
-
+        let j = i
         if(pin.t != "atualPosition"){
-            newpin.click(screenInfo(i))
+            $(newpin).click(function() {screenInfo(j)})
         }
 
         newpin.id="pin" + (i++).toString()
@@ -1166,10 +1166,12 @@ function reloadPins() {
 let mapDrag = undefined
 
 function screenInfo(numberPin) {
+    console.log(numberPin);
     let pin = map_pins[numberPin];
-    document.getElementById("titleInformation").innerHTML = popsGPS[numberPin]['name'];
-    document.getElementById("descriptionInformation").innerHTML = popsGPS[numberPin]['description'];
-    document.getElementById("imageInformation").src = popsGPS[numberPin]['picture'];
+    document.getElementById("titleInformation").innerHTML = popsGPS[numberPin].name;
+    document.getElementById("descriptionInformation").innerHTML = popsGPS[numberPin].description;
+    document.getElementById("imageInformation").src = popsGPS[numberPin].picture;
+    pushScreen('Information');
 }
 
 function dragMapStart(event) {
