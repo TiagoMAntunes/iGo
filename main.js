@@ -1078,7 +1078,7 @@ class Pin {
 function addAllPins(){
     addPin(548,44,"p","park");
     addPin(639, 139 ,"atualPosition","atualPosition")
-    addPin(707, 13,"r","restaurant");
+    addPin(685, 233,"r","restaurant");
     addPin(816, 107,"h", "hotel");
     addPin(639,360,"m","metro");
     addPin(771,233,"mu","museum");
@@ -1711,7 +1711,7 @@ function setupGraph() {
 
     pins.push([49,233,771])
     pins.push([50,107,816])
-    pins.push([51,13,707])
+    pins.push([51,233,685])
     pins.push([52,44,548])
     pins.push([53,360,639])
 
@@ -1763,13 +1763,13 @@ function setupGraph() {
     g.insert(pins[20], pins[27])
 
     g.insert(pins[21], pins[22])
-    g.insert(pins[21], pins[51])
-    g.insert(pins[51], pins[28])
+    g.insert(pins[21], pins[28])
     g.insert(pins[22], pins[23])
     g.insert(pins[22], pins[29])
     g.insert(pins[23], pins[24])
     g.insert(pins[23], pins[30])
-    g.insert(pins[24], pins[25])
+    g.insert(pins[24], pins[51])
+    g.insert(pins[51], pins[25])
     g.insert(pins[24], pins[31])
     g.insert(pins[25], pins[26])
     g.insert(pins[25], pins[32])
