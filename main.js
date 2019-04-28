@@ -1212,7 +1212,7 @@ function searchPlace(place){
     if (path.length === 1) {
         endOn3Dmap();
         endNavigation()
-        /*openPopArriveTarget();*/
+        openPopArriveTarget();
     }
     if(flag == 0){
         openNoPlaceFoundPop();   
