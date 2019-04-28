@@ -1083,7 +1083,7 @@ function addAllPins(){
     addPin(707, 13,"r","restaurant");
     addPin(816, 107,"h", "hotel");
     addPin(639,360,"m","metro");
-    addPin(771,223,"mu","museum");
+    addPin(771,233,"mu","museum");
     reloadPins();
 }
 
@@ -1251,14 +1251,14 @@ function barsNavigation() {
 function topbarNavigation(mode) {
     if(mode === "car"){
         modeWalk = 0;
-        document.getElementById('timeAndDistance').innerHTML = '10min (<span id="distance"></span>m)';
+        document.getElementById('timeAndDistance').innerHTML = '<span id="timeGPS"></span>min (<span id="distance"></span>m)';
         calculateDistanceGPS();
         document.getElementById('car').style.backgroundColor = '#ccc';
         document.getElementById('walk').style.backgroundColor = 'white';
     }
     else{
         modeWalk = 1;
-        document.getElementById('timeAndDistance').innerHTML = '30min (<span id="distance"></span>m)';
+        document.getElementById('timeAndDistance').innerHTML = '<span id="timeGPS"></span>min (<span id="distance"></span>m)';
         calculateDistanceGPS();
         document.getElementById('walk').style.backgroundColor = '#ccc';
         document.getElementById('car').style.backgroundColor = "white"
@@ -1327,6 +1327,12 @@ function calculateDistanceGPS(){
     for(let i=0; i < path.length;i++){
         d += vals[1][path[i]];
     }
+    if(modeWalk == 1){
+        document.getElementById('timeGPS').innerHTML = 2 * path.length - 2;
+    }
+    else{
+        document.getElementById('timeGPS').innerHTML = path.length - 1;
+    }
     document.getElementById('distance').innerHTML = d;
 }
 
@@ -1387,7 +1393,7 @@ function resetInputPlace(){
 function searchPlacesNearBy(distance){
     let places = []
     for(i = 0; i < map_pins.length; i++){
-        if(calculateDistance(map_pins[i]) <= (distance*1000) && map_pins[i].n != 'atualPosition'){
+        if(calculateDistance(map_pins[i]) <= (distance) && map_pins[i].n != 'atualPosition'){
             places.push(map_pins[i]);
         }
     }
