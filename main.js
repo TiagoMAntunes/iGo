@@ -1132,7 +1132,7 @@ function reloadPins() {
         }
 
         if(pin.t != "atualPosition"){
-            $(newpin.click(screenInfo(i))
+            newpin.click(screenInfo(i))
         }
 
         newpin.id="pin" + (i++).toString()
