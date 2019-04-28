@@ -868,7 +868,6 @@ function cancelSearch() {
 }
 
 function cancelPoints() {
-    document.getElementById("radius").value = "100";
     backButton();
 }
 
@@ -1946,7 +1945,6 @@ function lessOne(){
 function doneRadius(){
     document.getElementById('counterDistance').style.display = 'none';
     document.getElementById('ListOfInterest').style.display = '';
-    document.getElementById('radius').value = "100";
 }
 
 function doneSearching(){
