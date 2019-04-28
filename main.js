@@ -1382,7 +1382,7 @@ function resetInputPlace(){
 function searchPlacesNearBy(distance){
     let places = []
     for(i = 0; i < map_pins.length; i++){
-        if(calculateDistance(map_pins[i]) <= (distance*1000) && map_pins[i].n != 'atualPosition'){
+        if(calculateDistance(map_pins[i]) <= (distance) && map_pins[i].n != 'atualPosition'){
             places.push(map_pins[i]);
         }
     }
