@@ -1084,6 +1084,7 @@ max-width: 60%;*/
     height: 20%;
     margin-bottom: 5%;
     margin-left: 5%;
+    z-index: 2;
 }
 
 #navbar2Map {
@@ -1099,6 +1100,7 @@ max-width: 60%;*/
     bottom: 0;
     height: 20%;
     margin-bottom: 5%;
+    z-index: 2;
 }
 
 #navbarcenter {
@@ -1113,6 +1115,7 @@ max-width: 60%;*/
     bottom: 0;
     height: 20%;
     margin-bottom: 5%;
+    z-index: 2;
 }
 
 #navbarcenterNavigation {
@@ -1127,6 +1130,7 @@ max-width: 60%;*/
     bottom: 18%;
     height: 20%;
     margin-bottom: 5%;
+    z-index: 2;
 }
 
 #searchmapbutton {
