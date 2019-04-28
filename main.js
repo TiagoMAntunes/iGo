@@ -1255,24 +1255,25 @@ function endNavigation() {
     document.getElementById('car').style.backgroundColor = "white";
     document.getElementById('walk').style.backgroundColor = 'white';
     document.getElementById('navbarcenterNavigation').style.visibility = 'hidden';
-
+    path = []
     nav = 0;
-    let canvas = document.getElementById('map-canvas').getContext('2d');
-    canvas.clearRect(0,0,$('#map-canvas').height(), $('#map-canvas').width());
+    let canvas = document.getElementById((upgrademap ? 'better' : '') + 'map-canvas').getContext('2d');
+    canvas.clearRect(0,0,$('#' + (upgrademap ? 'better' : '') + 'map-canvas').height(), $('#' + (upgrademap ? 'better' : '') + 'map-canvas').width());
 
 }
 
 function goto2dmap() {
     toggle3D();
     backButton();
-    /*atualizar o mapa 2d com as mudancas que fizemos no 3d*/
+    centerPosition()
+    reloadPins()
+    drawPath()
 }
 
 
 function finish3dmap() {
     endNavigation();
-    toggle3D();
-    backButton();
+    goto2dmap();
 }
 
 
@@ -1290,7 +1291,7 @@ function doPath(target){
     vals = Dijkstra(g, closerPin, target)
     path = doTraceback(vals[0],closerPin,target)
     console.log(path);
-    drawPathToPin(current, closerPin);
+    //drawPathToPin(current, closerPin);
     drawPath();
     console.log(path.map(el => el +1))
     console.log('desenhado')
@@ -1655,9 +1656,10 @@ function toggle3D() {
     if(screenStack[screenStack.length - 1] === 'mapaScreen'){
         console.log('oh yeahhh')
         pushScreen('augmentedHelp');
+        reloadPins()    
+        drawPath()
     }
     console.log(screenStack[screenStack.length -1])
-    reloadPins()
 }
 
 function centerPosition() {
