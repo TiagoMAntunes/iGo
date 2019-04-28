@@ -317,8 +317,9 @@ function backButton() {
         return
     }
      if(screenStack[screenStack.length - 1] == 'augmentedHelp' && nav == 1){
+         console.log('yo')
         popUpCancelTrip3D()
-        return
+        return;
     }
     if (localStorage.getItem('locked') === 'true' && screenStack[screenStack.length - 1] === 'lockScreen') {
         return
@@ -331,7 +332,7 @@ function backButton() {
         hideNavbars();
     }
     if(screenStack[screenStack.lenght -1] === 'augmentedHelp'){
-        
+
     }
     let screen = screenStack.pop()
     if (screen != undefined) {
@@ -1210,14 +1211,24 @@ function searchPlace(place){
         }
     }
     if (path.length === 1) {
+        endOn3Dmap();
         endNavigation()
-        openPopArriveTarget();
+        /*openPopArriveTarget();*/
     }
     if(flag == 0){
         openNoPlaceFoundPop();   
     }
     resetInputPlace();
     
+}
+
+function endOn3Dmap() {
+    if(screenStack[screenStack.length - 1] == 'augmentedHelp'){
+        toggle3D();
+        centerPosition()
+        reloadPins()
+        drawPath()
+    }
 }
 
 function barsNavigation() {
@@ -1490,8 +1501,9 @@ function upPosition(){
         recalibratePath();
         centerPosition();
         if(path.length == 1){
+            endOn3Dmap();
             endNavigation();
-            openPopArriveTarget()
+            /*openPopArriveTarget()*/
         }
     }
 }
@@ -1513,8 +1525,9 @@ function leftPosition(){
         recalibratePath();
         centerPosition();
         if(path.length == 1){
+            endOn3Dmap()
             endNavigation();
-            openPopArriveTarget()
+            /*openPopArriveTarget()*/
         }
     }   
 }
@@ -1536,8 +1549,9 @@ function rightPosition(){
         recalibratePath();
         centerPosition();
         if(path.length == 1){
+            endOn3Dmap()
             endNavigation();
-            openPopArriveTarget()
+            /*openPopArriveTarget()*/
         }
     }
 }
@@ -1559,8 +1573,9 @@ function downPosition(){
         recalibratePath();
         centerPosition();
         if(path.length == 1){
+            endOn3Dmap()
             endNavigation();
-            openPopArriveTarget()
+            /*openPopArriveTarget()*/
         }
     }
 }
