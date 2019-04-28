@@ -311,6 +311,10 @@ function backButton() {
         popupon = 0;
         return;
     }
+    if(screenStack[screenStack.length - 1] == 'mapaScreen' && nav == 1){
+        endNavigation()
+        return
+    }
     if (localStorage.getItem('locked') === 'true' && screenStack[screenStack.length - 1] === 'lockScreen') {
         return
     }
@@ -331,6 +335,7 @@ function backButton() {
     } else {
         document.getElementById('mainmenu').style.display = '';
     }
+
 }
 
 function pushScreen(screen) {
