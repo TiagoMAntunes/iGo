@@ -317,6 +317,7 @@ function backButton() {
         return
     }
      if(screenStack[screenStack.length - 1] == 'augmentedHelp' && nav == 1){
+         console.log('yo')
         popUpCancelTrip3D()
         return
     }
@@ -331,7 +332,7 @@ function backButton() {
         hideNavbars();
     }
     if(screenStack[screenStack.lenght -1] === 'augmentedHelp'){
-        
+
     }
     let screen = screenStack.pop()
     if (screen != undefined) {
@@ -1210,6 +1211,7 @@ function searchPlace(place){
         }
     }
     if (path.length === 1) {
+        endOn3Dmap();
         endNavigation()
         alert('MUDAR Já chegou ao seu destino')
     }
@@ -1218,6 +1220,15 @@ function searchPlace(place){
     }
     resetInputPlace();
     
+}
+
+function endOn3Dmap() {
+    if(screenStack[screenStack.length - 1] == 'augmentedHelp'){
+        toggle3D();
+        centerPosition()
+        reloadPins()
+        drawPath()
+    }
 }
 
 function barsNavigation() {
@@ -1475,6 +1486,7 @@ function upPosition(){
     if(nav == 1){
         recalibratePath();
         if(path.length == 1){
+            endOn3Dmap();
             endNavigation();
         }
     }
@@ -1496,6 +1508,7 @@ function leftPosition(){
     if(nav == 1){
         recalibratePath();
         if(path.length == 1){
+            endOn3Dmap()
             endNavigation();
         }
     }   
@@ -1517,6 +1530,7 @@ function rightPosition(){
     if(nav == 1){
         recalibratePath();
         if(path.length == 1){
+            endOn3Dmap()
             endNavigation();
         }
     }
@@ -1538,6 +1552,7 @@ function downPosition(){
     if(nav == 1){
         recalibratePath();
         if(path.length == 1){
+            endOn3Dmap()
             endNavigation();
         }
     }
