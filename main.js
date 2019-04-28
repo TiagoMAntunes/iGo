@@ -1380,19 +1380,27 @@ function resetInputPlace(){
 }
 
 function searchPlacesNearBy(distance){
-    let places = []
+    let places = [];
+    resetPlaces();
     for(i = 0; i < map_pins.length; i++){
-        if(calculateDistance(map_pins[i]) <= (distance) && map_pins[i].n != 'atualPosition'){
+        if(calculateDistance(map_pins[i]) <= (distance/2) && map_pins[i].n != 'atualPosition'){
             places.push(map_pins[i]);
         }
     }
+    console.log(places);
     if(places.length == 0){
         openNoPlaceFoundPop();
     } 
     else{
+        doneRadius();
         printPlaces(places);
+        backButton();
     }
-    backButton();
+    
+}
+
+function resetPlaces(){
+    document.getElementById('ListOfInterest').innerHTML = '';
 }
 
 function printPlaces(places){
