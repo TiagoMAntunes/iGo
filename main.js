@@ -315,6 +315,10 @@ function backButton() {
         popUpCancelTrip()
         return
     }
+     if(screenStack[screenStack.length - 1] == 'augmentedHelp' && nav == 1){
+        popUpCancelTrip3D()
+        return
+    }
     if (localStorage.getItem('locked') === 'true' && screenStack[screenStack.length - 1] === 'lockScreen') {
         return
     }
@@ -1729,4 +1733,9 @@ function doneSearching(){
 function popUpCancelTrip(){
     popupon = 1;
     location.href = "#popup8";
+}
+
+function popUpCancelTrip3D(){
+    popupon = 1;
+    location.href = "#popup9";
 }

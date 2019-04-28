@@ -472,7 +472,7 @@
                         <img onclick="goto2dmap()" class="augmentedHelp-btn" id="better2d" src="icons/2d.png">
                         <img style="background-color: #6DB465" src="icons/move.svg" class="augmentedHelp-btn" id="bettermove" draggable="true" ondragstart="dragMapStart(event)" ondragend="dragMapEnd(event)" ondrag="dragMap(event)">
                         <div>
-                            <h1 onclick="finish3dmap()" style="background-color: #b2222b" class="augmentedHelp-btn" id="betterend">END</h1>
+                            <h1 onclick="popUpCancelTrip3D()" style="background-color: #b2222b" class="augmentedHelp-btn" id="betterend">END</h1>
                         </div>
                         <img onclick="centerPosition()" style="background-color: #F2C14E" class="augmentedHelp-btn" id="bettercenter" src="icons/crosshair.png">
                 </div>
@@ -554,6 +554,19 @@
                 	Are you sure you want to cancel?
                 	<button id="noButton" onclick="backButton()" id=''>NO</button>
                 	<button id="yesButton" onclick = 'endNavigation();backButton()' id = ''>YES</button>
+                </div>
+            </div>
+        </div>
+         <div id="popup9" class="overlay outside">
+            <div class="popup" style="width: 35%">
+                <div id="toppopup">
+                    <h2 style="padding-left: 5%">Navigation</h2>
+                    <a style="padding-left: 10%; margin-top: -2%" class="close" href="#" onclick="popupclosed()">&times;</a>
+                </div>
+                <div class="content" style="padding-left: 5%">
+                	Are you sure you want to cancel?
+                	<button id="noButton" onclick="backButton()" id=''>NO</button>
+                	<button id="yesButton" onclick = 'backButton();finish3dmap()' id = ''>YES</button>
                 </div>
             </div>
         </div>
