@@ -1077,12 +1077,12 @@ class Pin {
 }
 
 function addAllPins(){
-    addPin(548,44,"ola","p");
+    addPin(548,44,"p","park");
     addPin(639, 139 ,"atualPosition","atualPosition")
-    addPin(707, 13,"ola2","r");
-    addPin(816, 107,"ola3", "h");
-    addPin(639,360,"ola4","m");
-    addPin(771,223,"ola5","mu");
+    addPin(707, 13,"r","restaurant");
+    addPin(816, 107,"h", "hotel");
+    addPin(639,360,"m","metro");
+    addPin(771,223,"mu","museum");
     reloadPins();
 }
 
