@@ -459,9 +459,9 @@
             <div id="pointsInterest" style="display: none">
                 <h1 id="pointsHeading">Points of Interest</h1>
                 	<div id = 'counterDistance'>
-                        <p style="margin-left: 5%;margin-right: 5%">Increase or decrease the radius to know the points of interest around you:</p>
+                        <p style="margin-left: 5%;margin-right: 5%">Increase or decrease the radius in meters to know the points of interest around you:</p>
                         <button id="minusPoints" onclick="lessOne()">-</button>
-                		<input id="radius" value='1' disabled>
+                		<input id="radius" value='100' disabled>
                 		<button id="plusPoints" onclick="plusOne()">+</button>
                 		<button id="donebtnPoints" onclick="searchPlacesNearBy(document.getElementById('radius').value);doneRadius()"><b>DONE</b></button>
                 		<button id="cancelbtnPoints" onclick="cancelPoints()"><b>CANCEL</b></button>
