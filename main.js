@@ -1246,7 +1246,7 @@ function searchPlace(place){
             break
         }
     }
-    if (path.length === 1) {
+    if (path.length == 1) {
         endOn3Dmap();
         endNavigation()
         openPopArriveTarget();
@@ -1261,9 +1261,10 @@ function searchPlace(place){
 function endOn3Dmap() {
     if(screenStack[screenStack.length - 1] == 'augmentedHelp'){
         toggle3D();
-        centerPosition()
         reloadPins()
         drawPath()
+        backButton()
+        centerPosition()
     }
 }
 
