@@ -234,13 +234,15 @@ function setShrekMovement(){
         let pino = searchPinCoordinates(pin.y,pin.x);
         let adjs = g.getEdges(pino[0]);
         let num = Math.floor(Math.random()*(adjs.length));
-        console.log(num);
-        console.log(adjs[num]);
         pin.x = pins[adjs[num].id][2]
         pin.y = pins[adjs[num].id][1]
         reloadPins();
         if(nav == 1){
             recalibratePath();
+        }
+        let pin2 = searchPin('atualPosition');  
+        if(pin.x == pin2.x && pin.y == pin2.y){
+            openPopShrek();
         }
     },5000)
 }
@@ -1128,7 +1130,7 @@ function addAllPins(){
     addPin(816, 107,"Hotel", "hotel",3);
     addPin(639,360,"Metro","metro",4);
     addPin(771,233,"Museum","museum",5);
-    addPin(771,328,"Shrek","shrek",6)
+    addPin(771,328,"Shrek","friend",6)
     reloadPins();
 }
 
@@ -1147,7 +1149,7 @@ function reloadPins() {
         if(pin.t=="park" || pin.t == "atualPosition"){
             newpin.src = "icons/" + pin.t + ".svg"
         }
-        else if(pin.t=="shrek"){
+        else if(pin.t=="friend"){
             newpin.src = "icons/prof1.jpg"
         }
         else{
@@ -1458,7 +1460,7 @@ function searchPlacesNearBy(distance){
     let places = [];
     resetPlaces();
     for(i = 0; i < map_pins.length; i++){
-        if(calculateDistance(map_pins[i]) <= (distance/2) && map_pins[i].n != 'atualPosition'){
+        if(calculateDistance(map_pins[i]) <= (distance/2) && map_pins[i].n != 'atualPosition' && map_pins[i].t != 'friend'){
             places.push(map_pins[i]);
         }
     }
@@ -1484,6 +1486,9 @@ function printPlaces(places){
         something += "<tr onclick='screenInfo("+pin.i+")'>"
         if(pin.t=="park" || pin.t == "atualPosition"){
             something += "<td><img class='iconInterest' src='icons/" + pin.t + ".svg'></td>";
+        }
+        else if(pin.t == 'friend'){
+            continue;
         }
         else{
             something += "<td><img class='iconInterest' src='icons/" + pin.t + ".png'></td>";
@@ -1562,6 +1567,7 @@ function findCurrentDirection(){
 function upPosition(){
     let pino
     let direct
+    let pin2 = searchPin('Shrek');
     let pin = searchPin("atualPosition");
     for(i = 0; i < directions.length; i++){
         if(directions[i][0] == 0){
@@ -1570,8 +1576,11 @@ function upPosition(){
             pin.y = pino[1];
         }
     }
-    reloadPins();
+    if(pin.x == pin2.x && pin.y == pin2.y){
+            openPopShrek();
+    }
     directions = graphMovement(pino);
+    reloadPins();
     updateDisplayController();
     if(nav == 1){
         recalibratePath();
@@ -1589,6 +1598,7 @@ function upPosition(){
 
 function leftPosition(){
     let pino;
+    let pin2 = searchPin('Shrek');
     let pin = searchPin("atualPosition");
     for(i = 0; i < directions.length; i++){
         if(directions[i][0] == 3){
@@ -1596,6 +1606,9 @@ function leftPosition(){
             pin.x = pino[2];
             pin.y = pino[1];
         }
+    }
+    if(pin.x == pin2.x && pin.y == pin2.y){
+            openPopShrek();
     }
     reloadPins();
     directions = graphMovement(pino);
@@ -1615,6 +1628,7 @@ function leftPosition(){
 
 function rightPosition(){
     let pino
+    let pin2 = searchPin('Shrek');
     let pin = searchPin("atualPosition");
     for(i = 0; i < directions.length; i++){
         if(directions[i][0] == 1){
@@ -1624,6 +1638,9 @@ function rightPosition(){
         }
     }
     reloadPins();
+    if(pin.x == pin2.x && pin.y == pin2.y){
+            openPopShrek();
+    }
     directions = graphMovement(pino);
     updateDisplayController();
     if(nav == 1){
@@ -1642,6 +1659,7 @@ function rightPosition(){
 
 function downPosition(){
     let pino
+    let pin2 = searchPin('Shrek');
     let pin = searchPin("atualPosition");
     for(i = 0; i < directions.length; i++){
         if(directions[i][0] == 2){
@@ -1651,6 +1669,9 @@ function downPosition(){
         }
     }
     reloadPins();
+    if(pin.x == pin2.x && pin.y == pin2.y){
+            openPopShrek();
+    }
     directions = graphMovement(pino);
     updateDisplayController();
     if(nav == 1){
@@ -2080,4 +2101,8 @@ function popUpCancelTrip3D(){
 function openPopArriveTarget(){
     popupon = 1;
     location.href = "#popup10";
+}
+function openPopShrek(){
+    popupon = 1;
+    location.href = "#popup11";
 }
