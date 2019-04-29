@@ -1013,7 +1013,7 @@ function gpsIsOff(){
         pushScreen('gps-setup');
     } else {
         pushScreen('mapaScreen')
-        centerPosition();
+        centerPosition('atualPosition');
         
     }
 }
@@ -1029,7 +1029,7 @@ function validateGPS(){
     if(gpson % 2 !== 0 ){
         backButton()
         pushScreen('mapaScreen');
-        centerPosition()
+        centerPosition('atualPosition')
     }
 }
 
@@ -1290,7 +1290,7 @@ function endOn3Dmap() {
         reloadPins()
         drawPath()
         backButton()
-        centerPosition()
+        centerPosition('atualPosition')
     }
 }
 
@@ -1356,7 +1356,7 @@ function endNavigation() {
 function goto2dmap() {
     toggle3D();
     backButton();
-    centerPosition()
+    centerPosition('atualPosition')
     reloadPins()
     drawPath()
 }
@@ -1578,7 +1578,7 @@ function upPosition(){
         direct = findCurrentDirection();
         console.log(direct)
         document.getElementById('direct').src = directionsIMG[direct];
-        centerPosition();
+        centerPosition('atualPosition');
         if(path.length == 1){
             endOn3Dmap();
             endNavigation();
@@ -1605,7 +1605,7 @@ function leftPosition(){
         direct = findCurrentDirection();
         console.log(direct)
         document.getElementById('direct').src = directionsIMG[direct];
-        centerPosition();        if(path.length == 1){
+        centerPosition('atualPosition');        if(path.length == 1){
             endOn3Dmap()
             endNavigation();
             openPopArriveTarget()
@@ -1631,7 +1631,7 @@ function rightPosition(){
         direct = findCurrentDirection();
         console.log(direct)
         document.getElementById('direct').src = directionsIMG[direct];
-        centerPosition();
+        centerPosition('atualPosition');
         if(path.length == 1){
             endOn3Dmap()
             endNavigation();
@@ -1658,7 +1658,7 @@ function downPosition(){
         direct = findCurrentDirection();
         console.log(direct)
         document.getElementById('direct').src = directionsIMG[direct];
-        centerPosition();
+        centerPosition('atualPosition');
         if(path.length == 1){
             endOn3Dmap()
             endNavigation();
@@ -1989,13 +1989,13 @@ function toggle3D() {
     upgrademap = !upgrademap
     if(screenStack[screenStack.length - 1] === 'mapaScreen'){
         pushScreen('augmentedHelp');
-        centerPosition()    
+        centerPosition('atualPosition')    
         drawPath()
     }
 }
 
-function centerPosition() {
-    let pin = searchPin('atualPosition')
+function centerPosition(pinName) {
+    let pin = searchPin(pinName)
     zoom = 0;
     let current = $(getCurrentMap())
     let border = upgrademap ? $(document.getElementById('bettermap')) : $(document.getElementById('mapaScreen'))
