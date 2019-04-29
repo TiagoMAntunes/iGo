@@ -103,28 +103,34 @@ var lockScreenIcons = [{
 var popsGPS = [{
      "name":"",
     "description":"",
-    "picture": ""
+    "picture": "",
+    "rating": 0,
 },{
     "name":"Park",
     "description":"Beautiful birds and a cool lake to chill out",
-    "picture": "images/park.jpg"
+    "picture": "images/park.jpg",
+    "rating": 3,
 },{
     "name":"Restaurant",
     "description":"Good spaguetti and pasta",
-    "picture": "images/restaurant.jpg"
+    "picture": "images/restaurant.jpg",
+    "rating": 0,
 },{
     "name":"Hotel",
     "description":"5 star with a good view",
-    "picture": "images/hotel2.jpg"
+    "picture": "images/hotel2.jpg",
+    "rating": 0,
     
 },{
     "name":"Metro",
     "description":"Principal metro station of San Francisco city",
-    "picture": "images/metro.JPG"
+    "picture": "images/metro.JPG",
+    "rating": 0,
 },{
     "name":"Museum",
     "description":"MonaLisa in room 505",
-    "picture": "images/museum.jpg"
+    "picture": "images/museum.jpg",
+    "rating": 0,
 }]
 
 var screenStack = [];
@@ -185,6 +191,7 @@ function startup() {
     blockWatch(); blockWatch();
     setupInitialPosition();
     setShrekMovement();
+    GPS()
     mapsize[0] = document.getElementById('mapLayer').height
     mapsize[1] = document.getElementById('mapLayer').width
 }
@@ -541,7 +548,7 @@ function mapBoundariesPositioning() {
     const topBorder = 0
     const rightBorder = leftBorder + border.width()
     const bottomBorder = topBorder + border.height()
-    console.log(rightBorder)
+    
     if (position[0] > topBorder){
         current.offset({top: current.offset().top - position[0] + topBorder})
     }
@@ -1190,12 +1197,29 @@ function reloadPins() {
 
 let mapDrag = undefined
 
+function changeReview(j, numberPin) {
+    popsGPS[numberPin].rating = j+1;
+    backButton()
+    screenInfo(numberPin);
+}
+
 function screenInfo(numberPin) {
-    console.log(numberPin);
+    console.log('Pin is ' + numberPin);
     let pin = map_pins[numberPin];
     document.getElementById("titleInformation").innerHTML = popsGPS[numberPin].name;
     document.getElementById("descriptionInformation").innerHTML = popsGPS[numberPin].description;
     document.getElementById("imageInformation").src = popsGPS[numberPin].picture;
+    let i;
+    document.getElementById('ratings').innerHTML = ''
+    for (i = 0; i < popsGPS[numberPin].rating; i++) {
+        let j = i;
+        document.getElementById('ratings').innerHTML += "<img src=icons/star.svg onclick=changeReview(" + j +"," + numberPin + ") />"
+    }
+    for (; i < 5; i++) {
+        let j = i;
+        document.getElementById('ratings').innerHTML += "<img src=icons/empty_star.svg onclick=changeReview(" + j +"," + numberPin +") />"
+    }
+
     pushScreen('Information');
 }
 

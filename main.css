@@ -1547,3 +1547,12 @@ max-width: 60%;*/
 #pin0 {
     z-index: 1;
 }
+
+#ratings {
+    height: 10%;
+}
+
+#ratings img {
+    margin: auto;
+    height: 100%;
+}
