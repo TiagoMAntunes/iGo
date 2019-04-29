@@ -184,6 +184,7 @@ function startup() {
     addAllPins();
     blockWatch(); blockWatch();
     setupInitialPosition();
+    setShrekMovement();
     mapsize[0] = document.getElementById('mapLayer').height
     mapsize[1] = document.getElementById('mapLayer').width
 }
@@ -226,6 +227,23 @@ recognition.onresult = function (event) {
 }
 
 var offsets = {help: 0, back: 0, scroll: 0}
+
+function setShrekMovement(){
+    setInterval(function(){
+        let pin = searchPin('Shrek');
+        let pino = searchPinCoordinates(pin.y,pin.x);
+        let adjs = g.getEdges(pino[0]);
+        let num = Math.floor(Math.random()*(adjs.length));
+        console.log(num);
+        console.log(adjs[num]);
+        pin.x = pins[adjs[num].id][2]
+        pin.y = pins[adjs[num].id][1]
+        reloadPins();
+        if(nav == 1){
+            recalibratePath();
+        }
+    },5000)
+}
 
 function setRealSize() {
     let div = document.getElementById("mainScreen");
@@ -1110,6 +1128,7 @@ function addAllPins(){
     addPin(816, 107,"Hotel", "hotel",3);
     addPin(639,360,"Metro","metro",4);
     addPin(771,233,"Museum","museum",5);
+    addPin(771,328,"Shrek","shrek",6)
     reloadPins();
 }
 
@@ -1128,11 +1147,14 @@ function reloadPins() {
         if(pin.t=="park" || pin.t == "atualPosition"){
             newpin.src = "icons/" + pin.t + ".svg"
         }
+        else if(pin.t=="shrek"){
+            newpin.src = "icons/prof1.jpg"
+        }
         else{
             newpin.src = "icons/" + pin.t + ".png"
         }
         let j = i
-        if(pin.t != "atualPosition"){
+        if(pin.t != "atualPosition" ){
             $(newpin).click(function() {screenInfo(j)})
         }
 
@@ -1886,19 +1908,6 @@ function setupGraph() {
     g.insert(pins[33], pins[40])
     g.insert(pins[34], pins[41])
 
-    g.insert(pins[28], pins[29])
-    g.insert(pins[28], pins[35])
-    g.insert(pins[29], pins[30])
-    g.insert(pins[29], pins[36])
-    g.insert(pins[30], pins[31])
-    g.insert(pins[30], pins[37])
-    g.insert(pins[31], pins[32])
-    g.insert(pins[31], pins[38])
-    g.insert(pins[32], pins[33])
-    g.insert(pins[32], pins[39])
-    g.insert(pins[33], pins[34])
-    g.insert(pins[33], pins[40])
-    g.insert(pins[34], pins[41])
 
     g.insert(pins[35], pins[36])
     g.insert(pins[35], pins[42])
