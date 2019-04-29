@@ -225,10 +225,10 @@
                     <img id='walk' class="iconsNavigation" src="icons/walker.svg" onclick="topbarNavigation('walk')">
                 </div>
                 <div id='navbarcenter'>
-                    <img id='centermap' src='icons/crosshair.png' onclick="centerPosition()" />
+                    <img id='centermap' src='icons/crosshair.png' onclick="centerPosition('atualPosition')" />
                 </div>
                 <div id='navbarcenterNavigation' style="visibility: hidden">
-                    <img id='centermap' src='icons/crosshair.png' onclick="centerPosition()" />
+                    <img id='centermap' src='icons/crosshair.png' onclick="centerPosition('atualPosition')" />
                 </div>
                 <div id='topbarNavigation' style='display: none'>
                     <h2 style="width: 50%" id="timeAndDistance"><span id='timeGPS'></span> min (<span id='distance'></span> m)</h2>
@@ -476,7 +476,7 @@
                         <div>
                             <h1 onclick="popUpCancelTrip3D()" style="background-color: #b2222b" class="augmentedHelp-btn" id="betterend">END</h1>
                         </div>
-                        <img onclick="centerPosition()" style="background-color: #F2C14E" class="augmentedHelp-btn" id="bettercenter" src="icons/crosshair.png">
+                        <img onclick="centerPosition('atualPosition')" style="background-color: #F2C14E" class="augmentedHelp-btn" id="bettercenter" src="icons/crosshair.png">
                 </div>
             </div>
             <div id="Information" style="display: none">
@@ -607,6 +607,7 @@
         ondrag="scrollWheelMovement(event)"></div>
     </div>
     <div id='joystick' style='display: none'>
+        <h3 id="explanationArrows">Controls for the current position of the user:</h3>
     	<div>
             <img id='upArrow' style='visibility: hidden;' onclick='upPosition()' class = 'controller' src='icons/up-arrow.svg'/>
         </div>
