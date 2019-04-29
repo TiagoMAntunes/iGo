@@ -1214,6 +1214,15 @@ max-width: 60%;*/
     height: 63%;
 }
 
+#explanationArrows {
+    margin-top: 20%;
+    margin-right: 18%;
+    margin-bottom: 10%;
+    margin-left: 10%;
+    text-align: left;
+}
+
+
 #upArrow {
     margin-bottom: 2%;
     padding-left: 28%;
