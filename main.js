@@ -1422,7 +1422,7 @@ function calculateDistanceGPS(){
     else{
         document.getElementById('timeGPS').innerHTML = path.length - 1;
     }
-    document.getElementById('distance').innerHTML = d;
+    document.getElementById('distance').innerHTML = Math.floor(d * 2.54);
 }
 
 function searchClosestPin(){
@@ -1484,7 +1484,7 @@ function searchPlacesNearBy(distance){
     let places = [];
     resetPlaces();
     for(i = 0; i < map_pins.length; i++){
-        if(calculateDistance(map_pins[i]) <= (distance/2) && map_pins[i].n != 'atualPosition' && map_pins[i].t != 'friend'){
+        if(calculateDistance(map_pins[i]) <= distance && map_pins[i].n != 'atualPosition' && map_pins[i].t != 'friend'){
             places.push(map_pins[i]);
         }
     }
@@ -1527,7 +1527,8 @@ function printPlaces(places){
 function calculateDistance(ponto){
     let pin = searchPin("atualPosition");
     let distance = Math.sqrt(Math.pow(ponto.x - pin.x,2) + Math.pow(ponto.y - pin.y,2));
-    return distance;
+    //map scale 1px = 2.54m
+    return distance * 2.54;
 }
 
 function calculateDistancePin(ponto){
