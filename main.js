@@ -110,27 +110,37 @@ var popsGPS = [{
     "description":"Beautiful birds and a cool lake to chill out",
     "picture": "images/park.jpg",
     "rating": 3,
+    "sum" : 160,
+    "quantity" : 40,
 },{
     "name":"Restaurant",
     "description":"Good spaguetti and pasta",
     "picture": "images/restaurant.jpg",
     "rating": 0,
+    "sum" : 250,
+    "quantity" : 70,
 },{
     "name":"Hotel",
     "description":"5 star with a good view",
     "picture": "images/hotel2.jpg",
     "rating": 0,
+    "sum" : 460,
+    "quantity" : 100,
     
 },{
     "name":"Metro",
     "description":"Principal metro station of San Francisco city",
     "picture": "images/metro.JPG",
     "rating": 0,
+    "sum" : 65,
+    "quantity" : 30,
 },{
     "name":"Museum",
     "description":"MonaLisa in room 505",
     "picture": "images/museum.jpg",
     "rating": 0,
+    "sum" : 250,
+    "quantity" : 60,
 }]
 
 var screenStack = [];
