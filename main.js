@@ -238,9 +238,10 @@ recognition.onresult = function (event) {
 }
 
 var offsets = {help: 0, back: 0, scroll: 0}
+var shrekMov;
 
 function setShrekMovement(){
-    setInterval(function(){
+    shrekMov = setInterval(function(){
         let pin = searchPin('Shrek');
         let pino = searchPinCoordinates(pin.y,pin.x);
         let adjs = g.getEdges(pino[0]);
@@ -258,6 +259,11 @@ function setShrekMovement(){
     },5000)
 }
 
+function stopShrekMovement(){
+    clearInterval(shrekMov);
+    pushScreen('mapaScreen');
+    centerPosition('Shrek');
+}
 function setRealSize() {
     let div = document.getElementById("mainScreen");
     let width = localStorage.getItem("horizontalPx");
@@ -800,7 +806,7 @@ function createMenuMessage(index) {
                 messages += "<div class='containerM lighterM'><p class='messageP' id='message1'>" + profiles[index].messages[i][0] + "</p></div>";
             }
             else{
-                messages += "<div class='containerM lighterM'><p class='messageP' id='message1'>" + profiles[index].messages[i][0] + "</p><button onclick='stopShrekMovement();goToTarget(Shrek)'>Go To</button></div>"
+                messages += "<div class='containerM lighterM'><p class='messageP' id='message1'>" + profiles[index].messages[i][0] + "</p><button onclick='stopShrekMovement()'>GO TO</button></div>"
             }
         }
         else {
@@ -827,10 +833,15 @@ function sendMessage(divName) {
         let value = document.getElementById('shrekscreenmessage' + 'Input').value;    
         if(value.includes('onde') == true){
             setTimeout(function(){
-                profiles[currentUser].messages.push(['Carregue para ter acesso a minha posicao atual','r']);
-                console.log(currentUser);
+                profiles[0].messages.push(['Carregue para ter acesso a minha posicao atual','r']);
                 resetMenuMessage();
-                createMenuMessage(currentUser);
+                createMenuMessage(0);
+                setTimeout(function(){
+                    profiles[0].messages.push(['Estou a tua espera','r']);
+                    resetMenuMessage();
+                    createMenuMessage(0);
+                }
+                ,2000)
                 }
                 ,3000);
         }
