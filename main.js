@@ -1225,7 +1225,7 @@ function screenInfo(numberPin) {
         let j = i;
         document.getElementById('ratings').innerHTML += "<img src=icons/empty_star.svg onclick=changeReview(" + j +"," + numberPin +") />"
     }
-
+    document.getElementById('ratings').innerHTML += "<button onclick='goToTarget()' id='goToInformation'><b>GO TO</b></button>";
     pushScreen('Information');
 }
 

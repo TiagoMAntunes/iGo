@@ -1537,11 +1537,12 @@ max-width: 60%;*/
 #goToInformation {
     margin-top: 3%;
     background-color: #2E8B57;
-    padding: 2% 4%;
+    padding: 0% 10%;
     border: 2px solid #2E8B57;
     border-radius: 5%;
     color: white;
-    margin-left: 70%;   
+    margin-left: 38%;   
+    height: 101%;
 }
 
 #pin0 {
@@ -1549,7 +1550,12 @@ max-width: 60%;*/
 }
 
 #ratings {
+    display: flex;
+    flex-direction: row;
     height: 10%;
+    width: 50%;
+    margin-left: 5%;
+    margin-top: 2%;
 }
 
 #ratings img {
