@@ -24,39 +24,33 @@ var profiles = [{
     "photo": "icons/prof1.jpg",
     "name": "Shrek",
     "divName": "shrekscreenmessage",
-    "responses": ["Olá Gato das botas!", "Tudo bem?", "Também", "Bem e o teu?"],
-    "messages": ["Olá Sherk", "Sim e contigo?", "Como vai o projeto de IPM?", "Também!"]
+    "messages": [["Olá Gato das botas!",'r'],["Olá Sherk",'m'],["Tudo bem?",'r'],["Sim e contigo?",'m'], ["Também",'r'],["Como vai o projeto de IPM?",'m'], ["Bem e o teu?",'r'],["Também!",'m']]
 }, {
     "photo": "icons/simb1.jpg",
     "name": "Bart",
     "divName": "bartscreenmessage",
-    "responses": ["Ola Gato", "Tiraste apontamentos das aulas de IPM?", "Obrigado"],
-    "messages": ["Oi Bart", "Sim, amanha empresto-te"]
+    "messages": [["Ola Gato",'r'],["Oi Bart", 'm'],["Tiraste apontamentos das aulas de IPM?",'r'], ["Sim, amanha empresto-te",'m'],["Obrigado",'r']]
 }, {
     "photo": "icons/simb2.jpeg",
     "name": "Homer",
     "divName": "homerscreenmessage",
-    "responses": ["Ola", "Queres ir beber uma jola?", "Vem ter ao MOE's amanha as 15"],
-    "messages": ["Ola Homer", "Sim!!!", "Ate amanha"]
+    "messages": [["Ola",'r'],["Ola Homer",'m'],["Queres ir beber uma jola?",'r'] ["Sim!!!",'m'],["Vem ter ao MOE's amanha as 15",'r'], ["Ate amanha",'m']]
 }, {
     "photo": "icons/toy1.jpg",
     "name": "Woody",
     "divName": "woodyscreenmessage",
-    "responses": ["Ola Gato das botas", "Preciso da tua ajuda tenho uma cobra nas botas"],
-    "messages": ["Oi Woody", "A caminho!!!"]
+    "messages": [["Ola Gato das botas",'r'],["Oi Woody",'m'], ["Preciso da tua ajuda tenho uma cobra nas botas",'r'],["A caminho!!!",'m']]
 }, {
     "photo": "icons/toy2.png",
     "name": "Buzz",
     "divName": "buzzscreenmessage",
     "description": "Para o infinito e mais alem",
-    "responses": ["Ola camarada", "Vamos conquistar a galaxia?", "PARA O INFINTIO E MAIS ALEM!!!"],
-    "messages": ["Oi Buzz", "Dobriga."]
+    "messages": [["Ola camarada",'r'],["Oi Buzz",'m'],["Vamos conquistar a galaxia?",'r'], ["Dobriga.",'m'],["PARA O INFINTIO E MAIS ALEM!!!",'r']]
 }, {
     "photo": "icons/prof5.png",
     "name": "Dragon",
     "divName": "dragonscreenmessage",
-    "responses": ["Ola Gato das botas", "Queres vir ver os teus sobrinhos?", "Combinado!!"],
-    "messages": ["Oi Dragon", "Sim, posso amanha as 18!"]
+    "messages": [["Ola Gato das botas",'r'],["Oi Dragon",'m'], ["Queres vir ver os teus sobrinhos?",'r'],["Sim, posso amanha as 18!",'m'],["Combinado!!",'r'],]
 }]
 
 var mainprofiles = [{
@@ -109,28 +103,38 @@ var popsGPS = [{
     "name":"Park",
     "description":"Beautiful birds and a cool lake to chill out",
     "picture": "images/park.jpg",
-    "rating": 3,
+    "rating": 0,
+    "sum" : 160,
+    "quantity" : 40,
 },{
     "name":"Restaurant",
     "description":"Good spaguetti and pasta",
     "picture": "images/restaurant.jpg",
     "rating": 0,
+    "sum" : 250,
+    "quantity" : 70,
 },{
     "name":"Hotel",
     "description":"5 star with a good view",
     "picture": "images/hotel2.jpg",
     "rating": 0,
+    "sum" : 460,
+    "quantity" : 100,
     
 },{
     "name":"Metro",
     "description":"Principal metro station of San Francisco city",
     "picture": "images/metro.JPG",
     "rating": 0,
+    "sum" : 65,
+    "quantity" : 30,
 },{
     "name":"Museum",
     "description":"MonaLisa in room 505",
     "picture": "images/museum.jpg",
     "rating": 0,
+    "sum" : 250,
+    "quantity" : 60,
 }]
 
 var screenStack = [];
@@ -790,12 +794,17 @@ function createMenuMessage(index) {
     currentUser = index;
     let messages = '';
     messages += "<div id='zindex'><h1 id='messaperson'>" + profiles[index].name + "</h1></div><div id='messageContent'>";
-    for (i = 0, k = 0; i < profiles[index].messages.length || k < profiles[index].responses.length; i++ , k++) {
-        if (profiles[index].responses[k] != null) {
-            messages += "<div class='containerM lighterM'><p class='messageP' id='message1'>" + profiles[index].responses[k] + "</p></div>";
+    for (i = 0; i < profiles[index].messages.length; i++) {
+        if (profiles[index].messages[i][1] == 'r') {
+            if(profiles[index].messages[i][0] != 'Carregue para ter acesso a minha posicao atual'){
+                messages += "<div class='containerM lighterM'><p class='messageP' id='message1'>" + profiles[index].messages[i][0] + "</p></div>";
+            }
+            else{
+                messages += "<div class='containerM lighterM'><p class='messageP' id='message1'>" + profiles[index].messages[i][0] + "</p><button onclick='stopShrekMovement();goToTarget(Shrek)'>Go To</button></div>"
+            }
         }
-        if (profiles[index].messages[i] != null) {
-            messages += "<div class='containerM darkerM'><p class='messageP' id='message2'>" + profiles[index].messages[i] + "</p></div>";
+        else {
+            messages += "<div class='containerM darkerM'><p class='messageP' id='message2'>" + profiles[index].messages[i][0] + "</p></div>";
         }
     }
     let name = profiles[index].divName + 'Input';
@@ -814,11 +823,26 @@ function resetMenuMessage() {
 function sendMessage(divName) {
     if (document.getElementById(divName + 'Input').value === '')
         return;
-    profiles[currentUser].messages.push(document.getElementById(divName + 'Input').value);
+    if(divName =='shrekscreenmessage'){
+        let value = document.getElementById('shrekscreenmessage' + 'Input').value;    
+        if(value.includes('onde') == true){
+            setTimeout(function(){
+                profiles[currentUser].messages.push(['Carregue para ter acesso a minha posicao atual','r']);
+                console.log(currentUser);
+                resetMenuMessage();
+                createMenuMessage(currentUser);
+                }
+                ,3000);
+        }
+    }
+    profiles[currentUser].messages.push([document.getElementById(divName+'Input').value,'m']);
     if (mics[3] === 1)
         microphoneOn(profiles[currentUser].divName + 'Input', 'micmessage', 4);
     resetMenuMessage();
     createMenuMessage(currentUser);
+}
+
+function mapMessageShrek(){
 }
 
 function createMenuPerfil() {
@@ -1225,7 +1249,12 @@ function screenInfo(numberPin) {
         let j = i;
         document.getElementById('ratings').innerHTML += "<img src=icons/empty_star.svg onclick=changeReview(" + j +"," + numberPin +") />"
     }
+<<<<<<< HEAD
     document.getElementById('ratings').innerHTML += "<button onclick='goToTarget()' id='goToInformation'><b>GO TO</b></button>";
+=======
+
+    document.getElementById('avg-rating').innerHTML = ((popsGPS[numberPin].sum + popsGPS[numberPin].rating) / (popsGPS[numberPin].quantity + (popsGPS[numberPin].rating ? 1 : 0))).toFixed(2);
+>>>>>>> dd219b061dbff833a6f61e6bbf39e8ea1058cdf6
     pushScreen('Information');
 }
 
