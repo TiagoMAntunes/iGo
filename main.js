@@ -1193,6 +1193,12 @@ function reloadPins() {
     document.getElementById(map[0]).width = $('#' + map[0]).width()
     $('#' + map[0]).offset($('#' + map[1]).offset())
 
+    const self = searchPin('atualPosition')
+    let ctx = document.getElementById(map[0]).getContext('2d')
+    ctx.beginPath()
+    ctx.arc(self.y * (1-zoom), self.x * (1-zoom), radius * (1-zoom), 0, 2 * Math.PI)
+    ctx.stroke()
+    ctx.closePath()
 }
 
 let mapDrag = undefined
@@ -2130,4 +2136,13 @@ function openPopArriveTarget(){
 function openPopShrek(){
     popupon = 1;
     location.href = "#popup11";
+}
+
+var radius = 0;
+
+function displayRadius() {
+    radius = parseInt(document.getElementById('radius').value) / 2.54
+    console.log(radius)
+    backButton()
+    reloadPins()
 }
