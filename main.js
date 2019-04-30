@@ -1249,12 +1249,8 @@ function screenInfo(numberPin) {
         let j = i;
         document.getElementById('ratings').innerHTML += "<img src=icons/empty_star.svg onclick=changeReview(" + j +"," + numberPin +") />"
     }
-<<<<<<< HEAD
     document.getElementById('ratings').innerHTML += "<button onclick='goToTarget()' id='goToInformation'><b>GO TO</b></button>";
-=======
-
     document.getElementById('avg-rating').innerHTML = ((popsGPS[numberPin].sum + popsGPS[numberPin].rating) / (popsGPS[numberPin].quantity + (popsGPS[numberPin].rating ? 1 : 0))).toFixed(2);
->>>>>>> dd219b061dbff833a6f61e6bbf39e8ea1058cdf6
     pushScreen('Information');
 }
 
