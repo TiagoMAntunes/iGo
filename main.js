@@ -1240,16 +1240,16 @@ function screenInfo(numberPin) {
     document.getElementById("descriptionInformation").innerHTML = popsGPS[numberPin].description;
     document.getElementById("imageInformation").src = popsGPS[numberPin].picture;
     let i;
-    document.getElementById('ratings').innerHTML = ''
+    document.getElementById('imgs-ratings').innerHTML = ''
     for (i = 0; i < popsGPS[numberPin].rating; i++) {
         let j = i;
-        document.getElementById('ratings').innerHTML += "<img src=icons/star.svg onclick=changeReview(" + j +"," + numberPin + ") />"
+        document.getElementById('imgs-ratings').innerHTML += "<img src=icons/star.svg onclick=changeReview(" + j +"," + numberPin + ") />"
     }
     for (; i < 5; i++) {
         let j = i;
-        document.getElementById('ratings').innerHTML += "<img src=icons/empty_star.svg onclick=changeReview(" + j +"," + numberPin +") />"
+        document.getElementById('imgs-ratings').innerHTML += "<img src=icons/empty_star.svg onclick=changeReview(" + j +"," + numberPin +") />"
     }
-    document.getElementById('ratings').innerHTML += "<button onclick='goToTarget()' id='goToInformation'><b>GO TO</b></button>";
+    document.getElementById('imgs-ratings').innerHTML += "<button onclick='goToTarget()' id='goToInformation'><b>GO TO</b></button>";
     document.getElementById('avg-rating').innerHTML = ((popsGPS[numberPin].sum + popsGPS[numberPin].rating) / (popsGPS[numberPin].quantity + (popsGPS[numberPin].rating ? 1 : 0))).toFixed(2);
     pushScreen('Information');
 }
