@@ -2142,7 +2142,28 @@ var radius = 0;
 
 function displayRadius() {
     radius = parseInt(document.getElementById('radius').value) / 2.54
-    console.log(radius)
+    let border = upgrademap ? $(document.getElementById('bettermap')) : $(document.getElementById('mapaScreen'))
+    if (border.height() < (2 * radius) * (1-zoom) * 1.5) {
+        zoom = 2 * radius*1.5 / mapsize[0]
+    } 
+    if (border.width() < (2* radius) * (1-zoom) * 1.5){
+        zoom = 2*radius*1.5/ mapsize[1]
+    }
     backButton()
-    reloadPins()
+    let current = $(getCurrentMap())
+    let hor_pos = (border.width() / 2 - current.position().left) / (1-zoom)
+    let ver_pos = (border.height() / 2 - current.position().top) / (1-zoom)
+    current.height(mapsize[0] * (1 - zoom))
+    current.width(mapsize[1] * (1 - zoom))
+    const baseOffset = border.offset()
+    current.offset({top: baseOffset.top - ver_pos * (1-zoom) + border.height() / 2, left: baseOffset.left - hor_pos * (1-zoom) + border.width() / 2})
+    let pin = searchPin('atualPosition')
+    let offset_x = (pin.y - hor_pos) * (1-zoom) 
+    let offset_y = (pin.x - ver_pos) * (1-zoom)
+    const new_baseOffset = current.offset()
+    current.offset({top: new_baseOffset.top - offset_y, left: new_baseOffset.left - offset_x})
+    mapBoundariesPositioning();
+    reloadPins();
+    if(nav == 1)
+        recalibratePath();
 }
