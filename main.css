@@ -1535,13 +1535,13 @@ max-width: 60%;*/
 }
 
 #goToInformation {
-    margin-top: 3%;
+    margin-top: -16%;
     background-color: #2E8B57;
     padding: 0% 10%;
     border: 2px solid #2E8B57;
     border-radius: 5%;
     color: white;
-    margin-left: 38%;   
+    margin-left: 99%;   
     height: 101%;
 }
 
@@ -1549,13 +1549,20 @@ max-width: 60%;*/
     z-index: 1;
 }
 
+#avg-rating {
+    margin-right: 3%;
+}
+
 #ratings {
     display: flex;
     flex-direction: row;
     height: 10%;
-    width: 50%;
     margin-left: 5%;
     margin-top: 2%;
+}
+
+#imgs-ratings {
+    width: 60%;
 }
 
 #ratings img {
