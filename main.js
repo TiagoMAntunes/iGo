@@ -109,7 +109,7 @@ var popsGPS = [{
     "name":"Park",
     "description":"Beautiful birds and a cool lake to chill out",
     "picture": "images/park.jpg",
-    "rating": 3,
+    "rating": 0,
     "sum" : 160,
     "quantity" : 40,
 },{
@@ -1236,6 +1236,7 @@ function screenInfo(numberPin) {
         document.getElementById('ratings').innerHTML += "<img src=icons/empty_star.svg onclick=changeReview(" + j +"," + numberPin +") />"
     }
 
+    document.getElementById('avg-rating').innerHTML = ((popsGPS[numberPin].sum + popsGPS[numberPin].rating) / (popsGPS[numberPin].quantity + (popsGPS[numberPin].rating ? 1 : 0))).toFixed(2);
     pushScreen('Information');
 }
 
