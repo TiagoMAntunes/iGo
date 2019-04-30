@@ -103,28 +103,38 @@ var popsGPS = [{
     "name":"Park",
     "description":"Beautiful birds and a cool lake to chill out",
     "picture": "images/park.jpg",
-    "rating": 3,
+    "rating": 0,
+    "sum" : 160,
+    "quantity" : 40,
 },{
     "name":"Restaurant",
     "description":"Good spaguetti and pasta",
     "picture": "images/restaurant.jpg",
     "rating": 0,
+    "sum" : 250,
+    "quantity" : 70,
 },{
     "name":"Hotel",
     "description":"5 star with a good view",
     "picture": "images/hotel2.jpg",
     "rating": 0,
+    "sum" : 460,
+    "quantity" : 100,
     
 },{
     "name":"Metro",
     "description":"Principal metro station of San Francisco city",
     "picture": "images/metro.JPG",
     "rating": 0,
+    "sum" : 65,
+    "quantity" : 30,
 },{
     "name":"Museum",
     "description":"MonaLisa in room 505",
     "picture": "images/museum.jpg",
     "rating": 0,
+    "sum" : 250,
+    "quantity" : 60,
 }]
 
 var screenStack = [];
@@ -1207,6 +1217,12 @@ function reloadPins() {
     document.getElementById(map[0]).width = $('#' + map[0]).width()
     $('#' + map[0]).offset($('#' + map[1]).offset())
 
+    const self = searchPin('atualPosition')
+    let ctx = document.getElementById(map[0]).getContext('2d')
+    ctx.beginPath()
+    ctx.arc(self.y * (1-zoom), self.x * (1-zoom), radius * (1-zoom), 0, 2 * Math.PI)
+    ctx.stroke()
+    ctx.closePath()
 }
 
 let mapDrag = undefined
@@ -1234,6 +1250,7 @@ function screenInfo(numberPin) {
         document.getElementById('ratings').innerHTML += "<img src=icons/empty_star.svg onclick=changeReview(" + j +"," + numberPin +") />"
     }
 
+    document.getElementById('avg-rating').innerHTML = ((popsGPS[numberPin].sum + popsGPS[numberPin].rating) / (popsGPS[numberPin].quantity + (popsGPS[numberPin].rating ? 1 : 0))).toFixed(2);
     pushScreen('Information');
 }
 
@@ -1436,7 +1453,7 @@ function calculateDistanceGPS(){
     else{
         document.getElementById('timeGPS').innerHTML = path.length - 1;
     }
-    document.getElementById('distance').innerHTML = d;
+    document.getElementById('distance').innerHTML = Math.floor(d * 2.54);
 }
 
 function searchClosestPin(){
@@ -1498,7 +1515,7 @@ function searchPlacesNearBy(distance){
     let places = [];
     resetPlaces();
     for(i = 0; i < map_pins.length; i++){
-        if(calculateDistance(map_pins[i]) <= (distance/2) && map_pins[i].n != 'atualPosition' && map_pins[i].t != 'friend'){
+        if(calculateDistance(map_pins[i]) <= distance && map_pins[i].n != 'atualPosition' && map_pins[i].t != 'friend'){
             places.push(map_pins[i]);
         }
     }
@@ -1541,7 +1558,8 @@ function printPlaces(places){
 function calculateDistance(ponto){
     let pin = searchPin("atualPosition");
     let distance = Math.sqrt(Math.pow(ponto.x - pin.x,2) + Math.pow(ponto.y - pin.y,2));
-    return distance;
+    //map scale 1px = 2.54m
+    return distance * 2.54;
 }
 
 function calculateDistancePin(ponto){
@@ -2143,4 +2161,34 @@ function openPopArriveTarget(){
 function openPopShrek(){
     popupon = 1;
     location.href = "#popup11";
+}
+
+var radius = 0;
+
+function displayRadius() {
+    radius = parseInt(document.getElementById('radius').value) / 2.54
+    let border = upgrademap ? $(document.getElementById('bettermap')) : $(document.getElementById('mapaScreen'))
+    if (border.height() < (2 * radius) * (1-zoom) * 1.5) {
+        zoom = 2 * radius*1.5 / mapsize[0]
+    } 
+    if (border.width() < (2* radius) * (1-zoom) * 1.5){
+        zoom = 2*radius*1.5/ mapsize[1]
+    }
+    backButton()
+    let current = $(getCurrentMap())
+    let hor_pos = (border.width() / 2 - current.position().left) / (1-zoom)
+    let ver_pos = (border.height() / 2 - current.position().top) / (1-zoom)
+    current.height(mapsize[0] * (1 - zoom))
+    current.width(mapsize[1] * (1 - zoom))
+    const baseOffset = border.offset()
+    current.offset({top: baseOffset.top - ver_pos * (1-zoom) + border.height() / 2, left: baseOffset.left - hor_pos * (1-zoom) + border.width() / 2})
+    let pin = searchPin('atualPosition')
+    let offset_x = (pin.y - hor_pos) * (1-zoom) 
+    let offset_y = (pin.x - ver_pos) * (1-zoom)
+    const new_baseOffset = current.offset()
+    current.offset({top: new_baseOffset.top - offset_y, left: new_baseOffset.left - offset_x})
+    mapBoundariesPositioning();
+    reloadPins();
+    if(nav == 1)
+        recalibratePath();
 }
