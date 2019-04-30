@@ -1569,3 +1569,9 @@ max-width: 60%;*/
     margin: auto;
     height: 100%;
 }
+
+#checked {
+    width: 50%;
+    margin-left: 21%;
+    margin-top: 11%;
+}
