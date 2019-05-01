@@ -189,7 +189,7 @@
                 </div>
                 <div class="navbar">
                     <img id='likeButton' src="icons/heart.png" onclick="likeAction(this)" />
-                    <img onclick="pushScreen('messageScreen')" src="icons/chat(1).png" />
+                    <img onclick="createMessages();pushScreen('messageScreen')" src="icons/chat(1).png" />
                     <img onclick="bluetoothIsOff();picturesSetup()" src="icons/photo.svg" />
                     <img id='bellButton' onclick="pushScreen('notificationScreen');clearArray(notifications)" src="icons/bell3.png" />
                     <img src="icons/man.png" onclick="pushScreen('profile');fillProfile()" />
@@ -247,7 +247,7 @@
                         <h2 class="navtitleHealth">Profile</h2>
                 </div>
                 <div id="firstrowActivity">
-                    <div id="stepsActivity"><img src="icons/footstep.png"></div>
+                    <div onclick="pushScreen('screenSteps')" id="stepsActivity"><img src="icons/footstep.png"></div>
                     <div id="caloriesActivity"><img src="icons/flame.png"></div>
                     <div id="heartActivity"><img src="icons/cardiogram.png"></div>
                 </div>
@@ -255,9 +255,14 @@
                     <div id="distanceActivity"><img src="icons/running-man.png"></div>
                     <div id="sleepActivity"><img src="icons/sleep.png"></div>
                     <div id="glucoseActivity"><img src="icons/diabetes-test.png"></div>
-                    
                 </div>
                 </table>
+            </div>
+            <div id="screenSteps" style='display: none'>
+                <img id="load" src="icons/load.gif">
+                <h1 id="titleSteps">Steps:</h1>
+                <h2 id="valueSteps">12435</h2>
+                <img id="imageSteps" src="icons/footstep.png">
             </div>
             <div id='definicoes' style='display: none'>
                 <h1 style='margin-left: 2%'>Settings</h1>
@@ -524,7 +529,7 @@
                 </div>
             </div>
             <div id="selectFriendSharePosition" style="display:none">
-                
+
             </div>
         </div>
         <div id="popup1" class="overlay outside">

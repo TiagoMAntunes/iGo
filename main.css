@@ -1717,3 +1717,38 @@ max-width: 60%;*/
 #share-div img {
     height: 10%;
 }
+
+#titleSteps {
+    padding-left: 65%;
+    padding-top: 27%;
+}
+
+#valueSteps {
+    padding-left: 65%;
+}
+
+#imageSteps {
+    width: 50%;
+    margin-top: -37%;
+    margin-left: 5%;
+}
+
+#load {
+    -webkit-animation: cssAnimation 0s ease-in 1.3s forwards;
+}
+
+@keyframes cssAnimation {
+    to {
+        width: 0;
+        height: 0;
+        overflow: hidden;
+    }
+}
+
+@-webkit-keyframes cssAnimation {
+    to {
+        width: 0;
+        height: 0;
+        visibility: hidden;
+    }
+}
