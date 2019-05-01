@@ -1327,14 +1327,15 @@ function clearPath() {
 function verifyFriend(friend){
     let flag = 0
     for(i = 0; i < map_pins.length; i++){
-        if(map_pins[i].n == place && map_pins[i].t == 'friend'){
-               flag++;
-               searchFriend(friend);
-               break;
+        if(map_pins[i].n == friend && map_pins[i].t == 'friend'){
+                flag++;
+                clearInterval(shrekMov);
+                searchPlace(friend);
+                break;
         }
     }
     if(flag == 0){
-        openNoPlaceFoundPop();   
+        openNoFriendFoundPop();   
     }
 }
 
@@ -1546,6 +1547,11 @@ function drawPath(){
 function openNoPlaceFoundPop(){
     popupon = 1;
     location.href = "#popup7";
+}
+
+function openNoFriendFoundPop(){
+    popupon = 1;
+    location.href = "#popup12";
 }
 
 function resetInputPlace(){
