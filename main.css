@@ -1083,12 +1083,12 @@ max-width: 60%;*/
     bottom: 0;
     height: 20%;
     margin-bottom: 5%;
-    margin-left: 5%;
+    margin-left: 9%;
     z-index: 2;
 }
 
 #navbar2Map {
-    right: 54%;
+    right: 50%;
     width: 20%;
     background-color: #ced0ce;
     border: 2px solid #8b8b8b;
@@ -1103,7 +1103,7 @@ max-width: 60%;*/
     z-index: 2;
 }
 #navbar3Map {
-    right: 80%;
+    right: 30%;
     width: 20%;
     background-color: #ced0ce;
     border: 2px solid #8b8b8b;
@@ -1119,7 +1119,7 @@ max-width: 60%;*/
 }
 
 #navbarcenter {
-    right: 5%;
+    right: 10%;
     width: 20%;
     background-color: #ced0ce;
     border: 2px solid #8b8b8b;
@@ -1159,9 +1159,15 @@ max-width: 60%;*/
     padding: 5%;
     width: 70%;
     margin-top: 10%;
-    margin-right: 7%;
+    margin-right: 11%;
 }
 
+#searchfriends {
+    padding: 5%;
+    width: 70%;
+    margin-top: 10%;
+    margin-right: 11%;
+}
 .pin {
     position: absolute;
     width: 100px;
@@ -1678,7 +1684,7 @@ max-width: 60%;*/
     background-color: #f97d7d;
     border-radius: 5%;
     padding: 6%;
-    margin-left: 13%;
+    margin-left: 15%;
 }
 
 #sleepActivity {
@@ -1690,5 +1696,11 @@ max-width: 60%;*/
     background-color: lightblue;
     border-radius: 5%;
     padding: 6%;
-    margin-left: 13%;   
+    margin-left: 15%;   
+}
+
+#searchInputFriend {
+    margin-left: 5%;
+    height: 10%;
+    width: 60%
 }
