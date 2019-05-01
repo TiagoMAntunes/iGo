@@ -140,9 +140,9 @@ var popsGPS = [{
 var screenStack = [];
 var picture_index = 0;
 var count = 0;
-var mic1 = 0, mic2 = 2, mic3 = 0, mic4 = 0, mic5=0;
-var mics = [mic1, mic2, mic3, mic4, mic5];
-var micsid = ['mic1', 'mic2', 'mic3', 'micmessage', 'mic5'];
+var mic1 = 0, mic2 = 2, mic3 = 0, mic4 = 0, mic5=0, mic6 = 0;
+var mics = [mic1, mic2, mic3, mic4, mic5, mic6];
+var micsid = ['mic1', 'mic2', 'mic3', 'micmessage', 'mic5', 'mic6'];
 var numberPostFtg = 0;
 var indiceFtg = -1;
 var numberNoti = 0;
@@ -253,7 +253,7 @@ function setShrekMovement(){
             recalibratePath();
         }
         let pin2 = searchPin('atualPosition');  
-        if(pin.x == pin2.x && pin.y == pin2.y){
+        if(pin.x == pin2.x && pin.y == pin2.y && screenStack[screenStack - 1] == 'mapaScreen'){
             openPopShrek();
         }
     },5000)
@@ -1198,10 +1198,12 @@ function reloadPins() {
             newpin.src = "icons/" + pin.t + ".png"
         }
         let j = i
-        if(pin.t != "atualPosition" ){
+        if(pin.t != "atualPosition" && pin.t != 'friend'){
             $(newpin).click(function() {screenInfo(j)})
         }
-
+        if(pin.t == 'friend'){
+            $(newpin).click(function() {screenProfile(pin.n)})
+        }
         newpin.id="pin" + (i++).toString()
         newpin.className = "pin"
         
@@ -1320,6 +1322,34 @@ function clearPath() {
     let canvas = document.getElementById((upgrademap ? 'better' : '') + 'map-canvas').getContext('2d');
     canvas.clearRect(0,0,$('#' + (upgrademap ? 'better' : '') + 'map-canvas').height(), $('#' + (upgrademap ? 'better' : '') + 'map-canvas').width());
     
+}
+
+function verifyFriend(friend){
+    let flag = 0
+    for(i = 0; i < map_pins.length; i++){
+        if(map_pins[i].n == place && map_pins[i].t == 'friend'){
+               flag++;
+               searchFriend(friend);
+               break;
+        }
+    }
+    if(flag == 0){
+        openNoPlaceFoundPop();   
+    }
+}
+
+function verifyPlace(place){
+    let flag = 0;
+    for(i = 0; i < map_pins.length; i++){
+        if(map_pins[i].n == place && map_pins[i].t != 'friend'){
+               flag++;
+               searchPlace(place);
+               break;
+        }
+    }
+    if(flag == 0){
+        openNoPlaceFoundPop();   
+    }
 }
 
 function searchPlace(place){
