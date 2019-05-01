@@ -1609,7 +1609,7 @@ max-width: 60%;*/
 }
 
 #firstrowActivity {
-    padding-top: 30%;
+    padding-top: 28%;
     display: flex;
     flex-direction: row;
 }
@@ -1622,7 +1622,7 @@ max-width: 60%;*/
     width: 75%;
     background-color: cornflowerblue;
     border-radius: 5%;
-    margin-left: 10%;
+    margin-left: 13%;
     padding: 3%;
 }
 
@@ -1632,20 +1632,63 @@ max-width: 60%;*/
 
 #caloriesActivity img {
     width: 69%;
-    background-color:blanchedalmond;
+    background-color:#f3b891;
     border-radius: 5%;
     padding: 6%;
-    margin-left: 5%;
+    margin-left: 13%;
 }
+
+#heartActivity {
+    width: 33%;
+}
+
+#heartActivity img {
+    width: 68%;
+    background-color: darkseagreen;
+    border-radius: 5%;
+    padding: 6%;
+    margin-left: 13%;
+}
+
+#secondrowActivity {
+    display: flex;
+    flex-direction: row;
+    padding-top: 5%;
+}
+
 
 #distanceActivity {
     width: 33%;
 }
 
-#distanceActivity img {
+#distanceActivity img{
     width: 68%;
-    background-color: darkseagreen;
+    background-color: #c6b5d7;
     border-radius: 5%;
     padding: 6%;
-    margin-left: 4%;
+    margin-left: 13%;
+}
+
+#glucoseActivity {
+    width: 33%;
+}
+
+#glucoseActivity img {
+    width: 68%;
+    background-color: #f97d7d;
+    border-radius: 5%;
+    padding: 6%;
+    margin-left: 13%;
+}
+
+#sleepActivity {
+    width: 32%;
+}
+
+#sleepActivity img {
+    width: 68%;
+    background-color: lightblue;
+    border-radius: 5%;
+    padding: 6%;
+    margin-left: 13%;   
 }
