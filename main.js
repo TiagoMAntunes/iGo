@@ -799,7 +799,7 @@ var currentUser = 0;
 function createMenuMessage(index) {
     currentUser = index;
     let messages = '';
-    messages += "<div id='zindex'><h1 id='messaperson'>" + profiles[index].name + "</h1></div><div id='messageContent'>";
+    messages += "<div id='zindex'><h1 id='messaperson'>" + profiles[index].name + "</h1><div id='message-share-location'><img src='icons/pin.svg'>Share</div></div></div><div id='messageContent'>";
     for (i = 0; i < profiles[index].messages.length; i++) {
         if (profiles[index].messages[i][1] == 'r') {
             if(profiles[index].messages[i][0] != 'Carregue para ter acesso a minha posicao atual'){
