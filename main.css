@@ -1704,3 +1704,16 @@ max-width: 60%;*/
     height: 10%;
     width: 60%
 }
+
+#information-top h1{
+    display: inline-block;
+}
+
+#share-div {
+    float: right;
+    margin: auto 5% auto 0;
+}
+
+#share-div img {
+    height: 10%;
+}
