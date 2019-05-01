@@ -34,7 +34,7 @@ var profiles = [{
     "photo": "icons/simb2.jpeg",
     "name": "Homer",
     "divName": "homerscreenmessage",
-    "messages": [["Ola",'r'],["Ola Homer",'m'],["Queres ir beber uma jola?",'r'] ["Sim!!!",'m'],["Vem ter ao MOE's amanha as 15",'r'], ["Ate amanha",'m']]
+    "messages": [["Ola",'r'],["Ola Homer",'m'],["Queres ir beber uma jola?",'r'],["Sim!!!",'m'],["Vem ter ao MOE's amanha as 15",'r'], ["Ate amanha",'m']]
 }, {
     "photo": "icons/toy1.jpg",
     "name": "Woody",
@@ -799,7 +799,7 @@ var currentUser = 0;
 function createMenuMessage(index) {
     currentUser = index;
     let messages = '';
-    messages += "<div id='zindex'><h1 id='messaperson'>" + profiles[index].name + "</h1></div><div id='messageContent'>";
+    messages += "<div id='zindex'><h1 id='messaperson'>" + profiles[index].name + "</h1><div id='message-share-location' onclick='shareLocationMessage()'><img src='icons/pin.svg'>Share</div></div></div><div id='messageContent'>";
     for (i = 0; i < profiles[index].messages.length; i++) {
         if (profiles[index].messages[i][1] == 'r') {
             if(profiles[index].messages[i][0] != 'Carregue para ter acesso a minha posicao atual'){
@@ -2242,6 +2242,21 @@ function displayRadius() {
 
 function pushMapMessage(index, positionname) {
     profiles[index].messages.push(["Gostei desta posição e decidi partilhar contigo " + positionname, 'm'])
+}
+
+function shareLocationMessage() {
+    popupon = 1
+    location.href = "#popup12"
+}
+
+function shareLocationWithFriend() {
+    let name = messaperson.innerText
+    for (let i = 0; i <  profiles.length; i++) 
+        if (profiles[i].name === name) {
+            profiles[i].messages.push(['A minha localizacao', 'm'])
+            createMenuMessage(i)
+            break
+        }
 }
 
 function shareInterest() {

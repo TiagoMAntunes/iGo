@@ -1034,6 +1034,11 @@ input:checked + .slider:before {
     padding-top: 1%;
     z-index: 10;
     background-color: white;
+    border-bottom: 1px solid black;
+}
+
+#zindex * {
+    display: inline-block;
 }
 
 /*margin-right: 2%;
@@ -1751,4 +1756,14 @@ max-width: 60%;*/
         height: 0;
         visibility: hidden;
     }
+}
+
+#message-share-location {
+    height: 10%;
+    float: right;
+    margin-right: 5%;
+}
+
+#message-share-location img {
+    height: 100%;
 }
