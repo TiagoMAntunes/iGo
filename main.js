@@ -2254,3 +2254,10 @@ function shareInterest() {
     document.getElementById("messages").innerHTML = profiletable;
     pushScreen('messageScreen')
 }
+
+function waitDiv(){
+    setTimeout(function(){
+        document.getElementById('afterloadingSteps').style.display = "inline";
+        document.getElementById('loadingSteps').style.display = "none";
+    }, 1300);
+}

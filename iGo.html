@@ -247,7 +247,7 @@
                         <h2 class="navtitleHealth">Profile</h2>
                 </div>
                 <div id="firstrowActivity">
-                    <div onclick="pushScreen('screenSteps')" id="stepsActivity"><img src="icons/footstep.png"></div>
+                    <div onclick="pushScreen('screenSteps'); waitDiv()" id="stepsActivity"><img src="icons/footstep.png"></div>
                     <div id="caloriesActivity"><img src="icons/flame.png"></div>
                     <div id="heartActivity"><img src="icons/cardiogram.png"></div>
                 </div>
@@ -259,10 +259,16 @@
                 </table>
             </div>
             <div id="screenSteps" style='display: none'>
-                <img id="load" src="icons/load.gif">
-                <h1 id="titleSteps">Steps:</h1>
-                <h2 id="valueSteps">12435</h2>
-                <img id="imageSteps" src="icons/footstep.png">
+                <div id="loadingSteps">
+                    <img id="load" src="icons/load.gif" style="margin-top: 40%; margin-left: 19%">
+                    <h2 id="load" style="margin-left: 19%">Loading...please wait</h2>
+                    <img id="load" style="margin-left: 39%; margin-top: -50%; width: 24%" src="icons/run.png">
+                </div>
+                <div id="afterloadingSteps" style='display: none'>
+                    <h1 id="titleSteps">Steps:</h1>
+                    <h2 id="valueSteps">12435</h2>
+                    <img id="imageSteps" src="icons/footstep.png">
+                </div>
             </div>
             <div id='definicoes' style='display: none'>
                 <h1 style='margin-left: 2%'>Settings</h1>
