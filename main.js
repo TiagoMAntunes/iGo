@@ -2241,15 +2241,15 @@ function displayRadius() {
 }
 
 function pushMapMessage(index, positionname) {
-    profiles[index].messages.push(["Gostei desta posição e decidi partilhar contigo" + positionname, 'm'])
+    profiles[index].messages.push(["Gostei desta posição e decidi partilhar contigo " + positionname, 'm'])
 }
 
 function shareInterest() {
     let profiletable = '';
-    let positionName = document.getElementById('titleInformation').value
-    profiletable += "<tr onclick=" + '"' + "pushScreen('messageBox');" + 'pushMapMessage(0,' + positionName + ');' +'createMenuMessage(' + 0 +  ')"' + "><td id='rowone' class='row'><img class='messagepic' src=" + profiles[0].photo + "><h3 id='messagename'>" + profiles[0].name + "</h3></td></tr>";
+    let positionName = titleInformation.innerText
+    profiletable += "<tr onclick=" + '"' + "pushScreen('messageBox');" + 'pushMapMessage(0,\'' + positionName + '\');' +'createMenuMessage(' + 0 +  ')"' + "><td id='rowone' class='row'><img class='messagepic' src=" + profiles[0].photo + "><h3 id='messagename'>" + profiles[0].name + "</h3></td></tr>";
     for (i = 1; i < profiles.length; i++) {
-        profiletable += "<tr onclick=" + '"' + "pushScreen('messageBox');" + 'pushMapMessage(' + i + ',' + positionName +');createMenuMessage(' + i +  ')"' + "><td class='row'><img class='messagepic' src=" + profiles[i].photo + "><h3 id='messagename'>" + profiles[i].name + "</h3></td></tr>";
+        profiletable += "<tr onclick=" + '"' + "pushScreen('messageBox');" + 'pushMapMessage(' + i + ',\'' + positionName +'\');createMenuMessage(' + i +  ')"' + "><td class='row'><img class='messagepic' src=" + profiles[i].photo + "><h3 id='messagename'>" + profiles[i].name + "</h3></td></tr>";
     }
     document.getElementById("messages").innerHTML = profiletable;
     pushScreen('messageScreen')
