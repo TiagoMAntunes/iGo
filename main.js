@@ -2272,7 +2272,9 @@ function shareInterest() {
 
 function waitDiv(){
     setTimeout(function(){
-        document.getElementById('afterloadingSteps').style.display = "inline";
-        document.getElementById('loadingSteps').style.display = "none";
+        pushScreen('afterloadingSteps');
+        console.log(screenStack[screenStack.length -2 ]);
+        screenStack.splice(screenStack.length-2,1);
+        console.log(screenStack[screenStack.length -1 ]);
     }, 1300);
 }
