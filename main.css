@@ -1577,6 +1577,7 @@ max-width: 60%;*/
 
 #pin0 {
     z-index: 1;
+    transform: translate(-50%,-100%);
 }
 
 #avg-rating {
