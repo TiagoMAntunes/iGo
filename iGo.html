@@ -247,9 +247,9 @@
                         <h2 class="navtitleHealth">Profile</h2>
                 </div>
                 <div id="firstrowActivity">
-                    <div onclick="pushScreen('screenSteps'); waitDiv()" id="stepsActivity"><img src="icons/footstep.png"></div>
-                    <div onclick="pushScreen('screenCalories')" id="caloriesActivity"><img src="icons/flame.png"></div>
-                    <div onclick="pushScreen('screenHearth')" id="heartActivity"><img src="icons/cardiogram.png"></div>
+                    <div onclick="pushScreen('screenSteps'); waitDiv('afterloadingSteps')" id="stepsActivity"><img src="icons/footstep.png"></div>
+                    <div onclick="pushScreen('screenCalories'); waitDiv('afterscreenCalories')" id="caloriesActivity"><img src="icons/flame.png"></div>
+                    <div onclick="pushScreen('screenHeart'); waitDiv('afterscreenHeart')" id="heartActivity"><img src="icons/cardiogram.png"></div>
                 </div>
                 <div id="secondrowActivity">
                     <div id="distanceActivity"><img src="icons/running-man.png"></div>
@@ -273,12 +273,22 @@
             <div id="screenCalories" style="display: none">
                 <img src="icons/load2.gif" style="margin-top: 40%;margin-left: 19%">
                 <h2  style="margin-left: 19%; padding-bottom: 100%">Loading...please wait</h2>
-                
+                <img style="margin-left: 39%; margin-top: -150%; width: 24%" src="icons/energy-bar.png">
             </div>
-            <div id="screenHearth" style="display: none">
+            <div id="afterscreenCalories" style='display: none'>
+                <h1 id="titleCalories">Calories:</h1>
+                <h2 id="valueCalories">1.065</h2>
+                <img id="imageCalories" src="icons/flame.png">
+            </div>
+            <div id="screenHeart" style="display: none">
                 <img src="icons/load3.gif" style="margin-top: 40%;margin-left: 19%">
                 <h2  style="margin-left: 19%; padding-bottom: 100%">Loading...please wait</h2>
-
+                <img style="margin-left: 39%; margin-top: -153%; width: 24%" src="icons/ekg-monitor.png">
+            </div>
+            <div id="afterscreenHeart" style="display: none">
+                <h1 id="titleHeart">Heart rate:</h1>
+                <h2 id="valueHeart">85 BPM</h2>
+                <img id="imageHeart" src="icons/cardiogram.png">
             </div>
             <div id='definicoes' style='display: none'>
                 <h1 style='margin-left: 2%'>Settings</h1>

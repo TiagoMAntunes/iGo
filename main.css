@@ -1738,18 +1738,48 @@ max-width: 60%;*/
 }
 
 #titleSteps {
-    padding-left: 65%;
+    padding-left: 59%;
     padding-top: 27%;
 }
 
 #valueSteps {
-    padding-left: 65%;
+    padding-left: 59%;
 }
 
 #imageSteps {
     width: 50%;
     margin-top: -37%;
     margin-left: 5%;
+}
+
+#titleCalories {
+    padding-left: 56%;
+    padding-top: 27%;
+}
+
+#valueCalories {
+    padding-left: 56%;
+}
+
+#imageCalories {
+    width: 50%;
+    margin-top: -37%;
+    margin-left: 5%;    
+}
+
+#titleHeart {
+    padding-left: 62%;
+    padding-top: 27%;    
+}
+
+#valueHeart {
+    padding-left: 62%;
+}
+
+#imageHeart {
+    width: 50%;
+    margin-top: -49%;
+    margin-left: 5%;     
 }
 
 #load {

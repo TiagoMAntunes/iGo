@@ -2276,9 +2276,9 @@ function cancelSearchFriend() {
     backButton();
 }
 
-function waitDiv(){
+function waitDiv(nameDiv){
     setTimeout(function(){
-        pushScreen('afterloadingSteps');
+        pushScreen(nameDiv);
         console.log(screenStack[screenStack.length -2 ]);
         screenStack.splice(screenStack.length-2,1);
         console.log(screenStack[screenStack.length -1 ]);
