@@ -650,6 +650,31 @@ function scrollWheelPointsInterest(event) {
     document.getElementById('pointsInterest').style.top = val;
 }
 
+function scrollWheelChoosePhone(event) {
+    if (document.getElementById('choose-phone').style.top == '')
+        document.getElementById('choose-phone').style.top = '0px';
+
+    if ($('#choose-phone').outerHeight() < $(document.getElementById('mainScreen')).outerHeight() - $(document.getElementById('top-bar')).outerHeight())
+        return;
+    let direction = (event.clientY - dragInfo.clientY)
+
+    let i = 0;
+    if (direction > 0) {
+        i = 10;
+    } else if (direction < 0) {
+        i = -10;
+    }
+
+    let val = parseInt(document.getElementById('choose-phone').style.top) + i;
+    console.log(val)
+    let aux = -($(document.getElementById('choose-phone')).outerHeight() -
+        ($(document.getElementById('mainScreen')).outerHeight() - $(document.getElementById('top-bar')).outerHeight()) + 20)
+    console.log(aux)
+    if (val > 0) val = 0
+    if (val < aux) val = aux
+    document.getElementById('choose-phone').style.top = val;
+}
+
 function scrollWheelMovement(event) {
     if (dragInfo == undefined || event.screenX === 0 && event.screenY === 0)
         return;
@@ -680,6 +705,9 @@ function scrollWheelMovement(event) {
             break
         case 'pointsInterest':
             scrollWheelPointsInterest(event)
+            break
+        case 'choose-phone':
+            scrollWheelChoosePhone(event)
             break
     }
 }
