@@ -24,33 +24,33 @@ var profiles = [{
     "photo": "icons/prof1.jpg",
     "name": "Shrek",
     "divName": "shrekscreenmessage",
-    "messages": [["Olá Gato das botas!",'r'],["Olá Sherk",'m'],["Tudo bem?",'r'],["Sim e contigo?",'m'], ["Também",'r'],["Como vai o projeto de IPM?",'m'], ["Bem e o teu?",'r'],["Também!",'m']]
+    "messages": [{content:"Olá Gato das botas!",self: false},{content:"Olá Sherk",self: true},{content:"Tudo bem?",self: false},{content:"Sim e contigo?",self: true},{content:"Também",self: false},{content:"Como vai o projeto de IPM?",self: true},{content:"Bem e o teu?",self: false},{content:"Também!",self: true}]
 }, {
     "photo": "icons/simb1.jpg",
     "name": "Bart",
     "divName": "bartscreenmessage",
-    "messages": [["Ola Gato",'r'],["Oi Bart", 'm'],["Tiraste apontamentos das aulas de IPM?",'r'], ["Sim, amanha empresto-te",'m'],["Obrigado",'r']]
+    "messages": [{content:"Ola Gato",self: false},{content:"Oi Bart", self: true},{content:"Tiraste apontamentos das aulas de IPM?",self: false},{content:"Sim, amanha empresto-te",self: true},{content:"Obrigado",self: false}]
 }, {
     "photo": "icons/simb2.jpeg",
     "name": "Homer",
     "divName": "homerscreenmessage",
-    "messages": [["Ola",'r'],["Ola Homer",'m'],["Queres ir beber uma jola?",'r'],["Sim!!!",'m'],["Vem ter ao MOE's amanha as 15",'r'], ["Ate amanha",'m']]
+    "messages": [{content:"Ola",self: false},{content:"Ola Homer",self: true},{content:"Queres ir beber uma jola?",self: false},{content:"Sim!!!",self: true},{content:"Vem ter ao MOE's amanha as 15",self: false},{content:"Ate amanha",self: true}]
 }, {
     "photo": "icons/toy1.jpg",
     "name": "Woody",
     "divName": "woodyscreenmessage",
-    "messages": [["Ola Gato das botas",'r'],["Oi Woody",'m'], ["Preciso da tua ajuda tenho uma cobra nas botas",'r'],["A caminho!!!",'m']]
+    "messages": [{content:"Ola Gato das botas",self: false},{content:"Oi Woody",self: true},{content:"Preciso da tua ajuda tenho uma cobra nas botas",self: false},{content:"A caminho!!!",self: true}]
 }, {
     "photo": "icons/toy2.png",
     "name": "Buzz",
     "divName": "buzzscreenmessage",
     "description": "Para o infinito e mais alem",
-    "messages": [["Ola camarada",'r'],["Oi Buzz",'m'],["Vamos conquistar a galaxia?",'r'], ["Dobriga.",'m'],["PARA O INFINTIO E MAIS ALEM!!!",'r']]
+    "messages": [{content:"Ola camarada",self: false},{content:"Oi Buzz",self: true},{content:"Vamos conquistar a galaxia?",self: false},{content:"Dobriga.",self: true},{content:"PARA O INFINTIO E MAIS ALEM!!!",self: false}]
 }, {
     "photo": "icons/prof5.png",
     "name": "Dragon",
     "divName": "dragonscreenmessage",
-    "messages": [["Ola Gato das botas",'r'],["Oi Dragon",'m'], ["Queres vir ver os teus sobrinhos?",'r'],["Sim, posso amanha as 18!",'m'],["Combinado!!",'r'],]
+    "messages": [{content:"Ola Gato das botas",self: false},{content:"Oi Dragon",self: true},{content:"Queres vir ver os teus sobrinhos?",self: false},{content:"Sim, posso amanha as 18!",self: true},{content:"Combinado!!",self: false}]
 }]
 
 var mainprofiles = [{
@@ -801,16 +801,16 @@ function createMenuMessage(index) {
     let messages = '';
     messages += "<div id='zindex'><h1 id='messaperson'>" + profiles[index].name + "</h1><div id='message-share-location' onclick='shareLocationMessage()'><img src='icons/pin.svg'>Share</div></div></div><div id='messageContent'>";
     for (i = 0; i < profiles[index].messages.length; i++) {
-        if (profiles[index].messages[i][1] == 'r') {
-            if(profiles[index].messages[i][0] != 'Carregue para ter acesso a minha posicao atual'){
-                messages += "<div class='containerM lighterM'><p class='messageP' id='message1'>" + profiles[index].messages[i][0] + "</p></div>";
+        if (profiles[index].messages[i].self == false) {
+            if(profiles[index].messages[i].content != 'Carregue para ter acesso a minha posicao atual'){
+                messages += "<div class='containerM lighterM'><p class='messageP' id='message1'>" + profiles[index].messages[i].content + "</p></div>";
             }
             else{
-                messages += "<div class='containerM lighterM'><p class='messageP' id='message1'>" + profiles[index].messages[i][0] + "</p><button onclick='stopShrekMovement()'>GO TO</button></div>"
+                messages += "<div class='containerM lighterM'><p class='messageP' id='message1'>" + profiles[index].messages[i].content + "</p><button onclick='stopShrekMovement()'>GO TO</button></div>"
             }
         }
         else {
-            messages += "<div class='containerM darkerM'><p class='messageP' id='message2'>" + profiles[index].messages[i][0] + "</p></div>";
+            messages += "<div class='containerM darkerM'><p class='messageP' id='message2'>" + profiles[index].messages[i].content + "</p></div>";
         }
     }
     let name = profiles[index].divName + 'Input';
@@ -833,11 +833,11 @@ function sendMessage(divName) {
         let value = document.getElementById('shrekscreenmessage' + 'Input').value;    
         if(value.includes('onde') == true){
             setTimeout(function(){
-                profiles[0].messages.push(['Carregue para ter acesso a minha posicao atual','r']);
+                profiles[0].messages.push({content: 'Carregue para ter acesso a minha posicao atual', self: false});
                 resetMenuMessage();
                 createMenuMessage(0);
                 setTimeout(function(){
-                    profiles[0].messages.push(['Estou a tua espera','r']);
+                    profiles[0].messages.push({content: 'Estou a tua espera',self:false});
                     resetMenuMessage();
                     createMenuMessage(0);
                 }
@@ -846,7 +846,7 @@ function sendMessage(divName) {
                 ,3000);
         }
     }
-    profiles[currentUser].messages.push([document.getElementById(divName+'Input').value,'m']);
+    profiles[currentUser].messages.push({content: document.getElementById(divName+'Input').value,self:true});
     if (mics[3] === 1)
         microphoneOn(profiles[currentUser].divName + 'Input', 'micmessage', 4);
     resetMenuMessage();
@@ -2241,7 +2241,7 @@ function displayRadius() {
 }
 
 function pushMapMessage(index, positionname) {
-    profiles[index].messages.push(["Gostei desta posição e decidi partilhar contigo " + positionname, 'm'])
+    profiles[index].messages.push({content:"Gostei desta posição e decidi partilhar contigo " + positionname, self: true})
 }
 
 function shareLocationMessage() {
@@ -2253,7 +2253,7 @@ function shareLocationWithFriend() {
     let name = messaperson.innerText
     for (let i = 0; i <  profiles.length; i++) 
         if (profiles[i].name === name) {
-            profiles[i].messages.push(['A minha localizacao', 'm'])
+            profiles[i].messages.push({content: 'A minha localizacao', self:true})
             createMenuMessage(i)
             break
         }
