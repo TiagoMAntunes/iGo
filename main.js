@@ -2269,3 +2269,8 @@ function shareInterest() {
     document.getElementById("messages").innerHTML = profiletable;
     pushScreen('messageScreen')
 }
+
+function cancelSearchFriend() {
+    document.getElementById("searchFormFriend").reset();
+    backButton();
+}
