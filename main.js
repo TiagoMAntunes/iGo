@@ -259,6 +259,13 @@ function setShrekMovement(){
     },5000)
 }
 
+function goToPin(pinname) {
+    if (pinname == 'Shrek')
+        clearInterval(shrekMov)
+    pushScreen('mapaScreen')
+    centerPosition(pinname)
+}
+
 function stopShrekMovement(){
     clearInterval(shrekMov);
     pushScreen('mapaScreen');
@@ -650,6 +657,31 @@ function scrollWheelPointsInterest(event) {
     document.getElementById('pointsInterest').style.top = val;
 }
 
+function scrollWheelChoosePhone(event) {
+    if (document.getElementById('choose-phone').style.top == '')
+        document.getElementById('choose-phone').style.top = '0px';
+
+    if ($('#choose-phone').outerHeight() < $(document.getElementById('mainScreen')).outerHeight() - $(document.getElementById('top-bar')).outerHeight())
+        return;
+    let direction = (event.clientY - dragInfo.clientY)
+
+    let i = 0;
+    if (direction > 0) {
+        i = 10;
+    } else if (direction < 0) {
+        i = -10;
+    }
+
+    let val = parseInt(document.getElementById('choose-phone').style.top) + i;
+    console.log(val)
+    let aux = -($(document.getElementById('choose-phone')).outerHeight() -
+        ($(document.getElementById('mainScreen')).outerHeight() - $(document.getElementById('top-bar')).outerHeight()) + 20)
+    console.log(aux)
+    if (val > 0) val = 0
+    if (val < aux) val = aux
+    document.getElementById('choose-phone').style.top = val;
+}
+
 function scrollWheelMovement(event) {
     if (dragInfo == undefined || event.screenX === 0 && event.screenY === 0)
         return;
@@ -680,6 +712,9 @@ function scrollWheelMovement(event) {
             break
         case 'pointsInterest':
             scrollWheelPointsInterest(event)
+            break
+        case 'choose-phone':
+            scrollWheelChoosePhone(event)
             break
     }
 }
@@ -798,7 +833,7 @@ var currentUser = 0;
 function createMessage(message) {
     let content = message.self ? "<div class='containerM darkerM'>" : "<div class='containerM lighterM'><p class='messageP' id='message1'>"
     if (message.isMap)
-        content += "<p class='messageP'> " + message.content + "<button onclick='stopShrekMovement()'>GO TO</button>"
+        content += "<p class='messageP'> " + message.content + "<button onclick='goToPin(\"" + message.pinName + "\")'>GO TO</button>"
     else 
         content += "<p class='messageP'>" + message.content + "</p>"
 
@@ -834,7 +869,7 @@ function sendMessage(divName) {
         let value = document.getElementById('shrekscreenmessage' + 'Input').value;    
         if(value.includes('onde') == true){
             setTimeout(function(){
-                profiles[0].messages.push({content: 'Carregue para ter acesso a minha posicao atual', self: false, isMap: true});
+                profiles[0].messages.push({content: 'Carregue para ter acesso a minha posicao atual', self: false, isMap: true, pinName: 'Shrek'});
                 resetMenuMessage();
                 createMenuMessage(0);
                 setTimeout(function(){
@@ -2254,7 +2289,7 @@ function shareLocationWithFriend() {
     let name = messaperson.innerText
     for (let i = 0; i <  profiles.length; i++) 
         if (profiles[i].name === name) {
-            profiles[i].messages.push({content: 'Vem ter comigo! Estou aqui', self:true, isMap: true})
+            profiles[i].messages.push({content: 'Vem ter comigo! Estou aqui', self:true, isMap: true, pinName: 'atualPosition'})
             createMenuMessage(i)
             break
         }

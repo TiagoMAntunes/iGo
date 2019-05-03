@@ -726,6 +726,10 @@ input:checked + .slider:before {
     border-bottom: solid 1px #ccc;
 }
 
+#choose-phone {
+    position: relative;
+}
+
 #choose-phone td {
     border-top: solid 1px #ccc;
 }
@@ -1573,6 +1577,7 @@ max-width: 60%;*/
 
 #pin0 {
     z-index: 1;
+    transform: translate(-50%,-100%);
 }
 
 #avg-rating {
