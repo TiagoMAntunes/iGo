@@ -259,6 +259,13 @@ function setShrekMovement(){
     },5000)
 }
 
+function goToPin(pinname) {
+    if (pinname == 'Shrek')
+        clearInterval(shrekMov)
+    pushScreen('mapaScreen')
+    centerPosition(pinname)
+}
+
 function stopShrekMovement(){
     clearInterval(shrekMov);
     pushScreen('mapaScreen');
@@ -826,7 +833,7 @@ var currentUser = 0;
 function createMessage(message) {
     let content = message.self ? "<div class='containerM darkerM'>" : "<div class='containerM lighterM'><p class='messageP' id='message1'>"
     if (message.isMap)
-        content += "<p class='messageP'> " + message.content + "<button onclick='stopShrekMovement()'>GO TO</button>"
+        content += "<p class='messageP'> " + message.content + "<button onclick='goToPin(\"" + message.pinName + "\")'>GO TO</button>"
     else 
         content += "<p class='messageP'>" + message.content + "</p>"
 
@@ -862,7 +869,7 @@ function sendMessage(divName) {
         let value = document.getElementById('shrekscreenmessage' + 'Input').value;    
         if(value.includes('onde') == true){
             setTimeout(function(){
-                profiles[0].messages.push({content: 'Carregue para ter acesso a minha posicao atual', self: false, isMap: true});
+                profiles[0].messages.push({content: 'Carregue para ter acesso a minha posicao atual', self: false, isMap: true, pinName: 'Shrek'});
                 resetMenuMessage();
                 createMenuMessage(0);
                 setTimeout(function(){
@@ -2282,7 +2289,7 @@ function shareLocationWithFriend() {
     let name = messaperson.innerText
     for (let i = 0; i <  profiles.length; i++) 
         if (profiles[i].name === name) {
-            profiles[i].messages.push({content: 'Vem ter comigo! Estou aqui', self:true, isMap: true})
+            profiles[i].messages.push({content: 'Vem ter comigo! Estou aqui', self:true, isMap: true, pinName: 'atualPosition'})
             createMenuMessage(i)
             break
         }
