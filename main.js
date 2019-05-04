@@ -2319,3 +2319,12 @@ function waitDiv(nameDiv){
         console.log(screenStack[screenStack.length -1 ]);
     }, 1300);
 }
+
+function screenProfile() {
+    pushScreen('ShrekScreen')
+}
+
+function sendMessageShrek() {
+    pushScreen('messageBox')
+    createMenuMessage(0)
+}

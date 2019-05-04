@@ -1866,3 +1866,12 @@ max-width: 60%;*/
 #message-share-location img {
     height: 100%;
 }
+
+#shrekPicture {
+    height: 30%;
+    border-radius: 100%;
+}
+
+#ShrekScreen {
+    text-align: center;
+}
