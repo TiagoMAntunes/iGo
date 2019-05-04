@@ -1787,6 +1787,52 @@ max-width: 60%;*/
     margin-left: 5%;     
 }
 
+#titleDistance {
+    padding-left: 58%;
+    padding-top: 27%;     
+}
+
+#valueDistance {
+    padding-left: 58%;
+}
+
+#imageDistance {
+    width: 47%;
+    margin-top: -39%;
+    margin-left: 5%; 
+}
+
+#titleSleep {
+    padding-left: 53%;
+    padding-top: 27%;
+}
+
+#valueSleep {
+    padding-left: 53%;
+}
+
+#imageSleep {
+    width: 42%;
+    margin-top: -36%;
+    margin-left: 5%;    
+}
+
+#titleGlucose {
+    padding-left: 56%;
+    padding-top: 25%;
+}
+
+#valueGlucose {
+    padding-left: 56%;
+}
+
+#imageGlucose {
+    width: 50%;
+    margin-top: -47%;
+    margin-left: 5%;    
+}
+
+
 #load {
     -webkit-animation: cssAnimation 0s ease-in 1.3s forwards;
 }

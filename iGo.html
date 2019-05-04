@@ -252,9 +252,9 @@
                     <div onclick="pushScreen('screenHeart'); waitDiv('afterscreenHeart')" id="heartActivity"><img src="icons/cardiogram.png"></div>
                 </div>
                 <div id="secondrowActivity">
-                    <div id="distanceActivity"><img src="icons/running-man.png"></div>
-                    <div id="sleepActivity"><img src="icons/sleep.png"></div>
-                    <div id="glucoseActivity"><img src="icons/diabetes-test.png"></div>
+                    <div onclick="pushScreen('screenDistance'); waitDiv('afterscreenDistance')" id="distanceActivity"><img src="icons/running-man.png"></div>
+                    <div onclick="pushScreen('screenSleep'); waitDiv('afterscreenSleep')" id="sleepActivity"><img src="icons/sleep.png"></div>
+                    <div onclick="pushScreen('screenGlucose'); waitDiv('afterscreenGlucose')" id="glucoseActivity"><img src="icons/diabetes-test.png"></div>
                 </div>
                 </table>
             </div>
@@ -262,7 +262,7 @@
                 <div id="loadingSteps">
                     <img src="icons/load.gif" style="margin-top: 40%; margin-left: 19%">
                     <h2  style="margin-left: 19%; padding-bottom: 100%">Loading...please wait</h2>
-                    <img  style="margin-left: 39%; margin-top: -150%; width: 24%" src="icons/run.png">
+                    <img style="margin-left: 39%; margin-top: -150%; width: 24%" src="icons/run.png">
                 </div>
             </div>
             <div id="afterloadingSteps" style='display: none'>
@@ -289,6 +289,36 @@
                 <h1 id="titleHeart">Heart rate:</h1>
                 <h2 id="valueHeart">85 BPM</h2>
                 <img id="imageHeart" src="icons/cardiogram.png">
+            </div>
+            <div id="screenDistance" style="display: none">
+                <img src="icons/load4.gif" style="margin-top: 40%; margin-left: 19%">
+                <h2 style="margin-left: 19%; padding-bottom: 100%">Loading...please wait</h2>
+                <img style="margin-left: 39%; margin-top: -150%; width: 24%" src="icons/running.png">
+            </div>
+            <div id="afterscreenDistance" style="display: none">
+                <h1 id="titleDistance">Distance:</h1>
+                <h2 id="valueDistance">32.3km</h2>
+                <img id="imageDistance" src="icons/running-man.png">
+            </div>
+            <div id="screenSleep" style="display: none">
+                <img src="icons/load5.gif" style="margin-top: 40%; margin-left: 19%">
+                <h2 style="margin-left: 19%; padding-bottom: 100%">Loading...please wait</h2>
+                <img style="margin-left: 39%; margin-top: -150%; width: 24%" src="icons/bed.png">
+            </div>
+            <div id="afterscreenSleep" style="display: none">
+                <h1 id="titleSleep">Sleep time:</h1>
+                <h2 id="valueSleep">8:27h</h2>
+                <img id="imageSleep" src="icons/sleep.png">
+            </div>
+            <div id="screenGlucose" style="display: none">
+                <img src="icons/load6.gif" style="margin-top: 40%; margin-left: 19%">
+                <h2 style="margin-left: 19%; padding-bottom: 100%">Loading...please wait</h2>
+                <img style="margin-left: 39%; margin-top: -150%; width: 24%" src="icons/glucometer.png">
+            </div>
+            <div id="afterscreenGlucose" style="display: none">
+                <h1 id="titleGlucose">Glucose level:</h1>
+                <h2 id="valueGlucose">?</h2>
+                <img id="imageGlucose" src="icons/diabetes-test.png">
             </div>
             <div id='definicoes' style='display: none'>
                 <h1 style='margin-left: 2%'>Settings</h1>
