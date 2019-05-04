@@ -1292,11 +1292,11 @@ function screenInfo(numberPin) {
     document.getElementById('imgs-ratings').innerHTML = ''
     for (i = 0; i < popsGPS[numberPin].rating; i++) {
         let j = i;
-        document.getElementById('imgs-ratings').innerHTML += "<img src=icons/star.svg onclick=changeReview(" + j +"," + numberPin + ") />"
+        document.getElementById('imgs-ratings').innerHTML += "<div onclick=changeReview(" + j +"," + numberPin + ") ><img src=icons/star.svg /></div>"
     }
     for (; i < 5; i++) {
         let j = i;
-        document.getElementById('imgs-ratings').innerHTML += "<img src=icons/empty_star.svg onclick=changeReview(" + j +"," + numberPin +") />"
+        document.getElementById('imgs-ratings').innerHTML += "<div onclick=changeReview(" + j +"," + numberPin + ") ><img src=icons/empty_star.svg />"
     }
     document.getElementById('imgs-ratings').innerHTML += "<button onclick='goToTarget()' id='goToInformation'><b>GO TO</b></button>";
     document.getElementById('avg-rating').innerHTML = ((popsGPS[numberPin].sum + popsGPS[numberPin].rating) / (popsGPS[numberPin].quantity + (popsGPS[numberPin].rating ? 1 : 0))).toFixed(2);
