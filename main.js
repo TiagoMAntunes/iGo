@@ -1433,6 +1433,7 @@ function barsNavigation() {
     document.getElementById('navbarcenter').style.visibility = 'hidden';
     document.getElementById('navbarMap').style.visibility = 'hidden';
     document.getElementById('navbar2Map').style.visibility = 'hidden';
+    document.getElementById('navbar3Map').style.visibility = 'hidden';
     document.getElementById('navbarNavigation').style.display = 'unset';
     document.getElementById('topbarNavigation').style.display = 'flex';
     document.getElementById('topbarNavigation').style.flexDirection = 'row';
@@ -1478,6 +1479,7 @@ function endNavigation() {
     document.getElementById('navbarNavigation').style.display = 'none';
     document.getElementById('navbarMap').style.visibility = 'visible';
     document.getElementById('navbar2Map').style.visibility = 'visible';
+    document.getElementById('navbar3Map').style.visibility = 'visible';
     document.getElementById('car').style.backgroundColor = "white";
     document.getElementById('walk').style.backgroundColor = 'white';
     document.getElementById('navbarcenterNavigation').style.visibility = 'hidden';
