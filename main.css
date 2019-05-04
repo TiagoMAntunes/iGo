@@ -1596,6 +1596,10 @@ max-width: 60%;*/
     width: 60%;
 }
 
+#imgs-ratings div {
+    display: inline-block;
+}
+
 #ratings img {
     margin: auto;
     height: 100%;
