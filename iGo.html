@@ -244,33 +244,70 @@
             </div>
             <div id='saude' style='display: none'>
                 <div id="navbarHealth">
-                    <h2 class="navtitleHealth" style="margin-left: 9%; margin-right: 11%">Activity</h2>
+                    <h2 onclick="turnonActivity()" class="navtitleHealth" style="margin-left: 9%; margin-right: 11%">Activity</h2>
                     <img id="sosButton" src="icons/sos.png">
-                    <h2 class="navtitleHealth">Profile</h2>
-                </div>
-                <div id="firstrowActivity">
-                    <div onclick="pushScreen('screenSteps'); waitDiv('afterloadingSteps')" id="stepsActivity">
-                        <img src="icons/footstep.png">
+                    <h2 onclick="turnonProfile()" class="navtitleHealth">Profile</h2>
+                </div>    
+                    <div id="activityScreen">
+                        <div id="firstrowActivity">
+                            <div onclick="pushScreen('screenSteps'); waitDiv('afterloadingSteps')" id="stepsActivity">
+                                <img src="icons/footstep.png">
+                            </div>
+                            <div onclick="pushScreen('screenCalories'); waitDiv('afterscreenCalories')" id="caloriesActivity">
+                                <img src="icons/flame.png">
+                            </div>
+                            <div onclick="pushScreen('screenHeart'); waitDiv('afterscreenHeart')" id="heartActivity">
+                                <img src="icons/cardiogram.png">
+                            </div>
+                        </div>
+                        <div id="secondrowActivity">
+                            <div onclick="pushScreen('screenDistance'); waitDiv('afterscreenDistance')" id="distanceActivity">
+                                <img src="icons/running-man.png">
+                            </div>
+                            <div onclick="pushScreen('screenSleep'); waitDiv('afterscreenSleep')" id="sleepActivity">
+                                <img src="icons/sleep.png">
+                            </div>
+                            <div onclick="pushScreen('screenGlucose'); waitDiv('afterscreenGlucose')" id="glucoseActivity">
+                                <img src="icons/diabetes-test.png">
+                            </div>
+                        </div>
                     </div>
-                    <div onclick="pushScreen('screenCalories'); waitDiv('afterscreenCalories')" id="caloriesActivity">
-                        <img src="icons/flame.png">
+                    <div id="profileScreen" style="display:none">
+                        <table style="padding-top: 28%">
+                            <tr>
+                                <td>Name</td>
+                                <td>Gato das botas</td>
+                            </tr>
+                            <tr>
+                                <td>Gender</td>
+                                <td>Male</td>
+                            </tr>
+                            <tr>
+                                <td>Date of birth</td>
+                                <td>22/04/2001</td>
+                            </tr>
+                            <tr>
+                                <td>Height</td>
+                                <td>1.05m</td>
+                            </tr>
+                            <tr>
+                                <td>Weight</td>
+                                <td>12kg</td>
+                            </tr>
+                            <tr>
+                                <td>Blood Type</td>
+                                <td>A+</td>
+                            </tr>
+                            <tr>
+                                <td>Diseases</td>
+                                <td>Diabetes</td>
+                            </tr>
+                            <tr>
+                                <td>Alergies</td>
+                                <td>Dog fur</td>
+                            </tr>
+                        </table>
                     </div>
-                    <div onclick="pushScreen('screenHeart'); waitDiv('afterscreenHeart')" id="heartActivity">
-                        <img src="icons/cardiogram.png">
-                    </div>
-                </div>
-                <div id="secondrowActivity">
-                    <div onclick="pushScreen('screenDistance'); waitDiv('afterscreenDistance')" id="distanceActivity">
-                        <img src="icons/running-man.png">
-                    </div>
-                    <div onclick="pushScreen('screenSleep'); waitDiv('afterscreenSleep')" id="sleepActivity">
-                        <img src="icons/sleep.png">
-                    </div>
-                    <div onclick="pushScreen('screenGlucose'); waitDiv('afterscreenGlucose')" id="glucoseActivity">
-                        <img src="icons/diabetes-test.png">
-                    </div>
-                </div>
-                </table>
             </div>
             <div id="screenSteps" style='display: none'>
                 <div id="loadingSteps">

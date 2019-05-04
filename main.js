@@ -2339,3 +2339,13 @@ function ShrekToggle() {
     share_shrek = !share_shrek
     $(document.getElementsByClassName('shrek-btn')).prop('checked', share_shrek);
 }
+
+function turnonActivity() {
+    document.getElementById('profileScreen').style.display = "none";
+    document.getElementById('activityScreen').style.display = "inline";
+}
+
+function turnonProfile() {
+    document.getElementById('profileScreen').style.display = "inline";
+    document.getElementById('activityScreen').style.display = "none";    
+}
