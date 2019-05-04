@@ -19,7 +19,7 @@
             <canvas id='bettermap-canvas'></canvas>
         </div>
         <div id='betterpins' style="position: absolute"></div>
-        <div id='betterpath' style="position:absolute"></div> 
+        <div id='betterpath' style="position:absolute"></div>
         <map name='bettermap'></map>
     </div>
     <div id=watchBorder>
@@ -109,9 +109,9 @@
                 <h1 style="margin-left: 4%">
                     <span id="spanhelp">Help:</span> sending message</h1>
                 <h3 style="margin-left: 4%; margin-top: 5%">If you want to write a message say it out loud while pressing/holding the button that looks like this:</h3>
-                    <img style="margin-left: 42%; width: 12%" src="icons/micoff.png"/>
+                <img style="margin-left: 42%; width: 12%" src="icons/micoff.png" />
                 <h3 style="margin-left: 4%;">After that, press the button that looks like this to send the message:</h3>
-                    <img style="margin-left: 42%; width: 12%" src="icons/send.png"/>
+                <img style="margin-left: 42%; width: 12%" src="icons/send.png" />
             </div>
             <div id="helpmapascreen" style='display: none'>
                 <h1 style='margin-left: 4%;'>
@@ -168,8 +168,8 @@
                 <h1 style='margin-left: 4%;'>
                     <span id="spanhelp">Help:</span> searching place
                     <h1>
-                        <h3 style='margin-left: 4%; margin-top: 10%'>If you want to search a place by its name say it out loud while pressing/holding the
-                            button that looks like this:</h3>
+                        <h3 style='margin-left: 4%; margin-top: 10%'>If you want to search a place by its name say it out loud while pressing/holding the button that
+                            looks like this:</h3>
                         <img id="mic4" src="icons/micoff.png" />
             </div>
             <div id='multimedia' style='display: none'>
@@ -203,24 +203,24 @@
                 </div>
             </div>
             <div id='mapaScreen' style='display: none'>
-                
+
                 <div id="map-wrapper" draggable="true" ondragstart="dragMapStart(event)" ondragend="dragMapEnd(event)" ondrag="dragMap(event)">
-                    <img class="draggable" id="mapLayer" src="images/san_francisco.jpg" >
+                    <img class="draggable" id="mapLayer" src="images/san_francisco.jpg">
                     <canvas id='map-canvas' onmousedown="() => console.log('bom dia')"></canvas>
                 </div>
                 <div id='pins' style="position: absolute"></div>
-                <div id='path' style="position:absolute"></div> 
+                <div id='path' style="position:absolute"></div>
                 <map name='map'>
-                    
+
                 </map>
                 <div id='navbarMap'>
-                    <img id='searchmapbutton' src="icons/search.svg" onclick="pushScreen('searchPlace')" /> 
+                    <img id='searchmapbutton' src="icons/search.svg" onclick="pushScreen('searchPlace')" />
                 </div>
                 <div id='navbar2Map'>
-                    <img id='infoButton' src="icons/info.svg" style="float:right;" onclick="doneSearching();pushScreen('pointsInterest')"/> 
+                    <img id='infoButton' src="icons/info.svg" style="float:right;" onclick="doneSearching();pushScreen('pointsInterest')" />
                 </div>
                 <div id='navbar3Map'>
-                    <img id='searchfriends' style="float:right;" src="icons/friend.png" onclick="pushScreen('searchFriend')" /> 
+                    <img id='searchfriends' style="float:right;" src="icons/friend.png" onclick="pushScreen('searchFriend')" />
                 </div>
                 <div id='navbarNavigation' style='display: none'>
                     <img id='car' class="iconsNavigation" src="icons/car.png" onclick="topbarNavigation('car')">
@@ -234,34 +234,48 @@
                     <img id='centermap' src='icons/crosshair.png' onclick="centerPosition('atualPosition')" />
                 </div>
                 <div id='topbarNavigation' style='display: none'>
-                    <h2 style="width: 50%" id="timeAndDistance"><span id='timeGPS'></span> min (<span id='distance'></span> m)</h2>
-                    <img id='direct'  style="margin-top: 3%; margin-left: 3%; height: 50%" src=''>
+                    <h2 style="width: 50%" id="timeAndDistance">
+                        <span id='timeGPS'></span> min (
+                        <span id='distance'></span> m)</h2>
+                    <img id='direct' style="margin-top: 3%; margin-left: 3%; height: 50%" src=''>
                     <button id="endNavigation" onclick="popUpCancelTrip()" style='display: none'>END</button>
                 </div>
-                
+
             </div>
             <div id='saude' style='display: none'>
                 <div id="navbarHealth">
-                        <h2 class="navtitleHealth" style="margin-left: 9%; margin-right: 11%">Activity</h2>
-                        <img id="sosButton" src="icons/sos.png">
-                        <h2 class="navtitleHealth">Profile</h2>
+                    <h2 class="navtitleHealth" style="margin-left: 9%; margin-right: 11%">Activity</h2>
+                    <img id="sosButton" src="icons/sos.png">
+                    <h2 class="navtitleHealth">Profile</h2>
                 </div>
                 <div id="firstrowActivity">
-                    <div onclick="pushScreen('screenSteps'); waitDiv('afterloadingSteps')" id="stepsActivity"><img src="icons/footstep.png"></div>
-                    <div onclick="pushScreen('screenCalories'); waitDiv('afterscreenCalories')" id="caloriesActivity"><img src="icons/flame.png"></div>
-                    <div onclick="pushScreen('screenHeart'); waitDiv('afterscreenHeart')" id="heartActivity"><img src="icons/cardiogram.png"></div>
+                    <div onclick="pushScreen('screenSteps'); waitDiv('afterloadingSteps')" id="stepsActivity">
+                        <img src="icons/footstep.png">
+                    </div>
+                    <div onclick="pushScreen('screenCalories'); waitDiv('afterscreenCalories')" id="caloriesActivity">
+                        <img src="icons/flame.png">
+                    </div>
+                    <div onclick="pushScreen('screenHeart'); waitDiv('afterscreenHeart')" id="heartActivity">
+                        <img src="icons/cardiogram.png">
+                    </div>
                 </div>
                 <div id="secondrowActivity">
-                    <div onclick="pushScreen('screenDistance'); waitDiv('afterscreenDistance')" id="distanceActivity"><img src="icons/running-man.png"></div>
-                    <div onclick="pushScreen('screenSleep'); waitDiv('afterscreenSleep')" id="sleepActivity"><img src="icons/sleep.png"></div>
-                    <div onclick="pushScreen('screenGlucose'); waitDiv('afterscreenGlucose')" id="glucoseActivity"><img src="icons/diabetes-test.png"></div>
+                    <div onclick="pushScreen('screenDistance'); waitDiv('afterscreenDistance')" id="distanceActivity">
+                        <img src="icons/running-man.png">
+                    </div>
+                    <div onclick="pushScreen('screenSleep'); waitDiv('afterscreenSleep')" id="sleepActivity">
+                        <img src="icons/sleep.png">
+                    </div>
+                    <div onclick="pushScreen('screenGlucose'); waitDiv('afterscreenGlucose')" id="glucoseActivity">
+                        <img src="icons/diabetes-test.png">
+                    </div>
                 </div>
                 </table>
             </div>
             <div id="screenSteps" style='display: none'>
                 <div id="loadingSteps">
                     <img src="icons/load.gif" style="margin-top: 40%; margin-left: 19%">
-                    <h2  style="margin-left: 19%; padding-bottom: 100%">Loading...please wait</h2>
+                    <h2 style="margin-left: 19%; padding-bottom: 100%">Loading...please wait</h2>
                     <img style="margin-left: 39%; margin-top: -150%; width: 24%" src="icons/run.png">
                 </div>
             </div>
@@ -272,7 +286,7 @@
             </div>
             <div id="screenCalories" style="display: none">
                 <img src="icons/load2.gif" style="margin-top: 40%;margin-left: 19%">
-                <h2  style="margin-left: 19%; padding-bottom: 100%">Loading...please wait</h2>
+                <h2 style="margin-left: 19%; padding-bottom: 100%">Loading...please wait</h2>
                 <img style="margin-left: 39%; margin-top: -150%; width: 24%" src="icons/energy-bar.png">
             </div>
             <div id="afterscreenCalories" style='display: none'>
@@ -282,7 +296,7 @@
             </div>
             <div id="screenHeart" style="display: none">
                 <img src="icons/load3.gif" style="margin-top: 40%;margin-left: 19%">
-                <h2  style="margin-left: 19%; padding-bottom: 100%">Loading...please wait</h2>
+                <h2 style="margin-left: 19%; padding-bottom: 100%">Loading...please wait</h2>
                 <img style="margin-left: 39%; margin-top: -153%; width: 24%" src="icons/ekg-monitor.png">
             </div>
             <div id="afterscreenHeart" style="display: none">
@@ -328,7 +342,7 @@
                             <h3>Bluetooth</h3>
                         </td>
                         <td id='tdSettingsR' class='tdSettings'>
-                            <img width="60%" style="padding-left: 18%" src="icons/r-arrow.svg" onclick="pushScreen('choose-phone')"/>
+                            <img width="60%" style="padding-left: 18%" src="icons/r-arrow.svg" onclick="pushScreen('choose-phone')" />
                         </td>
                     </tr>
                     <tr>
@@ -336,10 +350,7 @@
                             <h3>GPS</h3>
                         </td>
                         <td id='tdSettingsR' class='tdSettings'>
-                            <label class="switch">
-                                <input onclick="GPS()" type="checkbox" class="gps-btn">
-                                <span class="slider round"></span>
-                            </label>
+                            <img width="60%" style="padding-left: 18%" src="icons/r-arrow.svg" onclick="pushScreen('choose-gps')" />
                         </td>
                     </tr>
                     <tr>
@@ -364,7 +375,7 @@
                 <h1 style="margin-left: 4%">Bluetooth</h1>
                 <table style="width: 96%; margin-left: 2%">
                     <tr>
-                        <td style="padding-bottom: 5%; border-top: solid 0px; border-bottom: solid 1px #ccc;"  id='tdSettingsL'  class='tdSettings'>
+                        <td style="padding-bottom: 5%; border-top: solid 0px; border-bottom: solid 1px #ccc;" id='tdSettingsL' class='tdSettings'>
                             <p style="margin-left: 4%">Bluetooth</p>
                         </td>
                         <td style="border-bottom: solid 1px #ccc; border-top: solid 0px;" id='tdSettingsR' class='tdSettings'>
@@ -378,20 +389,78 @@
                 <div id="dropdown" style='display: none'>
                     <h3 style="margin-left: 4%">Choose the phone to connect:</h3>
                     <table style="width: 96%; margin-left: 2%">
+                        <tr>
+                            <td onclick="createShareMenu(0);selectPhone(1)" id="phone1" style="background-color: #ccc; padding-top: 5%; padding-bottom: 5%; border-top: solid 0px"
+                                id='tdSettingsL' class='tdSettings'>
+                                <p style="margin-left: 4%">Phone 1</p>
+                            </td>
                             <tr>
-                                <td onclick="createShareMenu(0);selectPhone(1)" id="phone1" style="background-color: #ccc; padding-top: 5%; padding-bottom: 5%; border-top: solid 0px" id='tdSettingsL'  class='tdSettings'>
-                                    <p style="margin-left: 4%">Phone 1</p>
-                                </td>
-                            <tr>
-                                <td onclick="createShareMenu(1);selectPhone(2)" id="phone2" style="padding-top: 5%; padding-bottom: 5%" id='tdSettingsL'  class='tdSettings'>
+                                <td onclick="createShareMenu(1);selectPhone(2)" id="phone2" style="padding-top: 5%; padding-bottom: 5%" id='tdSettingsL'
+                                    class='tdSettings'>
                                     <p style="margin-left: 4%">Phone 2</p>
                                 </td>
                             </tr>
                             <tr>
-                                <td onclick="createShareMenu(2);selectPhone(3)" id="phone3" style="padding-top: 5%; padding-bottom: 5%"  id='tdSettingsL'  class='tdSettings'>
+                                <td onclick="createShareMenu(2);selectPhone(3)" id="phone3" style="padding-top: 5%; padding-bottom: 5%" id='tdSettingsL'
+                                    class='tdSettings'>
                                     <p style="margin-left: 4%">Phone 3</p>
                                 </td>
                             </tr>
+                    </table>
+                </div>
+            </div>
+            <div id="choose-gps" style="display: none">
+                <h1 style="margin-left: 4%">GPS</h1>
+                <table style="width: 96%; margin-left: 2%">
+                    <tr>
+                        <td style="padding-bottom: 5%; border-top: solid 0px; border-bottom: solid 1px #ccc;" id='tdSettingsL' class='tdSettings'>
+                            <p style="margin-left: 4%">GPS</p>
+                        </td>
+                        <td style="border-bottom: solid 1px #ccc; border-top: solid 0px;" id='tdSettingsR' class='tdSettings'>
+                            <label class="switch">
+                                <input onclick="GPS()" type="checkbox" class="gps-btn">
+                                <span class="slider round"></span>
+                            </label>
+                        </td>
+                    </tr>
+                </table>
+                <div id="gps-dropdown" style='display: none'>
+                    <h3 style="margin-left: 4%">Choose friends to share location with:</h3>
+                    <table style="width: 96%; margin-left: 2%">
+                        <tr>
+                            <td style="padding-bottom: 5%; border-top: solid 0px; border-bottom: solid 1px #ccc;" id='tdSettingsL' class='tdSettings'>
+                                <p style="margin-left: 4%">Shrek</p>
+                            </td>
+                            <td style="border-bottom: solid 1px #ccc; border-top: solid 0px;" id='tdSettingsR' class='tdSettings'>
+                                <label class="switch">
+                                    <input onclick="ShrekToggle()" class="shrek-btn" type="checkbox">
+                                    <span class="slider round"></span>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-bottom: 5%; border-top: solid 0px; border-bottom: solid 1px #ccc;" id='tdSettingsL'
+                                class='tdSettings'>
+                                <p style="margin-left: 4%">Bart</p>
+                            </td>
+                            <td style="border-bottom: solid 1px #ccc; border-top: solid 0px;" id='tdSettingsR' class='tdSettings'>
+                                <label class="switch">
+                                    <input type="checkbox">
+                                    <span class="slider round"></span>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-bottom: 5%; border-top: solid 0px; border-bottom: solid 1px #ccc;" id='tdSettingsL' class='tdSettings'>
+                                <p style="margin-left: 4%">Buzz</p>
+                            </td>
+                            <td style="border-bottom: solid 1px #ccc; border-top: solid 0px;" id='tdSettingsR' class='tdSettings'>
+                                <label class="switch">
+                                    <input type="checkbox">
+                                    <span class="slider round"></span>
+                                </label>
+                            </td>
+                        </tr>
                     </table>
                 </div>
             </div>
@@ -534,8 +603,12 @@
                     <input type="text" id='searchInput'></input>
                 </form>
                 <img id="mic5" onclick="microphoneOn('searchInput', 'mic5', 5)" class='mic' src="icons/micoff.png">
-                <button id='searchButton' onclick="verifyPlace(document.getElementById('searchInput').value);"><b>SEARCH</b></button>
-                <button id="cancelButton" onclick="cancelSearch()"><b>CANCEL</b></button>
+                <button id='searchButton' onclick="verifyPlace(document.getElementById('searchInput').value);">
+                    <b>SEARCH</b>
+                </button>
+                <button id="cancelButton" onclick="cancelSearch()">
+                    <b>CANCEL</b>
+                </button>
             </div>
             <div id='searchFriend' style='display: none'>
                 <h1 id="searchHeading">Search a friend:</h1>
@@ -543,30 +616,43 @@
                     <input type="text" id='searchInputFriend'></input>
                 </form>
                 <img id="mic5" onclick="microphoneOn('searchInputFriend', 'mic6', 6)" class='mic' src="icons/micoff.png">
-                <button id='searchButton' onclick="verifyFriend(document.getElementById('searchInputFriend').value);"><b>SEARCH</b></button>
-                <button id="cancelButton" onclick="cancelSearchFriend()"><b>CANCEL</b></button>
+                <button id='searchButton' onclick="verifyFriend(document.getElementById('searchInputFriend').value);">
+                    <b>SEARCH</b>
+                </button>
+                <button id="cancelButton" onclick="cancelSearchFriend()">
+                    <b>CANCEL</b>
+                </button>
             </div>
             <div id="pointsInterest" style="display: none">
                 <h1 id="pointsHeading">Points of Interest</h1>
-                	<div id = 'counterDistance'>
-				<p style="margin-left: 5%;margin-right: 5%">Increase or decrease the radius in <strong>meters</strong> to know the points of interest around you:</p>
-                        <button id="minusPoints" onclick="lessOne()">-</button>
-                		<input id="radius" value='100' disabled>
-                		<button id="plusPoints" onclick="plusOne()">+</button>
-                		<button id="donebtnPoints" onclick="searchPlacesNearBy(document.getElementById('radius').value);"><b>DONE</b></button>
-                        <button id="cancelbtnPoints" onclick="cancelPoints()"><b>CANCEL</b></button>
-                        <button id="seeRadiusPoints" onclick="displayRadius()"><b>SEE IN MAP</b></button>
-                	</div>
-                    <div style='display:none' class="content" id='ListOfInterest'></div>
+                <div id='counterDistance'>
+                    <p style="margin-left: 5%;margin-right: 5%">Increase or decrease the radius in
+                        <strong>meters</strong> to know the points of interest around you:</p>
+                    <button id="minusPoints" onclick="lessOne()">-</button>
+                    <input id="radius" value='100' disabled>
+                    <button id="plusPoints" onclick="plusOne()">+</button>
+                    <button id="donebtnPoints" onclick="searchPlacesNearBy(document.getElementById('radius').value);">
+                        <b>DONE</b>
+                    </button>
+                    <button id="cancelbtnPoints" onclick="cancelPoints()">
+                        <b>CANCEL</b>
+                    </button>
+                    <button id="seeRadiusPoints" onclick="displayRadius()">
+                        <b>SEE IN MAP</b>
+                    </button>
+                </div>
+                <div style='display:none' class="content" id='ListOfInterest'></div>
             </div>
             <div id='augmentedHelp' style="display: none">
                 <div class="matrix2-2">
-                        <img onclick="goto2dmap();" class="augmentedHelp-btn" id="better2d" src="icons/2d.png">
-                        <img style="background-color: #6DB465" src="icons/move.svg" class="augmentedHelp-btn" id="bettermove" draggable="true" ondragstart="dragMapStart(event)" ondragend="dragMapEnd(event)" ondrag="dragMap(event)">
-                        <div>
-                            <h1 onclick="popUpCancelTrip3D()" style="background-color: #b2222b" class="augmentedHelp-btn" id="betterend">END</h1>
-                        </div>
-                        <img onclick="centerPosition('atualPosition')" style="background-color: #F2C14E" class="augmentedHelp-btn" id="bettercenter" src="icons/crosshair.png">
+                    <img onclick="goto2dmap();" class="augmentedHelp-btn" id="better2d" src="icons/2d.png">
+                    <img style="background-color: #6DB465" src="icons/move.svg" class="augmentedHelp-btn" id="bettermove" draggable="true" ondragstart="dragMapStart(event)"
+                        ondragend="dragMapEnd(event)" ondrag="dragMap(event)">
+                    <div>
+                        <h1 onclick="popUpCancelTrip3D()" style="background-color: #b2222b" class="augmentedHelp-btn" id="betterend">END</h1>
+                    </div>
+                    <img onclick="centerPosition('atualPosition')" style="background-color: #F2C14E" class="augmentedHelp-btn" id="bettercenter"
+                        src="icons/crosshair.png">
                 </div>
             </div>
             <div id="Information" style="display: none">
@@ -574,7 +660,9 @@
                     <h1 id="titleInformation"></h1>
                     <div id="share-div" onclick="shareInterest()">
                         <img id='location-share-img' src="icons/pin.svg">
-                        <p id="shareButton"><b>SHARE</b></p>
+                        <p id="shareButton">
+                            <b>SHARE</b>
+                        </p>
                     </div>
                 </div>
                 <p id="descriptionInformation"></p>
@@ -589,13 +677,15 @@
             </div>
             <div id="ShrekScreen" style="display: none">
                 <div id="shrek-profile-pic">
-                    <img id="shrekPicture" src="icons/prof1.jpg"/>
+                    <img id="shrekPicture" src="icons/prof1.jpg" />
                 </div>
-                <span><strong>Shrek</strong></span>
+                <span>
+                    <strong>Shrek</strong>
+                </span>
                 <div>
                     <span>Location Sharing</span>
                     <label class="switch">
-                        <input type="checkbox" class="bluetooth-btn">
+                        <input onclick="ShrekToggle()" type="checkbox" class="shrek-btn">
                         <span class="slider round"></span>
                     </label>
                 </div>
@@ -615,7 +705,7 @@
                     There is no available help in this menu.
                 </div>
             </div>
-        </div> 
+        </div>
         <div id="popup2" class="overlay outside">
             <div class="popup">
                 <div id="toppopup">
@@ -667,7 +757,7 @@
                     <a class="close" href="#" onclick="popupclosed()">&times;</a>
                 </div>
                 <div class="content">
-                	No matches found. Try again.
+                    No matches found. Try again.
                 </div>
             </div>
         </div>
@@ -678,37 +768,37 @@
                     <a class="close" href="#" onclick="popupclosed()">&times;</a>
                 </div>
                 <div class="content">
-                	No matches found. Try again.
+                    No matches found. Try again.
                 </div>
             </div>
         </div>
-         <div id="popup8" class="overlay outside">
+        <div id="popup8" class="overlay outside">
             <div class="popup" style="width: 35%">
                 <div id="toppopup">
                     <h2 style="padding-left: 5%">Navigation</h2>
                     <a style="padding-left: 10%; margin-top: -2%" class="close" href="#" onclick="popupclosed()">&times;</a>
                 </div>
                 <div class="content" style="padding-left: 5%">
-                	Are you sure you want to cancel?
-                	<button id="noButton" onclick="backButton()" id=''>NO</button>
-                	<button id="yesButton" onclick = 'endNavigation();backButton()' id = ''>YES</button>
+                    Are you sure you want to cancel?
+                    <button id="noButton" onclick="backButton()" id=''>NO</button>
+                    <button id="yesButton" onclick='endNavigation();backButton()' id=''>YES</button>
                 </div>
             </div>
         </div>
-         <div id="popup9" class="overlay outside">
+        <div id="popup9" class="overlay outside">
             <div class="popup" style="width: 35%">
                 <div id="toppopup">
                     <h2 style="padding-left: 5%">Navigation</h2>
                     <a style="padding-left: 10%; margin-top: -2%" class="close" href="#" onclick="popupclosed()">&times;</a>
                 </div>
                 <div class="content" style="padding-left: 5%">
-                	Are you sure you want to cancel?
-                	<button id="noButton" onclick="backButton()" id=''>NO</button>
-                	<button id="yesButton" onclick = 'backButton();finish3dmap();' id = ''>YES</button>
+                    Are you sure you want to cancel?
+                    <button id="noButton" onclick="backButton()" id=''>NO</button>
+                    <button id="yesButton" onclick='backButton();finish3dmap();' id=''>YES</button>
                 </div>
             </div>
         </div>
-         <div id="popup10" class="overlay outside">
+        <div id="popup10" class="overlay outside">
             <div class="popup" style="width: 35%">
                 <div id="toppopup">
                     <h2 style="padding-left: 5%">Navigation</h2>
@@ -716,7 +806,9 @@
                 </div>
                 <div class="content" style="padding-left: 5%">
                     You have arrived to your destiny.
-                    <a href="#"><img id="checked" src="icons/checked.png" onclick="popupclosed()"></a>
+                    <a href="#">
+                        <img id="checked" src="icons/checked.png" onclick="popupclosed()">
+                    </a>
                 </div>
             </div>
         </div>
@@ -727,23 +819,23 @@
                     <a style="padding-left: 10%; margin-top: -2%" class="close" href="#" onclick="popupclosed()">&times;</a>
                 </div>
                 <div class="content" style="padding-left: 5%">
-                	Shrek is near by...
+                    Shrek is near by...
                 </div>
             </div>
         </div>
         <div id="popup12" class="overlay outside">
-                <div class="popup" style="width: 35%">
-                    <div id="toppopup">
-                        <h2 style="padding-left: 5%">Share location</h2>
-                        <a style="padding-left: 10%; margin-top: -2%" class="close" href="#" onclick="popupclosed()">&times;</a>
-                    </div>
-                    <div class="content" style="padding-left: 5%">
-                        Do you want to send your location?
-                        <button id="noButton" onclick="backButton()" id=''>NO</button>
-                        <button id="yesButton" onclick = 'backButton();shareLocationWithFriend()' id = ''>YES</button>
-                    </div>
+            <div class="popup" style="width: 35%">
+                <div id="toppopup">
+                    <h2 style="padding-left: 5%">Share location</h2>
+                    <a style="padding-left: 10%; margin-top: -2%" class="close" href="#" onclick="popupclosed()">&times;</a>
+                </div>
+                <div class="content" style="padding-left: 5%">
+                    Do you want to send your location?
+                    <button id="noButton" onclick="backButton()" id=''>NO</button>
+                    <button id="yesButton" onclick='backButton();shareLocationWithFriend()' id=''>YES</button>
                 </div>
             </div>
+        </div>
     </div>
     <div id='helpButton' onclick="helpButton()"></div>
     <div id="backButton" onclick="backButton()"></div>
@@ -752,13 +844,14 @@
     </div>
     <div id='joystick' style='display: none'>
         <h3 id="explanationArrows">Controls for the current position of the user:</h3>
-    	<div>
-            <img id='upArrow' style='visibility: hidden;' onclick='upPosition()' class = 'controller' src='icons/up-arrow.svg'/>
+        <div>
+            <img id='upArrow' style='visibility: hidden;' onclick='upPosition()' class='controller' src='icons/up-arrow.svg' />
         </div>
-    	<div>
-            <img id='leftArrow' style='visibility: hidden;' onclick='leftPosition()' class = 'controller' src='icons/left-arrow.svg'/>
-            <img id="downArrow" style='visibility: hidden;' onclick='downPosition()' class='controller' src='icons/down-arrow.svg'/>
-            <img id='rightArrow' style='visibility: hidden;' onclick='rightPosition()' class = 'controller' src='icons/right-arrow.svg'/>
+        <div>
+            <img id='leftArrow' style='visibility: hidden;' onclick='leftPosition()' class='controller' src='icons/left-arrow.svg' />
+            <img id="downArrow" style='visibility: hidden;' onclick='downPosition()' class='controller' src='icons/down-arrow.svg' />
+            <img id='rightArrow' style='visibility: hidden;' onclick='rightPosition()' class='controller' src='icons/right-arrow.svg'
+            />
         </div>
     </div>
 </body>

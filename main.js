@@ -996,9 +996,11 @@ function GPS(){
     gpson++;
     if(gpson % 2 == 0) {
         document.getElementById('gpsImg').style.visibility = "hidden";
+        document.getElementById('gps-dropdown').style.display = 'none';
     }
     else{
         document.getElementById('gpsImg').style.visibility = "visible";
+        document.getElementById('gps-dropdown').style.display = 'inline';
     }
     triggerGps(gpson % 2 == 0 ? false : true);
 }
@@ -2329,4 +2331,11 @@ function screenProfile() {
 function sendMessageShrek() {
     pushScreen('messageBox')
     createMenuMessage(0)
+}
+
+var share_shrek = false
+
+function ShrekToggle() {
+    share_shrek = !share_shrek
+    $(document.getElementsByClassName('shrek-btn')).prop('checked', share_shrek);
 }
