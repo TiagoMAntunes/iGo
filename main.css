@@ -1875,3 +1875,29 @@ max-width: 60%;*/
 #ShrekScreen {
     text-align: center;
 }
+
+#profileTable {
+    padding-top: 21%;
+    width: 100%;
+    border-collapse: initial;
+    border-spacing: 0;
+}
+
+#profileTable tbody {
+    /*background-color: #FCBF49;*/
+}
+
+#profileTable td {
+    padding: 3%;
+    width: 131%;
+}
+
+.profileTableHeaders {
+    font-weight: bold;
+    color: #CC3E39;
+}
+
+.profileTableValues {
+    /*border-top: 1px solid #FCBF49;*/
+    border-bottom: 2px solid #CC3E39;
+}
