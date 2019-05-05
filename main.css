@@ -1905,7 +1905,7 @@ max-width: 60%;*/
 
 .profileTableHeaders {
     font-weight: bold;
-    color: #CC3E39;
+    color: steelblue;
 }
 
 .profileTableValues {
@@ -1974,4 +1974,10 @@ max-width: 60%;*/
     width: 33%;
     margin-left: 33%;
     margin-top: -1%;
+}
+
+.unselectable {
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
 }
