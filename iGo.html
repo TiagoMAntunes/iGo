@@ -250,11 +250,17 @@
                 </div>
 
             </div>
+            <div id="SOSscreen" style="display: none">
+                <h1 style="text-align: center; padding-top: 4%">EMERGENCY MODE</h1>
+                <h2 style="text-align: center; margin: 0">CALLING...</h2>
+                <h1 id="sos911">911</h1>
+                <img onclick="backButton()" id="buttonsos" src="icons/hangup.png">
+            </div>
             <div id='saude' style='display: none'>
                 <div id="navbarHealth">
-                    <h2 onclick="turnonActivity()" class="navtitleHealth" style="margin-left: 9%; margin-right: 11%">Activity</h2>
-                    <img id="sosButton" src="icons/sos.png">
-                    <h2 onclick="turnonProfile()" class="navtitleHealth">Profile</h2>
+                    <h2 onclick="turnonActivity()" id="navtitleHealthActivity" style="margin-left: 9%; margin-right: 11%">Activity</h2>
+                    <img onclick="pushScreen('SOSscreen')" id="sosButton" src="icons/sos.png">
+                    <h2 onclick="turnonProfile()" id="navtitleHealthProfile">Profile</h2>
                 </div>    
                     <div id="activityScreen">
                         <div id="firstrowActivity">
@@ -335,7 +341,7 @@
             </div>
             <div id="screenSteps" style='display: none'>
                 <div id="loadingSteps">
-                    <img src="icons/load.gif" style="margin-top: 40%; margin-left: 19%">
+                    <img src="icons/load1.gif" style="margin-top: 40%; margin-left: 19%">
                     <h2 style="margin-left: 19%; padding-bottom: 100%">Loading...please wait</h2>
                     <img style="margin-left: 39%; margin-top: -150%; width: 24%" src="icons/run.png">
                 </div>

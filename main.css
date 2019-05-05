@@ -1621,6 +1621,15 @@ max-width: 60%;*/
     margin: 0;
 }
 
+#navtitleHealthActivity {
+    border-bottom: 4px solid steelblue;
+    border-radius: 5%;
+}
+
+#navtitleHealthProfile {
+    border-radius: 5%;
+}
+
 #sosButton {
     width: 16%;
     height: 75%;
@@ -1865,6 +1874,7 @@ max-width: 60%;*/
 
 #message-share-location img {
     height: 100%;
+    margin-left: -5%;
 }
 
 #shrekPicture {
@@ -1946,8 +1956,22 @@ max-width: 60%;*/
     width: 60%;
     height: 57%;
     border-radius: 5%;
-    padding: 5% 5%;
-    margin-top: -28%;
-    margin-left: 36%;
-    margin-right: 13%;
+    padding: 4% 5%;
+    margin-top: -29%;
+    margin-left: 34%;
+    margin-right: 14%;
+}
+
+#sos911 {
+    text-align: center;
+    color: red;
+    margin: 0;
+    padding-right: 3%;
+    font-size: 500%;
+}
+
+#buttonsos {
+    width: 33%;
+    margin-left: 33%;
+    margin-top: -1%;
 }

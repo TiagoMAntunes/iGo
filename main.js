@@ -258,7 +258,11 @@ function setShrekMovement(){
 function goToPin(pinname) {
     if (pinname == 'Shrek')
         clearInterval(shrekMov)
-    pushScreen('mapaScreen')
+    if(screenStack[screenStack.length - 1] === 'ShrekScreen'){
+        backButton()
+    }else{
+        pushScreen('mapaScreen')
+    }
     centerPosition(pinname)
 }
 
@@ -889,7 +893,7 @@ function sendMessage(divName) {
         let value = document.getElementById('shrekscreenmessage' + 'Input').value;    
         if(value.includes('onde') == true){
             setTimeout(function(){
-                profiles[0].messages.push({content: 'Carregue para ter acesso a minha posicao atual', self: false, isMap: true, pinName: 'Shrek'});
+                profiles[0].messages.push({content: 'Carregue para ter acesso a minha posicao atual<br>', self: false, isMap: true, pinName: 'Shrek'});
                 resetMenuMessage();
                 createMenuMessage(0);
                 setTimeout(function(){
@@ -2328,7 +2332,7 @@ function waitDiv(nameDiv){
         console.log(screenStack[screenStack.length -2 ]);
         screenStack.splice(screenStack.length-2,1);
         console.log(screenStack[screenStack.length -1 ]);
-    }, 1300);
+    }, 920);
 }
 
 function screenProfile() {
@@ -2350,9 +2354,13 @@ function ShrekToggle() {
 function turnonActivity() {
     document.getElementById('profileScreen').style.display = "none";
     document.getElementById('activityScreen').style.display = "inline";
+    document.getElementById('navtitleHealthActivity').style.borderBottom = "4px solid steelblue";
+    document.getElementById('navtitleHealthProfile').style.borderBottom = "0px";
 }
 
 function turnonProfile() {
     document.getElementById('profileScreen').style.display = "inline";
-    document.getElementById('activityScreen').style.display = "none";    
+    document.getElementById('activityScreen').style.display = "none";
+    document.getElementById('navtitleHealthProfile').style.borderBottom = "4px solid steelblue";
+    document.getElementById('navtitleHealthActivity').style.borderBottom = "0px";
 }
