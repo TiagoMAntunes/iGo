@@ -252,10 +252,6 @@ function setShrekMovement(){
         if(nav == 1){
             recalibratePath();
         }
-        let pin2 = searchPin('atualPosition');  
-        if(pin.x == pin2.x && pin.y == pin2.y && screenStack[screenStack - 1] == 'mapaScreen'){
-            openPopShrek();
-        }
     },5000)
 }
 
@@ -1743,9 +1739,6 @@ function upPosition(){
             pin.y = pino[1];
         }
     }
-    if(pin.x == pin2.x && pin.y == pin2.y){
-            openPopShrek();
-    }
     directions = graphMovement(pino);
     reloadPins();
     updateDisplayController();
@@ -1773,9 +1766,6 @@ function leftPosition(){
             pin.x = pino[2];
             pin.y = pino[1];
         }
-    }
-    if(pin.x == pin2.x && pin.y == pin2.y){
-            openPopShrek();
     }
     reloadPins();
     directions = graphMovement(pino);
@@ -1805,9 +1795,6 @@ function rightPosition(){
         }
     }
     reloadPins();
-    if(pin.x == pin2.x && pin.y == pin2.y){
-            openPopShrek();
-    }
     directions = graphMovement(pino);
     updateDisplayController();
     if(nav == 1){
@@ -1836,9 +1823,6 @@ function downPosition(){
         }
     }
     reloadPins();
-    if(pin.x == pin2.x && pin.y == pin2.y){
-            openPopShrek();
-    }
     directions = graphMovement(pino);
     updateDisplayController();
     if(nav == 1){
@@ -2268,10 +2252,6 @@ function popUpCancelTrip3D(){
 function openPopArriveTarget(){
     popupon = 1;
     location.href = "#popup10";
-}
-function openPopShrek(){
-    popupon = 1;
-    location.href = "#popup11";
 }
 
 var radius = 0;
