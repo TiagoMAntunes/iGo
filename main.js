@@ -242,7 +242,7 @@ var shrekMov;
 
 function setShrekMovement(){
     shrekMov = setInterval(function(){
-        let pin = searchPin('Shrek');
+        let pin = searchPin('shrek');
         let pino = searchPinCoordinates(pin.y,pin.x);
         let adjs = g.getEdges(pino[0]);
         let num = Math.floor(Math.random()*(adjs.length));
@@ -256,8 +256,10 @@ function setShrekMovement(){
 }
 
 function goToPin(pinname) {
-    if (pinname == 'Shrek')
+    if (pinname == 'shrek'){
         clearInterval(shrekMov)
+        searchPlace('shrek')
+    }
     pushScreen('mapaScreen')
     centerPosition(pinname)
 }
@@ -265,7 +267,7 @@ function goToPin(pinname) {
 function stopShrekMovement(){
     clearInterval(shrekMov);
     pushScreen('mapaScreen');
-    centerPosition('Shrek');
+    centerPosition('shrek');
 }
 function setRealSize() {
     let div = document.getElementById("mainScreen");
@@ -886,10 +888,11 @@ function sendMessage(divName) {
     if (document.getElementById(divName + 'Input').value === '')
         return;
     if(divName =='shrekscreenmessage'){
-        let value = document.getElementById('shrekscreenmessage' + 'Input').value;    
-        if(value.includes('onde') == true){
+        let value = document.getElementById('shrekscreenmessage' + 'Input').value;   
+        let value2 = value.toLowerCase(); 
+        if(value2.includes('onde') == true){
             setTimeout(function(){
-                profiles[0].messages.push({content: 'Carregue para ter acesso a minha posicao atual', self: false, isMap: true, pinName: 'Shrek'});
+                profiles[0].messages.push({content: 'Carregue para ter acesso a minha posicao atual', self: false, isMap: true, pinName: 'shrek'});
                 resetMenuMessage();
                 createMenuMessage(0);
                 setTimeout(function(){
@@ -1228,12 +1231,12 @@ class Pin {
 
 function addAllPins(){
     addPin(639, 139 ,"atualPosition","atualPosition", 0)
-    addPin(548,44,"Park","park",1);
-    addPin(685, 233,"Restaurant","restaurant",2);
-    addPin(816, 107,"Hotel", "hotel",3);
-    addPin(639,360,"Metro","metro",4);
-    addPin(771,233,"Museum","museum",5);
-    addPin(771,328,"Shrek","friend",6)
+    addPin(548,44,"park","park",1);
+    addPin(685, 233,"restaurant","restaurant",2);
+    addPin(816, 107,"hotel", "hotel",3);
+    addPin(639,360,"metro","metro",4);
+    addPin(771,233,"museum","museum",5);
+    addPin(771,328,"shrek","friend",6)
     reloadPins();
 }
 
@@ -1388,7 +1391,7 @@ function clearPath() {
 function verifyFriend(friend){
     let flag = 0
     for(i = 0; i < map_pins.length; i++){
-        if(map_pins[i].n == friend && map_pins[i].t == 'friend'){
+        if(map_pins[i].n == friend.toLowerCase() && map_pins[i].t == 'friend'){
                 flag++;
                 clearInterval(shrekMov);
                 searchPlace(friend);
@@ -1403,7 +1406,7 @@ function verifyFriend(friend){
 function verifyPlace(place){
     let flag = 0;
     for(i = 0; i < map_pins.length; i++){
-        if(map_pins[i].n == place && map_pins[i].t != 'friend'){
+        if(map_pins[i].n == place.toLowerCase() && map_pins[i].t != 'friend'){
                flag++;
                searchPlace(place);
                break;
@@ -1418,7 +1421,7 @@ function searchPlace(place){
     let flag = 0;
     let direct;
     for(i = 0; i < map_pins.length; i++){
-        if(map_pins[i].n == place){
+        if(map_pins[i].n == place.toLowerCase()){
             nav = 1;
             let pino = searchPinCoordinates(map_pins[i].y,map_pins[i].x);
             target = pino[0]
@@ -1733,7 +1736,7 @@ function findCurrentDirection(){
 function upPosition(){
     let pino
     let direct
-    let pin2 = searchPin('Shrek');
+    let pin2 = searchPin('shrek');
     let pin = searchPin("atualPosition");
     for(i = 0; i < directions.length; i++){
         if(directions[i][0] == 0){
@@ -1761,7 +1764,7 @@ function upPosition(){
 
 function leftPosition(){
     let pino;
-    let pin2 = searchPin('Shrek');
+    let pin2 = searchPin('shrek');
     let pin = searchPin("atualPosition");
     for(i = 0; i < directions.length; i++){
         if(directions[i][0] == 3){
@@ -1788,7 +1791,7 @@ function leftPosition(){
 
 function rightPosition(){
     let pino
-    let pin2 = searchPin('Shrek');
+    let pin2 = searchPin('shrek');
     let pin = searchPin("atualPosition");
     for(i = 0; i < directions.length; i++){
         if(directions[i][0] == 1){
@@ -1816,7 +1819,7 @@ function rightPosition(){
 
 function downPosition(){
     let pino
-    let pin2 = searchPin('Shrek');
+    let pin2 = searchPin('shrek');
     let pin = searchPin("atualPosition");
     for(i = 0; i < directions.length; i++){
         if(directions[i][0] == 2){
