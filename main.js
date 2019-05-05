@@ -673,13 +673,34 @@ function scrollWheelChoosePhone(event) {
     }
 
     let val = parseInt(document.getElementById('choose-phone').style.top) + i;
-    console.log(val)
     let aux = -($(document.getElementById('choose-phone')).outerHeight() -
         ($(document.getElementById('mainScreen')).outerHeight() - $(document.getElementById('top-bar')).outerHeight()) + 20)
-    console.log(aux)
+    
     if (val > 0) val = 0
     if (val < aux) val = aux
     document.getElementById('choose-phone').style.top = val;
+}
+
+function scrollWheelHealth(event) {
+    if (document.getElementById('saude').style.top == '')
+        document.getElementById('saude').style.top = '0px';
+    let direction = (event.clientY - dragInfo.clientY)
+    if ($('#saude').outerHeight() < $(document.getElementById('mainScreen')).outerHeight() - $(document.getElementById('top-bar')).outerHeight())
+    return;
+
+    let i = 0;
+    if (direction > 0) {
+        i = 10;
+    } else if (direction < 0) {
+        i = -10;
+    }
+
+    let val = parseInt(document.getElementById('saude').style.top) + i;
+    let aux = -($(document.getElementById('saude')).outerHeight() -
+        ($(document.getElementById('mainScreen')).outerHeight() - $(document.getElementById('top-bar')).outerHeight()))
+    if (val > 0) val = 0
+    if (val < aux) val = aux
+    document.getElementById('saude').style.top = val;
 }
 
 function scrollWheelMovement(event) {
@@ -715,6 +736,9 @@ function scrollWheelMovement(event) {
             break
         case 'choose-phone':
             scrollWheelChoosePhone(event)
+            break
+        case 'saude':
+        scrollWheelHealth(event)
             break
     }
 }
