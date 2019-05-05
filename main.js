@@ -1074,6 +1074,9 @@ function helpButton() {
         case 'messageBox':
             pushScreen('helpmessage');
             break;
+        case 'searchFriend':
+            pushScreen('helpsearchfriend');
+            break;
         case 'searchPlace':
             pushScreen('helpsearchplace');
             break;
@@ -1611,7 +1614,7 @@ function openNoPlaceFoundPop(){
 
 function openNoFriendFoundPop(){
     popupon = 1;
-    location.href = "#popup12";
+    location.href = "#popup6";
 }
 
 function resetInputPlace(){
