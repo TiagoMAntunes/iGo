@@ -732,19 +732,19 @@
                 <div id="shrek-profile-pic">
                     <img id="shrekPicture" src="icons/prof1.jpg" />
                 </div>
-                <span>
+                <h2>
                     <strong>Shrek</strong>
-                </span>
-                <div>
-                    <span>Location Sharing</span>
+                </h2>
+                <div style="display: flex;flex-direction: row">
+                    <p id="locationSharingText">Location Sharing</p>
                     <label class="switch">
                         <input onclick="ShrekToggle()" type="checkbox" class="shrek-btn">
                         <span class="slider round"></span>
                     </label>
                 </div>
                 <div>
-                    <button onclick="sendMessageShrek()">sendMessage</button>
-                    <button onclick="goToPin('Shrek')">GoTo</button>
+                    <button id="buttonSendMessage" onclick="sendMessageShrek()"><b>SEND MESSAGE</b></button>
+                    <button id="buttonGoToFriend" onclick="goToPin('Shrek')"><b>GO TO</b></button>
                 </div>
             </div>
         </div>
