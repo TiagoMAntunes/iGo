@@ -258,7 +258,7 @@ function setShrekMovement(){
 function goToPin(pinname) {
     if (pinname == 'shrek'){
         clearInterval(shrekMov)
-        searchPlace('shrek')
+        searchPlace('shrek');
     }
     pushScreen('mapaScreen')
     centerPosition(pinname)
@@ -1320,13 +1320,13 @@ function screenInfo(numberPin) {
     document.getElementById('imgs-ratings').innerHTML = ''
     for (i = 0; i < popsGPS[numberPin].rating; i++) {
         let j = i;
-        document.getElementById('imgs-ratings').innerHTML += "<div onclick=changeReview(" + j +"," + numberPin + ") ><img src=icons/star.svg /></div>"
+        document.getElementById('imgs-ratings').innerHTML += "<div class='unselectable' ><img src=icons/star.png onclick=changeReview(" + j +"," + numberPin + ") /></div>"
     }
     for (; i < 5; i++) {
         let j = i;
-        document.getElementById('imgs-ratings').innerHTML += "<div onclick=changeReview(" + j +"," + numberPin + ") ><img src=icons/empty_star.svg />"
+        document.getElementById('imgs-ratings').innerHTML += "<div class='unselectable'  ><img src=icons/empty_star.png onclick=changeReview(" + j +"," + numberPin + ") />"
     }
-    document.getElementById('imgs-ratings').innerHTML += "<button onclick='goToTarget()' id='goToInformation'><b>GO TO</b></button>";
+    document.getElementById('imgs-ratings').innerHTML += "<button class='unselectable' onclick='goToTarget()' id='goToInformation'><b>GO TO</b></button>";
     document.getElementById('avg-rating').innerHTML = ((popsGPS[numberPin].sum + popsGPS[numberPin].rating) / (popsGPS[numberPin].quantity + (popsGPS[numberPin].rating ? 1 : 0))).toFixed(2);
     pushScreen('Information');
 }
