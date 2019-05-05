@@ -1951,3 +1951,9 @@ max-width: 60%;*/
     margin-left: 36%;
     margin-right: 13%;
 }
+
+.unselectable {
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+}
