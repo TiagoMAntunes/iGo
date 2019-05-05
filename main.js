@@ -853,7 +853,7 @@ var currentUser = 0;
 function createMessage(message) {
     let content = message.self ? "<div class='containerM darkerM'>" : "<div class='containerM lighterM'><p class='messageP' id='message1'>"
     if (message.isMap)
-        content += "<p class='messageP'> " + message.content + "<button onclick='goToPin(\"" + message.pinName + "\")'>GO TO</button>"
+        content += "<p class='messageP'> " + message.content + "<button id='goToMessages' onclick='goToPin(\"" + message.pinName + "\")'>GO TO</button>"
     else 
         content += "<p class='messageP'>" + message.content + "</p>"
 
@@ -864,7 +864,7 @@ function createMessage(message) {
 function createMenuMessage(index) {
     currentUser = index;
     let messages = '';
-    messages += "<div id='zindex'><h1 id='messaperson'>" + profiles[index].name + "</h1><div id='message-share-location' onclick='shareLocationMessage()'><img src='icons/pin.svg'>Share</div></div></div><div id='messageContent'>";
+    messages += "<div id='zindex'><h1 id='messaperson'>" + profiles[index].name + "</h1><div id='message-share-location' onclick='shareLocationMessage()'><img src='icons/pin.svg'><p id='messageShare'>SHARE</p></div></div></div><div id='messageContent'>";
     console.log(profiles[index].messages.length)
     for (i = 0; i < profiles[index].messages.length; i++) {
         messages += createMessage(profiles[index].messages[i])
