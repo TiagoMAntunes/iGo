@@ -1421,12 +1421,17 @@ function verifyFriend(friend){
     let flag = 0
     for(i = 0; i < map_pins.length; i++){
         if(map_pins[i].n == friend.toLowerCase() && map_pins[i].t == 'friend'){
-                flag++;
                 clearInterval(shrekMov);
                 searchPlace(friend);
-                break;
+                return
         }
     }
+    for (let profile of profiles)
+        if(profile.name.toLowerCase() === friend.toLowerCase()) {
+            flag++;
+            openInvalidFriendPop()
+            break
+        }
     if(flag == 0){
         openNoFriendFoundPop();   
     }
@@ -1647,6 +1652,11 @@ function openNoPlaceFoundPop(){
 function openNoFriendFoundPop(){
     popupon = 1;
     location.href = "#popup6";
+}
+
+function openInvalidFriendPop() {
+    popupon = 1;
+    location.href = "#popup11";
 }
 
 function resetInputPlace(){
