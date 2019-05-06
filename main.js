@@ -884,7 +884,7 @@ var currentUser = 0;
 function createMessage(message) {
     let content = message.self ? "<div class='containerM darkerM'>" : "<div class='containerM lighterM'><p class='messageP' id='message1'>"
     if (message.isMap)
-        content += "<p class='messageP'> " + message.content + "<button id='goToMessages' onclick='goToPin(\"" + message.pinName + "\")'>GO TO</button>"
+        content += "<p class='messageP'> " + message.content + "<br><button id='goToMessages' onclick='goToPin(\"" + message.pinName + "\")'>GO TO</button>"
     else 
         content += "<p class='messageP'>" + message.content + "</p>"
 
