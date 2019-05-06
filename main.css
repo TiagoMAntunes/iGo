@@ -1981,3 +1981,7 @@ max-width: 60%;*/
     -khtml-user-select: none;
     -webkit-user-select: none;
 }
+
+#choose-gps {
+    position: relative;
+}
