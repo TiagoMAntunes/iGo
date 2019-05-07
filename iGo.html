@@ -252,14 +252,14 @@
             </div>
             <div id="SOSscreen" style="display: none">
                 <h1 style="text-align: center; padding-top: 4%">EMERGENCY MODE</h1>
-                <h2 style="text-align: center; margin: 0">CALLING...</h2>
+                <h2 id="calling" style="text-align: center; margin: 0">CALLING...</h2>
                 <h1 id="sos911">911</h1>
                 <img onclick="backButton()" id="buttonsos" src="icons/hangup.png">
             </div>
             <div id='saude' style='display: none'>
                 <div id="navbarHealth">
                     <h2 onclick="turnonActivity()" id="navtitleHealthActivity" style="margin-left: 9%; margin-right: 11%">Activity</h2>
-                    <img onclick="pushScreen('SOSscreen')" id="sosButton" src="icons/sos.png">
+                    <img onclick="pushScreen('SOSscreen');waitEmergency()" id="sosButton" src="icons/sos.png">
                     <h2 onclick="turnonProfile()" id="navtitleHealthProfile">Profile</h2>
                 </div>    
                     <div id="activityScreen">

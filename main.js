@@ -2367,3 +2367,9 @@ function turnonProfile() {
     document.getElementById('navtitleHealthProfile').style.borderBottom = "4px solid steelblue";
     document.getElementById('navtitleHealthActivity').style.borderBottom = "0px";
 }
+
+function waitEmergency() {
+    setTimeout(function(){
+        document.getElementById('calling').innerHTML = "00:00";
+    }, 500);
+}
