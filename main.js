@@ -705,6 +705,28 @@ function scrollWheelHealth(event) {
     document.getElementById('saude').style.top = val;
 }
 
+function scrollWheelGPSSettings(event) {
+    if (document.getElementById('choose-gps').style.top == '')
+        document.getElementById('choose-gps').style.top = '0px';
+    let direction = (event.clientY - dragInfo.clientY)
+    if ($('#choose-gps').outerHeight() < $(document.getElementById('mainScreen')).outerHeight() - $(document.getElementById('top-bar')).outerHeight())
+    return;
+
+    let i = 0;
+    if (direction > 0) {
+        i = 10;
+    } else if (direction < 0) {
+        i = -10;
+    }
+
+    let val = parseInt(document.getElementById('choose-gps').style.top) + i;
+    let aux = -($(document.getElementById('choose-gps')).outerHeight() -
+        ($(document.getElementById('mainScreen')).outerHeight() - $(document.getElementById('top-bar')).outerHeight()) + 20)
+    if (val > 0) val = 0
+    if (val < aux) val = aux
+    document.getElementById('choose-gps').style.top = val;
+}
+
 function scrollWheelMovement(event) {
     if (dragInfo == undefined || event.screenX === 0 && event.screenY === 0)
         return;
@@ -740,7 +762,10 @@ function scrollWheelMovement(event) {
             scrollWheelChoosePhone(event)
             break
         case 'saude':
-        scrollWheelHealth(event)
+            scrollWheelHealth(event)
+            break
+        case 'choose-gps':
+            scrollWheelGPSSettings(event)
             break
     }
 }
@@ -859,7 +884,7 @@ var currentUser = 0;
 function createMessage(message) {
     let content = message.self ? "<div class='containerM darkerM'>" : "<div class='containerM lighterM'><p class='messageP' id='message1'>"
     if (message.isMap)
-        content += "<p class='messageP'> " + message.content + "<button id='goToMessages' onclick='goToPin(\"" + message.pinName + "\")'>GO TO</button>"
+        content += "<p class='messageP'> " + message.content + "<br><button id='goToMessages' onclick='goToPin(\"" + message.pinName + "\")'>GO TO</button>"
     else 
         content += "<p class='messageP'>" + message.content + "</p>"
 
@@ -1396,12 +1421,17 @@ function verifyFriend(friend){
     let flag = 0
     for(i = 0; i < map_pins.length; i++){
         if(map_pins[i].n == friend.toLowerCase() && map_pins[i].t == 'friend'){
-                flag++;
                 clearInterval(shrekMov);
                 searchPlace(friend);
-                break;
+                return
         }
     }
+    for (let profile of profiles)
+        if(profile.name.toLowerCase() === friend.toLowerCase()) {
+            flag++;
+            openInvalidFriendPop()
+            break
+        }
     if(flag == 0){
         openNoFriendFoundPop();   
     }
@@ -1622,6 +1652,11 @@ function openNoPlaceFoundPop(){
 function openNoFriendFoundPop(){
     popupon = 1;
     location.href = "#popup6";
+}
+
+function openInvalidFriendPop() {
+    popupon = 1;
+    location.href = "#popup11";
 }
 
 function resetInputPlace(){
