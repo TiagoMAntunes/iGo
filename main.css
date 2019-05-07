@@ -109,8 +109,6 @@
     background-color: #7ecc9c;
 }
 
-
-
 #backButton {
     background-color:black;
     position: absolute;
@@ -1758,6 +1756,7 @@ max-width: 60%;*/
 #titleSteps {
     padding-left: 59%;
     padding-top: 27%;
+    color: #114B5F;
 }
 
 #valueSteps {
@@ -1773,6 +1772,7 @@ max-width: 60%;*/
 #titleCalories {
     padding-left: 56%;
     padding-top: 27%;
+    color: indianred;
 }
 
 #valueCalories {
@@ -1788,6 +1788,7 @@ max-width: 60%;*/
 #titleHeart {
     padding-left: 62%;
     padding-top: 27%;    
+    color: red;
 }
 
 #valueHeart {
@@ -1802,7 +1803,8 @@ max-width: 60%;*/
 
 #titleDistance {
     padding-left: 58%;
-    padding-top: 27%;     
+    padding-top: 27%; 
+    color: cadetblue;    
 }
 
 #valueDistance {
@@ -1815,24 +1817,39 @@ max-width: 60%;*/
     margin-left: 5%; 
 }
 
+#averageSleep {
+    padding-left: 56%;
+    color: navy;
+    padding-top: 9%;
+    font-size: 183%;
+}
+
+
+#averageTime {
+    padding-left: 56%;
+    padding-bottom: 5%;
+}
+
 #titleSleep {
-    padding-left: 53%;
-    padding-top: 27%;
+    color: navy;
+    padding-left: 56%;
+    font-size: 183%;
 }
 
 #valueSleep {
-    padding-left: 53%;
+    padding-left: 56%;
 }
 
 #imageSleep {
     width: 42%;
-    margin-top: -36%;
+    margin-top: -55%;
     margin-left: 5%;    
 }
 
 #titleGlucose {
     padding-left: 56%;
     padding-top: 25%;
+    color: steelblue;
 }
 
 #valueGlucose {
@@ -1895,7 +1912,6 @@ max-width: 60%;*/
 }
 
 #profileTable tbody {
-    /*background-color: #FCBF49;*/
 }
 
 #profileTable td {
@@ -1903,14 +1919,27 @@ max-width: 60%;*/
     width: 131%;
 }
 
+#profileTable img {
+    width: 10%;
+    margin-right: 5%;
+}
+
 .profileTableHeaders {
     font-weight: bold;
-    color: steelblue;
 }
 
 .profileTableValues {
-    /*border-top: 1px solid #FCBF49;*/
-    border-bottom: 2px solid #CC3E39;
+    border-bottom: 2px solid #12355B;
+}
+
+.profileTitles {
+    margin-top: -7%;
+    margin-left: 12%;
+}
+
+.tableValue {
+    margin-top: -5%;
+    margin-left: 11%;
 }
 
 #locationSharingText {
