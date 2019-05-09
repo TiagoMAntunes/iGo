@@ -2403,8 +2403,18 @@ function turnonProfile() {
     document.getElementById('navtitleHealthActivity').style.borderBottom = "0px";
 }
 
+var emergency_timeout;
+
 function waitEmergency() {
+    clearInterval(emergency_timeout)
+    calling.innerHTML = "CALLING"
     setTimeout(function(){
         document.getElementById('calling').innerHTML = "00:00";
+        emergency_timeout = setInterval(function() {
+            let time = calling.innerText.split(':')
+            let seconds = (parseInt(time[1]) + 1) % 60
+            let minutes = Math.floor((parseInt(time[1]) + 1) / 60 + parseInt(time[0]))
+            calling.innerText =  minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0')
+        }, 1000)
     }, 500);
 }
