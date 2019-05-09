@@ -198,6 +198,13 @@ function startup() {
     GPS()
     mapsize[0] = document.getElementById('mapLayer').height
     mapsize[1] = document.getElementById('mapLayer').width
+    setInterval(function() {
+        let time = document.getElementById('time').innerHTML.split(':')
+        let minutes = (parseInt(time[1]) + 1) % 60
+        let hours = Math.floor((parseInt(time[1]) + 1) / 60 + parseInt(time[0])) % 24
+        document.getElementById('time').innerHTML = hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0')
+        document.getElementById('timeLockScreen'). innerHTML = document.getElementById('time').innerHTML 
+    }, 1000 * 60)
 }
 
 let recognizing = false
