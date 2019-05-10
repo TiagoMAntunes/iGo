@@ -205,6 +205,34 @@ function startup() {
         document.getElementById('time').innerHTML = hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0')
         document.getElementById('timeLockScreen'). innerHTML = document.getElementById('time').innerHTML 
     }, 1000 * 60)
+    pushScreen('container');
+    var line = new window.ProgressBar.Circle('#container', {
+        color: '#aaa',
+        // This has to be the same size as the maximum width to
+        // prevent clipping
+        strokeWidth: 4,
+        trailWidth: 1,
+        easing: 'easeInOut',
+        duration: 1400,
+        text: {
+          autoStyleContainer: false
+        },
+        from: { color: '#FFEA82', width: 1 },
+        to: { color: '#ED6A5A', width: 4 },
+        // Set default step function for all animate calls
+        step: function(state, circle) {
+          circle.path.setAttribute('stroke', state.color);
+          circle.path.setAttribute('stroke-width', state.width);
+      
+          var value = Math.round(circle.value() * 100);
+          if (value === 0) {
+            circle.setText('');
+          } else {
+            circle.setText(value);
+          }
+      
+        }
+      })
 }
 
 let recognizing = false
