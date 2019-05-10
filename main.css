@@ -1754,9 +1754,8 @@ max-width: 60%;*/
 }
 
 #titleSteps {
-    padding-left: 59%;
-    padding-top: 27%;
-    color: #114B5F;
+    padding-left: 37%;
+    padding-top: 1%;
 }
 
 #valueSteps {
@@ -2044,8 +2043,12 @@ max-width: 60%;*/
 
 
 #container {
-    margin: 20px;
-    width: 200px;
-    height: 200px;
+    width: 50%;
+    height: 50%;
+    margin-left: 24%;
     position: relative;
+}
+
+.progressbar-text{
+    font-size: 237%;
 }

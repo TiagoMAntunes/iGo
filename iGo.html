@@ -265,7 +265,7 @@
                 </div>    
                     <div id="activityScreen">
                         <div id="firstrowActivity">
-                            <div onclick="pushScreen('screenSteps'); waitDiv('afterloadingSteps')" id="stepsActivity">
+                            <div onclick="pushScreen('screenSteps'); waitDiv('afterloadingSteps');" id="stepsActivity">
                                 <img src="icons/footstep.png">
                             </div>
                             <div onclick="pushScreen('screenCalories'); waitDiv('afterscreenCalories')" id="caloriesActivity">
@@ -340,9 +340,6 @@
                         </table>
                     </div>
             </div>
-            <div id="test123" style="display: none">
-                <div id="container"></div>
-            </div>
             <div id="screenSteps" style='display: none'>
                 <div id="loadingSteps">
                     <img src="icons/load1.gif" style="margin-top: 40%; margin-left: 19%">
@@ -351,9 +348,10 @@
                 </div>
             </div>
             <div id="afterloadingSteps" style='display: none'>
-                <h1 onclick="pushScreen('test123')" id="titleSteps">Steps:</h1>
-                <h2 id="valueSteps">12435</h2>
-                <img id="imageSteps" src="icons/footstep.png">
+                <h1 id="titleSteps">Steps:</h1>
+                <h1 style="margin-top: -17%; margin-left: 84%">...</h1>
+                <div id="container"></div>
+                <h2 style="margin-left: 26%">12345 STEPS TO GO</h2>
             </div>
             <div id="screenCalories" style="display: none">
                 <img src="icons/load2.gif" style="margin-top: 40%;margin-left: 19%">
@@ -766,9 +764,6 @@
                     <button id="buttonSendMessage" onclick="sendMessageShrek()"><b>SEND MESSAGE</b></button>
                     <button id="buttonGoToFriend" onclick="goToPin('shrek')"><b>GO TO</b></button>
                 </div>
-            </div>
-            <div id='container'>
-                
             </div>
         </div>
         <div id="popup1" class="overlay outside">
