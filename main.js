@@ -149,6 +149,7 @@ var numberNoti = 0;
 var block = 0;
 var popupon = 0;
 var gpson = 0;
+var distanceWalked = 0;
 var zoom = 0;
 var nav = 0;
 var target = -1;
@@ -1807,6 +1808,28 @@ function findCurrentDirection(){
     }
     return direct
 }
+
+function calculateDistanceToHealth(i){
+    if(modeWalk == 1){
+        if(nav == 1){
+            distanceWalked = Math.floor(vals[1][path[1]] * 2.54);
+        }else{
+            if(i % 2 == 0){
+                distanceWalked = Math.floor(40 * 2.54);
+            }
+            else{
+                distanceWalked = Math.floor(63 * 2.54);
+            }
+        }
+        d1 = parseInt(document.getElementById('valueSteps').innerText) + distanceWalked;
+        d2 = parseInt(document.getElementById('valueDistance').innerText) + (distanceWalked / 100)
+        document.getElementById('valueSteps').innerText = d1
+        document.getElementById('valueDistance').innerText = d2
+    }
+    console.log(distanceWalked); 
+    
+}
+
 function upPosition(){
     let pino
     let direct
@@ -1822,6 +1845,7 @@ function upPosition(){
     directions = graphMovement(pino);
     reloadPins();
     updateDisplayController();
+    calculateDistanceToHealth(0);
     if(nav == 1){
         recalibratePath();
         direct = findCurrentDirection();
@@ -1850,6 +1874,7 @@ function leftPosition(){
     reloadPins();
     directions = graphMovement(pino);
     updateDisplayController();
+    calculateDistanceToHealth(3);
     if(nav == 1){
         recalibratePath();
         direct = findCurrentDirection();
@@ -1877,6 +1902,7 @@ function rightPosition(){
     reloadPins();
     directions = graphMovement(pino);
     updateDisplayController();
+    calculateDistanceToHealth(1);
     if(nav == 1){
         recalibratePath();
         direct = findCurrentDirection();
@@ -1905,6 +1931,7 @@ function downPosition(){
     reloadPins();
     directions = graphMovement(pino);
     updateDisplayController();
+    calculateDistanceToHealth(2);
     if(nav == 1){
         recalibratePath();
         direct = findCurrentDirection();
