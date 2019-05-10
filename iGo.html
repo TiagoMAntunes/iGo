@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="main.css">
     <script src="main.js"></script>
     <script src="graph.js"></script>
+    <script src="progressbar.min.js"></script>
 </head>
 
 <body onload="startup()">
@@ -339,6 +340,9 @@
                         </table>
                     </div>
             </div>
+            <div id="test123" style="display: none">
+                <div id="container"></div>
+            </div>
             <div id="screenSteps" style='display: none'>
                 <div id="loadingSteps">
                     <img src="icons/load1.gif" style="margin-top: 40%; margin-left: 19%">
@@ -347,7 +351,7 @@
                 </div>
             </div>
             <div id="afterloadingSteps" style='display: none'>
-                <h1 id="titleSteps">Steps:</h1>
+                <h1 onclick="pushScreen('test123')" id="titleSteps">Steps:</h1>
                 <h2 id="valueSteps">12435</h2>
                 <img id="imageSteps" src="icons/footstep.png">
             </div>
