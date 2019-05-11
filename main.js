@@ -162,7 +162,7 @@ var notifiRandom = []
 var vals = []
 var bluetoothProfile = [['images/shrek-1.jpg','images/air.jpeg', 'images/hotel.jpg', 'images/newy.png', 'images/sunshine.jpg', 'images/climbing.jpg', 'images/food.jpg', 'images/airballon.jpg'], ['images/shrek-2.jpg','images/air.jpeg', 'images/hotel.jpg', 'images/newy.png', 'images/sunshine.jpg', 'images/climbing.jpg', 'images/food.jpg', 'images/airballon.jpg'], ['images/shrek-3.jpg','images/air.jpeg', 'images/hotel.jpg', 'images/newy.png', 'images/sunshine.jpg', 'images/climbing.jpg', 'images/food.jpg', 'images/airballon.jpg']];
 var directionsIMG =['icons/up-arrow2.svg','icons/right-arrow2.svg','icons/down-arrow2.svg','icons/left-arrow2.svg']
-
+var destinyPin = undefined;
 var selectedTextBox = undefined;
 
 var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition
@@ -1493,6 +1493,7 @@ function searchPlace(place){
     let direct;
     for(i = 0; i < map_pins.length; i++){
         if(map_pins[i].n == place.toLowerCase()){
+            destinyPin = searchPin(place.toLowerCase())
             nav = 1;
             let pino = searchPinCoordinates(map_pins[i].y,map_pins[i].x);
             target = pino[0]
@@ -1502,6 +1503,7 @@ function searchPlace(place){
             document.getElementById('direct').src = directionsIMG[direct];
             backButton();
             barsNavigation();
+            pathResize()
             break
         }
     }
@@ -1584,6 +1586,7 @@ function endNavigation() {
     document.getElementById('navbarcenterNavigation').style.visibility = 'hidden';
     path = []
     nav = 0;
+    destinyPin = undefined;
     let canvas = document.getElementById((upgrademap ? 'better' : '') + 'map-canvas').getContext('2d');
     canvas.clearRect(0,0,$('#' + (upgrademap ? 'better' : '') + 'map-canvas').height(), $('#' + (upgrademap ? 'better' : '') + 'map-canvas').width());
 
@@ -2393,7 +2396,25 @@ function displayRadius() {
 }
 
 function pathResize() {
-
+    console.log('resizing path')
+    let currentPin = searchPin('atualPosition')
+    let pin = {x: (destinyPin.x - currentPin.x) / 2 + currentPin.x, y: (destinyPin.y - currentPin.y) / 2 + currentPin.y}
+    zoom = 0;
+    let current = $(getCurrentMap())
+    let border = upgrademap ? $(document.getElementById('bettermap')) : $(document.getElementById('mapaScreen'))
+    current.height(mapsize[0] * (1 - zoom))
+    current.width(mapsize[1] * (1 - zoom))
+    let hor_pos = (border.width() / 2 - current.position().left) / (1-zoom)
+    let ver_pos = (border.height() / 2 - current.position().top) / (1-zoom)
+    let offset_x = (pin.y - hor_pos) * (1-zoom) 
+    let offset_y = (pin.x - ver_pos) * (1-zoom)
+    const baseOffset = current.offset()
+    current.offset({top: baseOffset.top - offset_y, left: baseOffset.left - offset_x})
+    mapBoundariesPositioning();
+    reloadPins();
+    if(nav == 1)
+        recalibratePath();
+    
 }
 
 function pushMapMessage(index, positionname) {
