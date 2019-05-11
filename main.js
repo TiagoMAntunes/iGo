@@ -2396,12 +2396,17 @@ function displayRadius() {
 }
 
 function pathResize() {
-    console.log('resizing path')
     let currentPin = searchPin('atualPosition')
     let pin = {x: (destinyPin.x - currentPin.x) / 2 + currentPin.x, y: (destinyPin.y - currentPin.y) / 2 + currentPin.y}
-    zoom = 0;
-    let current = $(getCurrentMap())
     let border = upgrademap ? $(document.getElementById('bettermap')) : $(document.getElementById('mapaScreen'))
+    if (border.height() - $('#topbarNavigation').height() - $('#navbarNavigation').height() < Math.abs(destinyPin.y - currentPin.y) * 1.5 * (1-zoom)) {
+        zoom = Math.abs(destinyPin.x - currentPin.x) * 3 / mapsize[0]
+    } 
+    if (border.width() < Math.abs(destinyPin.x - currentPin.x) * 3 * (1-zoom) ){
+        zoom = Math.abs(destinyPin.x - currentPin.x) * 3 / mapsize[1]
+    }
+
+    let current = $(getCurrentMap())
     current.height(mapsize[0] * (1 - zoom))
     current.width(mapsize[1] * (1 - zoom))
     let hor_pos = (border.width() / 2 - current.position().left) / (1-zoom)
