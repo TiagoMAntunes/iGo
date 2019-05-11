@@ -1769,9 +1769,9 @@ max-width: 60%;*/
 }
 
 #titleCalories {
-    padding-left: 56%;
-    padding-top: 27%;
+    padding-top: 1%;
     color: indianred;
+    text-align: center;
 }
 
 #valueCalories {
@@ -1801,8 +1801,8 @@ max-width: 60%;*/
 }
 
 #titleDistance {
-    padding-left: 58%;
-    padding-top: 27%; 
+    text-align: center;
+    padding-top: 1%; 
     color: cadetblue;    
 }
 
@@ -2043,6 +2043,20 @@ max-width: 60%;*/
 
 
 #container {
+    width: 50%;
+    height: 50%;
+    margin-left: 24%;
+    position: relative;
+}
+
+#container2 {
+    width: 50%;
+    height: 50%;
+    margin-left: 24%;
+    position: relative;    
+}
+
+#container3 {
     width: 50%;
     height: 50%;
     margin-left: 24%;

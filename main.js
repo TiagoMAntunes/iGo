@@ -2398,13 +2398,21 @@ function cancelSearchFriend() {
     backButton();
 }
 
-function waitDiv(nameDiv){
+function waitDiv(nameDiv, valueAnimation){
     setTimeout(function(){
         pushScreen(nameDiv);
         console.log(screenStack[screenStack.length -2 ]);
         screenStack.splice(screenStack.length-2,1);
         console.log(screenStack[screenStack.length -1 ]);
-        imconfused();
+        if(screenStack[screenStack.length-1] == 'afterloadingSteps'){
+            imconfused('#container', valueAnimation);
+        }
+        if(screenStack[screenStack.length-1] == 'afterscreenCalories'){
+            imconfused('#container2', valueAnimation);
+        }
+        if(screenStack[screenStack.length-1] == 'afterscreenDistance'){
+            imconfused('#container3', valueAnimation);
+        }
     }, 920);
 }
 
@@ -2442,7 +2450,7 @@ var emergency_timeout;
 
 function waitEmergency() {
     clearInterval(emergency_timeout)
-    calling.innerHTML = "CALLING"
+    calling.innerHTML = "CALLING..."
     setTimeout(function(){
         document.getElementById('calling').innerHTML = "00:00";
         emergency_timeout = setInterval(function() {
@@ -2451,11 +2459,11 @@ function waitEmergency() {
             let minutes = Math.floor((parseInt(time[1]) + 1) / 60 + parseInt(time[0]))
             calling.innerText =  minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0')
         }, 1000)
-    }, 500);
+    }, 1000);
 }
 
-function imconfused(){
-    var line = new window.ProgressBar.Circle('#container', {
+function imconfused(id, valueAnimation){
+    var line = new window.ProgressBar.Circle(id, {
         color: '#aaa',
         // This has to be the same size as the maximum width to
         // prevent clipping
@@ -2483,5 +2491,5 @@ function imconfused(){
         }
       })
     
-    line.animate(0.5);
+    line.animate(valueAnimation);
 }
