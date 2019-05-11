@@ -206,34 +206,6 @@ function startup() {
         document.getElementById('time').innerHTML = hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0')
         document.getElementById('timeLockScreen'). innerHTML = document.getElementById('time').innerHTML 
     }, 1000 * 60)
-    pushScreen('container');
-    var line = new window.ProgressBar.Circle('#container', {
-        color: '#aaa',
-        // This has to be the same size as the maximum width to
-        // prevent clipping
-        strokeWidth: 4,
-        trailWidth: 1,
-        easing: 'easeInOut',
-        duration: 1400,
-        text: {
-          autoStyleContainer: false
-        },
-        from: { color: '#FFEA82', width: 1 },
-        to: { color: '#ED6A5A', width: 4 },
-        // Set default step function for all animate calls
-        step: function(state, circle) {
-          circle.path.setAttribute('stroke', state.color);
-          circle.path.setAttribute('stroke-width', state.width);
-      
-          var value = Math.round(circle.value() * 100);
-          if (value === 0) {
-            circle.setText('');
-          } else {
-            circle.setText(value);
-          }
-      
-        }
-      })
 }
 
 let recognizing = false
@@ -2501,12 +2473,21 @@ function cancelSearchFriend() {
     backButton();
 }
 
-function waitDiv(nameDiv){
+function waitDiv(nameDiv, valueAnimation){
     setTimeout(function(){
         pushScreen(nameDiv);
         console.log(screenStack[screenStack.length -2 ]);
         screenStack.splice(screenStack.length-2,1);
         console.log(screenStack[screenStack.length -1 ]);
+        if(screenStack[screenStack.length-1] == 'afterloadingSteps'){
+            imconfused('#container', valueAnimation);
+        }
+        if(screenStack[screenStack.length-1] == 'afterscreenCalories'){
+            imconfused('#container2', valueAnimation);
+        }
+        if(screenStack[screenStack.length-1] == 'afterscreenDistance'){
+            imconfused('#container3', valueAnimation);
+        }
     }, 920);
 }
 
@@ -2544,7 +2525,7 @@ var emergency_timeout;
 
 function waitEmergency() {
     clearInterval(emergency_timeout)
-    calling.innerHTML = "CALLING"
+    calling.innerHTML = "CALLING..."
     setTimeout(function(){
         document.getElementById('calling').innerHTML = "00:00";
         emergency_timeout = setInterval(function() {
@@ -2553,5 +2534,37 @@ function waitEmergency() {
             let minutes = Math.floor((parseInt(time[1]) + 1) / 60 + parseInt(time[0]))
             calling.innerText =  minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0')
         }, 1000)
-    }, 500);
+    }, 1000);
+}
+
+function imconfused(id, valueAnimation){
+    var line = new window.ProgressBar.Circle(id, {
+        color: '#aaa',
+        // This has to be the same size as the maximum width to
+        // prevent clipping
+        strokeWidth: 6,
+        trailWidth: 6,
+        easing: 'easeInOut',
+        duration: 1400,
+        text: {
+          autoStyleContainer: false
+        },
+        from: { color: '#FFEA82', width: 6 },
+        to: { color: '#ED6A5A', width: 6 },
+        // Set default step function for all animate calls
+        step: function(state, circle) {
+          circle.path.setAttribute('stroke', state.color);
+          circle.path.setAttribute('stroke-width', state.width);
+      
+          var value = Math.round(circle.value() * 100);
+          if (value === 0) {
+            circle.setText('');
+          } else {
+            circle.setText(value + "%");
+          }
+      
+        }
+      })
+    
+    line.animate(valueAnimation);
 }

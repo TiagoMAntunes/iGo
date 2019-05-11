@@ -265,24 +265,24 @@
                 </div>    
                     <div id="activityScreen">
                         <div id="firstrowActivity">
-                            <div onclick="pushScreen('screenSteps'); waitDiv('afterloadingSteps')" id="stepsActivity">
+                            <div onclick="pushScreen('screenSteps'); waitDiv('afterloadingSteps', 0.5);" id="stepsActivity">
                                 <img src="icons/footstep.png">
                             </div>
-                            <div onclick="pushScreen('screenCalories'); waitDiv('afterscreenCalories')" id="caloriesActivity">
+                            <div onclick="pushScreen('screenCalories'); waitDiv('afterscreenCalories', 0.9)" id="caloriesActivity">
                                 <img src="icons/flame.png">
                             </div>
-                            <div onclick="pushScreen('screenHeart'); waitDiv('afterscreenHeart')" id="heartActivity">
+                            <div onclick="pushScreen('screenHeart'); waitDiv('afterscreenHeart', 0.0)" id="heartActivity">
                                 <img src="icons/cardiogram.png">
                             </div>
                         </div>
                         <div id="secondrowActivity">
-                            <div onclick="pushScreen('screenDistance'); waitDiv('afterscreenDistance')" id="distanceActivity">
+                            <div onclick="pushScreen('screenDistance'); waitDiv('afterscreenDistance', 0.7)" id="distanceActivity">
                                 <img src="icons/running-man.png">
                             </div>
-                            <div onclick="pushScreen('screenSleep'); waitDiv('afterscreenSleep')" id="sleepActivity">
+                            <div onclick="pushScreen('screenSleep'); waitDiv('afterscreenSleep', 0.0)" id="sleepActivity">
                                 <img src="icons/sleep.png">
                             </div>
-                            <div onclick="pushScreen('screenGlucose'); waitDiv('afterscreenGlucose')" id="glucoseActivity">
+                            <div onclick="pushScreen('screenGlucose'); waitDiv('afterscreenGlucose', 0.0)" id="glucoseActivity">
                                 <img src="icons/diabetes-test.png">
                             </div>
                         </div>
@@ -348,9 +348,10 @@
                 </div>
             </div>
             <div id="afterloadingSteps" style='display: none'>
-                <h1 id="titleSteps">Steps:</h1>
-                <h2 id="valueSteps">12435</h2>
-                <img id="imageSteps" src="icons/footstep.png">
+                <h1 id="titleSteps">Steps</h1>
+                <img style="width: 10%; margin-top: -15%; margin-left: 79%" src="icons/configuration.png"/>
+                <div id="container"></div>
+                <h3 style="text-align: center">12345 STEPS TO YOUR GOAL</h3>
             </div>
             <div id="screenCalories" style="display: none">
                 <img src="icons/load2.gif" style="margin-top: 40%;margin-left: 19%">
@@ -358,9 +359,10 @@
                 <img style="margin-left: 39%; margin-top: -150%; width: 24%" src="icons/energy-bar.png">
             </div>
             <div id="afterscreenCalories" style='display: none'>
-                <h1 id="titleCalories">Calories:</h1>
-                <h2 id="valueCalories">1.065</h2>
-                <img id="imageCalories" src="icons/flame.png">
+                <h1 id="titleCalories">Calories</h1>
+                <img style="width: 10%; margin-top: -15%; margin-left: 79%" src="icons/configuration.png"/>
+                <div id="container2"></div>
+                <h3 style="text-align: center">126KCAL TO YOUR GOAL</h3>
             </div>
             <div id="screenHeart" style="display: none">
                 <img src="icons/load3.gif" style="margin-top: 40%;margin-left: 19%">
@@ -378,9 +380,10 @@
                 <img style="margin-left: 39%; margin-top: -150%; width: 24%" src="icons/running.png">
             </div>
             <div id="afterscreenDistance" style="display: none">
-                <h1 id="titleDistance">Distance:</h1>
-                <h2 id="valueDistance">32.3km</h2>
-                <img id="imageDistance" src="icons/running-man.png">
+                <h1 id="titleDistance">Distance</h1>
+                <img style="width: 10%; margin-top: -15%; margin-left: 79%" src="icons/configuration.png"/>
+                <div id="container3"></div>
+                <h3 style="text-align: center">2.3KM TO YOUR GOAL</h3>
             </div>
             <div id="screenSleep" style="display: none">
                 <img src="icons/load5.gif" style="margin-top: 40%; margin-left: 19%">
@@ -403,6 +406,15 @@
                 <h1 id="titleGlucose">Glucose level:</h1>
                 <h2 id="valueGlucose">6.2mmol/L</h2>
                 <img id="imageGlucose" src="icons/diabetes-test.png">
+            </div>
+            <div id="goalSteps" style="display: none">
+                <h2>Change the goal of steps you want to do daily:</h2>
+            </div>
+            <div id="goalCalories" style="display: none">
+                <h2>Change the goal of calories you want to ? daily:</h2>
+            </div>
+            <div id="goalDistance" style="display: none">
+                <h2>Change the goal of the distance you want to walk/run daily</h2>
             </div>
             <div id='definicoes' style='display: none'>
                 <h1 style='margin-left: 2%'>Settings</h1>
@@ -763,9 +775,6 @@
                     <button id="buttonSendMessage" onclick="sendMessageShrek()"><b>SEND MESSAGE</b></button>
                     <button id="buttonGoToFriend" onclick="goToPin('shrek')"><b>GO TO</b></button>
                 </div>
-            </div>
-            <div id='container'>
-                
             </div>
         </div>
         <div id="popup1" class="overlay outside">
