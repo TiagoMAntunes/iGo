@@ -301,7 +301,6 @@ function goToPin(pinname) {
     }else{
         pushScreen('mapaScreen')
     }
-    centerPosition(pinname)
 }
 
 function stopShrekMovement(){
