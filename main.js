@@ -1231,6 +1231,7 @@ function addPicture() {
     pushScreen('multimedia');
     resetFilters();
     createNotificationPop();
+    popUpPublishPhoto();
 }
 
 function updateValue(value) {
@@ -2371,6 +2372,11 @@ function popUpCancelTrip3D(){
 function openPopArriveTarget(){
     popupon = 1;
     location.href = "#popup10";
+}
+
+function popUpPublishPhoto() {
+    popupon = 1;
+    location.href=  '#popup13'
 }
 
 var radius = 0;
