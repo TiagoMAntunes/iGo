@@ -438,6 +438,12 @@ function backButton() {
         desativeJoystick();
         hideNavbars();
     }
+
+    if (screenStack[screenStack.length - 1] === 'photoSubmit' && document.getElementById('descript').value != '') {
+        popupCancelPicturePublish()
+        return
+    }
+
     if(screenStack[screenStack.lenght -1] === 'augmentedHelp'){
 
     }
@@ -1055,9 +1061,17 @@ function cancelProfileEditForce() {
     backButton()
 }
 
+function cancelPublishPictureForce() {
+    document.getElementById('photodescription').reset()
+    backButton()
+}
+
 function cancelChange() {
     if (document.getElementById("input1").value != '' || document.getElementById("input2").value != '') {
         popupCancelProfileEdit()
+        return
+    } else if (document.getElementById('descript').value != '') {
+        popupCancelPicturePublish()
         return
     }
 
@@ -2392,6 +2406,11 @@ function popUpPublishPhoto() {
 function popupCancelProfileEdit() {
     popupon = 1;
     location.href = '#popup14'
+}
+
+function popupCancelPicturePublish() {
+    popupon = 1;
+    location.href = '#popup15'
 }
 
 var radius = 0;
