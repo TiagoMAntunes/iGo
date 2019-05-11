@@ -679,7 +679,8 @@ function scrollWheelPointsInterest(event) {
     if (document.getElementById('pointsInterest').style.top == '')
         document.getElementById('pointsInterest').style.top = '0px';
     let direction = (event.clientY - dragInfo.clientY)
-
+    if ($('#pointsInterest').outerHeight() < $(document.getElementById('mainScreen')).outerHeight() - $(document.getElementById('top-bar')).outerHeight())
+    return;
     let i = 0;
     if (direction > 0) {
         i = 10;
@@ -2391,8 +2392,12 @@ function displayRadius() {
         recalibratePath();
 }
 
+function pathResize() {
+
+}
+
 function pushMapMessage(index, positionname) {
-    profiles[index].messages.push({content:"Gostei desta posição e decidi partilhar contigo " + positionname, self: true})
+    profiles[index].messages.push({content:"Gostei desta posição e decidi partilhar contigo " + positionname, self: true, isMap: true, pinName: positionname})
 }
 
 function shareLocationMessage() {
