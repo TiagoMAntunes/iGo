@@ -918,10 +918,19 @@ function createMessages() {
 
 var currentUser = 0;
 
+function getPinID(pinname) {
+    for (let i = 0; i < popsGPS.length; i++) {
+        if (popsGPS[i].name.toLowerCase() == pinname.toLowerCase())
+            return i
+    }
+}
+
 function createMessage(message) {
     let content = message.self ? "<div class='containerM darkerM'>" : "<div class='containerM lighterM'><p class='messageP' id='message1'>"
     if (message.isMap)
         content += "<p class='messageP'> " + message.content + "<br><button id='goToMessages' onclick='goToPin(\"" + message.pinName + "\")'>GO TO</button>"
+    else if(message.isPin)
+        content += "<p class='messageP'> " + message.content + "<br><button id='goToMessages' onclick='screenInfo(\"" + getPinID(message.pinName) + "\")'>SEE</button>"
     else 
         content += "<p class='messageP'>" + message.content + "</p>"
 
@@ -2423,7 +2432,7 @@ function pathResize() {
 }
 
 function pushMapMessage(index, positionname) {
-    profiles[index].messages.push({content:"Gostei desta posição e decidi partilhar contigo " + positionname, self: true, isMap: true, pinName: positionname})
+    profiles[index].messages.push({content:"Gostei desta posição e decidi partilhar contigo " + positionname, self: true, isPin: true, pinName: positionname})
 }
 
 function shareLocationMessage() {
