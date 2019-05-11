@@ -918,6 +918,46 @@
                 </div>
             </div>
         </div>
+        <div id="popup13" class="overlay outside">
+            <div class="popup" style="width: 35%">
+                <div id="toppopup">
+                    <h2 style="padding-left: 5%">Published photo</h2>
+                    <a style="padding-left: 10%; margin-top: -2%" class="close" href="#" onclick="popupclosed()">&times;</a>
+                </div>
+                <div class="content" style="padding-left: 5%">
+                    Picture published
+                    <a href="#">
+                        <img id="checked" src="icons/checked.png" onclick="popupclosed()">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div id="popup14" class="overlay outside">
+            <div class="popup" style="width: 35%">
+                <div id="toppopup">
+                    <h2 style="padding-left: 5%">Share location</h2>
+                    <a style="padding-left: 10%; margin-top: -2%" class="close" href="#" onclick="popupclosed()">&times;</a>
+                </div>
+                <div class="content" style="padding-left: 5%">
+                    You have unsaved changes. Cancel?
+                    <button id="noButton" onclick="backButton()" id=''>NO</button>
+                    <button id="yesButton" onclick='backButton();cancelProfileEditForce()' id=''>YES</button>
+                </div>
+            </div>
+        </div>
+        <div id="popup15" class="overlay outside">
+            <div class="popup" style="width: 35%">
+                <div id="toppopup">
+                    <h2 style="padding-left: 5%">Share location</h2>
+                    <a style="padding-left: 10%; margin-top: -2%" class="close" href="#" onclick="popupclosed()">&times;</a>
+                </div>
+                <div class="content" style="padding-left: 5%">
+                    You have unsaved changes. Cancel?
+                    <button id="noButton" onclick="backButton()" id=''>NO</button>
+                    <button id="yesButton" onclick='backButton();cancelPublishPictureForce()' id=''>YES</button>
+                </div>
+            </div>
+        </div>
     </div>
     <div id='helpButton' onclick="helpButton()"></div>
     <div id="backButton" onclick="backButton()"></div>
