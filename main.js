@@ -1050,7 +1050,17 @@ function saveProfile() {
     document.getElementById("formprofile").reset();
 }
 
+function cancelProfileEditForce() {
+    document.getElementById("formprofile").reset();
+    backButton()
+}
+
 function cancelChange() {
+    if (document.getElementById("input1").value != '' || document.getElementById("input2").value != '') {
+        popupCancelProfileEdit()
+        return
+    }
+
     document.getElementById("photodescription").reset();
     document.getElementById("formprofile").reset();
     backButton();
@@ -2377,6 +2387,11 @@ function openPopArriveTarget(){
 function popUpPublishPhoto() {
     popupon = 1;
     location.href=  '#popup13'
+}
+
+function popupCancelProfileEdit() {
+    popupon = 1;
+    location.href = '#popup14'
 }
 
 var radius = 0;
