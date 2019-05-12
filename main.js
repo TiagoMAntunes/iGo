@@ -499,6 +499,9 @@ function backButton() {
         hideNavbars();
     }
 
+    if(screenStack[screenStack.length - 1] === 'afterscreenGlucose'){
+        desativeFood();
+    }
     if (screenStack[screenStack.length - 1] === 'photoSubmit' && document.getElementById('descript').value != '') {
         popupCancelPicturePublish()
         return
@@ -549,6 +552,9 @@ function pushScreen(screen) {
     if(screen=='goalDistance'){
         document.getElementById('goalDistanceChange').value = goalDistance;
         distanceCancel = goalDistance;
+    }
+    if(screen == 'afterscreenGlucose'){
+        ativeFood();
     }
     screenStack.push(screen);
     console.log(screenStack);
@@ -2157,6 +2163,15 @@ function desativeJoystick(){
     document.getElementById('joystick').style.display = 'none';
 }
 
+function ativeFood(){
+    document.getElementById('glucoseSimulation').style.display = '';
+}
+
+function desativeFood(){
+    document.getElementById('glucoseSimulation').style.display = "none";
+}
+
+
 function hideNavbars(){
     document.getElementById('navbarMap').style.visibility = 'visible';
     document.getElementById('navbar2Map').style.visibility = 'visible';
@@ -2690,19 +2705,19 @@ function waitEmergency() {
 
 function imconfused(){
     percentageSteps = ((valueSteps * 100) / goalSteps) / 100;
-    document.getElementById('stepsMissing').innerText = (goalSteps - valueSteps) + " STEPS TO YOUR GOAL";
+    document.getElementById('stepsMissing').innerHTML = (goalSteps - valueSteps) + " STEPS TO YOUR GOAL<br/>" + valueSteps + " ALREADY COMPLETED";
     line.animate(percentageSteps);
 }
 
 function imconfused2(){
     percentageCalories = ((valueCalories * 100) / goalCalories) / 100;
-    document.getElementById('caloriesMissing').innerText = (goalCalories - valueCalories) + " CALORIES TO YOUR GOAL";
+    document.getElementById('caloriesMissing').innerHTML = (goalCalories - valueCalories) + " CALORIES TO YOUR GOAL<br/>" + valueCalories + " ALREADY BURNED";
     line2.animate(percentageCalories);
 }
 
 function imconfused3(){
     percentageDistance = ((valueDistance * 100) / goalDistance) / 100;
-    document.getElementById('distanceMissing').innerText = parseFloat(goalDistance - valueDistance) + " KM TO YOUR GOAL";
+    document.getElementById('distanceMissing').innerHTML = parseFloat(goalDistance - valueDistance) + " KM TO YOUR GOAL<br/>" + valueDistance + " KM ALREADY COMPLETED";
     line3.animate(percentageDistance);
 }
 
@@ -2747,7 +2762,7 @@ function revertCaloriesGoal(){
 function revertDistanceGoal(){
     goalDistance = distanceCancel;
 }
-var glu = 6.2;
+var glu = 4.2;
 function glucoseIncrease(i){
     console.log(glu);
     switch(i){
@@ -2764,6 +2779,23 @@ function glucoseIncrease(i){
             glu += 0.4
         break;
     }
-    console.log(glu);
-    document.getElementById('GValue').innerHTML = glu;
+    var glu2 = glu.toFixed(2);
+    console.log(Math.random() * (100 - 40) + 40);
+    document.getElementById('GValue').innerHTML = glu2;
+}
+
+function calculateBPM(){
+    var bpm = Math.random() * (100 - 40) + 40;
+    var bpm2 = bpm.toFixed(1);
+    document.getElementById('valueHeart').innerHTML = bpm2 + " BPM";
+    if(bpm2 < 65){
+        console.log('yo1')
+        document.getElementById('valueHeart').style.color = '#99C24D';
+    }else if(bpm2 >= 65 && bpm2 <= 80){
+        console.log('yo2')
+        document.getElementById('valueHeart').style.color = '#99C24D';
+    }else{
+        console.log('yo3')
+        document.getElementById('valueHeart').style.color = '#DB3A34';
+    }
 }

@@ -321,7 +321,7 @@
                             <div onclick="pushScreen('screenCalories'); waitDiv('afterscreenCalories')" id="caloriesActivity">
                                 <img src="icons/flame.png">
                             </div>
-                            <div onclick="pushScreen('screenHeart'); waitDiv('afterscreenHeart')" id="heartActivity">
+                            <div onclick="pushScreen('screenHeart'); waitDiv('afterscreenHeart');calculateBPM()" id="heartActivity">
                                 <img src="icons/cardiogram.png">
                             </div>
                         </div>
@@ -454,7 +454,7 @@
             </div>
             <div id="afterscreenGlucose" style="display: none">
                 <h1 id="titleGlucose">Glucose level:</h1>
-                <h2 id="valueGlucose"><span id='GValue'>6.2</span>mmol/L</h2>
+                <h2 id="valueGlucose"><span id='GValue'>4.2</span>mmol/L</h2>
                 <img id="imageGlucose" src="icons/diabetes-test.png">
             </div>
             <div id="goalSteps" style="display: none">
@@ -469,7 +469,7 @@
                         <b>CANCEL</b>
             </div>
             <div id="goalCalories" style="display: none">
-                <h2 class="textDaily">Change the goal of calories you want to ? daily:</h2>
+                <h2 class="textDaily">Change the goal of calories you want to burn daily:</h2>
                 <button id="minusPoints" onclick="lessOneCalories()">-</button>
                     <input style="margin-top: 11%" id="goalCaloriesChange" disabled>
                     <button id="plusPoints" onclick="plusOneCalories()">+</button>
@@ -1050,22 +1050,22 @@
             />
         </div>
     </div>
-    <div id = 'glucoseSimulation'>
-        <table>
+    <div id = 'glucoseSimulation' style="display: none">
+        <table style="margin-left: 5%">
             <tr>
                 <td onclick="glucoseIncrease(1)" class = 'food'>
-                    <img src = 'icons/can.png'/>
+                    <img width="48%" src = 'icons/can.png'/>
                 </td>
                 <td onclick="glucoseIncrease(2)"class = 'food'>
-                    <img src = 'icons/burger.png'/>
+                    <img width="48%" src = 'icons/burger.png'/>
                 </td>
             </tr>
             <tr>
                 <td onclick="glucoseIncrease(3)"class = 'food'>
-                    <img src = 'icons/food.png'/>
+                    <img style="margin-top: 13%" width="48%" src = 'icons/food.png'/>
                 </td>
                 <td onclick="glucoseIncrease(4)" class = 'food'>
-                    <img src = 'icons/chocolate-bar.png'/>
+                    <img style="margin-top: 13%" width="48%" src = 'icons/chocolate-bar.png'/>
                 </td>
             </tr>
         </table> 
