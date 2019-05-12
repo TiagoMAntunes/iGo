@@ -1770,7 +1770,6 @@ max-width: 60%;*/
 
 #titleCalories {
     padding-top: 1%;
-    color: indianred;
     text-align: center;
 }
 
@@ -1803,7 +1802,6 @@ max-width: 60%;*/
 #titleDistance {
     text-align: center;
     padding-top: 1%; 
-    color: cadetblue;    
 }
 
 #valueDistance {
@@ -2002,7 +2000,32 @@ max-width: 60%;*/
     width: 33%;
     margin-left: 33%;
     margin-top: -1%;
+    -webkit-animation: scale-up-center 1.0s cubic-bezier(0.390, 0.575, 0.565, 1.000) 3 both;
+	animation: scale-up-center 1.0s cubic-bezier(0.390, 0.575, 0.565, 1.000) 3 both;
 }
+
+@-webkit-keyframes scale-up-center {
+    0% {
+      -webkit-transform: scale(0.5);
+              transform: scale(0.5);
+    }
+    100% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+    }
+  }
+  @keyframes scale-up-center {
+    0% {
+      -webkit-transform: scale(0.5);
+              transform: scale(0.5);
+    }
+    100% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+    }
+  }
+  
+
 
 .unselectable {
     -moz-user-select: -moz-none;
@@ -2083,3 +2106,28 @@ max-width: 60%;*/
     font-size: 133%;
     text-align: center;
 }
+
+#goalCaloriesChange {
+    background-color: lightgrey;
+    border: none;
+    border-radius: 4px;
+    color: black;
+    height: 15%;
+    width: 22%;
+    margin-top: 3%;
+    font-size: 133%;
+    text-align: center;
+}
+
+#goalDistanceChange {
+    background-color: lightgrey;
+    border: none;
+    border-radius: 4px;
+    color: black;
+    height: 15%;
+    width: 22%;
+    margin-top: 3%;
+    font-size: 133%;
+    text-align: center;
+}
+

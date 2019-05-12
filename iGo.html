@@ -415,29 +415,29 @@
                     <button style="margin-top: 18%" id="donebtnPoints" onclick="backButton();imconfused()">
                         <b>DONE</b>
                     </button>
-                    <button style="margin-top: 18%" id="cancelbtnPoints" onclick="">
+                    <button style="margin-top: 18%" id="cancelbtnPoints" onclick="revertStepsGoal();backButton()">
                         <b>CANCEL</b>
             </div>
             <div id="goalCalories" style="display: none">
                 <h2 class="textDaily">Change the goal of calories you want to ? daily:</h2>
                 <button id="minusPoints" onclick="lessOneCalories()">-</button>
-                    <input style="margin-top: 11%" id="goalStepChange" disabled>
+                    <input style="margin-top: 11%" id="goalCaloriesChange" disabled>
                     <button id="plusPoints" onclick="plusOneCalories()">+</button>
                     <button style="margin-top: 18%" id="donebtnPoints" onclick="backButton();imconfused2()">
                         <b>DONE</b>
                     </button>
-                    <button style="margin-top: 18%" id="cancelbtnPoints" onclick="">
+                    <button style="margin-top: 18%" id="cancelbtnPoints" onclick="revertCaloriesGoal();backButton()">
                         <b>CANCEL</b>
             </div>
             <div id="goalDistance" style="display: none">
                 <h2 class="textDaily">Change the goal of the distance you want to walk/run daily</h2>
                 <button id="minusPoints" onclick="lessOneDistance()">-</button>
-                    <input style="margin-top: 5%" id="goalStepChange" value="" disabled>
+                    <input style="margin-top: 5%" id="goalDistanceChange" value="" disabled>
                     <button id="plusPoints" onclick="plusOneDistance()">+</button>
                     <button style="margin-top: 18%" id="donebtnPoints" onclick="backButton();imconfused3()">
                         <b>DONE</b>
                     </button>
-                    <button style="margin-top: 18%" id="cancelbtnPoints" onclick="">
+                    <button style="margin-top: 18%" id="cancelbtnPoints" onclick="revertDistanceGoal();backButton()">
                         <b>CANCEL</b>
             </div>
             <div id='definicoes' style='display: none'>
