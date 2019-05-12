@@ -480,10 +480,6 @@ function backButton() {
         popupon = 0;
         return;
     }
-    if(screenStack[screenStack.length - 1] == 'mapaScreen' && nav == 1){
-        popUpCancelTrip()
-        return
-    }
      if(screenStack[screenStack.length - 1] == 'augmentedHelp' && nav == 1 && upgrademap ){
         popUpCancelTrip3D()
         return;
@@ -494,7 +490,7 @@ function backButton() {
     if (block % 2 == 1 && screenStack[screenStack.length - 1] === 'blackScreen') {
         return
     }
-    if(screenStack[screenStack.length - 1] === 'mapaScreen'){
+    if(screenStack[screenStack.length - 1] === 'mapaScreen' && nav == 0){
         desativeJoystick();
         hideNavbars();
     }
