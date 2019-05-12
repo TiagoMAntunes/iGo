@@ -162,6 +162,7 @@ var notifiRandom = []
 var vals = []
 var bluetoothProfile = [['images/shrek-1.jpg','images/air.jpeg', 'images/hotel.jpg', 'images/newy.png', 'images/sunshine.jpg', 'images/climbing.jpg', 'images/food.jpg', 'images/airballon.jpg'], ['images/shrek-2.jpg','images/air.jpeg', 'images/hotel.jpg', 'images/newy.png', 'images/sunshine.jpg', 'images/climbing.jpg', 'images/food.jpg', 'images/airballon.jpg'], ['images/shrek-3.jpg','images/air.jpeg', 'images/hotel.jpg', 'images/newy.png', 'images/sunshine.jpg', 'images/climbing.jpg', 'images/food.jpg', 'images/airballon.jpg']];
 var directionsIMG =['icons/up-arrow2.svg','icons/right-arrow2.svg','icons/down-arrow2.svg','icons/left-arrow2.svg']
+var destinyPin = undefined;
 var line;
 var line2;
 var line3;
@@ -497,6 +498,12 @@ function backButton() {
         desativeJoystick();
         hideNavbars();
     }
+
+    if (screenStack[screenStack.length - 1] === 'photoSubmit' && document.getElementById('descript').value != '') {
+        popupCancelPicturePublish()
+        return
+    }
+
     if(screenStack[screenStack.lenght -1] === 'augmentedHelp'){
 
     }
@@ -758,6 +765,8 @@ function scrollWheelPointsInterest(event) {
     if (document.getElementById('pointsInterest').style.top == '')
         document.getElementById('pointsInterest').style.top = '0px';
     let direction = (event.clientY - dragInfo.clientY)
+    if ($('#pointsInterest').outerHeight() < $(document.getElementById('mainScreen')).outerHeight() - $(document.getElementById('top-bar')).outerHeight())
+        return;
 
     let i = 0;
     if (direction > 0) {
@@ -1019,10 +1028,19 @@ function createMessages() {
 
 var currentUser = 0;
 
+function getPinID(pinname) {
+    for (let i = 0; i < popsGPS.length; i++) {
+        if (popsGPS[i].name.toLowerCase() == pinname.toLowerCase())
+            return i
+    }
+}
+
 function createMessage(message) {
     let content = message.self ? "<div class='containerM darkerM'>" : "<div class='containerM lighterM'><p class='messageP' id='message1'>"
     if (message.isMap)
         content += "<p class='messageP'> " + message.content + "<br><button id='goToMessages' onclick='goToPin(\"" + message.pinName + "\")'>GO TO</button>"
+    else if(message.isPin)
+        content += "<p class='messageP'> " + message.content + "<br><button id='goToMessages' onclick='screenInfo(\"" + getPinID(message.pinName) + "\")'>SEE</button>"
     else 
         content += "<p class='messageP'>" + message.content + "</p>"
 
@@ -1143,10 +1161,24 @@ function saveProfile() {
     document.getElementById("formprofile").reset();
 }
 
-function cancelChange() {
-    document.getElementById("photodescription").reset();
+function cancelProfileEditForce() {
     document.getElementById("formprofile").reset();
-    backButton();
+    backButton()
+}
+
+function cancelPublishPictureForce() {
+    document.getElementById('photodescription').reset()
+    backButton()
+}
+
+function cancelChange() {
+    if (document.getElementById("input1").value != '' || document.getElementById("input2").value != '') {
+        popupCancelProfileEdit()
+        return
+    } else if (document.getElementById('descript').value != '') {
+        popupCancelPicturePublish()
+        return
+    }
 }
 
 function cancelSearch() {
@@ -1327,6 +1359,7 @@ function addPicture() {
     pushScreen('multimedia');
     resetFilters();
     createNotificationPop();
+    popUpPublishPhoto();
 }
 
 function updateValue(value) {
@@ -1597,6 +1630,7 @@ function searchPlace(place){
     let direct;
     for(i = 0; i < map_pins.length; i++){
         if(map_pins[i].n == place.toLowerCase()){
+            destinyPin = searchPin(place.toLowerCase())
             nav = 1;
             let pino = searchPinCoordinates(map_pins[i].y,map_pins[i].x);
             target = pino[0]
@@ -1606,6 +1640,7 @@ function searchPlace(place){
             document.getElementById('direct').src = directionsIMG[direct];
             backButton();
             barsNavigation();
+            pathResize()
             break
         }
     }
@@ -1688,6 +1723,7 @@ function endNavigation() {
     document.getElementById('navbarcenterNavigation').style.visibility = 'hidden';
     path = []
     nav = 0;
+    destinyPin = undefined;
     let canvas = document.getElementById((upgrademap ? 'better' : '') + 'map-canvas').getContext('2d');
     canvas.clearRect(0,0,$('#' + (upgrademap ? 'better' : '') + 'map-canvas').height(), $('#' + (upgrademap ? 'better' : '') + 'map-canvas').width());
 
@@ -2481,6 +2517,21 @@ function openPopArriveTarget(){
     location.href = "#popup10";
 }
 
+function popUpPublishPhoto() {
+    popupon = 1;
+    location.href=  '#popup13'
+}
+
+function popupCancelProfileEdit() {
+    popupon = 1;
+    location.href = '#popup14'
+}
+
+function popupCancelPicturePublish() {
+    popupon = 1;
+    location.href = '#popup15'
+}
+
 var radius = 0;
 
 function displayRadius() {
@@ -2511,8 +2562,35 @@ function displayRadius() {
         recalibratePath();
 }
 
+function pathResize() {
+    let currentPin = searchPin('atualPosition')
+    let pin = {x: (destinyPin.x - currentPin.x) / 2 + currentPin.x, y: (destinyPin.y - currentPin.y) / 2 + currentPin.y}
+    let border = upgrademap ? $(document.getElementById('bettermap')) : $(document.getElementById('mapaScreen'))
+    if (border.height() - $('#topbarNavigation').height() - $('#navbarNavigation').height() < Math.abs(destinyPin.y - currentPin.y) * 1.5 * (1-zoom)) {
+        zoom = Math.abs(destinyPin.x - currentPin.x) * 3 / mapsize[0]
+    } 
+    if (border.width() < Math.abs(destinyPin.x - currentPin.x) * 3 * (1-zoom) ){
+        zoom = Math.abs(destinyPin.x - currentPin.x) * 3 / mapsize[1]
+    }
+
+    let current = $(getCurrentMap())
+    current.height(mapsize[0] * (1 - zoom))
+    current.width(mapsize[1] * (1 - zoom))
+    let hor_pos = (border.width() / 2 - current.position().left) / (1-zoom)
+    let ver_pos = (border.height() / 2 - current.position().top) / (1-zoom)
+    let offset_x = (pin.y - hor_pos) * (1-zoom) 
+    let offset_y = (pin.x - ver_pos) * (1-zoom)
+    const baseOffset = current.offset()
+    current.offset({top: baseOffset.top - offset_y, left: baseOffset.left - offset_x})
+    mapBoundariesPositioning();
+    reloadPins();
+    if(nav == 1)
+        recalibratePath();
+
+}
+
 function pushMapMessage(index, positionname) {
-    profiles[index].messages.push({content:"Gostei desta posição e decidi partilhar contigo " + positionname, self: true})
+    profiles[index].messages.push({content:"Gostei desta posição e decidi partilhar contigo " + positionname, self: true, isPin: true, pinName: positionname})
 }
 
 function shareLocationMessage() {
