@@ -828,6 +828,26 @@ function scrollWheelGPSSettings(event) {
     document.getElementById('choose-gps').style.top = val;
 }
 
+function scrollWheelHelpHealth(event) {
+    if (document.getElementById('helphealthscreen').style.top == '')
+        document.getElementById('helphealthscreen').style.top = '0px';
+    let direction = (event.clientY - dragInfo.clientY)
+
+    let i = 0;
+    if (direction > 0) {
+        i = 10;
+    } else if (direction < 0) {
+        i = -10;
+    }
+
+    let val = parseInt(document.getElementById('helphealthscreen').style.top) + i;
+    let aux = -($(document.getElementById('helphealthscreen')).outerHeight() -
+        ($(document.getElementById('mainScreen')).outerHeight() - $(document.getElementById('top-bar')).outerHeight()) + 20)
+    if (val > 0) val = 0
+    if (val < aux) val = aux
+    document.getElementById('helphealthscreen').style.top = val;
+}
+
 function scrollWheelMovement(event) {
     if (dragInfo == undefined || event.screenX === 0 && event.screenY === 0)
         return;
@@ -867,6 +887,9 @@ function scrollWheelMovement(event) {
             break
         case 'choose-gps':
             scrollWheelGPSSettings(event)
+            break
+        case 'helphealthscreen':
+            scrollWheelHelpHealth(event)
             break
     }
 }

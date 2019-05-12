@@ -2083,3 +2083,7 @@ max-width: 60%;*/
     font-size: 133%;
     text-align: center;
 }
+
+#helphealthscreen {
+    position: relative;
+}
