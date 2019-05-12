@@ -454,7 +454,7 @@
             </div>
             <div id="afterscreenGlucose" style="display: none">
                 <h1 id="titleGlucose">Glucose level:</h1>
-                <h2 id="valueGlucose">6.2mmol/L</h2>
+                <h2 id="valueGlucose"><span id='GValue'>6.2</span>mmol/L</h2>
                 <img id="imageGlucose" src="icons/diabetes-test.png">
             </div>
             <div id="goalSteps" style="display: none">
@@ -1053,18 +1053,18 @@
     <div id = 'glucoseSimulation'>
         <table>
             <tr>
-                <td class = 'food'>
+                <td onclick="glucoseIncrease(1)" class = 'food'>
                     <img src = 'icons/can.png'/>
                 </td>
-                <td class = 'food'>
+                <td onclick="glucoseIncrease(2)"class = 'food'>
                     <img src = 'icons/burger.png'/>
                 </td>
             </tr>
             <tr>
-                <td class = 'food'>
+                <td onclick="glucoseIncrease(3)"class = 'food'>
                     <img src = 'icons/food.png'/>
                 </td>
-                <td class = 'food'>
+                <td onclick="glucoseIncrease(4)" class = 'food'>
                     <img src = 'icons/chocolate-bar.png'/>
                 </td>
             </tr>
