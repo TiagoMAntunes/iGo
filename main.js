@@ -362,6 +362,7 @@ function goToPin(pinname) {
     if(screenStack[screenStack.length - 1] === 'ShrekScreen'){
         backButton()
     }else{
+        while (screenStack.length != 0) backButton()
         pushScreen('mapaScreen')
     }
 }
