@@ -165,6 +165,9 @@ var directionsIMG =['icons/up-arrow2.svg','icons/right-arrow2.svg','icons/down-a
 var line;
 var line2;
 var line3;
+var stepsCancel;
+var caloriesCancel;
+var distanceCancel;
 
 var selectedTextBox = undefined;
 
@@ -221,8 +224,8 @@ function startup() {
         text: {
           autoStyleContainer: false
         },
-        from: { color: '#FFEA82', width: 6 },
-        to: { color: '#ED6A5A', width: 6 },
+        from: { color: '#DB3A34', width: 6 },
+        to: { color: '#99C24D', width: 6 },
         // Set default step function for all animate calls
         step: function(state, circle) {
           circle.path.setAttribute('stroke', state.color);
@@ -249,8 +252,8 @@ function startup() {
         text: {
           autoStyleContainer: false
         },
-        from: { color: '#FFEA82', width: 6 },
-        to: { color: '#ED6A5A', width: 6 },
+        from: { color: '#DB3A34', width: 6 },
+        to: { color: '#99C24D', width: 6 },
         // Set default step function for all animate calls
         step: function(state, circle) {
           circle.path.setAttribute('stroke', state.color);
@@ -277,8 +280,8 @@ function startup() {
         text: {
           autoStyleContainer: false
         },
-        from: { color: '#FFEA82', width: 6 },
-        to: { color: '#ED6A5A', width: 6 },
+        from: { color: '#DB3A34', width: 6 },
+        to: { color: '#99C24D', width: 6 },
         // Set default step function for all animate calls
         step: function(state, circle) {
           circle.path.setAttribute('stroke', state.color);
@@ -497,6 +500,15 @@ function backButton() {
     if(screenStack[screenStack.lenght -1] === 'augmentedHelp'){
 
     }
+    /*if(screenStack[screenStack.length - 1] === 'goalSteps'){
+        revertStepsGoal();
+    }
+    if(screenStack[screenStack.length - 1] === 'goalCalories'){
+        revertCaloriesGoal();
+    }
+    if(screenStack[screenStack.length - 1] === 'goalDistance'){
+        revertDistanceGoal();
+    }*/
     let screen = screenStack.pop()
     if (screen != undefined) {
         document.getElementById(screen).style.display = 'none';
@@ -521,13 +533,15 @@ function pushScreen(screen) {
     }
     if(screen=='goalSteps'){
         document.getElementById('goalStepChange').value = goalSteps;
+        stepsCancel = goalSteps;
     }
     if(screen=='goalCalories'){
-        document.getElementById('goalStepChange').value = goalCalories;
+        document.getElementById('goalCaloriesChange').value = goalCalories;
+        caloriesCancel = goalCalories;
     }
     if(screen=='goalDistance'){
-        document.getElementById('goalStepChange').value = goalDistance;
-        console.log(document.getElementById('goalStepChange').value);
+        document.getElementById('goalDistanceChange').value = goalDistance;
+        distanceCancel = goalDistance;
     }
     screenStack.push(screen);
     console.log(screenStack);
@@ -1904,7 +1918,7 @@ var valueSteps = 5000;
 var goalSteps = 10000;
 var valueCalories = 2000;
 var goalCalories = 2600;
-var valueDistance = 32.3;
+var valueDistance = 32;
 var goalDistance = 60;
 var percentageDistance;
 var percentageSteps;
@@ -1929,8 +1943,7 @@ function calculateDistanceToHealth(i){
         percentageDistance = ((valueDistance * 100) / goalDistance) / 100;
         percentageCalories = ((valueCalories * 100) / goalCalories) / 100;
         document.getElementById('stepsMissing').innerText = (goalSteps - valueSteps) + " STEPS TO YOUR GOAL";
-        document.getElementById('distanceMissing').innerText = Math.round((goalDistance - valueDistance),0) + " STEPS TO YOUR GOAL";
-        document.getElementById('stepsMissing').innerText = (goalCalories - valueCalories) + " STEPS TO YOUR GOAL";
+        document.getElementById('distanceMissing').innerText = parseFloat((goalDistance - valueDistance)) + " KM TO YOUR GOAL";
         
     }
     console.log(distanceWalked); 
@@ -2594,7 +2607,7 @@ function waitEmergency() {
             let minutes = Math.floor((parseInt(time[1]) + 1) / 60 + parseInt(time[0]))
             calling.innerText =  minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0')
         }, 1000)
-    }, 1000);
+    }, 3000);
 }
 
 function imconfused(){
@@ -2611,18 +2624,18 @@ function imconfused2(){
 
 function imconfused3(){
     percentageDistance = ((valueDistance * 100) / goalDistance) / 100;
-    document.getElementById('distanceMissing').innerText = (goalDistance - valueDistance) + " KM TO YOUR GOAL";
+    document.getElementById('distanceMissing').innerText = parseFloat(goalDistance - valueDistance) + " KM TO YOUR GOAL";
     line3.animate(percentageDistance);
 }
 
 function lessOneDistance(){
     goalDistance = goalDistance - 2;
-    document.getElementById('goalStepChange').value = goalDistance;
+    document.getElementById('goalDistanceChange').value = goalDistance;
 }
 
 function plusOneDistance(){
     goalDistance = goalDistance + 2;
-    document.getElementById('goalStepChange').value = goalDistance;
+    document.getElementById('goalDistanceChange').value = goalDistance;
 }
 
 function lessOneSteps(){
@@ -2637,10 +2650,22 @@ function plusOneSteps(){
 
 function lessOneCalories(){
     goalCalories = goalCalories - 5;
-    document.getElementById('goalStepChange').value = goalCalories;
+    document.getElementById('goalCaloriesChange').value = goalCalories;
 }
 
 function plusOneCalories(){
     goalCalories = goalCalories + 5;
-    document.getElementById('goalStepChange').value = goalCalories;
+    document.getElementById('goalCaloriesChange').value = goalCalories;
+}
+
+function revertStepsGoal(){
+    goalSteps = stepsCancel;
+}
+
+function revertCaloriesGoal(){
+    goalCalories = caloriesCancel;
+}
+
+function revertDistanceGoal(){
+    goalDistance = distanceCancel;
 }
