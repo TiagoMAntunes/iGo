@@ -1644,6 +1644,7 @@ function searchPlace(place){
             flag = 1;
             direct = findCurrentDirection();
             document.getElementById('direct').src = directionsIMG[direct];
+            document.getElementById('navbar-direction').src = directionsIMG[direct]
             if (screenStack[screenStack.length - 1] === 'Information')
                 screenStack = ['mapaScreen', 'Information']
             backButton()
@@ -1685,6 +1686,7 @@ function barsNavigation() {
     document.getElementById('topbarNavigation').style.flexDirection = 'row';
     document.getElementById('endNavigation').style.display = 'unset';
     document.getElementById('navbarcenterNavigation').style.visibility = 'visible';
+    document.getElementById('navbar-direction').style.visibility = 'visible';
     if(modeWalk == 0){
         document.getElementById('car').style.backgroundColor = '#ccc';
     }
@@ -1729,6 +1731,7 @@ function endNavigation() {
     document.getElementById('car').style.backgroundColor = "white";
     document.getElementById('walk').style.backgroundColor = 'white';
     document.getElementById('navbarcenterNavigation').style.visibility = 'hidden';
+    document.getElementById('navbar-direction').style.visibility = 'hidden';
     path = []
     nav = 0;
     destinyPin = undefined;
@@ -1946,7 +1949,7 @@ function setupInitialPosition(){
     updateDisplayController();
 }
 function findCurrentDirection(){
-    let direct
+    let direct = 0
     console.log(path);
     console.log(directions)
     for(let i = 0;i < directions.length; i++){
@@ -2015,6 +2018,7 @@ function upPosition(){
         direct = findCurrentDirection();
         console.log(direct)
         document.getElementById('direct').src = directionsIMG[direct];
+        document.getElementById('navbar-direction').src = directionsIMG[direct];
         centerPosition('atualPosition');
         if(path.length == 1){
             endOn3Dmap();
@@ -2044,6 +2048,7 @@ function leftPosition(){
         direct = findCurrentDirection();
         console.log(direct)
         document.getElementById('direct').src = directionsIMG[direct];
+        document.getElementById('navbar-direction').src = directionsIMG[direct];
         centerPosition('atualPosition');        if(path.length == 1){
             endOn3Dmap()
             endNavigation();
@@ -2072,6 +2077,7 @@ function rightPosition(){
         direct = findCurrentDirection();
         console.log(direct)
         document.getElementById('direct').src = directionsIMG[direct];
+        document.getElementById('navbar-direction').src = directionsIMG[direct];
         centerPosition('atualPosition');
         if(path.length == 1){
             endOn3Dmap()
@@ -2101,6 +2107,7 @@ function downPosition(){
         direct = findCurrentDirection();
         console.log(direct)
         document.getElementById('direct').src = directionsIMG[direct];
+        document.getElementById('navbar-direction').src = directionsIMG[direct];
         centerPosition('atualPosition');
         if(path.length == 1){
             endOn3Dmap()
