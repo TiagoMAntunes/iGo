@@ -26,7 +26,7 @@
     <div id=watchBorder>
         <div id=mainScreen>
             <div id="top-bar">
-                <div id='time' style="padding-left: 15%"></div>
+                <div id='time' style="padding-left: 27%"></div>
                 <div id='gps-symbol'>
                     <img id='navbar-direction' src="icons/up-arrow2.svg" alt='Direction'>
                     <img id='bluetoothImg' src="icons/bluetooth-icon.svg" alt='Bluetooth icon'>
@@ -42,7 +42,7 @@
                 <div id=option2 onclick="gpsIsOff()">
                     <img id="mapicon" src="icons/map.png" />
                 </div>
-                <div id=option3 onclick="bluetoothIsOff('saude');profileisOff()">
+                <div id=option3 onclick="bluetoothIsOff('saude');">
                     <img id="healthicon" src="icons/hospital1.png">
                 </div>
                 <div id=option4 onclick="pushScreen('definicoes');">
@@ -749,7 +749,7 @@
                             <input onclick="Bluetooth()" type="checkbox" class="bluetooth-btn">
                             <span class="slider round"></span>
                         </label>
-                        <button id="nextbtn" onclick="validateBluetooth('saude')">
+                        <button id="nextbtn" onclick="validateBluetooth('saude');profileisOff()">
                             <b>NEXT</b>
                         </button>
                     </div>

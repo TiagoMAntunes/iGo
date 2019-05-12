@@ -1331,7 +1331,7 @@ function bluetoothIsOff(screen) {
         if(screen == "photopublish"){
             pushScreen('bluetooth-setup');
         }else{
-            pushScreen('bluetooth-setup2')
+            pushScreen('bluetooth-setup2');
         }
     } else {
         pushScreen(screen)
