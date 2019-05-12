@@ -162,7 +162,10 @@ var notifiRandom = []
 var vals = []
 var bluetoothProfile = [['images/shrek-1.jpg','images/air.jpeg', 'images/hotel.jpg', 'images/newy.png', 'images/sunshine.jpg', 'images/climbing.jpg', 'images/food.jpg', 'images/airballon.jpg'], ['images/shrek-2.jpg','images/air.jpeg', 'images/hotel.jpg', 'images/newy.png', 'images/sunshine.jpg', 'images/climbing.jpg', 'images/food.jpg', 'images/airballon.jpg'], ['images/shrek-3.jpg','images/air.jpeg', 'images/hotel.jpg', 'images/newy.png', 'images/sunshine.jpg', 'images/climbing.jpg', 'images/food.jpg', 'images/airballon.jpg']];
 var directionsIMG =['icons/up-arrow2.svg','icons/right-arrow2.svg','icons/down-arrow2.svg','icons/left-arrow2.svg']
-var destinyPin = undefined;
+var line;
+var line2;
+var line3;
+
 var selectedTextBox = undefined;
 
 var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition
@@ -206,6 +209,90 @@ function startup() {
         document.getElementById('time').innerHTML = hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0')
         document.getElementById('timeLockScreen'). innerHTML = document.getElementById('time').innerHTML 
     }, 1000 * 60)
+
+        line = new window.ProgressBar.Circle('#container', {
+        color: '#aaa',
+        // This has to be the same size as the maximum width to
+        // prevent clipping
+        strokeWidth: 6,
+        trailWidth: 6,
+        easing: 'easeInOut',
+        duration: 1400,
+        text: {
+          autoStyleContainer: false
+        },
+        from: { color: '#FFEA82', width: 6 },
+        to: { color: '#ED6A5A', width: 6 },
+        // Set default step function for all animate calls
+        step: function(state, circle) {
+          circle.path.setAttribute('stroke', state.color);
+          circle.path.setAttribute('stroke-width', state.width);
+      
+          var value = Math.round(circle.value() * 100);
+          if (value === 0) {
+            circle.setText('');
+          } else {
+            circle.setText(value + "%");
+          }
+      
+        }
+      })  
+
+        line2 = new window.ProgressBar.Circle('#container2', {
+        color: '#aaa',
+        // This has to be the same size as the maximum width to
+        // prevent clipping
+        strokeWidth: 6,
+        trailWidth: 6,
+        easing: 'easeInOut',
+        duration: 1400,
+        text: {
+          autoStyleContainer: false
+        },
+        from: { color: '#FFEA82', width: 6 },
+        to: { color: '#ED6A5A', width: 6 },
+        // Set default step function for all animate calls
+        step: function(state, circle) {
+          circle.path.setAttribute('stroke', state.color);
+          circle.path.setAttribute('stroke-width', state.width);
+      
+          var value = Math.round(circle.value() * 100);
+          if (value === 0) {
+            circle.setText('');
+          } else {
+            circle.setText(value + "%");
+          }
+      
+        }
+      })
+
+        line3 = new window.ProgressBar.Circle('#container3', {
+        color: '#aaa',
+        // This has to be the same size as the maximum width to
+        // prevent clipping
+        strokeWidth: 6,
+        trailWidth: 6,
+        easing: 'easeInOut',
+        duration: 1400,
+        text: {
+          autoStyleContainer: false
+        },
+        from: { color: '#FFEA82', width: 6 },
+        to: { color: '#ED6A5A', width: 6 },
+        // Set default step function for all animate calls
+        step: function(state, circle) {
+          circle.path.setAttribute('stroke', state.color);
+          circle.path.setAttribute('stroke-width', state.width);
+      
+          var value = Math.round(circle.value() * 100);
+          if (value === 0) {
+            circle.setText('');
+          } else {
+            circle.setText(value + "%");
+          }
+      
+        }
+    })  
 }
 
 let recognizing = false
@@ -273,6 +360,7 @@ function goToPin(pinname) {
     }else{
         pushScreen('mapaScreen')
     }
+    centerPosition(pinname)
 }
 
 function stopShrekMovement(){
@@ -410,12 +498,6 @@ function backButton() {
         desativeJoystick();
         hideNavbars();
     }
-
-    if (screenStack[screenStack.length - 1] === 'photoSubmit' && document.getElementById('descript').value != '') {
-        popupCancelPicturePublish()
-        return
-    }
-
     if(screenStack[screenStack.lenght -1] === 'augmentedHelp'){
 
     }
@@ -440,6 +522,16 @@ function pushScreen(screen) {
     }
     if(screen=='mapaScreen'){
         ativeJoystick();
+    }
+    if(screen=='goalSteps'){
+        document.getElementById('goalStepChange').value = goalSteps;
+    }
+    if(screen=='goalCalories'){
+        document.getElementById('goalStepChange').value = goalCalories;
+    }
+    if(screen=='goalDistance'){
+        document.getElementById('goalStepChange').value = goalDistance;
+        console.log(document.getElementById('goalStepChange').value);
     }
     screenStack.push(screen);
     console.log(screenStack);
@@ -656,8 +748,7 @@ function scrollWheelPointsInterest(event) {
     if (document.getElementById('pointsInterest').style.top == '')
         document.getElementById('pointsInterest').style.top = '0px';
     let direction = (event.clientY - dragInfo.clientY)
-    if ($('#pointsInterest').outerHeight() < $(document.getElementById('mainScreen')).outerHeight() - $(document.getElementById('top-bar')).outerHeight())
-    return;
+
     let i = 0;
     if (direction > 0) {
         i = 10;
@@ -895,19 +986,10 @@ function createMessages() {
 
 var currentUser = 0;
 
-function getPinID(pinname) {
-    for (let i = 0; i < popsGPS.length; i++) {
-        if (popsGPS[i].name.toLowerCase() == pinname.toLowerCase())
-            return i
-    }
-}
-
 function createMessage(message) {
     let content = message.self ? "<div class='containerM darkerM'>" : "<div class='containerM lighterM'><p class='messageP' id='message1'>"
     if (message.isMap)
         content += "<p class='messageP'> " + message.content + "<br><button id='goToMessages' onclick='goToPin(\"" + message.pinName + "\")'>GO TO</button>"
-    else if(message.isPin)
-        content += "<p class='messageP'> " + message.content + "<br><button id='goToMessages' onclick='screenInfo(\"" + getPinID(message.pinName) + "\")'>SEE</button>"
     else 
         content += "<p class='messageP'>" + message.content + "</p>"
 
@@ -1028,25 +1110,7 @@ function saveProfile() {
     document.getElementById("formprofile").reset();
 }
 
-function cancelProfileEditForce() {
-    document.getElementById("formprofile").reset();
-    backButton()
-}
-
-function cancelPublishPictureForce() {
-    document.getElementById('photodescription').reset()
-    backButton()
-}
-
 function cancelChange() {
-    if (document.getElementById("input1").value != '' || document.getElementById("input2").value != '') {
-        popupCancelProfileEdit()
-        return
-    } else if (document.getElementById('descript').value != '') {
-        popupCancelPicturePublish()
-        return
-    }
-
     document.getElementById("photodescription").reset();
     document.getElementById("formprofile").reset();
     backButton();
@@ -1227,7 +1291,6 @@ function addPicture() {
     pushScreen('multimedia');
     resetFilters();
     createNotificationPop();
-    popUpPublishPhoto();
 }
 
 function updateValue(value) {
@@ -1498,7 +1561,6 @@ function searchPlace(place){
     let direct;
     for(i = 0; i < map_pins.length; i++){
         if(map_pins[i].n == place.toLowerCase()){
-            destinyPin = searchPin(place.toLowerCase())
             nav = 1;
             let pino = searchPinCoordinates(map_pins[i].y,map_pins[i].x);
             target = pino[0]
@@ -1508,7 +1570,6 @@ function searchPlace(place){
             document.getElementById('direct').src = directionsIMG[direct];
             backButton();
             barsNavigation();
-            pathResize()
             break
         }
     }
@@ -1591,7 +1652,6 @@ function endNavigation() {
     document.getElementById('navbarcenterNavigation').style.visibility = 'hidden';
     path = []
     nav = 0;
-    destinyPin = undefined;
     let canvas = document.getElementById((upgrademap ? 'better' : '') + 'map-canvas').getContext('2d');
     canvas.clearRect(0,0,$('#' + (upgrademap ? 'better' : '') + 'map-canvas').height(), $('#' + (upgrademap ? 'better' : '') + 'map-canvas').width());
 
@@ -1818,6 +1878,16 @@ function findCurrentDirection(){
     return direct
 }
 
+var valueSteps = 5000;
+var goalSteps = 10000;
+var valueCalories = 2000;
+var goalCalories = 2600;
+var valueDistance = 32.3;
+var goalDistance = 60;
+var percentageDistance;
+var percentageSteps;
+var percentageCalories;
+
 function calculateDistanceToHealth(i){
     if(modeWalk == 1){
         if(nav == 1){
@@ -1830,10 +1900,13 @@ function calculateDistanceToHealth(i){
                 distanceWalked = Math.floor(63 * 2.54);
             }
         }
-        d1 = parseInt(document.getElementById('valueSteps').innerText) + distanceWalked;
-        d2 = parseInt(document.getElementById('valueDistance').innerText) + (distanceWalked / 100)
-        document.getElementById('valueSteps').innerText = d1
-        document.getElementById('valueDistance').innerText = d2
+        valueSteps = valueSteps + distanceWalked;
+        valueDistance = valueDistance + (distanceWalked / 100)
+        percentageSteps = ((valueSteps * 100) / goalSteps) / 100;
+        percentageDistance = ((valueDistance * 100) / goalDistance) / 100;
+        document.getElementById('stepsMissing').innerText = (goalSteps - valueSteps) + " STEPS TO YOUR GOAL";
+        document.getElementById('distanceMissing').innerText = Math.round((goalDistance - valueDistance),0) + " STEPS TO YOUR GOAL";
+        
     }
     console.log(distanceWalked); 
     
@@ -2370,21 +2443,6 @@ function openPopArriveTarget(){
     location.href = "#popup10";
 }
 
-function popUpPublishPhoto() {
-    popupon = 1;
-    location.href=  '#popup13'
-}
-
-function popupCancelProfileEdit() {
-    popupon = 1;
-    location.href = '#popup14'
-}
-
-function popupCancelPicturePublish() {
-    popupon = 1;
-    location.href = '#popup15'
-}
-
 var radius = 0;
 
 function displayRadius() {
@@ -2415,35 +2473,8 @@ function displayRadius() {
         recalibratePath();
 }
 
-function pathResize() {
-    let currentPin = searchPin('atualPosition')
-    let pin = {x: (destinyPin.x - currentPin.x) / 2 + currentPin.x, y: (destinyPin.y - currentPin.y) / 2 + currentPin.y}
-    let border = upgrademap ? $(document.getElementById('bettermap')) : $(document.getElementById('mapaScreen'))
-    if (border.height() - $('#topbarNavigation').height() - $('#navbarNavigation').height() < Math.abs(destinyPin.y - currentPin.y) * 1.5 * (1-zoom)) {
-        zoom = Math.abs(destinyPin.x - currentPin.x) * 3 / mapsize[0]
-    } 
-    if (border.width() < Math.abs(destinyPin.x - currentPin.x) * 3 * (1-zoom) ){
-        zoom = Math.abs(destinyPin.x - currentPin.x) * 3 / mapsize[1]
-    }
-
-    let current = $(getCurrentMap())
-    current.height(mapsize[0] * (1 - zoom))
-    current.width(mapsize[1] * (1 - zoom))
-    let hor_pos = (border.width() / 2 - current.position().left) / (1-zoom)
-    let ver_pos = (border.height() / 2 - current.position().top) / (1-zoom)
-    let offset_x = (pin.y - hor_pos) * (1-zoom) 
-    let offset_y = (pin.x - ver_pos) * (1-zoom)
-    const baseOffset = current.offset()
-    current.offset({top: baseOffset.top - offset_y, left: baseOffset.left - offset_x})
-    mapBoundariesPositioning();
-    reloadPins();
-    if(nav == 1)
-        recalibratePath();
-    
-}
-
 function pushMapMessage(index, positionname) {
-    profiles[index].messages.push({content:"Gostei desta posição e decidi partilhar contigo " + positionname, self: true, isPin: true, pinName: positionname})
+    profiles[index].messages.push({content:"Gostei desta posição e decidi partilhar contigo " + positionname, self: true})
 }
 
 function shareLocationMessage() {
@@ -2477,20 +2508,20 @@ function cancelSearchFriend() {
     backButton();
 }
 
-function waitDiv(nameDiv, valueAnimation){
+function waitDiv(nameDiv){
     setTimeout(function(){
         pushScreen(nameDiv);
         console.log(screenStack[screenStack.length -2 ]);
         screenStack.splice(screenStack.length-2,1);
         console.log(screenStack[screenStack.length -1 ]);
         if(screenStack[screenStack.length-1] == 'afterloadingSteps'){
-            imconfused('#container', valueAnimation);
+            imconfused();
         }
         if(screenStack[screenStack.length-1] == 'afterscreenCalories'){
-            imconfused('#container2', valueAnimation);
+            imconfused2();
         }
         if(screenStack[screenStack.length-1] == 'afterscreenDistance'){
-            imconfused('#container3', valueAnimation);
+            imconfused3();
         }
     }, 920);
 }
@@ -2541,34 +2572,50 @@ function waitEmergency() {
     }, 1000);
 }
 
-function imconfused(id, valueAnimation){
-    var line = new window.ProgressBar.Circle(id, {
-        color: '#aaa',
-        // This has to be the same size as the maximum width to
-        // prevent clipping
-        strokeWidth: 6,
-        trailWidth: 6,
-        easing: 'easeInOut',
-        duration: 1400,
-        text: {
-          autoStyleContainer: false
-        },
-        from: { color: '#FFEA82', width: 6 },
-        to: { color: '#ED6A5A', width: 6 },
-        // Set default step function for all animate calls
-        step: function(state, circle) {
-          circle.path.setAttribute('stroke', state.color);
-          circle.path.setAttribute('stroke-width', state.width);
-      
-          var value = Math.round(circle.value() * 100);
-          if (value === 0) {
-            circle.setText('');
-          } else {
-            circle.setText(value + "%");
-          }
-      
-        }
-      })
-    
-    line.animate(valueAnimation);
+function imconfused(){
+    percentageSteps = ((valueSteps * 100) / goalSteps) / 100;
+    document.getElementById('stepsMissing').innerText = (goalSteps - valueSteps) + " STEPS TO YOUR GOAL";
+    line.animate(percentageSteps);
+}
+
+function imconfused2(){
+    percentageCalories = ((valueCalories * 100) / goalCalories) / 100;
+    document.getElementById('caloriesMissing').innerText = (goalCalories - valueCalories) + " CALORIES TO YOUR GOAL";
+    line2.animate(percentageCalories);
+}
+
+function imconfused3(){
+    percentageDistance = ((valueDistance * 100) / goalDistance) / 100;
+    document.getElementById('distanceMissing').innerText = (goalDistance - valueDistance) + " KM TO YOUR GOAL";
+    line3.animate(percentageDistance);
+}
+
+function lessOneDistance(){
+    goalDistance = goalDistance - 2;
+    document.getElementById('goalStepChange').value = goalDistance;
+}
+
+function plusOneDistance(){
+    goalDistance = goalDistance + 2;
+    document.getElementById('goalStepChange').value = goalDistance;
+}
+
+function lessOneSteps(){
+    goalSteps = goalSteps - 30;
+    document.getElementById('goalStepChange').value = goalSteps;
+}
+
+function plusOneSteps(){
+    goalSteps = goalSteps + 30;
+    document.getElementById('goalStepChange').value = goalSteps;
+}
+
+function lessOneCalories(){
+    goalCalories = goalCalories - 5;
+    document.getElementById('goalStepChange').value = goalCalories;
+}
+
+function plusOneCalories(){
+    goalCalories = goalCalories + 5;
+    document.getElementById('goalStepChange').value = goalCalories;
 }
