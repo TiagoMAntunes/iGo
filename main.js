@@ -1213,6 +1213,9 @@ function helpButton() {
         case 'searchPlace':
             pushScreen('helpsearchplace');
             break;
+        case 'saude':
+            pushScreen('helphealthscreen');
+            break;
         case 'bluetooth-setup':
             popupon = 1;
             location.href = "#popup2";
