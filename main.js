@@ -2789,7 +2789,15 @@ function glucoseIncrease(i){
         break;
     }
     var glu2 = glu.toFixed(2);
-    console.log(Math.random() * (100 - 40) + 40);
+    if(glu2 < 5.0) {
+        document.getElementById('valueGlucose').style.color = '#99C24D';
+    }else if(glu2 >= 5.0 && glu2 <= 7.0){
+        document.getElementById('valueGlucose').style.color = '#F19953';
+    }else{
+        document.getElementById('valueGlucose').style.color = '#DB3A34';
+        popupon = 1;
+        location.href = '#popup17';
+    }
     document.getElementById('GValue').innerHTML = glu2;
 }
 
@@ -2800,8 +2808,10 @@ function calculateBPM(){
     if(bpm2 < 65){
         document.getElementById('valueHeart').style.color = '#99C24D';
     }else if(bpm2 >= 65 && bpm2 <= 80){
-        document.getElementById('valueHeart').style.color = '#99C24D';
+        document.getElementById('valueHeart').style.color = '#F19953';
     }else{
         document.getElementById('valueHeart').style.color = '#DB3A34';
+        popupon = 1;
+        location.href = '#popup16';
     }
 }

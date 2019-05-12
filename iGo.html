@@ -454,7 +454,7 @@
             </div>
             <div id="afterscreenGlucose" style="display: none">
                 <h1 id="titleGlucose">Glucose level:</h1>
-                <h2 id="valueGlucose"><span id='GValue'>4.2</span>mmol/L</h2>
+                <h2 style="color: #99C24D" id="valueGlucose"><span id='GValue'>4.2</span>mmol/L</h2>
                 <img id="imageGlucose" src="icons/diabetes-test.png">
             </div>
             <div id="goalSteps" style="display: none">
@@ -1029,6 +1029,32 @@
                     You have unsaved changes. Cancel?
                     <button id="noButton" onclick="backButton()" id=''>NO</button>
                     <button id="yesButton" onclick='backButton();cancelPublishPictureForce()' id=''>YES</button>
+                </div>
+            </div>
+        </div>
+        <div id="popup16" class="overlay outside">
+            <div class="popup" style="width: 39%">
+                <div id="toppopup">
+                    <h2 style="padding-left: 5%">Warning</h2>
+                    <a style="padding-left: 10%; margin-top: -2%" class="close" href="#" onclick="popupclosed()">&times;</a>
+                </div>
+                <div class="content" style="padding-left: 5%">
+                    Your heart-rate seems too high. Do you want to call the emergency services?
+                    <button id="noButton" onclick="backButton()" id=''>NO</button>
+                    <button id="yesButton" onclick="backButton();pushScreen('SOSscreen');waitEmergency()" id=''>YES</button>
+                </div>
+            </div>
+        </div>
+        <div id="popup17" class="overlay outside">
+            <div class="popup" style="width: 39%">
+                <div id="toppopup">
+                    <h2 style="padding-left: 5%">Warning</h2>
+                    <a style="padding-left: 10%; margin-top: -2%" class="close" href="#" onclick="popupclosed()">&times;</a>
+                </div>
+                <div class="content" style="padding-left: 5%">
+                    Your glucose level seems too high. Do you want to call the emergency services?
+                    <button id="noButton" onclick="backButton()" id=''>NO</button>
+                    <button id="yesButton" onclick="backButton();pushScreen('SOSscreen');waitEmergency()" id=''>YES</button>
                 </div>
             </div>
         </div>
