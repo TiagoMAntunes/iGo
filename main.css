@@ -2087,3 +2087,16 @@ max-width: 60%;*/
 #helphealthscreen {
     position: relative;
 }
+
+#glucoseSimulation{
+    position: absolute;
+    top: 60%;
+    right: 15%;
+    width:20%;
+    height: 10%;
+
+}
+
+.food{
+    height: 45%;
+}
