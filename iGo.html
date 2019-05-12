@@ -41,7 +41,7 @@
                 <div id=option2 onclick="gpsIsOff()">
                     <img id="mapicon" src="icons/map.png" />
                 </div>
-                <div id=option3 onclick="pushScreen('saude');">
+                <div id=option3 onclick="bluetoothIsOff('saude');">
                     <img id="healthicon" src="icons/hospital1.png">
                 </div>
                 <div id=option4 onclick="pushScreen('definicoes');">
@@ -250,7 +250,7 @@
                 <div class="navbar">
                     <img id='likeButton' src="icons/heart.png" onclick="likeAction(this)" />
                     <img onclick="createMessages();pushScreen('messageScreen')" src="icons/chat(1).png" />
-                    <img onclick="bluetoothIsOff();picturesSetup()" src="icons/photo.svg" />
+                    <img onclick="bluetoothIsOff('photopublish');picturesSetup()" src="icons/photo.svg" />
                     <img id='bellButton' onclick="pushScreen('notificationScreen');clearArray(notifications)" src="icons/bell3.png" />
                     <img src="icons/man.png" onclick="pushScreen('profile');fillProfile()" />
                 </div>
@@ -733,7 +733,22 @@
                             <input onclick="Bluetooth()" type="checkbox">
                             <span class="slider round"></span>
                         </label>
-                        <button id="nextbtn" onclick="validateBluetooth()">
+                        <button id="nextbtn" onclick="validateBluetooth('photopublish')">
+                            <b>NEXT</b>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id='bluetooth-setup2' style='display: none'>
+                <h1 id='turnon'>Turn on bluetooth</h1>
+                <div style="display: flex; flex-direction: row">
+                    <img style="padding-left: 10%; padding-top: 5%" height="40%" width="40%" src="icons/bluet2.png">
+                    <div>
+                        <label id='buttonblt' class="switch">
+                            <input onclick="Bluetooth()" type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                        <button id="nextbtn" onclick="validateBluetooth('saude')">
                             <b>NEXT</b>
                         </button>
                     </div>

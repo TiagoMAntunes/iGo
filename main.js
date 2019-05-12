@@ -1313,12 +1313,16 @@ function popupclosed(){
 }
 
 /*corrigir quando vier a saude*/
-function bluetoothIsOff() {
+function bluetoothIsOff(screen) {
     if (count % 2 == 0) {
         location.href = "#popup2";
-        pushScreen('bluetooth-setup');
+        if(screen == "photopublish"){
+            pushScreen('bluetooth-setup');
+        }else{
+            pushScreen('bluetooth-setup2')
+        }
     } else {
-        pushScreen('photopublish')
+        pushScreen(screen)
     }
 }
 
@@ -1334,10 +1338,10 @@ function gpsIsOff(){
     }
 }
 
-function validateBluetooth() {
+function validateBluetooth(screen) {
     if (count % 2 !== 0) {
         backButton()
-        pushScreen('photopublish')
+        pushScreen(screen);
     }
 }
 
