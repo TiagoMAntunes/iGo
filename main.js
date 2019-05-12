@@ -2669,3 +2669,23 @@ function revertCaloriesGoal(){
 function revertDistanceGoal(){
     goalDistance = distanceCancel;
 }
+var glu = 6.2;
+function glucoseIncrease(i){
+    console.log(glu);
+    switch(i){
+        case 1:
+            glu += 0.1
+        break;
+        case 2:
+            glu += 0.2
+        break;
+        case 3:
+            glu += 0.3
+        break;
+        case 4:
+            glu += 0.4
+        break;
+    }
+    console.log(glu);
+    document.getElementById('GValue').innerHTML = glu;
+}
