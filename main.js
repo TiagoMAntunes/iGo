@@ -842,6 +842,26 @@ function scrollWheelGPSSettings(event) {
     document.getElementById('choose-gps').style.top = val;
 }
 
+function scrollWheelHelpHealth(event) {
+    if (document.getElementById('helphealthscreen').style.top == '')
+        document.getElementById('helphealthscreen').style.top = '0px';
+    let direction = (event.clientY - dragInfo.clientY)
+
+    let i = 0;
+    if (direction > 0) {
+        i = 10;
+    } else if (direction < 0) {
+        i = -10;
+    }
+
+    let val = parseInt(document.getElementById('helphealthscreen').style.top) + i;
+    let aux = -($(document.getElementById('helphealthscreen')).outerHeight() -
+        ($(document.getElementById('mainScreen')).outerHeight() - $(document.getElementById('top-bar')).outerHeight()) + 20)
+    if (val > 0) val = 0
+    if (val < aux) val = aux
+    document.getElementById('helphealthscreen').style.top = val;
+}
+
 function scrollWheelMovement(event) {
     if (dragInfo == undefined || event.screenX === 0 && event.screenY === 0)
         return;
@@ -881,6 +901,9 @@ function scrollWheelMovement(event) {
             break
         case 'choose-gps':
             scrollWheelGPSSettings(event)
+            break
+        case 'helphealthscreen':
+            scrollWheelHelpHealth(event)
             break
     }
 }
@@ -1226,6 +1249,9 @@ function helpButton() {
             break;
         case 'searchPlace':
             pushScreen('helpsearchplace');
+            break;
+        case 'saude':
+            pushScreen('helphealthscreen');
             break;
         case 'bluetooth-setup':
             popupon = 1;
@@ -1912,8 +1938,10 @@ function calculateDistanceToHealth(i){
         }
         valueSteps = valueSteps + distanceWalked;
         valueDistance = valueDistance + (distanceWalked / 100)
+        valueCalories = valueCalories + 25
         percentageSteps = ((valueSteps * 100) / goalSteps) / 100;
         percentageDistance = ((valueDistance * 100) / goalDistance) / 100;
+        percentageCalories = ((valueCalories * 100) / goalCalories) / 100;
         document.getElementById('stepsMissing').innerText = (goalSteps - valueSteps) + " STEPS TO YOUR GOAL";
         document.getElementById('distanceMissing').innerText = parseFloat((goalDistance - valueDistance)) + " KM TO YOUR GOAL";
         
