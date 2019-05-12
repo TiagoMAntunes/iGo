@@ -364,7 +364,6 @@ function goToPin(pinname) {
     }else{
         pushScreen('mapaScreen')
     }
-    centerPosition(pinname)
 }
 
 function stopShrekMovement(){
@@ -1644,7 +1643,9 @@ function searchPlace(place){
             flag = 1;
             direct = findCurrentDirection();
             document.getElementById('direct').src = directionsIMG[direct];
-            backButton();
+            if (screenStack[screenStack.length - 1] === 'Information')
+                screenStack = ['mapaScreen', 'Information']
+            backButton()
             barsNavigation();
             pathResize()
             break
