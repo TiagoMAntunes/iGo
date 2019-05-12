@@ -29,6 +29,10 @@
     visibility: hidden;
 }
 
+#healthImg {
+    visibility: hidden;
+}
+
 #turnon {
     text-align: center;
     margin-top: 15%;

@@ -31,6 +31,7 @@
                     <img id='navbar-direction' src="icons/up-arrow2.svg" alt='Direction'>
                     <img id='bluetoothImg' src="icons/bluetooth-icon.svg" alt='Bluetooth icon'>
                     <img id='gpsImg' src="icons/gps-icon.svg">
+                    <img id='healthImg' src="icons/healthicon.png">
                     <img id='batteryImg' src='icons/battery-icon.svg' alt='Battery icon'>
                 </div>
             </div>
@@ -41,7 +42,7 @@
                 <div id=option2 onclick="gpsIsOff()">
                     <img id="mapicon" src="icons/map.png" />
                 </div>
-                <div id=option3 onclick="bluetoothIsOff('saude');">
+                <div id=option3 onclick="bluetoothIsOff('saude');profileisOff()">
                     <img id="healthicon" src="icons/hospital1.png">
                 </div>
                 <div id=option4 onclick="pushScreen('definicoes');">
@@ -516,7 +517,7 @@
                         </td>
                         <td id='tdSettingsR' class='tdSettings'>
                             <label class="switch">
-                                <input type="checkbox">
+                                <input onclick="Health()" type="checkbox" class="health-btn">
                                 <span class="slider round"></span>
                             </label>
                         </td>
@@ -745,10 +746,25 @@
                     <img style="padding-left: 10%; padding-top: 5%" height="40%" width="40%" src="icons/bluet2.png">
                     <div>
                         <label id='buttonblt' class="switch">
-                            <input onclick="Bluetooth()" type="checkbox">
+                            <input onclick="Bluetooth()" type="checkbox" class="bluetooth-btn">
                             <span class="slider round"></span>
                         </label>
                         <button id="nextbtn" onclick="validateBluetooth('saude')">
+                            <b>NEXT</b>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id="profile-setup" style='display: none'>
+                <h1 id='turnon'>Allow health profile syncronization</h1>
+                <div style="display: flex; flex-direction: row">
+                    <img style="padding-left: 10%; padding-top: 5%" height="40%" width="40%" src="icons/doctor.png">
+                    <div>
+                        <label id='buttonblt' class="switch">
+                            <input onclick="Health()" type="checkbox" class="health-btn">
+                            <span class="slider round"></span>
+                        </label>
+                        <button id="nextbtn" onclick="validateProfile()">
                             <b>NEXT</b>
                         </button>
                     </div>

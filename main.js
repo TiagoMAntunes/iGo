@@ -140,6 +140,7 @@ var popsGPS = [{
 var screenStack = [];
 var picture_index = 0;
 var count = 0;
+var countprofile = 0;
 var mic1 = 0, mic2 = 2, mic3 = 0, mic4 = 0, mic5=0, mic6 = 0;
 var mics = [mic1, mic2, mic3, mic4, mic5, mic6];
 var micsid = ['mic1', 'mic2', 'mic3', 'micmessage', 'mic5', 'mic6'];
@@ -1233,6 +1234,17 @@ function GPS(){
     triggerGps(gpson % 2 == 0 ? false : true);
 }
 
+function Health(){
+    countprofile++;
+    if (countprofile % 2 == 0) {
+        document.getElementById('healthImg').style.visibility = 'hidden';
+    }
+    else {
+        document.getElementById('healthImg').style.visibility = 'visible';
+    }
+    triggerHealth(countprofile % 2 == 0 ? false : true)
+}
+
 
 function blockWatch() {
     block++;
@@ -1326,6 +1338,14 @@ function bluetoothIsOff(screen) {
     }
 }
 
+function profileisOff(){
+    if(countprofile % 2 == 0){
+        pushScreen('profile-setup');
+    }else{
+        pushScreen('saude');
+    }
+}
+
 function gpsIsOff(){
     if(gpson % 2 == 0){
         location.href = "#popup4";
@@ -1353,6 +1373,12 @@ function validateGPS(){
     }
 }
 
+function validateProfile(){
+    if(countprofile % 2 !== 0){
+        backButton();
+        pushScreen('saude');
+    }
+}
 
 function addPicture() {
     pictureProfileArray.unshift({
@@ -1382,6 +1408,10 @@ function triggerBluetooths(value) {
 
 function triggerGps(value) {
     $(document.getElementsByClassName('gps-btn')).prop('checked', value);
+}
+
+function triggerHealth(value){
+    $(document.getElementsByClassName('health-btn')).prop('checked', value);
 }
 
 let status = false
