@@ -1898,10 +1898,13 @@ function calculateDistanceToHealth(i){
         }
         valueSteps = valueSteps + distanceWalked;
         valueDistance = valueDistance + (distanceWalked / 100)
+        valueCalories = valueCalories + 25
         percentageSteps = ((valueSteps * 100) / goalSteps) / 100;
         percentageDistance = ((valueDistance * 100) / goalDistance) / 100;
+        percentageCalories = ((valueCalories * 100) / goalCalories) / 100;
         document.getElementById('stepsMissing').innerText = (goalSteps - valueSteps) + " STEPS TO YOUR GOAL";
         document.getElementById('distanceMissing').innerText = Math.round((goalDistance - valueDistance),0) + " STEPS TO YOUR GOAL";
+        document.getElementById('stepsMissing').innerText = (goalCalories - valueCalories) + " STEPS TO YOUR GOAL";
         
     }
     console.log(distanceWalked); 
