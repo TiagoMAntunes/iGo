@@ -316,10 +316,10 @@
                 </div>    
                     <div id="activityScreen">
                         <div id="firstrowActivity">
-                            <div onclick="pushScreen('screenSteps'); waitDiv('afterloadingSteps');" id="stepsActivity">
+                            <div onclick="pushScreen('screenSteps'); waitDiv('afterloadingSteps');line.animate(0.0);" id="stepsActivity">
                                 <img src="icons/footstep.png">
                             </div>
-                            <div onclick="pushScreen('screenCalories'); waitDiv('afterscreenCalories')" id="caloriesActivity">
+                            <div onclick="pushScreen('screenCalories'); waitDiv('afterscreenCalories');line2.animate(0.0)" id="caloriesActivity">
                                 <img src="icons/flame.png">
                             </div>
                             <div onclick="pushScreen('screenHeart'); waitDiv('afterscreenHeart');calculateBPM()" id="heartActivity">
@@ -327,7 +327,7 @@
                             </div>
                         </div>
                         <div id="secondrowActivity">
-                            <div onclick="pushScreen('screenDistance'); waitDiv('afterscreenDistance')" id="distanceActivity">
+                            <div onclick="pushScreen('screenDistance'); waitDiv('afterscreenDistance');line3.animate(0.0)" id="distanceActivity">
                                 <img src="icons/running-man.png">
                             </div>
                             <div onclick="pushScreen('screenSleep'); waitDiv('afterscreenSleep')" id="sleepActivity">
@@ -1052,7 +1052,7 @@
         </div>
     </div>
     <div id = 'glucoseSimulation' style="display: none">
-        <table style="margin-left: 5%">
+        <table style="margin-top: 23%; left: -271%; position: relative">
             <tr>
                 <td onclick="glucoseIncrease(1)" class = 'food'>
                     <img width="48%" src = 'icons/can.png'/>

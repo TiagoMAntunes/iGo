@@ -2722,7 +2722,7 @@ function waitEmergency() {
 function imconfused(){
     percentageSteps = ((valueSteps * 100) / goalSteps) / 100;
     document.getElementById('stepsMissing').innerHTML = (goalSteps - valueSteps) + " STEPS TO YOUR GOAL<br/>" + valueSteps + " ALREADY COMPLETED";
-    line.animate(percentageSteps);
+     line.animate(percentageSteps);
 }
 
 function imconfused2(){
@@ -2805,13 +2805,10 @@ function calculateBPM(){
     var bpm2 = bpm.toFixed(1);
     document.getElementById('valueHeart').innerHTML = bpm2 + " BPM";
     if(bpm2 < 65){
-        console.log('yo1')
         document.getElementById('valueHeart').style.color = '#99C24D';
     }else if(bpm2 >= 65 && bpm2 <= 80){
-        console.log('yo2')
         document.getElementById('valueHeart').style.color = '#99C24D';
     }else{
-        console.log('yo3')
         document.getElementById('valueHeart').style.color = '#DB3A34';
     }
 }

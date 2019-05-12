@@ -2039,34 +2039,6 @@ max-width: 60%;*/
     position: relative;
 }
 
-
-/*.pie {
-    text-indent: -9999rem;
-    width: 8rem;
-    height: 8rem;
-    border-radius: 100%;
-    position: relative;
-    transition: all .5s ease-in-out;  
-    background: linear-gradient(90deg, rgb(236, 240, 241) 50%, transparent 50%), linear-gradient(136.8deg, rgb(231, 76, 60) 50%, rgb(236, 240, 241) 50%);
-}
-
-.pie:after {
-    content: attr(data-percentage) '%';
-    width: 7.5rem;
-    height: 7.5rem;
-    border-radius: 100%;
-    background: #ecf0f1;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 1.875rem;
-    text-align: center;
-    text-indent: 0;
-    line-height: 7.25rem;
-  }*/
-
-
 #container {
     width: 50%;
     height: 50%;
