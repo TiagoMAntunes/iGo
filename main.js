@@ -1333,6 +1333,8 @@ function bluetoothIsOff(screen) {
         }else{
             pushScreen('bluetooth-setup2');
         }
+    } else if (countprofile % 2 == 0) {
+        pushScreen('profile-setup')
     } else {
         pushScreen(screen)
     }
