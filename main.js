@@ -1325,7 +1325,7 @@ function popupclosed(){
 }
 
 /*corrigir quando vier a saude*/
-function bluetoothIsOff(screen) {
+function bluetoothIsOff(screen, profile) {
     if (count % 2 == 0) {
         location.href = "#popup2";
         if(screen == "photopublish"){
@@ -1333,7 +1333,8 @@ function bluetoothIsOff(screen) {
         }else{
             pushScreen('bluetooth-setup2');
         }
-    } else if (countprofile % 2 == 0) {
+    } else if (countprofile % 2 == 0 && profile) {
+        console.log('yo');
         pushScreen('profile-setup')
     } else {
         pushScreen(screen)
@@ -1341,10 +1342,12 @@ function bluetoothIsOff(screen) {
 }
 
 function profileisOff(){
-    if(countprofile % 2 == 0){
-        pushScreen('profile-setup');
-    }else{
-        pushScreen('saude');
+    if(count % 2 != 0){
+        if(countprofile % 2 == 0){
+            pushScreen('profile-setup');
+        }else{
+            pushScreen('saude');
+        }
     }
 }
 
@@ -1356,7 +1359,6 @@ function gpsIsOff(){
     } else {
         pushScreen('mapaScreen')
         centerPosition('atualPosition');
-        
     }
 }
 
@@ -1364,6 +1366,9 @@ function validateBluetooth(screen) {
     if (count % 2 !== 0) {
         backButton()
         pushScreen(screen);
+    }else{
+        popupon = 1;
+        location.href = "#popup18"
     }
 }
 
@@ -1372,6 +1377,9 @@ function validateGPS(){
         backButton()
         pushScreen('mapaScreen');
         centerPosition('atualPosition')
+    }else{
+        popupon = 1;
+        location.href = "#popup19";
     }
 }
 
@@ -1379,6 +1387,9 @@ function validateProfile(){
     if(countprofile % 2 !== 0){
         backButton();
         pushScreen('saude');
+    }else{
+        popupon = 1;
+        location.href="#popup20";
     }
 }
 

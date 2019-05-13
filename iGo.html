@@ -42,7 +42,7 @@
                 <div id=option2 onclick="gpsIsOff()">
                     <img id="mapicon" src="icons/map.png" />
                 </div>
-                <div id=option3 onclick="bluetoothIsOff('saude');">
+                <div id=option3 onclick="bluetoothIsOff('saude', 0);">
                     <img id="healthicon" src="icons/hospital1.png">
                 </div>
                 <div id=option4 onclick="pushScreen('definicoes');">
@@ -251,7 +251,7 @@
                 <div class="navbar">
                     <img id='likeButton' src="icons/heart.png" onclick="likeAction(this)" />
                     <img onclick="createMessages();pushScreen('messageScreen')" src="icons/chat(1).png" />
-                    <img onclick="bluetoothIsOff('photopublish');picturesSetup()" src="icons/photo.svg" />
+                    <img onclick="bluetoothIsOff('photopublish', 0);picturesSetup()" src="icons/photo.svg" />
                     <img id='bellButton' onclick="pushScreen('notificationScreen');clearArray(notifications)" src="icons/bell3.png" />
                     <img src="icons/man.png" onclick="pushScreen('profile');fillProfile()" />
                 </div>
@@ -1087,6 +1087,39 @@
                     Your glucose level seems too high. Do you want to call the emergency services?
                     <button id="noButton" onclick="backButton()" id=''>NO</button>
                     <button id="yesButton" onclick="backButton();pushScreen('SOSscreen');waitEmergency()" id=''>YES</button>
+                </div>
+            </div>
+        </div>
+        <div id="popup18" class="overlay outside">
+            <div class="popup" style="width: 39%">
+                <div id="toppopup">
+                    <h2 style="padding-left: 5%">Warning</h2>
+                    <a style="padding-left: 10%; margin-top: -2%" class="close" href="#" onclick="popupclosed()">&times;</a>
+                </div>
+                <div class="content" style="padding-left: 5%">
+                    You should first turn on bluetooth.
+                </div>
+            </div>
+        </div>
+        <div id="popup19" class="overlay outside">
+            <div class="popup" style="width: 39%">
+                <div id="toppopup">
+                    <h2 style="padding-left: 5%">Warning</h2>
+                    <a style="padding-left: 10%; margin-top: -2%" class="close" href="#" onclick="popupclosed()">&times;</a>
+                </div>
+                <div class="content" style="padding-left: 5%">
+                    You should first turn on gps.
+                </div>
+            </div>
+        </div>
+        <div id="popup20" class="overlay outside">
+            <div class="popup" style="width: 39%">
+                <div id="toppopup">
+                    <h2 style="padding-left: 5%">Warning</h2>
+                    <a style="padding-left: 10%; margin-top: -2%" class="close" href="#" onclick="popupclosed()">&times;</a>
+                </div>
+                <div class="content" style="padding-left: 5%">
+                    You should first allow the syncronization of the profile.
                 </div>
             </div>
         </div>
