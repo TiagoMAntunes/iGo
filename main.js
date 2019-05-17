@@ -2012,8 +2012,8 @@ var valueSteps = 5000;
 var goalSteps = 10000;
 var valueCalories = 2000;
 var goalCalories = 2600;
-var valueDistance = 32;
-var goalDistance = 60;
+var valueDistance = 2;
+var goalDistance = 100;
 var percentageDistance;
 var percentageSteps;
 var percentageCalories;
@@ -2750,6 +2750,20 @@ function turnonProfile() {
     document.getElementById('navtitleHealthActivity').style.borderBottom = "0px";
 }
 
+function turnonIconsHelp() {
+    document.getElementById('iconshelp2').style.display = "none";
+    document.getElementById('iconshelp3').style.display = "inline-block";
+    document.getElementById('navtitleMap1').style.borderBottom = "4px solid steelblue";
+    document.getElementById('navtitleMap2').style.borderBottom = "0px";
+}
+
+function turnonIconsHelp2() {
+    document.getElementById('iconshelp3').style.display = "none";
+    document.getElementById('iconshelp2').style.display = "inline-block";
+    document.getElementById('navtitleMap2').style.borderBottom = "4px solid steelblue";
+    document.getElementById('navtitleMap1').style.borderBottom = "0px";
+}
+
 var emergency_timeout;
 
 function waitEmergency() {
@@ -2768,24 +2782,40 @@ function waitEmergency() {
 
 function imconfused(){
     percentageSteps = ((valueSteps * 100) / goalSteps) / 100;
-    document.getElementById('stepsMissing').innerHTML = (goalSteps - valueSteps) + " STEPS TO YOUR GOAL<br/>" + valueSteps + " ALREADY COMPLETED";
-     line.animate(percentageSteps);
+    if(percentageSteps > 1){
+        percentageSteps = 1;
+        document.getElementById('stepsMissing').innerHTML = "YOU HAVE COMPLETED YOUR GOAL("+ parseInt(goalSteps) +")<br/>" + parseInt(valueSteps) + " STEPS ALREADY COMPLETED"
+    }else{
+    document.getElementById('stepsMissing').innerHTML = parseInt(goalSteps - valueSteps) + " STEPS TO YOUR GOAL<br/>" + valueSteps + " ALREADY COMPLETED";
+    }
+    line.animate(percentageSteps);
 }
 
 function imconfused2(){
     percentageCalories = ((valueCalories * 100) / goalCalories) / 100;
-    document.getElementById('caloriesMissing').innerHTML = (goalCalories - valueCalories) + " CALORIES TO YOUR GOAL<br/>" + valueCalories + " ALREADY BURNED";
+    if(percentageCalories > 1){
+        percentageCalories = 1;
+        document.getElementById('caloiresMissing').innerHTML = "YOU HAVE COMPLETED YOUR GOAL("+ parseInt(goalCalories) +")<br/>" + parseInt(valueCalories) + " CALORIES BURNED ALREADY COMPLETED";
+    }else{
+    document.getElementById('caloriesMissing').innerHTML = parseInt(goalCalories - valueCalories) + " CALORIES TO YOUR GOAL<br/>" + parseInt(valueCalories) + " ALREADY BURNED";
+    }
     line2.animate(percentageCalories);
 }
 
 function imconfused3(){
     percentageDistance = ((valueDistance * 100) / goalDistance) / 100;
-    document.getElementById('distanceMissing').innerHTML = parseFloat(goalDistance - valueDistance) + " KM TO YOUR GOAL<br/>" + valueDistance + " KM ALREADY COMPLETED";
+    if(percentageDistance > 1){
+        percentageDistance = 1;
+        document.getElementById('distanceMissing').innerHTML = "YOU HAVE COMPLETED YOUR GOAL("+ parseInt(goalDistance) +")<br/>" + parseInt(valueDistance) + " KM ALREADY COMPLETED";
+    }else{
+        document.getElementById('distanceMissing').innerHTML = parseInt(goalDistance - valueDistance) + " KM TO YOUR GOAL<br/>" + parseInt(valueDistance) + " KM ALREADY COMPLETED";
+    }
     line3.animate(percentageDistance);
 }
 
 function lessOneDistance(){
-    goalDistance = goalDistance - 2;
+    if(goalDistance > 0)
+        goalDistance = goalDistance - 2;
     document.getElementById('goalDistanceChange').value = goalDistance;
 }
 
@@ -2795,6 +2825,7 @@ function plusOneDistance(){
 }
 
 function lessOneSteps(){
+    if(goalSteps > 0)
     goalSteps = goalSteps - 30;
     document.getElementById('goalStepChange').value = goalSteps;
 }

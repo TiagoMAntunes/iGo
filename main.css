@@ -805,6 +805,28 @@ input:checked + .slider:before {
     width: 50%;
 }
 
+#iconshelp2 td {
+    width: 50%;
+    height: 20%;
+    padding-left: 4%;
+    margin: 0;
+}
+
+#iconshelp2 tr{
+    width: 50%;
+}
+
+#iconshelp3 tr {
+    width: 50%;
+}
+
+#iconshelp3 td {
+    width: 50%;
+    height: 20%;
+    padding-left: 4%;
+    margin: 0;
+}
+
 #weatherIcon{
     width: 17%;
     height: 17%;
@@ -1633,6 +1655,15 @@ max-width: 60%;*/
 }
 
 #navtitleHealthProfile {
+    border-radius: 5%;
+}
+
+#navtitleMap1 {
+    border-bottom: 4px solid steelblue;
+    border-radius: 5%;
+}
+
+#navtitleMap2 {
     border-radius: 5%;
 }
 
