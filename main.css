@@ -1628,7 +1628,7 @@ max-width: 60%;*/
     display: inline-block;
 }
 
-#ratings img {
+#ratings input {
     margin: auto;
     height: 100%;
 }
