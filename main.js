@@ -1582,7 +1582,7 @@ function screenInfo(numberPin) {
         let j = i;
         document.getElementById('imgs-ratings').innerHTML += "<div class='unselectable'  ><input class='rating-select' type='image' src=icons/empty_star.png onclick=changeReview(" + j +"," + numberPin + ") >"
     }
-    document.getElementById('imgs-ratings').innerHTML += "<button class='unselectable' onclick='goToTarget()' id='goToInformation'><b>GO TO</b></button>";
+    document.getElementById('imgs-ratings').innerHTML += "<button class='unselectable' onclick='goToTarget(); ativeJoystick()' id='goToInformation'><b>GO TO</b></button>";
     document.getElementById('avg-rating').innerHTML = ((popsGPS[numberPin].sum + popsGPS[numberPin].rating) / (popsGPS[numberPin].quantity + (popsGPS[numberPin].rating ? 1 : 0))).toFixed(2);
     pushScreen('Information');
 }
