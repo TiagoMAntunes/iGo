@@ -2603,6 +2603,11 @@ function popupCancelPicturePublish() {
     location.href = '#popup15'
 }
 
+function popupSharedLocation() {
+    popupon = 1;
+    location.href = '#popup21'
+}
+
 var radius = 0;
 
 function displayRadius() {
@@ -2684,6 +2689,8 @@ function removeTrashPaths() {
     pushScreen('multimedia')
     pushScreen('messageScreen')
     pushScreen('messageBox')
+    createMessages()
+    popupSharedLocation()
 }
 
 function shareInterest() {
@@ -2899,4 +2906,9 @@ function calculateBPM(){
         popupon = 1;
         location.href = '#popup16';
     }
+}
+
+function rerouteMap() {
+    while (screenStack.length != 0) backButton()
+    gpsIsOff()
 }
