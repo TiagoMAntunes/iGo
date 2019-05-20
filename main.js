@@ -144,6 +144,7 @@ var countprofile = 0;
 var mic1 = 0, mic2 = 2, mic3 = 0, mic4 = 0, mic5=0, mic6 = 0;
 var mics = [mic1, mic2, mic3, mic4, mic5, mic6];
 var micsid = ['mic1', 'mic2', 'mic3', 'micmessage', 'mic5', 'mic6'];
+var inputlist = ['input1', 'input2', 'descript','searchInput','searchInputFriend']
 var numberPostFtg = 0;
 var indiceFtg = -1;
 var numberNoti = 0;
@@ -298,6 +299,7 @@ function startup() {
       
         }
     })  
+    inputlist.map(id => { document.getElementById(id).disabled = true; })
 }
 
 let recognizing = false
@@ -1070,6 +1072,7 @@ function createMenuMessage(index) {
     let aux = -($(document.getElementById('messageContent')).outerHeight() + $(document.getElementById('zindex')).outerHeight() -
         ($(document.getElementById('mainScreen')).outerHeight() - $(document.getElementById('top-bar')).outerHeight()))
     document.getElementById('messageContent').style.top = aux;
+    document.getElementById(profiles[index].divName + "Input").disabled = true;
 }
 
 function resetMenuMessage() {
@@ -1186,6 +1189,7 @@ function cancelChange() {
         popupCancelPicturePublish()
         return
     }
+    backButton()
 }
 
 function cancelSearch() {
@@ -1432,9 +1436,12 @@ function microphoneOn(inputname, value, numbermic) {
     let using = mics.some(val => val === 1)
     if (using) {
         micsid.map(id => { if (document.getElementById(id) !== null) document.getElementById(id).style.backgroundColor = 'white' }) //limpa todos
+        inputlist.map(id => { document.getElementById(id).disabled = true; })
+        profiles.map(el => { if (document.getElementById(el.divName + "Input") !== null) document.getElementById(el.divName + "Input").disabled = true; })
     }
     if (mics[numbermic - 1] === 0) {
         //start new recognition
+        document.getElementById(inputname).disabled = false;
         document.getElementById(inputname).focus();
         document.getElementById(value).style.backgroundColor = "#E84855";
         mics = Array(mics.length).fill(0)
